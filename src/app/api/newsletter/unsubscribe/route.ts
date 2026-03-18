@@ -10,6 +10,9 @@ export async function GET(req: NextRequest) {
 
   try {
     const supabase = getSupabaseAdmin();
+    if (!supabase) {
+      return NextResponse.json({ error: "Servicio no disponible" }, { status: 503 });
+    }
 
     const { error } = await supabase
       .from("newsletter_subscribers")

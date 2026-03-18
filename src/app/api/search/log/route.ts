@@ -10,6 +10,9 @@ export async function POST(req: NextRequest) {
     }
 
     const supabase = getSupabaseAdmin();
+    if (!supabase) {
+      return NextResponse.json({ ok: true }); // Don't fail on analytics
+    }
 
     // Fire and forget — don't block on the result
     supabase

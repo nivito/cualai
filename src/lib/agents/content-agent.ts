@@ -255,6 +255,9 @@ export async function runContentAgent(): Promise<{
   }
 
   const supabase = getSupabaseAdmin();
+  if (!supabase) {
+    return { newsInserted: 0, suggestionsInserted: 0, errors: ["Supabase not configured — missing env vars"] };
+  }
 
   // Insert news items
   const newsRows = analyzed.map((item) => ({

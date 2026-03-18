@@ -12,6 +12,9 @@ export async function POST(req: NextRequest) {
     }
 
     const supabase = getSupabaseAdmin();
+    if (!supabase) {
+      return NextResponse.json({ error: "Servicio no disponible" }, { status: 503 });
+    }
 
     const { error } = await supabase.from("tool_suggestions").insert({
       name: name.trim(),
