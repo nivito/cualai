@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/agent/run-content",
+      "schedule": "0 14 * * *"
+    },
+    {
+      "path": "/api/agent/run-newsletter",
+      "schedule": "0 13 * * 1"
+    }
+  ]
+}

@@ -4,13 +4,33 @@ import { useState } from "react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
+    if (!email.trim()) return;
+
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Error al suscribir");
+      }
+
+      setStatus("success");
       setEmail("");
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Error al suscribir");
     }
   }
 
@@ -23,7 +43,7 @@ export default function Footer() {
         <p className="text-text-muted text-xs mb-4">
           Un email semanal con las herramientas más útiles, sin spam.
         </p>
-        {submitted ? (
+        {status === "success" ? (
           <p className="text-green text-xs">
             ✓ ¡Suscrito! Te enviaremos las mejores herramientas cada semana.
           </p>
@@ -35,15 +55,20 @@ export default function Footer() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="tu@email.com"
               required
-              className="flex-1 bg-bg-card border border-border rounded px-3 py-2 text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+              disabled={status === "loading"}
+              className="flex-1 bg-bg-card border border-border rounded px-3 py-2 text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
             />
             <button
               type="submit"
-              className="bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:bg-accent-hover transition-colors shrink-0"
+              disabled={status === "loading"}
+              className="bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:bg-accent-hover transition-colors shrink-0 disabled:opacity-50"
             >
-              Suscribirse
+              {status === "loading" ? "..." : "Suscribirse"}
             </button>
           </form>
+        )}
+        {status === "error" && (
+          <p className="text-red text-xs mt-2">{errorMsg}</p>
         )}
         <p className="text-text-muted text-[10px] mt-6">
           cual.ai — Encuentra la herramienta AI perfecta
