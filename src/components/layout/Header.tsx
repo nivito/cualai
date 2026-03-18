@@ -1,42 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { getToolCount } from "@/data/tools";
 
 export default function Header() {
-  const pathname = usePathname();
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+  const toolCount = getToolCount();
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (query.trim()) {
+      router.push(`/buscar?q=${encodeURIComponent(query.trim())}`);
+    }
+  }
 
   return (
-    <header className="border-b border-border bg-bg-card sticky top-0 z-50">
-      <div className="flex items-center justify-between px-4 h-12">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80">
-            <span className="text-accent font-bold text-lg">cual</span>
-            <span className="text-text-muted">.ai</span>
-          </Link>
-          <nav className="hidden sm:flex items-center gap-1 ml-4">
-            {[
-              { href: "/", label: "inicio" },
-              { href: "/noticias", label: "noticias" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-3 py-1 text-xs rounded transition-colors ${
-                  pathname === link.href
-                    ? "bg-bg-hover text-accent"
-                    : "text-text-muted hover:text-text hover:bg-bg-hover"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-        <div className="flex items-center gap-3 text-xs text-text-muted">
-          <span className="hidden sm:inline">v0.1.0</span>
-          <span className="text-green">●</span>
-        </div>
+    <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-sm">
+      <div className="flex items-center h-12 px-4 gap-4">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-accent font-bold text-sm shrink-0 hover:text-accent-hover transition-colors"
+        >
+          cual.ai
+        </Link>
+
+        {/* Search bar */}
+        <form onSubmit={handleSubmit} className="flex-1 max-w-xl mx-auto">
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-xs">
+              &gt;
+            </span>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Buscar herramientas AI..."
+              className="w-full bg-bg-card border border-border rounded px-3 py-1.5 pl-7 text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+            />
+          </div>
+        </form>
+
+        {/* Tool count */}
+        <span className="text-text-muted text-xs shrink-0 hidden sm:block">
+          {toolCount} herramientas
+        </span>
       </div>
     </header>
   );

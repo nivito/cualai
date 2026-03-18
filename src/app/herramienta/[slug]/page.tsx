@@ -3,7 +3,13 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
-import { getToolBySlug, categories, tools } from "@/data/tools";
+import ToolCard from "@/components/tools/ToolCard";
+import {
+  tools,
+  getToolBySlug,
+  getCategoryBySlug,
+  getSimilarTools,
+} from "@/data/tools";
 
 export function generateStaticParams() {
   return tools.map((t) => ({ slug: t.slug }));
@@ -18,101 +24,119 @@ export default async function HerramientaPage({
   const tool = getToolBySlug(slug);
   if (!tool) notFound();
 
+  const similar = getSimilarTools(tool);
+  const initial = tool.name.charAt(0).toUpperCase();
+
+  const pricingColor =
+    tool.pricing === "gratis"
+      ? "text-green"
+      : tool.pricing === "freemium"
+        ? "text-yellow"
+        : "text-accent";
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="flex-1 min-w-0 px-4 py-6">
-          <div className="max-w-2xl">
-            {/* Breadcrumb */}
-            <div className="text-[10px] text-text-muted mb-4">
-              <Link href="/" className="hover:text-accent">
-                inicio
-              </Link>
-              <span className="mx-1">/</span>
-              <span className="text-text">{tool.name}</span>
-            </div>
-
-            {/* Header */}
-            <div className="border border-border rounded bg-bg-card p-6 mb-4">
-              <div className="flex items-start justify-between mb-3">
-                <h1 className="text-xl font-bold">{tool.name}</h1>
-                <span
-                  className={`text-[10px] px-2 py-1 rounded ${
-                    tool.pricingType === "free"
-                      ? "bg-green/10 text-green"
-                      : tool.pricingType === "freemium"
-                      ? "bg-yellow/10 text-yellow"
-                      : "bg-accent/10 text-accent"
-                  }`}
-                >
-                  {tool.pricingType}
-                </span>
+        <main className="flex-1 min-w-0">
+          <section className="py-8 px-4">
+            <div className="max-w-3xl mx-auto">
+              {/* Header */}
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-14 h-14 rounded bg-bg-card flex items-center justify-center text-accent text-2xl font-bold shrink-0 border border-border">
+                  {initial}
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold">{tool.name}</h1>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {tool.categories.map((catSlug) => {
+                      const cat = getCategoryBySlug(catSlug);
+                      if (!cat) return null;
+                      return (
+                        <Link
+                          key={catSlug}
+                          href={`/categoria/${catSlug}`}
+                          className="text-[10px] text-text-muted hover:text-accent transition-colors"
+                        >
+                          {cat.icon} {cat.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
 
-              {tool.highlight && (
-                <div className="text-xs text-accent bg-accent/5 border border-accent/20 rounded px-3 py-2 mb-3">
-                  ★ {tool.highlight}
-                </div>
-              )}
+              {/* Info card */}
+              <div className="border border-border rounded bg-bg-card p-6 mb-6">
+                <p className="text-sm leading-relaxed mb-4">
+                  {tool.description}
+                </p>
+                <p className="text-xs text-text-muted leading-relaxed mb-6">
+                  {tool.longDescription}
+                </p>
 
-              <p className="text-sm text-text-muted leading-relaxed mb-4">
-                {tool.description}
-              </p>
-
-              <div className="flex flex-wrap gap-4 text-xs">
-                <div>
-                  <span className="text-text-muted">precio: </span>
-                  <span className="text-text">{tool.pricing}</span>
-                </div>
-                <div>
-                  <span className="text-text-muted">url: </span>
+                <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border">
+                  <span className={`text-xs font-semibold ${pricingColor}`}>
+                    {tool.priceLabel}
+                  </span>
                   <a
                     href={tool.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent hover:underline"
+                    className="inline-flex items-center gap-2 bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:bg-accent-hover transition-colors"
                   >
-                    {tool.url.replace("https://", "")}
+                    Ir a la herramienta →
                   </a>
                 </div>
               </div>
-            </div>
 
-            {/* Categories */}
-            <div className="border border-border rounded bg-bg-card p-4 mb-4">
-              <h2 className="text-[10px] uppercase tracking-wider text-text-muted mb-2">
-                categorías
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {tool.categories.map((catSlug) => {
-                  const cat = categories.find((c) => c.slug === catSlug);
-                  if (!cat) return null;
-                  return (
-                    <Link
-                      key={catSlug}
-                      href={`/categoria/${catSlug}`}
-                      className="text-xs text-text-muted bg-bg px-2 py-1 rounded hover:text-accent hover:border-accent/50 border border-border transition-colors"
+              {/* Use cases */}
+              {tool.useCases.length > 0 && (
+                <div className="border border-border rounded bg-bg-card p-6 mb-6">
+                  <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-3">
+                    // Casos de uso
+                  </h2>
+                  <ul className="space-y-2">
+                    {tool.useCases.map((uc) => (
+                      <li key={uc} className="text-xs text-text-muted flex items-start gap-2">
+                        <span className="text-green mt-0.5">▸</span>
+                        {uc}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Tags */}
+              {tool.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {tool.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] px-2 py-0.5 rounded border border-border text-text-muted"
                     >
-                      {cat.icon} {cat.name}
-                    </Link>
-                  );
-                })}
-              </div>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Similar tools */}
+              {similar.length > 0 && (
+                <div>
+                  <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-4">
+                    // Herramientas similares
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {similar.map((t) => (
+                      <ToolCard key={t.id} tool={t} />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-
-            {/* CTA */}
-            <a
-              href={tool.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-center bg-accent text-bg py-3 rounded text-sm font-medium hover:bg-accent-hover transition-colors"
-            >
-              Ir a {tool.name} →
-            </a>
-          </div>
-
+          </section>
           <Footer />
         </main>
       </div>

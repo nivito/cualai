@@ -2,48 +2,55 @@ import Link from "next/link";
 import type { Tool } from "@/data/tools";
 import { categories } from "@/data/tools";
 
+function PricingBadge({ tool }: { tool: Tool }) {
+  const color =
+    tool.pricing === "gratis"
+      ? "text-green"
+      : tool.pricing === "freemium"
+        ? "text-yellow"
+        : "text-accent";
+
+  return <span className={`text-[10px] ${color}`}>{tool.priceLabel}</span>;
+}
+
 export default function ToolCard({ tool }: { tool: Tool }) {
+  const firstCat = categories.find((c) => c.slug === tool.categories[0]);
+  const initial = tool.name.charAt(0).toUpperCase();
+
   return (
     <Link
       href={`/herramienta/${tool.slug}`}
-      className="block border border-border rounded bg-bg-card hover:border-accent/50 hover:bg-bg-hover transition-all group"
+      className="group block border border-border rounded bg-bg-card hover:border-accent hover:shadow-[0_0_12px_rgba(88,166,255,0.1)] transition-all"
     >
       <div className="p-4">
-        <div className="flex items-start justify-between mb-2">
-          <h3 className="text-sm font-semibold text-text group-hover:text-accent transition-colors">
-            {tool.name}
-          </h3>
-          <span
-            className={`text-[10px] px-1.5 py-0.5 rounded ${
-              tool.pricingType === "free"
-                ? "bg-green/10 text-green"
-                : tool.pricingType === "freemium"
-                ? "bg-yellow/10 text-yellow"
-                : "bg-accent/10 text-accent"
-            }`}
-          >
-            {tool.pricingType === "free"
-              ? "gratis"
-              : tool.pricingType === "freemium"
-              ? "freemium"
-              : "pago"}
-          </span>
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-8 h-8 rounded bg-bg flex items-center justify-center text-accent text-sm font-bold shrink-0 border border-border">
+            {initial}
+          </div>
+          <div className="min-w-0">
+            <h3 className="text-sm font-semibold truncate group-hover:text-accent transition-colors">
+              {tool.name}
+            </h3>
+            {firstCat && (
+              <span className="text-[10px] text-text-muted">
+                {firstCat.icon} {firstCat.name}
+              </span>
+            )}
+          </div>
         </div>
-        <p className="text-xs text-text-muted leading-relaxed mb-3 line-clamp-2">
+
+        {/* Description */}
+        <p className="text-xs text-text-muted leading-relaxed line-clamp-2 mb-3">
           {tool.description}
         </p>
-        <div className="flex flex-wrap gap-1">
-          {tool.categories.slice(0, 3).map((catSlug) => {
-            const cat = categories.find((c) => c.slug === catSlug);
-            return (
-              <span
-                key={catSlug}
-                className="text-[10px] text-text-muted bg-bg px-1.5 py-0.5 rounded"
-              >
-                {cat?.icon} {cat?.name}
-              </span>
-            );
-          })}
+
+        {/* Footer */}
+        <div className="flex items-center justify-between pt-2 border-t border-border">
+          <PricingBadge tool={tool} />
+          <span className="text-[10px] text-text-muted group-hover:text-accent transition-colors">
+            →
+          </span>
         </div>
       </div>
     </Link>

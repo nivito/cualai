@@ -12,7 +12,6 @@
   --color-green: #3fb950;
   --color-yellow: #d29922;
   --color-red: #f85149;
-
   --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
 }
 
@@ -22,23 +21,25 @@ body {
   font-family: var(--font-mono);
 }
 
-::selection {
-  background-color: var(--color-accent);
-  color: var(--color-bg);
-}
-
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-muted);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
 }

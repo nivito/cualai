@@ -2,9 +2,12 @@ import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
-import SearchBar from "@/components/search/SearchBar";
 import ToolCard from "@/components/tools/ToolCard";
-import { getCategoryBySlug, getToolsByCategory, categories } from "@/data/tools";
+import {
+  categories,
+  getCategoryBySlug,
+  getToolsByCategory,
+} from "@/data/tools";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -26,29 +29,23 @@ export default async function CategoriaPage({
       <Header />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="flex-1 min-w-0 px-4 py-6">
-          <div className="max-w-2xl mb-6">
-            <SearchBar />
-          </div>
-
-          <div className="mb-6">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-lg">{category.icon}</span>
-              <h1 className="text-lg font-semibold">{category.name}</h1>
+        <main className="flex-1 min-w-0">
+          <section className="py-8 px-4">
+            <div className="mb-6 px-2">
+              <h1 className="text-lg font-bold">
+                {category.icon} {category.name}
+              </h1>
+              <p className="text-text-muted text-xs mt-1">
+                {categoryTools.length} herramienta
+                {categoryTools.length !== 1 ? "s" : ""}
+              </p>
             </div>
-            <p className="text-xs text-text-muted">{category.description}</p>
-            <div className="text-[10px] text-text-muted mt-1">
-              {categoryTools.length} herramienta
-              {categoryTools.length !== 1 ? "s" : ""}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+              {categoryTools.map((tool) => (
+                <ToolCard key={tool.id} tool={tool} />
+              ))}
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-            {categoryTools.map((tool) => (
-              <ToolCard key={tool.slug} tool={tool} />
-            ))}
-          </div>
-
+          </section>
           <Footer />
         </main>
       </div>

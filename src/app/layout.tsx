@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "cual.ai — ¿Qué herramienta de IA necesitas?",
+  title: "cual.ai — Encuentra la herramienta de IA perfecta",
   description:
-    "Encuentra la herramienta de inteligencia artificial perfecta para tu objetivo. Buscador de herramientas AI por categoría y caso de uso.",
+    "Buscador de herramientas de inteligencia artificial. Describe tu problema y encuentra la herramienta AI perfecta por categoría y caso de uso.",
 };
 
 export default function RootLayout({

@@ -15,37 +15,33 @@ export default function SearchBar({
   const [query, setQuery] = useState(defaultValue);
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (query.trim()) {
       router.push(`/buscar?q=${encodeURIComponent(query.trim())}`);
     }
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div
-        className={`flex items-center border border-border rounded bg-bg-card focus-within:border-accent transition-colors ${
-          large ? "px-4 py-3" : "px-3 py-2"
-        }`}
-      >
-        <span className="text-accent mr-2 text-sm">&gt;</span>
+      <div className="relative">
+        <span
+          className={`absolute left-4 top-1/2 -translate-y-1/2 text-text-muted ${
+            large ? "text-base" : "text-xs"
+          }`}
+        >
+          &gt;
+        </span>
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="¿Qué quieres lograr con IA?"
+          placeholder="¿Qué quieres lograr con IA? ej: hacer un video de marketing sin aparecer yo"
           autoFocus={autoFocus}
-          className={`flex-1 bg-transparent outline-none text-text placeholder:text-text-muted ${
-            large ? "text-base" : "text-sm"
+          className={`w-full bg-bg-card border border-border rounded text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors ${
+            large ? "px-4 py-3.5 pl-9 text-sm" : "px-3 py-2 pl-7 text-xs"
           }`}
         />
-        <button
-          type="submit"
-          className="text-text-muted hover:text-accent transition-colors text-xs ml-2"
-        >
-          [enter]
-        </button>
       </div>
     </form>
   );
