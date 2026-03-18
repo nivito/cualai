@@ -993,6 +993,21 @@ export const tools: Tool[] = [
     tags: ["SEO", "keywords", "backlinks", "marketing", "contenido"],
     useCases: ["Investigación de keywords", "Auditoría SEO de sitio", "Análisis de competencia", "Estrategia de contenido"],
   },
+  // ── Marketing ──
+  {
+    id: "okara-ai",
+    name: "Okara AI",
+    slug: "okara-ai",
+    description: "Plataforma de marketing AI con agentes autónomos que gestionan SEO, contenido y redes sociales por ti.",
+    longDescription: "Okara AI es una plataforma con sede en Singapur que combina chat privado con más de 20 modelos de IA y un CMO (Director de Marketing) autónomo impulsado por IA. Su AI CMO ejecuta tareas diarias de marketing sin intervención humana: auditorías SEO, creación de contenido, monitoreo de Reddit, publicaciones en X (Twitter) y optimización para buscadores de IA (GEO). Todo con encriptación del lado del cliente para máxima privacidad. Ideal para startups y equipos pequeños que necesitan automatizar su marketing sin contratar un equipo grande.",
+    url: "https://okara.ai",
+    categories: ["marketing", "agentes-productividad"],
+    pricing: "freemium",
+    priceLabel: "Gratis / Pro $20/mes / Max $99/mes",
+    featured: true,
+    tags: ["marketing", "SEO", "contenido", "redes sociales", "agente autónomo", "privacidad"],
+    useCases: ["Automatizar marketing diario con AI", "Auditorías SEO automáticas cada mañana", "Gestionar redes sociales con agentes AI", "Medir visibilidad de marca en ChatGPT y otros buscadores AI"],
+  },
 ]
 
 // ── Helper functions ──────────────────────────────────────────

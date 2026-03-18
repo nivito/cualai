@@ -44,7 +44,13 @@ export default function Header() {
           </div>
         </form>
 
-        {/* Tool count */}
+        {/* Nav links */}
+        <Link
+          href="/noticias"
+          className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
+        >
+          Noticias
+        </Link>
         <span className="text-text-muted text-xs shrink-0 hidden sm:block">
           {toolCount} herramientas
         </span>
