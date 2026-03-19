@@ -61,6 +61,7 @@ export const companies: AICompany[] = [
   { slug: "xai",       name: "xAI",       emoji: "⚫", country: "EE. UU.", description: "Creadores de Grok, de Elon Musk" },
   { slug: "cohere",    name: "Cohere",    emoji: "🟡", country: "Canadá",   description: "Enfocados en empresas y búsqueda semántica" },
   { slug: "amazon",    name: "Amazon",    emoji: "🟤", country: "EE. UU.", description: "Creadores de Nova y Titan via AWS Bedrock" },
+  { slug: "cursor",    name: "Cursor",    emoji: "🖱️", country: "EE. UU.", description: "Anysphere — creadores del editor AI Cursor y el modelo Composer" },
 ]
 
 // ── Models ────────────────────────────────────────────────────
@@ -595,6 +596,61 @@ export const aiModels: AIModel[] = [
     isNew: false,
     releasedAt: "2025-02",
     tags: ["twitter", "tiempo-real", "razonamiento", "xai", "noticias"],
+  },
+
+  // ── Cursor ──
+  {
+    id: "composer-2",
+    slug: "composer-2",
+    name: "Composer 2",
+    version: "2",
+    company: "Cursor",
+    companySlug: "cursor",
+    companyEmoji: "🖱️",
+    description: "El modelo de código de Cursor (Anysphere): rendimiento frontier en tareas largas de programación a un precio muy competitivo.",
+    longDescription: "Composer 2 es el primer modelo de inteligencia artificial propio de Anysphere, la empresa detrás del editor Cursor. Lanzado el 19 de marzo de 2026, se posiciona como frontier en benchmarks de código: logra 61.3 en CursorBench, 61.7 en Terminal-Bench 2.0 y 73.7 en SWE-bench Multilingual — superando a Claude Opus y acercándose a GPT-5. Su entrenamiento combina pretraining propio con reinforcement learning en tareas de programación de largo horizonte, lo que le permite resolver problemas que requieren cientos de acciones encadenadas. Está disponible directamente en el editor Cursor y via API a precios muy competitivos: $0.50/M tokens de entrada y $2.50/M de salida en modo estándar. También existe una versión Fast (misma inteligencia, mayor velocidad) a $1.50/$7.50 por millón de tokens. Ideal para desarrolladores que ya usan Cursor como su editor principal.",
+    type: ["codigo"],
+    typeLabels: ["Código"],
+    contextWindow: 200000,
+    contextWindowLabel: "200K tokens",
+    apiPricing: {
+      input: 0.50,
+      output: 2.50,
+      label: "$0.50 / $2.50 por M tokens (estándar)",
+    },
+    userPricing: {
+      free: false,
+      paidLabel: "$20/mes (Cursor Pro — incluye uso generoso de Composer 2)",
+      url: "https://cursor.com",
+    },
+    speed: "rapido",
+    speedLabel: "Rápido",
+    intelligence: 5,
+    strengths: [
+      "Frontier en benchmarks de código (SWE-bench, Terminal-Bench 2.0)",
+      "Precio muy competitivo frente a Claude Opus o GPT-5",
+      "Resuelve tareas largas con cientos de acciones encadenadas",
+      "Integrado nativamente en el editor Cursor",
+      "Versión Fast con alta velocidad disponible",
+    ],
+    weaknesses: [
+      "Solo disponible en Cursor o su API (no en otros entornos)",
+      "No es multimodal — solo texto/código",
+      "Ecosistema nuevo, menos documentación que GPT o Claude",
+      "Requiere Cursor para la mejor experiencia",
+    ],
+    bestFor: [
+      "Desarrolladores que usan Cursor como editor principal",
+      "Refactorización y migración de codebases completos",
+      "Tareas de código largas y complejas de varios pasos",
+      "Generación y revisión de código a bajo costo",
+    ],
+    available: ["api", "web"],
+    availableLabels: ["API", "Editor Cursor"],
+    featured: true,
+    isNew: true,
+    releasedAt: "2026-03",
+    tags: ["codigo", "cursor", "anysphere", "swe-bench", "frontier", "barato", "editor"],
   },
 ]
 
