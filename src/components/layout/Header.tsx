@@ -57,6 +57,12 @@ export default function Header() {
         >
           Cursos
         </Link>
+        <Link
+          href="/modelos"
+          className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
+        >
+          Modelos
+        </Link>
         <span className="text-text-muted text-xs shrink-0 hidden sm:block">
           {toolCount} herramientas
         </span>
