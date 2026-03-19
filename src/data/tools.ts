@@ -1326,6 +1326,28 @@ export const tools: Tool[] = [
     ],
   },
 
+  // ── Agentes Autónomos ──
+  {
+    id: "manus",
+    name: "Manus",
+    slug: "manus",
+    description: "El agente AI autónomo más avanzado del mundo: ejecuta tareas complejas de forma independiente en el navegador, código, datos y más.",
+    longDescription: "Manus es el agente de inteligencia artificial autónomo que tomó al mundo por sorpresa cuando fue lanzado desde China y luego adquirido por Meta por aproximadamente 2.000 millones de dólares. A diferencia de ChatGPT o Claude — que responden preguntas —, Manus actúa: puede navegar por internet, escribir y ejecutar código, analizar datos, redactar reportes, gestionar emails y completar flujos de trabajo de decenas de pasos sin intervención humana. Su interfaz incluye una webapp, aplicación móvil, desktop app, integración con Slack y un modo 'Wide Research' para investigación profunda. Manus opera en una máquina virtual propia, lo que le permite ejecutar acciones reales en el mundo digital. Disponible en planes desde gratuito hasta $199/mes para uso intensivo empresarial.",
+    url: "https://manus.im",
+    categories: ["agentes-productividad", "desarrollo"],
+    pricing: "freemium",
+    priceLabel: "Gratis / Pro $19/mes / Business $199/mes",
+    featured: true,
+    tags: ["agente", "autónomo", "meta", "investigación", "código", "navegador", "workflow", "multi-paso"],
+    useCases: [
+      "Delegar tareas completas sin supervisión: investigar, redactar y enviar un informe",
+      "Automatizar flujos de trabajo de múltiples pasos en el navegador",
+      "Hacer investigación profunda (Wide Research) sobre cualquier tema en minutos",
+      "Ejecutar código, analizar datos y generar visualizaciones de forma autónoma",
+      "Gestionar emails y comunicaciones sin intervención manual",
+    ],
+  },
+
   // ── Comparativa & Benchmarks ──
   {
     id: "arena-ai",
