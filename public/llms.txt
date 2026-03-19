@@ -1,0 +1,50 @@
+# cual.ai
+
+> Directorio de herramientas de inteligencia artificial en español, enfocado en profesionales y equipos en Latinoamérica y España.
+> Cubre 85+ herramientas en 13 categorías: texto y escritura, imágenes y diseño, video, voz y audio, desarrollo, datos y análisis, marketing, finanzas, educación, música, agentes y productividad, e-commerce, presentaciones y decks.
+
+## Herramientas destacadas
+
+- ChatGPT: https://cual.ai/herramienta/chatgpt — asistente conversacional de OpenAI, el más popular del mundo
+- Claude: https://cual.ai/herramienta/claude — asistente de Anthropic con razonamiento avanzado y contexto largo
+- Gemini: https://cual.ai/herramienta/gemini — modelo multimodal de Google integrado con Workspace
+- Perplexity: https://cual.ai/herramienta/perplexity — motor de búsqueda AI con fuentes citadas en tiempo real
+- Midjourney: https://cual.ai/herramienta/midjourney — generación de imágenes artísticas de alta calidad
+- GitHub Copilot: https://cual.ai/herramienta/github-copilot — asistente de código AI integrado en editores
+- ElevenLabs: https://cual.ai/herramienta/elevenlabs — síntesis de voz ultrarrealista con clonación de voz
+- Cursor: https://cual.ai/herramienta/cursor — IDE completo con AI integrada para programar en lenguaje natural
+- Suno: https://cual.ai/herramienta/suno — generación de canciones completas con letra y melodía desde texto
+- Canva AI: https://cual.ai/herramienta/canva-ai — suite de diseño con herramientas AI para contenido visual
+
+## Categorías
+
+- Texto y escritura: https://cual.ai/categoria/texto-escritura
+- Imágenes y diseño: https://cual.ai/categoria/imagenes-diseno
+- Video: https://cual.ai/categoria/video
+- Voz y audio: https://cual.ai/categoria/voz-audio
+- Desarrollo: https://cual.ai/categoria/desarrollo
+- Marketing: https://cual.ai/categoria/marketing
+- Datos y análisis: https://cual.ai/categoria/datos-analisis
+- Finanzas: https://cual.ai/categoria/finanzas
+- Educación: https://cual.ai/categoria/educacion
+- Música: https://cual.ai/categoria/musica
+- Agentes y productividad: https://cual.ai/categoria/agentes-productividad
+- E-commerce: https://cual.ai/categoria/ecommerce
+- Presentaciones y decks: https://cual.ai/categoria/presentaciones-decks
+
+## Cursos de IA
+
+Cursos gratuitos y de pago en español e inglés para aprender inteligencia artificial:
+https://cual.ai/cursos
+
+## Noticias de IA
+
+Últimas noticias de inteligencia artificial para no técnicos:
+https://cual.ai/noticias
+
+## Sobre el sitio
+
+- Actualizado: 2026-03
+- Idioma principal: Español
+- Audiencia: profesionales, startups y estudiantes en Latinoamérica y España
+- Propósito: ayudar a encontrar la herramienta de IA correcta según caso de uso y presupuesto

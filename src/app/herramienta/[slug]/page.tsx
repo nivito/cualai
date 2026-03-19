@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
@@ -13,6 +14,33 @@ import {
 
 export function generateStaticParams() {
   return tools.map((t) => ({ slug: t.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const tool = getToolBySlug(slug);
+  if (!tool) return {};
+  return {
+    title: `${tool.name}: qué es, cómo usarlo y precio — cual.ai`,
+    description: `${tool.description} Descubre casos de uso, precios y alternativas en cual.ai.`,
+    alternates: { canonical: `https://cual.ai/herramienta/${slug}` },
+    openGraph: {
+      title: `${tool.name} — cual.ai`,
+      description: tool.description,
+      url: `https://cual.ai/herramienta/${slug}`,
+      type: "website",
+      siteName: "cual.ai",
+    },
+    twitter: {
+      card: "summary",
+      title: `${tool.name}: qué es, cómo usarlo y precio — cual.ai`,
+      description: tool.description,
+    },
+  };
 }
 
 export default async function HerramientaPage({

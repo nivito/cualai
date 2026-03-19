@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
@@ -11,6 +12,34 @@ import {
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const category = getCategoryBySlug(slug);
+  if (!category) return {};
+  const count = getToolsByCategory(slug).length;
+  return {
+    title: `${count} herramientas de IA para ${category.name} (2026) — cual.ai`,
+    description: `Explora las mejores herramientas de inteligencia artificial para ${category.name}. Comparativa de precios, casos de uso y alternativas en español.`,
+    alternates: { canonical: `https://cual.ai/categoria/${slug}` },
+    openGraph: {
+      title: `Herramientas de IA para ${category.name} — cual.ai`,
+      description: `Explora las mejores herramientas de inteligencia artificial para ${category.name}. Comparativa de precios, casos de uso y alternativas en español.`,
+      url: `https://cual.ai/categoria/${slug}`,
+      type: "website",
+      siteName: "cual.ai",
+    },
+    twitter: {
+      card: "summary",
+      title: `${count} herramientas de IA para ${category.name} — cual.ai`,
+      description: `Explora las mejores herramientas de inteligencia artificial para ${category.name} en español.`,
+    },
+  };
 }
 
 export default async function CategoriaPage({
