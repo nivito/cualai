@@ -62,8 +62,100 @@ export default async function HerramientaPage({
         ? "text-yellow"
         : "text-accent";
 
+  // JSON-LD: SoftwareApplication
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: tool.name,
+    url: tool.url,
+    description: tool.longDescription || tool.description,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: tool.pricing === "gratis" ? "0" : undefined,
+      priceCurrency: "USD",
+      description: tool.priceLabel,
+    },
+    aggregateRating: undefined,
+  };
+
+  // JSON-LD: BreadcrumbList
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "cual.ai",
+        item: "https://cual.ai",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: tool.name,
+        item: `https://cual.ai/herramienta/${slug}`,
+      },
+    ],
+  };
+
+  // JSON-LD: FAQPage
+  const faqItems = [
+    {
+      q: `¿Para qué sirve ${tool.name}?`,
+      a: tool.description,
+    },
+    {
+      q: `¿Cuánto cuesta ${tool.name}?`,
+      a: tool.priceLabel,
+    },
+    {
+      q: `¿${tool.name} tiene versión gratuita?`,
+      a:
+        tool.pricing === "gratis"
+          ? `Sí, ${tool.name} es completamente gratuito.`
+          : tool.pricing === "freemium"
+            ? `Sí, ${tool.name} ofrece un plan gratuito con funciones limitadas. ${tool.priceLabel}`
+            : `${tool.name} es de pago. ${tool.priceLabel}`,
+    },
+    ...(similar.length > 0
+      ? [
+          {
+            q: `¿Cuáles son las mejores alternativas a ${tool.name}?`,
+            a: `Las principales alternativas a ${tool.name} son: ${similar.map((t) => t.name).join(", ")}. Puedes compararlas en cual.ai.`,
+          },
+        ]
+      : []),
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="flex flex-1">
         <Sidebar />
@@ -135,6 +227,21 @@ export default async function HerramientaPage({
                   </ul>
                 </div>
               )}
+
+              {/* FAQ visible */}
+              <div className="border border-border rounded bg-bg-card p-6 mb-6">
+                <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-4">
+                  // Preguntas frecuentes
+                </h2>
+                <div className="space-y-4">
+                  {faqItems.map((item) => (
+                    <div key={item.q}>
+                      <p className="text-xs font-semibold mb-1">{item.q}</p>
+                      <p className="text-xs text-text-muted">{item.a}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               {/* Tags */}
               {tool.tags.length > 0 && (
