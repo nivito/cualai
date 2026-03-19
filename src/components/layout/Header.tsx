@@ -51,6 +51,12 @@ export default function Header() {
         >
           Noticias
         </Link>
+        <Link
+          href="/cursos"
+          className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
+        >
+          Cursos
+        </Link>
         <span className="text-text-muted text-xs shrink-0 hidden sm:block">
           {toolCount} herramientas
         </span>

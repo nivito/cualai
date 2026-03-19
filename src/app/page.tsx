@@ -4,12 +4,15 @@ import Footer from "@/components/layout/Footer";
 import SearchBar from "@/components/search/SearchBar";
 import ToolCard from "@/components/tools/ToolCard";
 import NewsCard from "@/components/news/NewsCard";
+import CourseCard from "@/components/courses/CourseCard";
 import { getFeaturedTools, tools } from "@/data/tools";
 import { getLatestNews } from "@/data/news";
+import { getFeaturedCourses } from "@/data/courses";
 
 export default function Home() {
   const featured = getFeaturedTools();
   const latestNews = getLatestNews(3);
+  const featuredCourses = getFeaturedCourses().slice(0, 3);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -61,6 +64,26 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
               {latestNews.map((item) => (
                 <NewsCard key={item.id} item={item} />
+              ))}
+            </div>
+          </section>
+
+          {/* Featured courses */}
+          <section className="py-8 px-4">
+            <div className="flex items-center justify-between mb-4 px-2">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted">
+                // Aprende IA gratis
+              </h2>
+              <a
+                href="/cursos"
+                className="text-[10px] text-text-muted hover:text-accent transition-colors"
+              >
+                Ver todos los cursos →
+              </a>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+              {featuredCourses.map((course) => (
+                <CourseCard key={course.id} course={course} />
               ))}
             </div>
           </section>

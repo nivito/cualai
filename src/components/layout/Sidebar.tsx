@@ -39,7 +39,7 @@ export default function Sidebar() {
           <Link
             href="/noticias"
             onClick={() => setOpen(false)}
-            className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors mb-2 ${
+            className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
               pathname.startsWith("/noticias")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
@@ -47,6 +47,20 @@ export default function Sidebar() {
           >
             <span>📰</span>
             <span className="flex-1 truncate">Noticias AI</span>
+          </Link>
+
+          {/* Cursos link */}
+          <Link
+            href="/cursos"
+            onClick={() => setOpen(false)}
+            className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors mb-2 ${
+              pathname.startsWith("/cursos")
+                ? "bg-bg-hover text-accent border-l-2 border-accent"
+                : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
+            }`}
+          >
+            <span>📚</span>
+            <span className="flex-1 truncate">Cursos</span>
           </Link>
 
           <div className="px-4 mb-2">
