@@ -38,10 +38,10 @@ export default function Footer() {
     <footer className="border-t border-border mt-12 py-8 px-4">
       <div className="max-w-lg mx-auto text-center">
         <h3 className="text-sm font-semibold mb-1">
-          Recibe las mejores herramientas AI de la semana
+          Recibe las últimas noticias de AI para no técnicos
         </h3>
         <p className="text-text-muted text-xs mb-4">
-          Un email semanal con las herramientas más útiles, sin spam.
+          Un email semanal con las mejores herramientas y noticias de inteligencia artificial, explicadas en simple. Sin spam.
         </p>
         {status === "success" ? (
           <p className="text-green text-xs">
