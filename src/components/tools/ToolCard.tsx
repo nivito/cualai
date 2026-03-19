@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Tool } from "@/data/tools";
 import { categories } from "@/data/tools";
+import VoteButtons from "@/components/tools/VoteButtons";
 
 function PricingBadge({ tool }: { tool: Tool }) {
   const color =
@@ -48,9 +49,12 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         {/* Footer */}
         <div className="flex items-center justify-between pt-2 border-t border-border">
           <PricingBadge tool={tool} />
-          <span className="text-[10px] text-text-muted group-hover:text-accent transition-colors">
-            →
-          </span>
+          <div className="flex items-center gap-2">
+            <VoteButtons slug={tool.slug} compact />
+            <span className="text-[10px] text-text-muted group-hover:text-accent transition-colors">
+              →
+            </span>
+          </div>
         </div>
       </div>
     </Link>

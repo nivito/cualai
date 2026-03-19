@@ -102,6 +102,19 @@ create table if not exists tool_suggestions (
 
 create index idx_tool_suggestions_status on tool_suggestions(status);
 
+-- Votos de herramientas (thumbs up/down)
+create table if not exists tool_votes (
+  id uuid primary key default gen_random_uuid(),
+  tool_slug text not null,
+  vote text not null check (vote in ('up', 'down')),
+  fingerprint text not null,               -- hash de IP+UA para limitar 1 voto por usuario
+  created_at timestamptz default now(),
+  unique (tool_slug, fingerprint)          -- 1 voto por herramienta por fingerprint
+);
+
+create index idx_tool_votes_slug on tool_votes(tool_slug);
+create index idx_tool_votes_fingerprint on tool_votes(fingerprint);
+
 -- Trigger para updated_at en tools
 create or replace function update_updated_at()
 returns trigger as $$

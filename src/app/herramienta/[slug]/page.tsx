@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import ToolCard from "@/components/tools/ToolCard";
+import VoteButtons from "@/components/tools/VoteButtons";
 import {
   tools,
   getToolBySlug,
@@ -208,6 +209,11 @@ export default async function HerramientaPage({
                   >
                     Ir a la herramienta →
                   </a>
+                </div>
+
+                {/* Votos */}
+                <div className="pt-4 border-t border-border mt-4">
+                  <VoteButtons slug={tool.slug} />
                 </div>
               </div>
 
