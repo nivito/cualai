@@ -85,16 +85,30 @@ export default function SearchBar({
   const textRef = useRef<HTMLSpanElement>(null);
   const [translateX, setTranslateX] = useState(0);
 
-  useEffect(() => {
-    if (!showAnimation || !containerRef.current || !textRef.current) {
+  const recalculate = () => {
+    if (!containerRef.current || !textRef.current) {
       setTranslateX(0);
       return;
     }
     const containerWidth = containerRef.current.offsetWidth;
-    const textWidth = textRef.current.offsetWidth;
+    const textWidth = textRef.current.scrollWidth;
     const overflow = textWidth - containerWidth;
     setTranslateX(overflow > 0 ? -overflow : 0);
+  };
+
+  // Recalcular cuando cambia el texto
+  useEffect(() => {
+    if (!showAnimation) { setTranslateX(0); return; }
+    recalculate();
   }, [animatedPlaceholder, showAnimation]);
+
+  // Recalcular cuando cambia el tamaño del contenedor (mobile rotate, resize)
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const ro = new ResizeObserver(() => recalculate());
+    ro.observe(containerRef.current);
+    return () => ro.disconnect();
+  }, [showAnimation]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
