@@ -1326,6 +1326,28 @@ export const tools: Tool[] = [
     ],
   },
 
+  // ── Comparativa & Benchmarks ──
+  {
+    id: "arena-ai",
+    name: "Arena AI",
+    slug: "arena-ai",
+    description: "Compara modelos de IA en tiempo real con votación crowdsourced y el leaderboard más confiable de LLMs.",
+    longDescription: "Arena AI (antes LMSYS Chatbot Arena) es la plataforma de referencia para comparar modelos de IA de forma imparcial. Su modo 'Battle' te permite chatear con dos modelos simultáneamente sin saber cuál es cuál, y votar cuál responde mejor — generando un ranking Elo crowdsourced considerado el más confiable del sector. Compara texto, imágenes, visión, código y más en un solo lugar. El leaderboard incluye todos los modelos frontier: GPT-5, Claude Opus, Gemini, Llama y muchos más. Ideal para equipos que necesitan elegir el modelo correcto para su caso de uso sin depender solo de benchmarks académicos.",
+    url: "https://arena.ai",
+    categories: ["agentes-productividad", "desarrollo"],
+    pricing: "gratis",
+    priceLabel: "Gratis",
+    featured: true,
+    tags: ["benchmark", "comparativa", "leaderboard", "LLM", "modelos", "evaluación", "elo", "chatbot"],
+    useCases: [
+      "Comparar dos modelos AI de forma ciega para elegir el mejor para tu tarea",
+      "Consultar el ranking más actualizado de modelos de lenguaje",
+      "Evaluar modelos de imagen, visión y código lado a lado",
+      "Entender las fortalezas reales de cada modelo con datos de millones de votos",
+      "Seleccionar el modelo óptimo antes de integrar una API en tu producto",
+    ],
+  },
+
   // ── Agentes & Orquestación ──
   {
     id: "dapta",
