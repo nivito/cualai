@@ -1008,6 +1008,26 @@ export const tools: Tool[] = [
     tags: ["marketing", "SEO", "contenido", "redes sociales", "agente autónomo", "privacidad"],
     useCases: ["Automatizar marketing diario con AI", "Auditorías SEO automáticas cada mañana", "Gestionar redes sociales con agentes AI", "Medir visibilidad de marca en ChatGPT y otros buscadores AI"],
   },
+  {
+    id: "google-stitch",
+    name: "Google Stitch",
+    slug: "google-stitch",
+    description: "Diseña interfaces de apps y sitios web describiendo lo que quieres — sin saber programar ni diseño.",
+    longDescription: "Google Stitch es una herramienta de diseño con inteligencia artificial creada por Google. Describes en palabras cómo quieres que se vea tu aplicación o sitio web, y Stitch genera automáticamente pantallas, botones, formularios y otros elementos visuales listos para usar. Funciona con Gemini 2.5 Pro, el motor AI más avanzado de Google. Es especialmente útil para emprendedores, gerentes de producto y equipos de marketing que necesitan prototipos rápidos sin depender de un diseñador o programador.",
+    url: "https://stitch.withgoogle.com",
+    categories: ["marketing", "imagenes-diseno", "agentes-productividad"],
+    pricing: "freemium",
+    priceLabel: "Gratis con límites de uso",
+    featured: true,
+    tags: ["diseño", "UI", "prototipo", "Google", "aplicaciones", "marketing", "sin código"],
+    useCases: [
+      "Crear prototipos de apps sin diseñador",
+      "Visualizar ideas de producto rápidamente",
+      "Diseñar landing pages con AI",
+      "Presentar conceptos visuales al equipo",
+      "Generar wireframes para campañas de marketing",
+    ],
+  },
 ]
 
 // ── Helper functions ──────────────────────────────────────────
