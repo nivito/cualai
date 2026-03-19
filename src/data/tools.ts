@@ -37,6 +37,7 @@ export const categories: Category[] = [
   { slug: "musica", name: "Música", icon: "🎵" },
   { slug: "agentes-productividad", name: "Agentes & Productividad", icon: "🤖" },
   { slug: "ecommerce", name: "E-commerce", icon: "🛒" },
+  { slug: "presentaciones-decks", name: "Presentaciones & Decks", icon: "📊" },
 ]
 
 // ── Tools (60+) ───────────────────────────────────────────────
@@ -176,7 +177,7 @@ export const tools: Tool[] = [
     description: "Suite de diseño con herramientas AI integradas para crear contenido visual profesional.",
     longDescription: "Canva AI integra inteligencia artificial directamente en la plataforma de diseño más popular del mundo. Incluye Magic Design para generación automática de diseños, Magic Eraser para eliminar fondos y objetos, Magic Write para textos, y mucho más. Ideal para no-diseñadores que necesitan resultados profesionales.",
     url: "https://canva.com",
-    categories: ["imagenes-diseno", "marketing"],
+    categories: ["imagenes-diseno", "marketing", "presentaciones-decks"],
     pricing: "freemium",
     priceLabel: "Gratis / Pro $13/mes",
     featured: true,
@@ -446,7 +447,7 @@ export const tools: Tool[] = [
     description: "Crea presentaciones, documentos y sitios web atractivos con AI en segundos.",
     longDescription: "Gamma usa AI para crear presentaciones hermosas, documentos interactivos y micrositios a partir de un simple prompt o outline. No necesitas ser diseñador: Gamma maneja el layout, las imágenes y el diseño visual automáticamente. Puedes editar todo después y exportar a PowerPoint.",
     url: "https://gamma.app",
-    categories: ["texto-escritura", "marketing"],
+    categories: ["texto-escritura", "marketing", "presentaciones-decks"],
     pricing: "freemium",
     priceLabel: "Gratis 400 créditos / Pro $8/mes",
     featured: false,
@@ -460,7 +461,7 @@ export const tools: Tool[] = [
     description: "Diseña presentaciones profesionales con reglas de diseño automáticas y AI.",
     longDescription: "Beautiful.ai aplica reglas de diseño inteligentes automáticamente mientras creas tu presentación. Cada slide se ajusta visualmente en tiempo real, manteniendo consistencia y profesionalismo. Incluye generación de contenido con AI, templates profesionales y colaboración en equipo.",
     url: "https://beautiful.ai",
-    categories: ["texto-escritura", "marketing"],
+    categories: ["texto-escritura", "marketing", "presentaciones-decks"],
     pricing: "pago",
     priceLabel: "Desde $12/mes",
     featured: false,
@@ -474,7 +475,7 @@ export const tools: Tool[] = [
     description: "Storytelling con AI: genera narrativas visuales y presentaciones a partir de ideas.",
     longDescription: "Tome combina AI con storytelling para crear presentaciones narrativas impactantes. A partir de un prompt, genera una presentación completa con texto, imágenes generadas por AI y un flujo narrativo coherente. Es ideal para quienes necesitan contar historias de forma visual y profesional.",
     url: "https://tome.app",
-    categories: ["texto-escritura", "marketing"],
+    categories: ["texto-escritura", "marketing", "presentaciones-decks"],
     pricing: "freemium",
     priceLabel: "Gratis / Pro $16/mes",
     featured: false,
@@ -1199,6 +1200,28 @@ export const tools: Tool[] = [
       "Alinear contenido automáticamente con la identidad de tu marca",
       "Producir ideas de marketing en minutos",
       "Gestionar contenido para pequeñas y medianas empresas",
+    ],
+  },
+
+  // ── Presentaciones ──
+  {
+    id: "perceptis",
+    name: "Perceptis",
+    slug: "perceptis",
+    description: "Crea presentaciones de negocio nivel consultoría con AI: desde el brief hasta un PowerPoint listo en minutos.",
+    longDescription: "Perceptis es una plataforma de AI diseñada para equipos de estrategia y consultoría que necesitan presentaciones de alta calidad sin perder horas. Describe tu deck, sube tus fuentes y Perceptis estructura el argumento, fundamenta cada afirmación en tus datos y entrega un PowerPoint profesional alineado con las plantillas de tu organización. Usado por más de 200 equipos de estrategia y consultoría. Ofrece planes Starter, Business y Enterprise con soporte para plantillas corporativas personalizadas.",
+    url: "https://perceptis.ai",
+    categories: ["texto-escritura", "marketing", "presentaciones-decks"],
+    pricing: "freemium",
+    priceLabel: "Freemium (planes desde $49/mes)",
+    featured: false,
+    tags: ["presentaciones", "PowerPoint", "consultoría", "estrategia", "slides", "pitch deck", "business", "AI", "documentos"],
+    useCases: [
+      "Crear decks de consultoría listos para presentar a la junta directiva",
+      "Generar presentaciones de estrategia basadas en tus propias fuentes",
+      "Acelerar la entrega de propuestas y pitches de negocio",
+      "Mantener consistencia visual con plantillas corporativas",
+      "Automatizar la estructuración de argumentos en slides profesionales",
     ],
   },
 ]
