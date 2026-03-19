@@ -17,10 +17,10 @@ const PLACEHOLDERS = [
   "ej: crear presentaciones en minutos",
 ];
 
-const TYPING_SPEED = 45;    // ms por carácter escribiendo
-const DELETING_SPEED = 25;  // ms por carácter borrando
-const PAUSE_AFTER = 2200;   // ms antes de borrar
-const PAUSE_BEFORE = 400;   // ms antes de escribir el siguiente
+const TYPING_SPEED = 45;
+const DELETING_SPEED = 25;
+const PAUSE_AFTER = 2200;
+const PAUSE_BEFORE = 400;
 
 function useTypingPlaceholder(active: boolean) {
   const [displayed, setDisplayed] = useState("");
@@ -30,7 +30,6 @@ function useTypingPlaceholder(active: boolean) {
 
   useEffect(() => {
     if (!active) return;
-
     const current = PLACEHOLDERS[index];
 
     if (phase === "typing") {
@@ -78,7 +77,24 @@ export default function SearchBar({
   const [query, setQuery] = useState(defaultValue);
   const [focused, setFocused] = useState(false);
   const router = useRouter();
-  const animatedPlaceholder = useTypingPlaceholder(!focused && !query);
+  const showAnimation = !focused && !query;
+  const animatedPlaceholder = useTypingPlaceholder(showAnimation);
+
+  // Refs para medir overflow y desplazar el texto
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [translateX, setTranslateX] = useState(0);
+
+  useEffect(() => {
+    if (!showAnimation || !containerRef.current || !textRef.current) {
+      setTranslateX(0);
+      return;
+    }
+    const containerWidth = containerRef.current.offsetWidth;
+    const textWidth = textRef.current.offsetWidth;
+    const overflow = textWidth - containerWidth;
+    setTranslateX(overflow > 0 ? -overflow : 0);
+  }, [animatedPlaceholder, showAnimation]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -90,25 +106,48 @@ export default function SearchBar({
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="relative">
+        {/* Prompt > */}
         <span
-          className={`absolute left-4 top-1/2 -translate-y-1/2 text-text-muted ${
+          className={`absolute left-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none z-10 ${
             large ? "text-base" : "text-xs"
           }`}
         >
           &gt;
         </span>
+
+        {/* Input real */}
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          placeholder={focused || query ? "¿Qué quieres lograr con IA?" : animatedPlaceholder}
           autoFocus={autoFocus}
-          className={`w-full bg-bg-card border border-border rounded text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors ${
+          placeholder=""
+          className={`w-full bg-bg-card border border-border rounded text-text focus:outline-none focus:border-accent transition-colors ${
             large ? "px-4 py-3.5 pl-9 text-sm" : "px-3 py-2 pl-7 text-xs"
           }`}
         />
+
+        {/* Placeholder animado — visible solo cuando no hay texto ni foco */}
+        {showAnimation && (
+          <div
+            ref={containerRef}
+            className={`absolute inset-0 pointer-events-none overflow-hidden flex items-center ${
+              large ? "pl-9 pr-4 text-sm" : "pl-7 pr-3 text-xs"
+            }`}
+          >
+            <span
+              ref={textRef}
+              className="text-text-muted whitespace-nowrap transition-transform duration-75"
+              style={{ transform: `translateX(${translateX}px)` }}
+            >
+              {animatedPlaceholder}
+              {/* Cursor parpadeante */}
+              <span className="animate-pulse opacity-70">▌</span>
+            </span>
+          </div>
+        )}
       </div>
     </form>
   );
