@@ -71,7 +71,10 @@ export default function Footer() {
           <p className="text-red text-xs mt-2">{errorMsg}</p>
         )}
         <p className="text-text-muted text-[10px] mt-6">
-          cual.ai — Encuentra la herramienta AI perfecta
+          cual.ai — Encuentra la herramienta AI perfecta —{" "}
+          <a href="https://nivito.io" target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors">
+            nivito.io
+          </a>
         </p>
       </div>
     </footer>
