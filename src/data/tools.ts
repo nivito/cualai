@@ -1203,6 +1203,28 @@ export const tools: Tool[] = [
     ],
   },
 
+  // ── Agentes & Orquestación ──
+  {
+    id: "paperclip",
+    name: "Paperclip",
+    slug: "paperclip",
+    description: "Orquestación open source para empresas autónomas: contrata agentes AI, define metas y deja que tu negocio se gestione solo.",
+    longDescription: "Paperclip es una plataforma open source (MIT) para construir empresas operadas por agentes de IA. Crea un org chart con CEO, CTO, diseñadores y marketers — todos agentes AI — asígnales metas, presupuestos y un sistema de tickets, y deja que operen de forma autónoma. Compatible con cualquier agente: Claude Code, OpenClaw, Codex, Cursor, scripts Bash o webhooks HTTP. Sus 'heartbeats' despiertan a los agentes según un schedule, delegando trabajo hacia arriba y abajo del org chart. Incluye control de costos por agente, trazabilidad total de decisiones, gobernanza (tú eres el board), y soporte multi-empresa en un solo deployment. Self-hosted sin cuenta requerida.",
+    url: "https://paperclip.ing",
+    categories: ["agentes-productividad"],
+    pricing: "gratis",
+    priceLabel: "Gratis (open source)",
+    featured: true,
+    tags: ["agentes", "orquestación", "open source", "automatización", "org chart", "multi-agente", "self-hosted", "empresa autónoma"],
+    useCases: [
+      "Montar una empresa de marketing autónoma con agentes AI",
+      "Orquestar agentes de código, SEO y redes sociales bajo un mismo org chart",
+      "Controlar costos por agente con presupuestos mensuales",
+      "Automatizar tareas recurrentes con heartbeats programados",
+      "Gestionar múltiples empresas AI desde un solo deployment",
+    ],
+  },
+
   // ── Presentaciones ──
   {
     id: "perceptis",
