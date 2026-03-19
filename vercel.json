@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/agent/run-content",
-      "schedule": "0 14 * * *"
+      "schedule": "0 5 * * *"
     },
     {
       "path": "/api/agent/run-newsletter",

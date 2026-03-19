@@ -2,13 +2,54 @@ import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
 import NewsSidebar from "@/components/news/NewsSidebar"
 import NewsCard from "@/components/news/NewsCard"
-import { news, newsCategories, getNewsByCategory } from "@/data/news"
-import type { NewsCategory } from "@/data/news"
+import { news as staticNews, newsCategories } from "@/data/news"
+import type { NewsCategory, NewsItem } from "@/data/news"
+import { getSupabaseAdmin } from "@/lib/supabase"
 
 export const metadata = {
   title: "Noticias AI — cual.ai",
   description:
     "Lo que está pasando en inteligencia artificial, explicado para todos. Noticias sin tecnicismos, con ejemplos del mundo real.",
+}
+
+export const revalidate = 3600; // revalida cada hora
+
+async function getNews(category?: NewsCategory): Promise<NewsItem[]> {
+  try {
+    const supabase = getSupabaseAdmin();
+    if (!supabase) throw new Error("no supabase");
+
+    let query = supabase
+      .from("news_items")
+      .select("*")
+      .order("published_at", { ascending: false })
+      .limit(30);
+
+    if (category) {
+      query = query.eq("raw_data->>category", category);
+    }
+
+    const { data, error } = await query;
+    if (error || !data?.length) throw new Error("empty");
+
+    // Mapear rows de Supabase al tipo NewsItem
+    return data.map((row) => ({
+      id: row.raw_data?.id || row.id,
+      slug: row.raw_data?.slug || row.id,
+      title: row.title,
+      summary: row.summary || "",
+      content: row.raw_data?.content || `<p>${row.summary}</p>`,
+      practicalTakeaway: row.raw_data?.practical_takeaway || "",
+      category: (row.raw_data?.category || "herramientas") as NewsCategory,
+      categoryLabel: row.raw_data?.category_label || "Herramientas",
+      date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
+      readingTime: row.raw_data?.reading_time || 3,
+      source: row.source_name,
+    }));
+  } catch {
+    // Fallback a datos estáticos
+    return category ? staticNews.filter((n) => n.category === category) : staticNews;
+  }
 }
 
 export default async function NoticiasPage({
@@ -18,7 +59,7 @@ export default async function NoticiasPage({
 }) {
   const params = await searchParams
   const activeCategory = params.categoria as NewsCategory | undefined
-  const filteredNews = activeCategory ? getNewsByCategory(activeCategory) : news
+  const filteredNews = await getNews(activeCategory)
 
   return (
     <div className="min-h-screen flex flex-col">
