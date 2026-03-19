@@ -110,6 +110,15 @@ export default function SearchBar({
     return () => ro.disconnect();
   }, [showAnimation]);
 
+  // Si el usuario borra todo el texto, volver al home
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    setQuery(val);
+    if (!val.trim()) {
+      router.push("/");
+    }
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (query.trim()) {
@@ -133,7 +142,7 @@ export default function SearchBar({
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           autoFocus={autoFocus}
