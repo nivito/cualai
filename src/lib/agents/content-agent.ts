@@ -8,6 +8,73 @@ interface RawItem {
   description?: string;
 }
 
+// ── Gmail Source ────────────────────────────────────────────
+
+async function fetchGmailNews(): Promise<RawItem[]> {
+  const matonKey = process.env.MATON_API_KEY;
+  if (!matonKey) {
+    console.warn("No MATON_API_KEY, skipping Gmail source");
+    return [];
+  }
+
+  try {
+    // Buscar emails de los últimos 2 días con contenido de IA
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 2);
+    const dateStr = yesterday.toISOString().split("T")[0].replace(/-/g, "/");
+
+    const listRes = await fetch(
+      `https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages?maxResults=20&q=after:${dateStr}`,
+      { headers: { Authorization: `Bearer ${matonKey}` } }
+    );
+    if (!listRes.ok) return [];
+    const listData = await listRes.json();
+    const messages = listData.messages || [];
+
+    const items: RawItem[] = [];
+
+    for (const msg of messages.slice(0, 10)) {
+      const msgRes = await fetch(
+        `https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages/${msg.id}?format=full`,
+        { headers: { Authorization: `Bearer ${matonKey}` } }
+      );
+      if (!msgRes.ok) continue;
+      const msgData = await msgRes.json();
+
+      const headers = msgData.payload?.headers || [];
+      const subject = headers.find((h: { name: string }) => h.name === "Subject")?.value || "";
+      const from = headers.find((h: { name: string }) => h.name === "From")?.value || "";
+
+      // Extraer texto del body
+      let bodyText = "";
+      const parts = msgData.payload?.parts || [msgData.payload];
+      for (const part of parts) {
+        if (part?.mimeType === "text/plain" && part?.body?.data) {
+          bodyText = Buffer.from(part.body.data, "base64").toString("utf-8").slice(0, 500);
+          break;
+        }
+      }
+      if (!bodyText && msgData.payload?.body?.data) {
+        bodyText = Buffer.from(msgData.payload.body.data, "base64").toString("utf-8").slice(0, 500);
+      }
+
+      if (subject) {
+        items.push({
+          title: subject,
+          url: `https://mail.google.com/mail/u/0/#inbox/${msg.id}`,
+          source: `Email de ${from.split("<")[0].trim() || from}`,
+          description: bodyText.replace(/\n+/g, " ").trim(),
+        });
+      }
+    }
+
+    return items;
+  } catch (err) {
+    console.error("Gmail fetch error:", err);
+    return [];
+  }
+}
+
 // ── Source Scrapers ─────────────────────────────────────────
 
 async function fetchHackerNewsAI(): Promise<RawItem[]> {
@@ -168,13 +235,14 @@ export async function runContentAgent(): Promise<{
 }> {
   const errors: string[] = [];
 
-  const [hnItems, bbItems, trItems] = await Promise.all([
+  const [hnItems, bbItems, trItems, gmailItems] = await Promise.all([
     fetchHackerNewsAI(),
     fetchBensBites(),
     fetchTheRundownAI(),
+    fetchGmailNews(),
   ]);
 
-  const allItems = [...hnItems, ...bbItems, ...trItems];
+  const allItems = [...hnItems, ...bbItems, ...trItems, ...gmailItems];
 
   if (allItems.length === 0) {
     return { newsInserted: 0, errors: ["No items found from any source"] };
