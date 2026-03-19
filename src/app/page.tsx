@@ -24,14 +24,16 @@ export default function Home() {
           <section className="border-b border-border py-12 px-4">
             <div className="max-w-2xl mx-auto text-center">
               <h1 className="text-2xl font-bold mb-2">
-                <span className="text-accent">cual</span>.ai
+                Directorio de herramientas de{" "}
+                <span className="text-accent">Inteligencia Artificial</span>{" "}
+                en español
               </h1>
               <p className="text-text-muted text-xs mb-6">
                 Describe tu problema, encuentra la herramienta AI perfecta
               </p>
               <SearchBar large autoFocus />
               <p className="text-text-muted text-[10px] mt-3">
-                {tools.length} herramientas indexadas en 12 categorías
+                {tools.length} herramientas indexadas · para profesionales en LATAM
               </p>
             </div>
           </section>

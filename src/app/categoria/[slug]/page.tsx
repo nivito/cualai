@@ -53,8 +53,31 @@ export default async function CategoriaPage({
 
   const categoryTools = getToolsByCategory(slug);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "cual.ai",
+        item: "https://cual.ai",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: category.name,
+        item: `https://cual.ai/categoria/${slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Header />
       <div className="flex flex-1">
         <Sidebar />
