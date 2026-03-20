@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Glosario de AI y Tecnología — Los términos que todos fingen entender | cual.ai",
@@ -252,7 +255,11 @@ const terms = [
 
 export default function GlosarioPage() {
   return (
-    <main className="min-h-screen bg-bg text-text">
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="flex flex-1">
+        <Sidebar />
+        <main className="flex-1 min-w-0">
       <div className="max-w-3xl mx-auto px-4 py-10">
         {/* Header */}
         <div className="mb-10">
@@ -343,6 +350,9 @@ export default function GlosarioPage() {
           </Link>
         </div>
       </div>
-    </main>
+          <Footer />
+        </main>
+      </div>
+    </div>
   );
 }
