@@ -25,20 +25,20 @@ export interface Category {
 
 // ── Categories ────────────────────────────────────────────────
 export const categories: Category[] = [
+  { slug: "agentes-productividad", name: "Agentes & Productividad", icon: "🤖" },
+  { slug: "videoconferencias-ai", name: "Asistentes de Videoconferencia", icon: "🎙️" },
+  { slug: "datos-analisis", name: "Datos & Análisis", icon: "📊" },
+  { slug: "desarrollo", name: "Desarrollo", icon: "💻" },
+  { slug: "ecommerce", name: "E-commerce", icon: "🛒" },
+  { slug: "educacion", name: "Educación", icon: "🎓" },
+  { slug: "finanzas", name: "Finanzas", icon: "💰" },
   { slug: "imagenes-diseno", name: "Imágenes & Diseño", icon: "🎨" },
+  { slug: "marketing", name: "Marketing", icon: "📈" },
+  { slug: "musica", name: "Música", icon: "🎵" },
+  { slug: "presentaciones-decks", name: "Presentaciones & Decks", icon: "📊" },
+  { slug: "texto-escritura", name: "Texto & Escritura", icon: "📝" },
   { slug: "video", name: "Video", icon: "📹" },
   { slug: "voz-audio", name: "Voz & Audio", icon: "🎤" },
-  { slug: "texto-escritura", name: "Texto & Escritura", icon: "📝" },
-  { slug: "desarrollo", name: "Desarrollo", icon: "💻" },
-  { slug: "datos-analisis", name: "Datos & Análisis", icon: "📊" },
-  { slug: "marketing", name: "Marketing", icon: "📈" },
-  { slug: "finanzas", name: "Finanzas", icon: "💰" },
-  { slug: "educacion", name: "Educación", icon: "🎓" },
-  { slug: "musica", name: "Música", icon: "🎵" },
-  { slug: "agentes-productividad", name: "Agentes & Productividad", icon: "🤖" },
-  { slug: "ecommerce", name: "E-commerce", icon: "🛒" },
-  { slug: "presentaciones-decks", name: "Presentaciones & Decks", icon: "📊" },
-  { slug: "videoconferencias-ai", name: "Asistentes de Videoconferencia", icon: "🎙️" },
 ]
 
 // ── Tools (60+) ───────────────────────────────────────────────

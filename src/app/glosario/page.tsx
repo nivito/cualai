@@ -290,9 +290,24 @@ export default function GlosarioPage() {
               </p>
             </div>
 
-            {/* Index alfabético */}
+            {/* Nav alfabético de letras */}
+            <div className="bg-bg-card border border-border rounded-lg p-4 mb-6 sticky top-12 z-10">
+              <div className="flex flex-wrap gap-1">
+                {Array.from(new Set(terms.map((t) => t.term[0].toUpperCase()))).map((letter) => (
+                  <a
+                    key={letter}
+                    href={`#letra-${letter}`}
+                    className="text-xs font-mono text-accent hover:bg-accent hover:text-bg px-2 py-0.5 rounded transition-colors"
+                  >
+                    {letter}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Índice completo */}
             <div className="bg-bg-card border border-border rounded-lg p-4 mb-8">
-              <p className="text-xs text-text-muted mb-3 font-medium uppercase tracking-wide">Índice rápido — A–Z</p>
+              <p className="text-xs text-text-muted mb-3 font-medium uppercase tracking-wide">Todos los términos — A–Z</p>
               <div className="flex flex-wrap gap-2">
                 {terms.map((t) => (
                   <a
@@ -306,13 +321,23 @@ export default function GlosarioPage() {
               </div>
             </div>
 
-            {/* Terms */}
+            {/* Terms con separadores de letra */}
             <div className="space-y-6">
-              {terms.map((t) => (
+              {terms.map((t, i) => {
+                const letter = t.term[0].toUpperCase();
+                const prevLetter = i > 0 ? terms[i - 1].term[0].toUpperCase() : null;
+                const showLetterHeader = letter !== prevLetter;
+                return (
+                  <div key={t.term}>
+                    {showLetterHeader && (
+                      <div id={`letra-${letter}`} className="scroll-mt-24 flex items-center gap-3 mb-2 mt-2">
+                        <span className="text-lg font-bold text-accent">{letter}</span>
+                        <div className="flex-1 h-px bg-border" />
+                      </div>
+                    )}
                 <div
-                  key={t.term}
                   id={t.term.toLowerCase().replace(/[^a-z0-9]/g, "-")}
-                  className="border border-border rounded-lg p-5 bg-bg-card scroll-mt-16"
+                  className="border border-border rounded-lg p-5 bg-bg-card scroll-mt-24"
                 >
                   <div className="flex items-start gap-3 mb-3">
                     <span className="text-2xl shrink-0">{t.emoji}</span>
@@ -321,9 +346,7 @@ export default function GlosarioPage() {
                       <p className="text-xs text-accent mt-0.5">{t.short}</p>
                     </div>
                   </div>
-
                   <p className="text-xs text-text leading-relaxed mb-3">{t.long}</p>
-
                   <div className="bg-bg rounded p-3 border border-border">
                     <p className="text-xs text-text-muted leading-relaxed">
                       <span className="text-text-muted font-medium">Ejemplo:</span>{" "}
@@ -331,7 +354,9 @@ export default function GlosarioPage() {
                     </p>
                   </div>
                 </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Footer CTA */}
