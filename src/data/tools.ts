@@ -1348,6 +1348,28 @@ export const tools: Tool[] = [
     ],
   },
 
+  // ── Playgrounds & Dev Tools ──
+  {
+    id: "google-ai-studio",
+    name: "Google AI Studio",
+    slug: "google-ai-studio",
+    description: "El playground oficial de Google para experimentar con Gemini: prueba prompts, genera API keys gratis y construye prototipos rápido.",
+    longDescription: "Google AI Studio es la plataforma gratuita de Google para acceder directamente a los modelos Gemini sin necesidad de una cuenta de pago. Permite probar prompts de texto, imagen, video y audio, ajustar parámetros del modelo, crear instrucciones de sistema y obtener una API key de Gemini gratis con límites generosos. Es el punto de partida ideal para desarrolladores y no técnicos que quieren experimentar con los modelos más potentes de Google antes de integrarse a producción con Vertex AI. Soporta Gemini 2.5 Pro, Gemini 2.0 Flash y otros modelos con contextos de hasta 1 millón de tokens. Incluye un editor de prompts multimodal, historial de conversaciones y exportación de código a Python, JavaScript y cURL en un clic.",
+    url: "https://aistudio.google.com",
+    categories: ["desarrollo", "agentes-productividad"],
+    pricing: "gratis",
+    priceLabel: "Gratis (con API key incluida)",
+    featured: true,
+    tags: ["gemini", "google", "playground", "api", "gratis", "prototipo", "multimodal", "desarrollo"],
+    useCases: [
+      "Probar Gemini 2.5 Pro gratis sin tarjeta de crédito",
+      "Obtener una API key de Gemini para integrar en tu app",
+      "Experimentar con prompts multimodales: texto, imagen, audio y video",
+      "Exportar tu prompt como código Python o JavaScript listo para producción",
+      "Construir prototipos rápidos con contextos de hasta 1 millón de tokens",
+    ],
+  },
+
   // ── Comparativa & Benchmarks ──
   {
     id: "arena-ai",
