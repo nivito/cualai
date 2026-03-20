@@ -162,6 +162,14 @@ const terms = [
     example: "Cada vez que le mandas un mensaje a ChatGPT y te responde, eso es una inferencia. Ocurren billones por día a nivel global.",
   },
 
+  {
+    term: "MCP — Model Context Protocol",
+    emoji: "🔗",
+    short: "Un estándar abierto creado por Anthropic para conectar modelos AI con herramientas y fuentes de datos externas.",
+    long: "MCP (Model Context Protocol) es como un USB universal para la IA — un protocolo estándar que permite que cualquier modelo AI se conecte a cualquier herramienta o fuente de datos de forma uniforme. Antes de MCP, cada integración era un trabajo custom. Con MCP, si construyes un 'servidor MCP' para tu base de datos o tu CRM, cualquier modelo compatible puede usarlo automáticamente. Fue creado por Anthropic y adoptado rápidamente por OpenAI, Google y la mayoría del ecosistema.",
+    example: "Con un servidor MCP para Google Drive, puedes decirle a Claude 'revisa los documentos de mi Drive y resume los contratos del mes pasado' — y lo hace, sin configuración especial.",
+  },
+
   // ── Tecnología & Infraestructura ──
   {
     term: "API",
