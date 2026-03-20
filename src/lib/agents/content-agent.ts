@@ -262,25 +262,22 @@ export async function runContentAgent(): Promise<{
   // Insertar evitando duplicados por slug
   let inserted = 0;
   for (const article of articles) {
-    const { error } = await supabase.from("news_items").upsert(
-      {
-        title: article.title,
-        summary: article.summary,
-        source_url: article.source_url,
-        source_name: article.source_name,
-        published_at: new Date().toISOString(),
-        raw_data: {
-          id: article.id,
-          slug: article.slug,
-          content: article.content,
-          practical_takeaway: article.practical_takeaway,
-          category: article.category,
-          category_label: article.category_label,
-          reading_time: article.reading_time,
-        },
+    const { error } = await supabase.from("news_items").insert({
+      title: article.title,
+      summary: article.summary,
+      source_url: article.source_url,
+      source_name: article.source_name,
+      published_at: new Date().toISOString(),
+      raw_data: {
+        id: article.id,
+        slug: article.slug,
+        content: article.content,
+        practical_takeaway: article.practical_takeaway,
+        category: article.category,
+        category_label: article.category_label,
+        reading_time: article.reading_time,
       },
-      { onConflict: "source_url" }
-    );
+    });
 
     if (error) {
       errors.push(`Insert error for "${article.title}": ${error.message}`);
