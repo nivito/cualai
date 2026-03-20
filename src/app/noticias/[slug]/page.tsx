@@ -2,17 +2,77 @@ import Link from "next/link"
 import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
 import NewsSidebar from "@/components/news/NewsSidebar"
-import { getAllNewsSlugs, getNewsBySlug, getAdjacentNews } from "@/data/news"
+import { getAllNewsSlugs, getNewsBySlug, getAdjacentNews, type NewsItem } from "@/data/news"
 import { getToolBySlug } from "@/data/tools"
+import { getSupabaseAdmin } from "@/lib/supabase"
 import { notFound } from "next/navigation"
 
-export function generateStaticParams() {
-  return getAllNewsSlugs().map((slug) => ({ slug }))
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const staticSlugs = getAllNewsSlugs().map((slug) => ({ slug }))
+
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return staticSlugs
+
+  const { data } = await supabase
+    .from("news_items")
+    .select("raw_data")
+    .order("published_at", { ascending: false })
+    .limit(50)
+
+  const dbSlugs = (data ?? [])
+    .map((row: any) => row.raw_data?.slug)
+    .filter((s: any): s is string => !!s)
+    .map((slug: string) => ({ slug }))
+
+  const seen = new Set(staticSlugs.map((p) => p.slug))
+  for (const p of dbSlugs) {
+    if (!seen.has(p.slug)) {
+      staticSlugs.push(p)
+      seen.add(p.slug)
+    }
+  }
+
+  return staticSlugs
+}
+
+async function getNewsItem(slug: string): Promise<NewsItem | undefined> {
+  // Try static data first
+  const staticItem = getNewsBySlug(slug)
+  if (staticItem) return staticItem
+
+  // Fallback to Supabase
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return undefined
+
+  const { data: row } = await supabase
+    .from("news_items")
+    .select("*")
+    .filter("raw_data->>slug", "eq", slug)
+    .single()
+
+  if (!row) return undefined
+
+  return {
+    id: row.raw_data?.id || row.id,
+    slug: row.raw_data?.slug || row.id,
+    title: row.title,
+    summary: row.summary || "",
+    content: row.raw_data?.content || `<p>${row.summary}</p>`,
+    practicalTakeaway: row.raw_data?.practical_takeaway || "",
+    category: row.raw_data?.category || "herramientas",
+    categoryLabel: row.raw_data?.category_label || "Herramientas",
+    date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
+    readingTime: row.raw_data?.reading_time || 3,
+    source: row.source_name,
+    sourceUrl: row.source_url,
+  }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const item = getNewsBySlug(slug)
+  const item = await getNewsItem(slug)
   if (!item) return { title: "Noticia no encontrada — cual.ai" }
   return {
     title: `${item.title} — cual.ai`,
@@ -22,7 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function NoticiaDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const item = getNewsBySlug(slug)
+  const item = await getNewsItem(slug)
   if (!item) notFound()
 
   const { prev, next } = getAdjacentNews(slug)
@@ -71,7 +131,14 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
             {/* Source */}
             {item.source && (
               <p className="text-[10px] text-text-muted mb-8">
-                Fuente: {item.source}
+                Fuente:{" "}
+                {item.sourceUrl ? (
+                  <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-accent transition-colors">
+                    {item.source}
+                  </a>
+                ) : (
+                  item.source
+                )}
               </p>
             )}
 

@@ -17,6 +17,7 @@ export interface NewsItem {
   readingTime: number
   relatedTools?: string[]
   source?: string
+  sourceUrl?: string
 }
 
 export const newsCategories: { slug: NewsCategory; label: string }[] = [
