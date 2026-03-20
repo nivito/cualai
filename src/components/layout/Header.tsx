@@ -63,6 +63,12 @@ export default function Header() {
         >
           Modelos
         </Link>
+        <Link
+          href="/glosario"
+          className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
+        >
+          Glosario
+        </Link>
         <span className="text-text-muted text-xs shrink-0 hidden sm:block">
           {toolCount} herramientas
         </span>
