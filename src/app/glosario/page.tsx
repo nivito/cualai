@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
-import Sidebar from "@/components/layout/Sidebar";
+import GlosarioSidebar from "@/components/glosario/GlosarioSidebar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -256,7 +256,7 @@ export default function GlosarioPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <div className="flex flex-1">
-        <Sidebar />
+        <GlosarioSidebar />
         <main className="flex-1 min-w-0">
           <div className="max-w-3xl mx-auto px-4 py-10">
             {/* Header */}
