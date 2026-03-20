@@ -15,41 +15,59 @@ export const metadata = {
 export const revalidate = 3600; // revalida cada hora
 
 async function getNews(category?: NewsCategory): Promise<NewsItem[]> {
+  let supabaseItems: NewsItem[] = [];
+
   try {
     const supabase = getSupabaseAdmin();
-    if (!supabase) throw new Error("no supabase");
+    if (supabase) {
+      let query = supabase
+        .from("news_items")
+        .select("*")
+        .order("published_at", { ascending: false })
+        .limit(50);
 
-    let query = supabase
-      .from("news_items")
-      .select("*")
-      .order("published_at", { ascending: false })
-      .limit(30);
+      if (category) {
+        query = query.eq("raw_data->>category", category);
+      }
 
-    if (category) {
-      query = query.eq("raw_data->>category", category);
+      const { data } = await query;
+
+      if (data?.length) {
+        supabaseItems = data.map((row) => ({
+          id: row.raw_data?.id || row.id,
+          slug: row.raw_data?.slug || row.id,
+          title: row.title,
+          summary: row.summary || "",
+          content: row.raw_data?.content || `<p>${row.summary}</p>`,
+          practicalTakeaway: row.raw_data?.practical_takeaway || "",
+          category: (row.raw_data?.category || "herramientas") as NewsCategory,
+          categoryLabel: row.raw_data?.category_label || "Herramientas",
+          date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
+          readingTime: row.raw_data?.reading_time || 3,
+          source: row.source_name,
+        }));
+      }
     }
-
-    const { data, error } = await query;
-    if (error || !data?.length) throw new Error("empty");
-
-    // Mapear rows de Supabase al tipo NewsItem
-    return data.map((row) => ({
-      id: row.raw_data?.id || row.id,
-      slug: row.raw_data?.slug || row.id,
-      title: row.title,
-      summary: row.summary || "",
-      content: row.raw_data?.content || `<p>${row.summary}</p>`,
-      practicalTakeaway: row.raw_data?.practical_takeaway || "",
-      category: (row.raw_data?.category || "herramientas") as NewsCategory,
-      categoryLabel: row.raw_data?.category_label || "Herramientas",
-      date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
-      readingTime: row.raw_data?.reading_time || 3,
-      source: row.source_name,
-    }));
   } catch {
-    // Fallback a datos estáticos
-    return category ? staticNews.filter((n) => n.category === category) : staticNews;
+    // Supabase failed — supabaseItems stays empty, we still merge static below
   }
+
+  // Static articles (optionally filtered by category)
+  const staticItems = category
+    ? staticNews.filter((n) => n.category === category)
+    : staticNews;
+
+  // Merge: Supabase first, then static articles whose slug isn't already present
+  const seenSlugs = new Set(supabaseItems.map((n) => n.slug));
+  const merged = [
+    ...supabaseItems,
+    ...staticItems.filter((n) => !seenSlugs.has(n.slug)),
+  ];
+
+  // Sort by date descending
+  merged.sort((a, b) => b.date.localeCompare(a.date));
+
+  return merged;
 }
 
 export default async function NoticiasPage({
