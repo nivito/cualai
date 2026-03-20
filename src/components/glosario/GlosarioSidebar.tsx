@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 
-const LETTERS = ["A", "B", "E", "F", "G", "H", "I", "L", "M", "O", "P", "R", "S", "T", "V"]
+const LETTERS = ["A", "B", "C", "E", "F", "G", "H", "I", "L", "M", "O", "P", "R", "S", "T", "V"]
 
 export default function GlosarioSidebar({ activeLetter }: { activeLetter?: string }) {
   const [open, setOpen] = useState(false)
@@ -115,6 +115,7 @@ function getTermsForLetter(letter: string): string {
   const map: Record<string, string> = {
     A: "AEO, Agente AI, Anthropic, API",
     B: "Benchmark",
+    C: "CLI",
     E: "Embedding",
     F: "Fine-tuning",
     G: "GEO, GPU",

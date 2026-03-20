@@ -54,6 +54,13 @@ const terms = [
     example: "Cuando OpenAI dice que GPT-5 supera a Claude en MMLU, está usando un benchmark. Es como comparar estudiantes con el mismo examen — útil, pero no lo dice todo.",
   },
   {
+    term: "CLI — Command Line Interface",
+    emoji: "⌨️",
+    short: "Una herramienta que se controla escribiendo comandos de texto en la terminal, sin interfaz gráfica.",
+    long: "CLI (Interfaz de Línea de Comandos) es cualquier programa que se usa desde la terminal escribiendo comandos, sin botones ni ventanas. La mayoría de herramientas para desarrolladores son CLIs: Git, Docker, npm, la CLI de AWS, la de Vercel, etc. Son más rápidas de usar que una interfaz visual una vez que las conoces, y se pueden encadenar y automatizar fácilmente en scripts. Lo opuesto es una GUI (Graphical User Interface) — lo que usa la mayoría de personas en su día a día.",
+    example: "En vez de abrir la app de GitHub y hacer clic en 'Commit', en la terminal escribes `git commit -m 'mensaje'`. Eso es usar el CLI de Git.",
+  },
+  {
     term: "Embedding",
     emoji: "🗺️",
     short: "Una representación matemática del significado de un texto, que permite comparar semánticamente.",
