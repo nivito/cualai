@@ -29,6 +29,39 @@ export const newsCategories: { slug: NewsCategory; label: string }[] = [
 
 export const news: NewsItem[] = [
   {
+    id: "google-aistudio-vibe-coding",
+    slug: "google-ai-studio-lanza-experiencia-full-stack-para-crear-apps-sin-codigo",
+    title: "Google lanzó una forma de crear apps completas con solo describir lo que quieres",
+    summary: "Google AI Studio ahora permite construir aplicaciones web completas — con base de datos, inicio de sesión y backend — usando solo lenguaje natural. Es como pedirle a un equipo de desarrollo que construya tu idea, pero en minutos y gratis.",
+    content: `<p>Google acaba de lanzar una actualización importante a su plataforma de desarrollo con IA: ahora puedes crear aplicaciones web completas — con diseño, base de datos y funciones de usuario — escribiendo simplemente lo que quieres. Sin escribir código, sin configurar servidores, sin necesidad de un equipo técnico.</p>
+
+<p>Esto se llama "vibe coding", y aunque el nombre suena extraño, la idea es simple: en lugar de programar, describes lo que necesitas en palabras normales, y la IA construye la aplicación por ti.</p>
+
+<p><strong>¿Qué puede crear ahora Google AI Studio?</strong></p>
+<ul>
+<li><strong>Apps con usuarios reales:</strong> Puedes pedirle que cree una app donde la gente se registre, inicie sesión y tenga su propia cuenta — sin configurar nada de seguridad manualmente.</li>
+<li><strong>Apps con base de datos:</strong> ¿Necesitas guardar información? La IA conecta automáticamente tu app a Firebase, la base de datos de Google, sin que toques una sola línea de código.</li>
+<li><strong>Apps multijugador en tiempo real:</strong> En una demo, Google mostró un juego de láser tag multijugador con tabla de clasificaciones en vivo. Todo creado desde una descripción de texto.</li>
+<li><strong>Integración con servicios externos:</strong> La IA puede conectar tu app a servicios de pago, mapas o APIs externas de forma segura.</li>
+</ul>
+
+<p>El motor detrás de esto es <strong>Antigravity</strong>, el agente de programación de Google. A diferencia de los asistentes de código tradicionales que te sugieren líneas mientras programas, Antigravity planea toda la aplicación, escribe el código en múltiples archivos, ejecuta pruebas, corrige errores y despliega la app — todo de forma autónoma. Tú supervisas y apruebas los pasos clave.</p>
+
+<p><strong>¿Para quién es útil esto?</strong></p>
+<p>Para emprendedores y dueños de negocios que tienen una idea de app pero no tienen presupuesto para contratar desarrolladores. Para diseñadores que quieren crear prototipos funcionales, no solo mockups. Para cualquier persona que alguna vez pensó "qué bueno sería tener una app para esto, pero es muy caro".</p>
+
+<p><strong>El límite actual:</strong> Crear y probar la app es gratis en Google AI Studio. Cuando quieras publicarla para que la usen clientes reales, eso tiene un costo basado en cuánto se use — similar a cómo funciona el hosting web tradicional.</p>
+
+<p>Google ya está trabajando en conectar esta herramienta con Google Drive y Sheets, lo que permitiría crear apps que lean y escriban directamente en tus hojas de cálculo.</p>`,
+    practicalTakeaway: "Si tienes una idea de app o herramienta digital pero nunca has podido hacerla por el costo o la complejidad técnica, este es el momento de intentarlo. Ve a aistudio.google.com, describe lo que quieres construir y prueba el modo de creación de apps. Es gratis para empezar y no necesitas saber programar.",
+    category: "herramientas",
+    categoryLabel: "Herramientas",
+    date: "2026-03-19",
+    readingTime: 4,
+    relatedTools: ["gemini"],
+    source: "Google AI Blog",
+  },
+  {
     id: "meta-llama-4",
     slug: "meta-lanzo-llama-4-que-es-y-por-que-importa",
     title: "Meta lanzó Llama 4: qué es y por qué importa aunque no seas programador",
