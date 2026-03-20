@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Glosario de AI — Los términos que todos fingen entender | cual.ai",
+  title: "Glosario de AI y Tecnología — Los términos que todos fingen entender | cual.ai",
   description:
-    "Explicamos en español claro (y con algo de humor) los términos más usados en inteligencia artificial: LLM, token, contexto, agente, RAG y más. Sin tecnicismos innecesarios.",
+    "Explicamos en español claro (y con algo de humor) los términos más usados en IA y tecnología: LLM, token, GPU, VPS, API, OpenAI, Anthropic, Perplexity y más. Sin tecnicismos innecesarios.",
   openGraph: {
     title: "Glosario de AI | cual.ai",
     description:
@@ -161,6 +161,85 @@ const terms = [
     long: "El entrenamiento de un modelo puede tomar meses y costar millones. La inferencia es el momento en que ese modelo responde tu pregunta — que toma segundos. Cuando pagas por tokens en una API, estás pagando por inferencia, no por el entrenamiento. Las empresas invierten mucho en hacer la inferencia más rápida y barata.",
     example: "Cada vez que le mandas un mensaje a ChatGPT y te responde, eso es una inferencia. Ocurren billones por día a nivel global.",
   },
+
+  // ── Tecnología & Infraestructura ──
+  {
+    term: "API",
+    emoji: "🔌",
+    short: "Un puente estándar que permite que dos programas se comuniquen entre sí.",
+    long: "API significa 'Application Programming Interface' (Interfaz de Programación de Aplicaciones). Es básicamente un contrato entre dos sistemas: 'si me mandas esta petición en este formato, yo te respondo con estos datos'. No necesitas saber cómo funciona el sistema del otro lado — solo cómo hablarle. Casi todo el internet funciona con APIs: el clima en tu celular, los pagos con tarjeta, los mapas en apps de delivery.",
+    example: "Cuando una app de clima te muestra la temperatura, no tiene sus propios satélites — le pregunta a una API del servicio meteorológico. Tú usas la app, la app usa la API.",
+  },
+  {
+    term: "Terminal / Línea de comandos",
+    emoji: "🖥️",
+    short: "Una interfaz de texto para controlar tu computador escribiendo comandos, sin botones ni menús.",
+    long: "La terminal (también llamada consola, shell o línea de comandos) es la forma de hablarle directamente al sistema operativo en texto puro. Parece intimidante, pero es simplemente un idioma diferente. Los desarrolladores la usan porque es más rápida y poderosa que hacer clic en menús. En Linux y Mac se llama Terminal; en Windows, PowerShell o CMD.",
+    example: "En vez de abrir el explorador de archivos, hacer clic en una carpeta y buscar un archivo, en terminal escribes: `ls -la /carpeta`. Mismo resultado, 3 segundos.",
+  },
+  {
+    term: "Linux",
+    emoji: "🐧",
+    short: "El sistema operativo gratuito y open source que corre en la mayoría de servidores del mundo.",
+    long: "Linux es un sistema operativo (como Windows o macOS) creado en 1991 por Linus Torvalds y mantenido por miles de voluntarios. Es gratuito, open source y brutalmente eficiente. No es muy popular en escritorios personales, pero domina servidores, smartphones (Android es Linux) y supercomputadores. Si usas internet, estás dependiendo de Linux aunque no lo sepas.",
+    example: "Tu banco, Netflix, Google, Amazon — todos corren en servidores Linux. El robot de tu fábrica probablemente también.",
+  },
+  {
+    term: "Servidor",
+    emoji: "🗄️",
+    short: "Una computadora (o grupo de computadoras) que responde solicitudes de otras — como la cocina de un restaurante.",
+    long: "Un servidor es simplemente un computador configurado para recibir y responder solicitudes de otros dispositivos. Puede ser físico (una máquina en un datacenter) o virtual (una porción de una máquina más grande). Los servidores web sirven páginas, los de base de datos guardan información, los de correo mandan emails. Cuando abres cual.ai, un servidor en algún lugar del mundo responde tu petición en milisegundos.",
+    example: "Cuando escribes cual.ai en tu navegador, tu celular hace una petición a un servidor de Vercel en algún datacenter, que responde con el HTML de la página.",
+  },
+  {
+    term: "VPS — Servidor Privado Virtual",
+    emoji: "☁️",
+    short: "Un servidor en la nube que puedes alquilar por horas o meses — tu propio espacio en un datacenter.",
+    long: "Un VPS (Virtual Private Server) es una fracción virtual de un servidor físico grande. Le alquilas a una empresa como DigitalOcean, Hetzner o AWS una porción de sus máquinas y tienes control total: instalar lo que quieras, configurar como necesites, acceder 24/7 por terminal. Ideal para correr apps, bots, bases de datos o sitios web sin pagar por hardware propio.",
+    example: "Este asistente AI corre en un VPS. En vez de tener un servidor físico en casa, alquilamos espacio en un datacenter en algún lugar del mundo por ~$5-20/mes.",
+  },
+  {
+    term: "VPN — Red Privada Virtual",
+    emoji: "🔒",
+    short: "Un túnel cifrado que protege tu conexión a internet y puede cambiar tu ubicación virtual.",
+    long: "Una VPN (Virtual Private Network) encripta todo tu tráfico de internet y lo redirige por un servidor en otro lugar. Esto hace dos cosas: protege tus datos en redes WiFi públicas (cafeterías, aeropuertos), y oculta tu ubicación real (puedes 'aparecer' en otro país). Lo usan por privacidad, seguridad corporativa, y sí — para ver Netflix de otros países.",
+    example: "En un aeropuerto conectado al WiFi público, sin VPN cualquiera en la red podría interceptar tu tráfico. Con VPN, ven ruido cifrado inútil.",
+  },
+  {
+    term: "RAM — Memoria de Acceso Aleatorio",
+    emoji: "🧩",
+    short: "La memoria de trabajo de tu computador — lo que está activo ahora mismo.",
+    long: "La RAM es donde el computador guarda todo lo que está usando en este momento: las apps abiertas, los archivos cargados, el estado de los programas. Es diferente al disco duro (almacenamiento permanente): la RAM es rápida pero temporal — al apagar el equipo, se borra. En IA, la RAM (y especialmente la VRAM de la GPU) determina qué tan grandes son los modelos que puedes correr localmente.",
+    example: "Si tienes muchas pestañas abiertas y el computador se pone lento, es porque la RAM está llena. Cerrar pestañas libera RAM. El disco duro no tiene nada que ver.",
+  },
+  {
+    term: "GPU — Unidad de Procesamiento Gráfico",
+    emoji: "🎮",
+    short: "El chip diseñado para gráficos que resultó ser perfecto para entrenar modelos de IA.",
+    long: "La GPU fue creada para videojuegos — procesar millones de píxeles en paralelo. Resulta que entrenar modelos de IA requiere exactamente el mismo tipo de matemática masiva y paralela. Por eso NVIDIA domina el mercado AI: sus GPUs (H100, A100) se convirtieron en el 'oro' de la era AI. Sin suficientes GPUs, no puedes entrenar modelos grandes. Con muchas GPUs y meses de tiempo, entrenas un modelo como GPT.",
+    example: "Entrenar GPT-4 requirió miles de GPUs NVIDIA corriendo durante semanas. Correr un modelo pequeño como Llama 7B localmente necesita una GPU de ~8GB VRAM.",
+  },
+  {
+    term: "OpenAI",
+    emoji: "🟢",
+    short: "La empresa detrás de ChatGPT y GPT-4 — la que puso la IA generativa en el mapa para el público general.",
+    long: "OpenAI fue fundada en 2015 como organización sin ánimo de lucro por Sam Altman, Elon Musk y otros. Luego se convirtió en empresa con fines de lucro parcial. Creó los modelos GPT, el asistente ChatGPT y DALL-E para imágenes. En noviembre de 2022, lanzó ChatGPT y cambió para siempre la percepción pública de la IA. Hoy es la empresa más influyente del ecosistema AI, con Microsoft como principal inversor.",
+    example: "Cuando alguien dice 'le pregunté a la IA' y no especifica cuál, probablemente usó ChatGPT de OpenAI.",
+  },
+  {
+    term: "Anthropic",
+    emoji: "🟠",
+    short: "La empresa detrás de Claude — fundada por ex-empleados de OpenAI con foco en seguridad AI.",
+    long: "Anthropic fue fundada en 2021 por Dario Amodei, Daniela Amodei y otros que salieron de OpenAI preocupados por la seguridad de la IA. Crearon Claude, considerado uno de los modelos más seguros, honestos y capaces del mercado. Su enfoque en 'AI constitucional' (enseñarle valores al modelo) los diferencia. Amazon ha invertido miles de millones en Anthropic.",
+    example: "Claude de Anthropic es conocido por ser más cuidadoso que ChatGPT al decir 'no sé' cuando no sabe algo, en vez de inventar respuestas con confianza.",
+  },
+  {
+    term: "Perplexity",
+    emoji: "🔍",
+    short: "Un buscador potenciado por IA que responde preguntas con fuentes citadas — la alternativa a Google.",
+    long: "Perplexity AI es un motor de búsqueda que en vez de darte una lista de links, te da una respuesta directa generada por IA con las fuentes citadas al lado. Combina búsqueda web en tiempo real con modelos de lenguaje. Es especialmente útil para preguntas que requieren sintetizar información de varias fuentes. Muchos lo usan como sustituto de Google para investigación rápida.",
+    example: "En Google buscas 'mejores herramientas AI para marketing 2026' y obtienes 10 links para revisar. En Perplexity obtienes una lista organizada con explicaciones y fuentes, listo para leer.",
+  },
 ];
 
 export default function GlosarioPage() {
@@ -176,7 +255,7 @@ export default function GlosarioPage() {
           </div>
 
           <h1 className="text-2xl font-bold text-text mb-4">
-            Glosario de AI 📖
+            Glosario de AI y Tecnología 📖
           </h1>
 
           <div className="bg-bg-card border border-border rounded-lg p-5 mb-2">
@@ -194,7 +273,7 @@ export default function GlosarioPage() {
           </div>
 
           <p className="text-xs text-text-muted">
-            {terms.length} términos · Ordenados de lo más general a lo más específico
+            {terms.length} términos · AI, modelos, infraestructura y empresas clave
           </p>
         </div>
 
