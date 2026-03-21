@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -64,7 +65,9 @@ export default function QueEsIAPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 min-w-0">
+      <div className="flex flex-1">
+        <Sidebar />
+        <main className="flex-1 min-w-0">
         <div className="max-w-3xl mx-auto px-4 py-10">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-text-muted text-xs mb-6">
@@ -279,8 +282,9 @@ export default function QueEsIAPage() {
           </div>
         </div>
 
-        <Footer />
-      </main>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 }
