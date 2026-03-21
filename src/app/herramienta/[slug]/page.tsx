@@ -6,6 +6,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import ToolCard from "@/components/tools/ToolCard";
 import VoteButtons from "@/components/tools/VoteButtons";
+import CompareButton from "@/components/comparator/CompareButton";
 import {
   tools,
   getToolBySlug,
@@ -209,6 +210,7 @@ export default async function HerramientaPage({
                   >
                     Ir a la herramienta →
                   </a>
+                  <CompareButton slug={tool.slug} />
                 </div>
 
                 {/* Votos */}

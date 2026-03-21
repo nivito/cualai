@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Tool } from "@/data/tools";
 import { categories } from "@/data/tools";
 import VoteButtons from "@/components/tools/VoteButtons";
+import CompareButton from "@/components/comparator/CompareButton";
 
 function PricingBadge({ tool }: { tool: Tool }) {
   const color =
@@ -21,8 +22,13 @@ export default function ToolCard({ tool }: { tool: Tool }) {
   return (
     <Link
       href={`/herramienta/${tool.slug}`}
-      className="group block border border-border rounded bg-bg-card hover:border-accent hover:shadow-[0_0_12px_rgba(88,166,255,0.1)] transition-all"
+      className="group relative block border border-border rounded bg-bg-card hover:border-accent hover:shadow-[0_0_12px_rgba(88,166,255,0.1)] transition-all"
     >
+      {/* Compare button */}
+      <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity z-10">
+        <CompareButton slug={tool.slug} compact />
+      </div>
+
       <div className="p-4">
         {/* Header */}
         <div className="flex items-center gap-3 mb-3">

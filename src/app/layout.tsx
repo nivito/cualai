@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import ComparatorWidget from "@/components/comparator/ComparatorWidget";
 import "./globals.css";
 
 const BASE_URL = "https://cual.ai";
@@ -112,6 +113,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {children}
+        <ComparatorWidget />
       </body>
     </html>
   );
