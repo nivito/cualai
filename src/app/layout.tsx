@@ -21,12 +21,21 @@ export const metadata: Metadata = {
     siteName: "cual.ai",
     locale: "es_LA",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "cual.ai — Herramientas de IA en español",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "cual.ai — Herramientas de IA en español",
     description:
       "Directorio de herramientas de inteligencia artificial en español para profesionales en LATAM.",
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,
