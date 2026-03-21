@@ -98,34 +98,82 @@ export default async function CompararPage({
                 </div>
               )}
 
-              {/* Empty state */}
+              {/* Empty state — guía */}
               {validTools.length === 0 && (
-                <div className="border border-border rounded bg-bg-card p-8 text-center">
-                  <p className="text-sm text-text-muted mb-4">
-                    No hay herramientas para comparar. Agrega herramientas desde
-                    el directorio.
-                  </p>
-                  <Link
-                    href="/"
-                    className="inline-flex items-center gap-2 bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:bg-accent-hover transition-colors"
-                  >
-                    Explorar herramientas
-                  </Link>
+                <div className="space-y-6">
+                  <div className="border border-border rounded bg-bg-card p-8 text-center">
+                    <div className="text-4xl mb-3">⚖️</div>
+                    <h2 className="text-sm font-semibold text-text mb-1">
+                      Aún no has seleccionado herramientas
+                    </h2>
+                    <p className="text-xs text-text-muted mb-6 max-w-sm mx-auto">
+                      Selecciona entre 2 y 4 herramientas del directorio para
+                      ver una comparación lado a lado de precio, features y casos
+                      de uso.
+                    </p>
+                    <Link
+                      href="/"
+                      className="inline-flex items-center gap-2 bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:opacity-90 transition-opacity"
+                    >
+                      Explorar herramientas →
+                    </Link>
+                  </div>
+
+                  {/* Pasos */}
+                  <div className="border border-border rounded bg-bg-card p-6">
+                    <p className="text-[10px] uppercase tracking-widest text-text-muted mb-4">
+                      Cómo usar el comparador
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex gap-4 items-start">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-bg text-[10px] font-bold flex items-center justify-center">1</span>
+                        <div>
+                          <p className="text-xs font-medium text-text">Busca o explora herramientas</p>
+                          <p className="text-xs text-text-muted mt-0.5">Ve al directorio principal o usa el buscador para encontrar las herramientas que te interesan.</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-4 items-start">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-bg text-[10px] font-bold flex items-center justify-center">2</span>
+                        <div>
+                          <p className="text-xs font-medium text-text">Haz clic en "Agregar a comparar"</p>
+                          <p className="text-xs text-text-muted mt-0.5">En cada tarjeta o ficha de herramienta verás un botón para agregarla. Puedes seleccionar hasta 4.</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-4 items-start">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-bg text-[10px] font-bold flex items-center justify-center">3</span>
+                        <div>
+                          <p className="text-xs font-medium text-text">Usa el widget flotante</p>
+                          <p className="text-xs text-text-muted mt-0.5">En la parte inferior de la pantalla aparece un panel con tus herramientas seleccionadas. Cuando tengas 2 o más, haz clic en "Comparar".</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-4 items-start">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-bg text-[10px] font-bold flex items-center justify-center">4</span>
+                        <div>
+                          <p className="text-xs font-medium text-text">Comparte la comparación</p>
+                          <p className="text-xs text-text-muted mt-0.5">La URL de la comparación es compartible — puedes enviarla a tu equipo para decidir juntos.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {/* Single tool */}
               {validTools.length === 1 && (
                 <div className="border border-border rounded bg-bg-card p-8 text-center">
-                  <p className="text-sm text-text-muted mb-4">
-                    Necesitas al menos 2 herramientas para comparar. Agrega otra
-                    desde el directorio.
+                  <div className="text-3xl mb-3">👆</div>
+                  <p className="text-sm font-medium text-text mb-1">
+                    Falta una herramienta más
+                  </p>
+                  <p className="text-xs text-text-muted mb-6 max-w-xs mx-auto">
+                    Ya tienes <span className="text-accent font-semibold">{validTools[0].name}</span> seleccionada.
+                    Agrega al menos una herramienta más para iniciar la comparación.
                   </p>
                   <Link
                     href="/"
-                    className="inline-flex items-center gap-2 bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:bg-accent-hover transition-colors"
+                    className="inline-flex items-center gap-2 bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Agregar otra herramienta
+                    Agregar otra herramienta →
                   </Link>
                 </div>
               )}
