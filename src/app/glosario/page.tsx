@@ -19,6 +19,13 @@ export const metadata: Metadata = {
 // Ordenados alfabéticamente por term (ignorando artículos y prefijos como "— ")
 const terms = [
   {
+    term: "A2A — Agent-to-Agent Protocol",
+    emoji: "🤝",
+    short: "Protocolo de Google para que agentes AI de distintos fabricantes se comuniquen entre sí de forma estándar.",
+    long: "A2A (Agent-to-Agent) es un protocolo abierto impulsado por Google que permite que agentes AI de diferentes empresas se descubran, se comuniquen y colaboren sin importar quién los construyó. Si MCP es el 'USB' que conecta un agente con herramientas, A2A es el 'idioma común' que permite que dos agentes hablen entre sí. Juntos, MCP y A2A forman la infraestructura para un ecosistema multi-agente interoperable.",
+    example: "Un agente de tu empresa (hecho con Claude) necesita datos de un agente de tu proveedor (hecho con Gemini). Con A2A, se comunican directamente sin que nadie escriba una integración custom.",
+  },
+  {
     term: "AEO — Answer Engine Optimization",
     emoji: "🎯",
     short: "Optimizar tu contenido para que los motores de IA lo citen como respuesta directa.",
@@ -124,6 +131,13 @@ const terms = [
     example: "Cuando le preguntas a Claude '¿qué hago si mi jefe me llama los domingos?' y te da una respuesta coherente, eso es un LLM trabajando.",
   },
   {
+    term: "Loop de razonamiento / ReAct",
+    emoji: "🔄",
+    short: "El patrón donde un agente AI alterna entre pensar y actuar hasta resolver la tarea — su forma de 'razonar en voz alta'.",
+    long: "ReAct (Reason + Act) es el patrón fundamental de los agentes AI: el modelo razona sobre qué hacer (Reason), ejecuta una acción como buscar en internet o leer un archivo (Act), observa el resultado, y repite el ciclo hasta completar el objetivo. Es literalmente cómo 'piensa' un agente. Variantes populares incluyen Chain-of-Thought (razonar paso a paso en línea recta), Tree-of-Thought (explorar múltiples caminos de razonamiento como ramas de un árbol) y Reflexion (el agente evalúa sus propios errores para mejorar).",
+    example: "Le pides al agente 'encuentra vuelos baratos a Madrid para junio'. El agente piensa: 'necesito buscar vuelos' → busca en internet → piensa: 'estos precios son altos, busco fechas flexibles' → busca de nuevo → te presenta opciones. Cada ciclo pensar→actuar es un loop ReAct.",
+  },
+  {
     term: "MCP — Model Context Protocol",
     emoji: "🔗",
     short: "Un estándar abierto creado por Anthropic para conectar modelos AI con herramientas y fuentes de datos externas.",
@@ -136,6 +150,13 @@ const terms = [
     short: "La versión concreta de una IA — como GPT-4o, Claude 3.5 Sonnet o Gemini 2.5 Pro.",
     long: "Un modelo es el resultado de entrenar una IA con datos y parámetros específicos. Dos modelos de la misma empresa pueden ser muy diferentes en inteligencia, velocidad y precio. Elegir el modelo correcto para tu tarea es el arte de no gastar más de lo necesario.",
     example: "GPT-4o es un modelo de OpenAI. Claude Sonnet es un modelo de Anthropic. Son como versiones de un software, pero cada una tiene su propia personalidad.",
+  },
+  {
+    term: "Multi-agente",
+    emoji: "👥",
+    short: "Sistema donde varios agentes AI trabajan en equipo — cada uno especializado en lo suyo, coordinados para resolver tareas complejas.",
+    long: "Un sistema multi-agente es como una empresa donde cada empleado tiene un rol específico, pero en vez de personas son agentes AI. Uno puede investigar, otro redactar, otro revisar calidad, otro publicar — trabajando en paralelo o en secuencia. Es más potente que un solo agente porque cada uno se especializa y el resultado final es mejor que lo que cualquiera lograría solo. Un agente orquestador suele coordinar al equipo, delegando subtareas y consolidando resultados.",
+    example: "Para crear un informe de mercado: un agente busca datos en internet, otro analiza competidores, otro redacta el informe y otro genera los gráficos. Cuatro agentes, una hora. Un humano solo: dos días.",
   },
   {
     term: "Multimodal",
@@ -164,6 +185,13 @@ const terms = [
     short: "Un asistente AI personal que vive en tu servidor y se conecta a WhatsApp, Telegram y más.",
     long: "OpenClaw es el sistema que hace funcionar este asistente. Es un agente AI personal instalado en tu propio servidor que se conecta a tus canales de mensajería (WhatsApp, Telegram, Discord), tiene memoria persistente, puede ejecutar tareas automáticas, manejar tu correo, monitorear sistemas y mucho más. Piénsalo como un asistente que nunca duerme y no olvida nada — a menos que tú lo configures para que olvide.",
     example: "Si le mandas un mensaje a las 3am diciendo 'recuérdame revisar ese contrato el lunes', lo hace. Eso es OpenClaw.",
+  },
+  {
+    term: "Orquestador",
+    emoji: "🎼",
+    short: "El agente principal que coordina a otros agentes — como un director de orquesta que decide quién toca qué y cuándo.",
+    long: "En un sistema multi-agente, el orquestador es el agente que tiene la visión completa de la tarea. Recibe el objetivo, lo descompone en subtareas, decide qué sub-agente se encarga de cada una, les envía instrucciones, monitorea su progreso y consolida los resultados finales. No hace el trabajo pesado directamente — su valor está en la coordinación inteligente. Es la pieza clave del patrón multi-agente.",
+    example: "Le dices al orquestador: 'prepara el lanzamiento del producto'. Él delega: al agente de contenido escribir el blog post, al de diseño crear las imágenes, al de email preparar la campaña, y al de redes programar los posts. Al final, consolida todo en un timeline.",
   },
   {
     term: "Perplexity",
@@ -215,6 +243,13 @@ const terms = [
     example: "OpenClaw tiene un skill de Gmail que le enseña cómo leer, buscar y enviar correos. Sin ese skill, el agente no sabría cómo conectarse a tu bandeja de entrada.",
   },
   {
+    term: "Sub-agente",
+    emoji: "🐝",
+    short: "Un agente especializado que recibe instrucciones de un orquestador y ejecuta una subtarea concreta — el obrero del equipo.",
+    long: "En un sistema multi-agente, los sub-agentes son los que hacen el trabajo de campo. Cada uno está especializado en algo: buscar información, escribir texto, analizar datos, generar código, etc. Reciben instrucciones del orquestador, ejecutan su tarea, y devuelven el resultado. Operan bajo supervisión — no deciden qué hacer, sino cómo hacer bien lo que les pidieron. Son como los músicos de la orquesta: cada uno domina su instrumento.",
+    example: "El orquestador dice: 'necesito un resumen de este PDF de 200 páginas'. El sub-agente de lectura lo procesa, extrae los puntos clave, y devuelve el resumen al orquestador — que lo combina con el trabajo de otros sub-agentes.",
+  },
+  {
     term: "Temperatura",
     emoji: "🌡️",
     short: "Un parámetro que controla qué tan creativa o predecible es la respuesta de un modelo.",
@@ -234,6 +269,13 @@ const terms = [
     short: "La unidad mínima que procesa un LLM — aproximadamente ¾ de una palabra en español.",
     long: "Los modelos no leen palabras completas sino fragmentos llamados tokens. Una palabra corta puede ser 1 token, una larga puede ser 2 o 3. También los espacios y signos de puntuación cuentan. Por eso los precios de las APIs se miden en 'por millón de tokens'. Esta definición tiene aproximadamente 60 tokens.",
     example: "La palabra 'automáticamente' puede ser 4-5 tokens. 'AI' es 1. Así que escribir en español cuesta un poco más de tokens que en inglés (mala suerte).",
+  },
+  {
+    term: "Tool / Herramienta (AI)",
+    emoji: "🔧",
+    short: "Una función que un agente AI puede llamar para interactuar con el mundo real — sus 'manos' para hacer cosas.",
+    long: "Sin herramientas, un modelo de IA solo puede generar texto. Con tools, puede actuar: buscar en Google, ejecutar código, leer PDFs, enviar emails, consultar bases de datos, hacer llamadas a APIs, crear archivos, publicar en redes sociales — básicamente cualquier cosa que se pueda hacer por software. Las tools son lo que convierte a un chatbot en un agente. El protocolo MCP estandariza cómo se conectan estas herramientas a los modelos, y cada tool define qué parámetros necesita y qué devuelve.",
+    example: "Le dices a Claude 'busca el clima en Madrid'. Sin tools, te diría 'no puedo acceder a internet'. Con una tool de búsqueda web, realmente busca el clima y te da el dato actualizado.",
   },
   {
     term: "Ventana de Contexto",
