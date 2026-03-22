@@ -7,6 +7,10 @@
     {
       "path": "/api/agent/run-newsletter",
       "schedule": "0 13 * * 1"
+    },
+    {
+      "path": "/api/agent/run-twitter",
+      "schedule": "0 14 * * *"
     }
   ]
 }
