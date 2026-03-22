@@ -1,9 +1,7 @@
 import type { Tool } from "@/data/tools";
 
 const SUPABASE_URL = "https://wktqdwuiwndfrpuetibp.supabase.co";
-const SUPABASE_KEY =
-  process.env.SUPABASE_SERVICE_KEY ??
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndrdHFkd3Vpd25kZnJwdWV0aWJwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Mzg3MzgwMSwiZXhwIjoyMDg5NDQ5ODAxfQ.s5gagDJazVLcCd_pbOR4--SRpbVsVnZjhAPI9YZPeEo";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY ?? "";
 
 export type VoteMap = Record<
   string,
