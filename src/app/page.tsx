@@ -8,9 +8,11 @@ import CourseCard from "@/components/courses/CourseCard";
 import { getFeaturedTools, tools } from "@/data/tools";
 import { getLatestNews } from "@/data/news";
 import { getFeaturedCourses } from "@/data/courses";
+import { getToolVotes, sortToolsByVotes } from "@/lib/votes";
 
-export default function Home() {
-  const featured = getFeaturedTools();
+export default async function Home() {
+  const votes = await getToolVotes();
+  const featured = sortToolsByVotes(getFeaturedTools(), votes);
   const latestNews = getLatestNews(3);
   const featuredCourses = getFeaturedCourses().slice(0, 3);
 
@@ -96,7 +98,7 @@ export default function Home() {
               // Todas las herramientas
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-              {tools.map((tool) => (
+              {sortToolsByVotes([...tools], votes).map((tool) => (
                 <ToolCard key={tool.id} tool={tool} />
               ))}
             </div>

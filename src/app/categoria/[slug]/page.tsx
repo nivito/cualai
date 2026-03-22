@@ -9,6 +9,7 @@ import {
   getCategoryBySlug,
   getToolsByCategory,
 } from "@/data/tools";
+import { getToolVotes, sortToolsByVotes } from "@/lib/votes";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -51,7 +52,8 @@ export default async function CategoriaPage({
   const category = getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const categoryTools = getToolsByCategory(slug);
+  const votes = await getToolVotes();
+  const categoryTools = sortToolsByVotes(getToolsByCategory(slug), votes);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
