@@ -264,6 +264,223 @@ export default function QueEsIAPage() {
             </div>
           </section>
 
+          {/* Agentes de IA */}
+          <section id="agentes" className="mb-12 scroll-mt-24">
+            <h2 className="text-xl font-bold text-text mb-4">
+              ¿Qué es un agente de IA?
+            </h2>
+
+            <div className="bg-bg-card border border-border rounded-lg p-5 space-y-4 mb-6">
+              <p className="text-sm text-text leading-relaxed">
+                <span className="text-accent font-medium">
+                  🤖 No es un chatbot — es un chatbot con manos.
+                </span>{" "}
+                Un chatbot como ChatGPT o Claude responde preguntas. Un agente de
+                IA va más allá: puede buscar en internet, ejecutar código, enviar
+                emails, leer archivos, navegar sitios web y tomar decisiones por
+                su cuenta. Tiene un objetivo y usa herramientas para lograrlo,
+                paso a paso, sin que tengas que guiarlo en cada momento.
+              </p>
+              <p className="text-sm text-text leading-relaxed">
+                Piensa en la diferencia entre preguntarle a alguien &ldquo;¿cómo
+                se hace una reserva?&rdquo; (chatbot) versus decirle
+                &ldquo;hazme una reserva para el viernes a las 8 en un
+                restaurante italiano cerca de mi oficina&rdquo; (agente). El
+                primero te explica, el segundo lo hace.
+              </p>
+            </div>
+
+            <div className="bg-bg-card border border-border rounded-lg p-5 space-y-4 mb-6">
+              <h3 className="text-sm font-bold text-text">
+                🎯 ¿Para qué sirve un agente?
+              </h3>
+              <p className="text-sm text-text leading-relaxed">
+                Para automatizar tareas completas de principio a fin. No solo un
+                paso, sino todo el flujo. Ejemplos concretos:
+              </p>
+              <ul className="text-sm text-text leading-relaxed space-y-2 ml-4">
+                <li>
+                  • Investigar un mercado, analizar competidores y entregarte un
+                  resumen ejecutivo
+                </li>
+                <li>
+                  • Monitorear precios de productos y avisarte cuando bajen de
+                  cierto umbral
+                </li>
+                <li>
+                  • Preparar un informe semanal con datos de varias fuentes
+                </li>
+                <li>
+                  • Gestionar tu inbox: clasificar, responder lo rutinario,
+                  flaggear lo importante
+                </li>
+                <li>
+                  • Escribir, probar y corregir código de forma autónoma
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-bg-card border border-border rounded-lg p-5 space-y-4 mb-6">
+              <h3 className="text-sm font-bold text-text">
+                🔄 ¿Cómo funciona un agente?
+              </h3>
+              <p className="text-sm text-text leading-relaxed">
+                Un agente funciona en un loop (ciclo) que se repite hasta
+                completar el objetivo:
+              </p>
+              <div className="bg-bg rounded p-4 border border-border">
+                <p className="text-xs text-text leading-relaxed font-mono">
+                  Observa el entorno → Decide qué hacer → Ejecuta una acción
+                  (usa una herramienta) → Observa el resultado → Repite
+                </p>
+              </div>
+              <p className="text-sm text-text leading-relaxed">
+                El LLM (modelo de lenguaje) es el &ldquo;cerebro&rdquo; del
+                agente: analiza la situación y decide el siguiente paso. Las
+                herramientas (tools) son sus &ldquo;manos&rdquo;: buscar en
+                Google, leer un archivo, ejecutar código, enviar un mensaje. El
+                agente alterna entre pensar y actuar hasta que el trabajo está
+                hecho.
+              </p>
+            </div>
+
+            <div className="bg-bg-card border border-border rounded-lg p-5 space-y-4 mb-6">
+              <h3 className="text-sm font-bold text-text">
+                🛠️ ¿Cómo se crean agentes?
+              </h3>
+              <p className="text-sm text-text leading-relaxed">
+                <span className="text-accent font-medium">
+                  Frameworks para desarrolladores:
+                </span>{" "}
+                LangChain, LangGraph, CrewAI y AutoGen son los más populares.
+                Permiten construir agentes personalizados con código, definir
+                herramientas, flujos de trabajo y lógica de decisión.
+              </p>
+              <p className="text-sm text-text leading-relaxed">
+                <span className="text-accent font-medium">
+                  Plataformas no-code:
+                </span>{" "}
+                n8n, Make y Zapier AI permiten crear agentes y automatizaciones
+                sin escribir código, arrastrando bloques y conectando servicios.
+                Ideal para quienes no programan.
+              </p>
+              <p className="text-sm text-text leading-relaxed">
+                <span className="text-accent font-medium">
+                  Agentes listos para usar:
+                </span>{" "}
+                Claude Code (Anthropic), Manus, Devin y otros ya vienen
+                configurados como agentes completos. Los instalas o accedes y
+                empiezan a trabajar.
+              </p>
+            </div>
+
+            <div className="bg-bg-card border border-border rounded-lg p-5 space-y-4 mb-6">
+              <h3 className="text-sm font-bold text-text">
+                👥 Multi-agentes
+              </h3>
+              <p className="text-sm text-text leading-relaxed">
+                Un solo agente está bien para tareas simples. Pero para trabajos
+                complejos, puedes tener varios agentes trabajando juntos — en
+                paralelo o en secuencia — cada uno especializado en lo suyo.
+                Como un equipo: un agente investiga, otro redacta, otro revisa,
+                otro publica.
+              </p>
+              <p className="text-sm text-text leading-relaxed">
+                Es más potente, pero también más complejo de coordinar. Alguien
+                tiene que decidir quién hace qué y en qué orden.
+              </p>
+            </div>
+
+            <div className="bg-bg-card border border-border rounded-lg p-5 space-y-4 mb-6">
+              <h3 className="text-sm font-bold text-text">
+                🎭 Sub-agentes
+              </h3>
+              <p className="text-sm text-text leading-relaxed">
+                Es un patrón donde un agente principal (el orquestador) delega
+                subtareas a agentes especializados. El orquestador recibe el
+                objetivo grande, lo descompone en partes, asigna cada parte a un
+                sub-agente, y consolida los resultados al final.
+              </p>
+              <p className="text-sm text-text leading-relaxed">
+                Imagina un jefe de proyecto que no hace el trabajo él mismo, sino
+                que sabe exactamente a quién asignárselo y cómo juntar las
+                piezas al final.
+              </p>
+            </div>
+
+            <div className="bg-bg-card border border-border rounded-lg p-5 space-y-4">
+              <h3 className="text-sm font-bold text-text">
+                📖 Términos clave del ecosistema de agentes
+              </h3>
+              <div className="space-y-4 mt-2">
+                <div className="bg-bg rounded p-3 border border-border">
+                  <p className="text-xs text-text leading-relaxed">
+                    <span className="text-accent font-medium">
+                      🎯 Orquestador:
+                    </span>{" "}
+                    El agente principal que coordina a los demás. Decide qué
+                    tarea asignar a quién, en qué orden, y consolida los
+                    resultados.
+                  </p>
+                </div>
+                <div className="bg-bg rounded p-3 border border-border">
+                  <p className="text-xs text-text leading-relaxed">
+                    <span className="text-accent font-medium">
+                      🔧 Tool / Herramienta:
+                    </span>{" "}
+                    Una función que el agente puede llamar para interactuar con
+                    el mundo: buscar en Google, ejecutar código, leer un PDF,
+                    enviar un email.
+                  </p>
+                </div>
+                <div className="bg-bg rounded p-3 border border-border">
+                  <p className="text-xs text-text leading-relaxed">
+                    <span className="text-accent font-medium">
+                      🧠 Memory (Memoria):
+                    </span>{" "}
+                    Cómo el agente recuerda contexto entre pasos. La memoria de
+                    corto plazo es la ventana de contexto (lo que cabe en la
+                    conversación). La memoria de largo plazo usa bases de datos
+                    vectoriales para recordar información entre sesiones.
+                  </p>
+                </div>
+                <div className="bg-bg rounded p-3 border border-border">
+                  <p className="text-xs text-text leading-relaxed">
+                    <span className="text-accent font-medium">
+                      💭 Loop de razonamiento:
+                    </span>{" "}
+                    La forma en que el agente &ldquo;piensa&rdquo; antes de
+                    actuar. ReAct (razonar + actuar), Chain-of-Thought (pensar
+                    paso a paso), Tree-of-Thought (explorar varias opciones en
+                    paralelo) son los enfoques más usados.
+                  </p>
+                </div>
+                <div className="bg-bg rounded p-3 border border-border">
+                  <p className="text-xs text-text leading-relaxed">
+                    <span className="text-accent font-medium">
+                      🔗 MCP (Model Context Protocol):
+                    </span>{" "}
+                    Estándar abierto creado por Anthropic para conectar agentes
+                    con herramientas externas de forma estandarizada. Como un USB
+                    universal para la IA: construyes un conector una vez y
+                    cualquier agente compatible puede usarlo.
+                  </p>
+                </div>
+                <div className="bg-bg rounded p-3 border border-border">
+                  <p className="text-xs text-text leading-relaxed">
+                    <span className="text-accent font-medium">
+                      🤝 A2A (Agent-to-Agent):
+                    </span>{" "}
+                    Protocolo de Google para que agentes de distintos fabricantes
+                    se comuniquen entre sí. Permite que un agente de una empresa
+                    le pida ayuda a un agente de otra, como si hablaran el mismo
+                    idioma.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* CTA Final */}
           <div className="border border-border rounded-lg p-5 text-center bg-bg-card">
             <p className="text-sm text-text mb-2">

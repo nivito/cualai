@@ -29,8 +29,8 @@ const terms = [
     term: "Agente AI",
     emoji: "🦾",
     short: "Una IA que no solo responde — sino que toma acciones, usa herramientas y completa tareas por su cuenta.",
-    long: "Un agente es una IA conectada a herramientas del mundo real: puede buscar en internet, ejecutar código, enviar emails, navegar por sitios web, leer archivos. A diferencia de un chatbot que solo responde, un agente actúa. Manus, Devin, Claude Code y los GPTs con herramientas son ejemplos de agentes.",
-    example: "Le dices a un agente 'investiga los 5 mejores fondos de inversión para 2026 y mándame un resumen por email'. Y lo hace. Solo.",
+    long: "A diferencia de un chatbot que solo responde preguntas, un agente actúa. Funciona en un loop: observa el entorno → decide qué hacer → ejecuta una acción usando una herramienta (buscar en internet, ejecutar código, enviar emails, leer archivos) → observa el resultado → repite hasta completar el objetivo. El LLM es su 'cerebro' y las herramientas son sus 'manos'. Claude Code, Manus y Devin son ejemplos de agentes listos para usar. También existen los multi-agentes (varios agentes especializados trabajando en equipo) y los sub-agentes (un agente orquestador que delega subtareas a otros agentes y consolida los resultados).",
+    example: "Le dices a un agente 'investiga los 5 mejores fondos de inversión para 2026 y mándame un resumen por email'. El agente busca en internet, analiza datos, redacta el resumen y te lo envía — todo solo, sin que tengas que guiarlo paso a paso.",
   },
   {
     term: "Anthropic",
