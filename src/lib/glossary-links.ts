@@ -49,58 +49,51 @@ function splitHtmlSegments(html: string): string[] {
 }
 
 /**
- * Auto-links the first mention of each glossary term in the given HTML string.
- * - Case-insensitive matching with word boundaries
- * - Only replaces in text nodes (not inside HTML tags or attributes)
- * - Does not create nested links (skips text inside <a> tags)
- * - Only links the first occurrence of each term
+ * Processes a plain-text string (no HTML tags), replacing the first occurrence
+ * of each unlinked keyword, then recursing on the remaining tail.
  */
+function processTextSegment(
+  text: string,
+  searchKeys: SearchKey[],
+  linked: Set<string>
+): string {
+  for (const { keyword, anchor } of searchKeys) {
+    if (linked.has(anchor)) continue;
+
+    const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(`\\b(${escaped})\\b`, "i");
+    const match = text.match(re);
+
+    if (match && match.index !== undefined) {
+      const before = text.slice(0, match.index);
+      const matched = match[1];
+      const after = text.slice(match.index + matched.length);
+      linked.add(anchor);
+      // Only recurse on `after` — never touch `before` or the href
+      const processedAfter = processTextSegment(after, searchKeys, linked);
+      return `${before}<a href="/glosario#${anchor}" class="glossary-link">${matched}</a>${processedAfter}`;
+    }
+  }
+  return text;
+}
+
 export function linkGlossaryTerms(html: string): string {
   const segments = splitHtmlSegments(html);
-  const linked = new Set<string>(); // track anchors already linked
-  let insideAnchor = 0; // nesting depth of <a> tags
+  const linked = new Set<string>();
+  let insideAnchor = 0;
 
   for (let i = 0; i < segments.length; i++) {
     const seg = segments[i];
 
-    // Check if this is an HTML tag
     if (seg.startsWith("<")) {
-      // Track <a> nesting
-      if (/^<a[\s>]/i.test(seg)) {
-        insideAnchor++;
-      } else if (/^<\/a>/i.test(seg)) {
-        insideAnchor = Math.max(0, insideAnchor - 1);
-      }
+      if (/^<a[\s>]/i.test(seg)) insideAnchor++;
+      else if (/^<\/a>/i.test(seg)) insideAnchor = Math.max(0, insideAnchor - 1);
       continue;
     }
 
-    // Skip text inside anchor tags
-    if (insideAnchor > 0) continue;
+    if (insideAnchor > 0 || !seg) continue;
 
-    // Skip empty text segments
-    if (!seg) continue;
-
-    // Try to replace terms in this text segment
-    let text = seg;
-    for (const { keyword, anchor } of searchKeys) {
-      if (linked.has(anchor)) continue;
-
-      // Build word-boundary regex for the keyword
-      // Escape regex special chars in the keyword
-      const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      const re = new RegExp(`\\b(${escaped})\\b`, "i");
-      const match = text.match(re);
-
-      if (match && match.index !== undefined) {
-        const before = text.slice(0, match.index);
-        const matched = match[1];
-        const after = text.slice(match.index + matched.length);
-        text = `${before}<a href="/glosario#${anchor}" class="glossary-link">${matched}</a>${after}`;
-        linked.add(anchor);
-      }
-    }
-
-    segments[i] = text;
+    segments[i] = processTextSegment(seg, searchKeys, linked);
   }
 
   return segments.join("");
