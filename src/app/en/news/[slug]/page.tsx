@@ -42,7 +42,7 @@ export async function generateStaticParams() {
 async function getNewsItem(slug: string): Promise<{ item: NewsItem; contentEn?: string; takeawayEn?: string } | undefined> {
   // Try static data first
   const staticItem = getNewsBySlug(slug)
-  if (staticItem) return { item: staticItem }
+  if (staticItem) return { item: staticItem, contentEn: staticItem.contentEn, takeawayEn: staticItem.practicalTakeawayEn }
 
   // Fallback to Supabase
   const supabase = getSupabaseAdmin()
@@ -81,8 +81,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const result = await getNewsItem(slug)
   if (!result) return { title: "Article not found — cual.ai" }
   return {
-    title: `${result.item.title} — cual.ai`,
-    description: result.item.summary,
+    title: `${result.item.titleEn ?? result.item.title} — cual.ai`,
+    description: result.item.summaryEn ?? result.item.summary,
     alternates: {
       canonical: `https://cual.ai/en/news/${slug}`,
       languages: {
@@ -136,7 +136,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
                 href={`/en/news?categoria=${item.category}`}
                 className="text-[10px] uppercase tracking-widest text-accent font-semibold hover:text-accent-hover transition-colors"
               >
-                {item.categoryLabel}
+                {item.categoryLabelEn ?? item.categoryLabel}
               </Link>
               <span className="text-[10px] text-text-muted">·</span>
               <span className="text-[10px] text-text-muted">{date}</span>
@@ -147,7 +147,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
             </div>
 
             {/* Title */}
-            <h1 className="text-xl font-bold leading-tight mb-6">{item.title}</h1>
+            <h1 className="text-xl font-bold leading-tight mb-6">{item.titleEn ?? item.title}</h1>
 
             {/* Content */}
             <div
@@ -208,7 +208,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
                 >
                   <span className="text-[10px] text-text-muted">{t.news.prev}</span>
                   <p className="text-xs font-semibold mt-1 line-clamp-2 group-hover:text-accent transition-colors">
-                    {prev.title}
+                    {prev.titleEn ?? prev.title}
                   </p>
                 </Link>
               ) : (
@@ -221,7 +221,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
                 >
                   <span className="text-[10px] text-text-muted">{t.news.next}</span>
                   <p className="text-xs font-semibold mt-1 line-clamp-2 group-hover:text-accent transition-colors">
-                    {next.title}
+                    {next.titleEn ?? next.title}
                   </p>
                 </Link>
               ) : (

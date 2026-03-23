@@ -21,7 +21,7 @@ export default function NewsCard({ item, locale = "es" }: { item: NewsItem; loca
         {/* Category + date */}
         <div className="flex items-center gap-2 mb-3">
           <span className="text-[10px] uppercase tracking-widest text-accent font-semibold">
-            {item.categoryLabel}
+            {locale === "en" ? (item.categoryLabelEn ?? item.categoryLabel) : item.categoryLabel}
           </span>
           <span className="text-[10px] text-text-muted">·</span>
           <span className="text-[10px] text-text-muted">{date}</span>
@@ -29,12 +29,12 @@ export default function NewsCard({ item, locale = "es" }: { item: NewsItem; loca
 
         {/* Title */}
         <h3 className="text-sm font-semibold leading-snug mb-2 group-hover:text-accent transition-colors line-clamp-2">
-          {item.title}
+          {locale === "en" ? (item.titleEn ?? item.title) : item.title}
         </h3>
 
         {/* Summary */}
         <p className="text-xs text-text-muted leading-relaxed line-clamp-3 mb-3">
-          {item.summary}
+          {locale === "en" ? (item.summaryEn ?? item.summary) : item.summary}
         </p>
 
         {/* Read more */}

@@ -18,6 +18,11 @@ export interface NewsItem {
   relatedTools?: string[]
   source?: string
   sourceUrl?: string
+  titleEn?: string
+  summaryEn?: string
+  contentEn?: string
+  practicalTakeawayEn?: string
+  categoryLabelEn?: string
 }
 
 export const newsCategories: { slug: NewsCategory; label: string }[] = [
@@ -61,6 +66,30 @@ export const news: NewsItem[] = [
     readingTime: 4,
     relatedTools: ["gemini"],
     source: "Google AI Blog",
+    titleEn: "Google launched a way to build full apps just by describing what you want",
+    summaryEn: "Google AI Studio now lets you build complete web applications — with database, login, and backend — using only natural language. It's like asking a dev team to build your idea, but in minutes and for free.",
+    contentEn: `<p>Google just released a major update to its AI development platform: you can now create complete web applications — with design, database, and user features — by simply describing what you want. No coding, no server setup, no technical team needed.</p>
+
+<p>This is called "vibe coding," and while the name sounds strange, the idea is simple: instead of programming, you describe what you need in plain words, and the AI builds the application for you.</p>
+
+<p><strong>What can Google AI Studio create now?</strong></p>
+<ul>
+<li><strong>Apps with real users:</strong> You can ask it to create an app where people sign up, log in, and have their own account — without manually configuring any security.</li>
+<li><strong>Apps with a database:</strong> Need to store information? The AI automatically connects your app to Firebase, Google's database, without touching a single line of code.</li>
+<li><strong>Real-time multiplayer apps:</strong> In a demo, Google showed a multiplayer laser tag game with live leaderboards. All created from a text description.</li>
+<li><strong>Integration with external services:</strong> The AI can securely connect your app to payment services, maps, or external APIs.</li>
+</ul>
+
+<p>The engine behind this is <strong>Antigravity</strong>, Google's coding agent. Unlike traditional code assistants that suggest lines while you program, Antigravity plans the entire application, writes code across multiple files, runs tests, fixes bugs, and deploys the app — all autonomously. You supervise and approve key steps.</p>
+
+<p><strong>Who is this useful for?</strong></p>
+<p>For entrepreneurs and business owners who have an app idea but don't have the budget to hire developers. For designers who want to create functional prototypes, not just mockups. For anyone who ever thought "it would be great to have an app for this, but it's too expensive."</p>
+
+<p><strong>The current limitation:</strong> Creating and testing the app is free on Google AI Studio. When you want to publish it for real customers, there's a usage-based cost — similar to how traditional web hosting works.</p>
+
+<p>Google is already working on connecting this tool with Google Drive and Sheets, which would allow creating apps that read and write directly to your spreadsheets.</p>`,
+    practicalTakeawayEn: "If you have an app or digital tool idea but could never make it due to cost or technical complexity, now is the time to try. Go to aistudio.google.com, describe what you want to build, and try the app creation mode. It's free to start and you don't need to know how to code.",
+    categoryLabelEn: "Tools",
   },
   {
     id: "meta-llama-4",
@@ -83,6 +112,19 @@ export const news: NewsItem[] = [
     readingTime: 4,
     relatedTools: ["chatgpt", "claude", "gemini"],
     source: "Meta AI Blog",
+    titleEn: "Meta launched Llama 4: what it is and why it matters even if you're not a programmer",
+    summaryEn: "Meta released a new version of its free artificial intelligence program. Any company or developer can use it without paying, which changes the game against ChatGPT and Google.",
+    contentEn: `<p>Meta, the company behind Facebook and Instagram, just launched <strong>Llama 4</strong>, the new version of its artificial intelligence program. Why should you care if you're not a programmer? Because these kinds of decisions directly affect the tools you'll use in the coming months.</p>
+
+<p>Llama 4 is what's known as an "open source" AI program. That means anyone or any company can download, use, and adapt it to their needs <strong>for free</strong>. It's like Toyota publishing the blueprints for a new car and saying "build your own for free."</p>
+
+<p>Why does it matter? Because until now, the most advanced AI programs were from companies like OpenAI (ChatGPT) or Google (Gemini), which charge for access. With Llama 4, Meta is democratizing access: startups in Colombia, Mexico, or Argentina can build their own AI tools without depending on big companies or paying a fortune.</p>
+
+<p>Llama 4 comes in several sizes. The largest, called <strong>Maverick</strong>, can understand text, images, and audio simultaneously. The most compact, <strong>Scout</strong>, can read extremely long documents — imagine giving it a full book and having it understand it from start to finish.</p>
+
+<p>For Latin American businesses, this means more AI tools will appear in Spanish, cheaper and better adapted to our needs. Teams in the region are already working on virtual assistants, customer service tools, and data analysis based on Llama.</p>`,
+    practicalTakeawayEn: "In the coming months, you'll see more free or very affordable AI tools thanks to programs like Llama 4. If you have a small business, this means AI tools are no longer just for large companies with big budgets.",
+    categoryLabelEn: "AI Models",
   },
   {
     id: "chatgpt-sube-precio",
@@ -112,6 +154,26 @@ export const news: NewsItem[] = [
     readingTime: 3,
     relatedTools: ["chatgpt", "claude", "gemini"],
     source: "OpenAI Blog",
+    titleEn: "OpenAI raised the price of ChatGPT Plus: is it still worth it?",
+    summaryEn: "ChatGPT's paid plan went from $20 to $30 per month. We explain what it includes now, what free alternatives exist, and how to decide if it's worth paying.",
+    contentEn: `<p>If you use ChatGPT frequently, you probably noticed the change: the Plus plan now costs <strong>$30 per month</strong> instead of the previous $20.</p>
+
+<p>OpenAI says the increase is justified because it now includes access to more advanced features: it can analyze images, browse the internet in real time, create images, and use specialized tools. All of that was previously extra or limited.</p>
+
+<p><strong>What do you get for $30/month?</strong></p>
+<ul>
+<li>Access to OpenAI's most advanced model without reasonable usage limits</li>
+<li>Can view and analyze images you send</li>
+<li>Searches for up-to-date information on the internet</li>
+<li>Creates images from text descriptions</li>
+<li>Priority access during high demand</li>
+</ul>
+
+<p><strong>Is it worth it?</strong> It depends on how much you use it. If you use it every day for work — drafting emails, analyzing documents, generating ideas — it probably is. If you use it once or twice a week, there are free alternatives like Claude (which offers a fairly generous free plan), Google's Gemini (free with your Google account), or ChatGPT's own free version.</p>
+
+<p>The practical advice: before paying, try the free alternatives for a week. Many people find that Claude or Gemini cover 90% of what they need at no cost.</p>`,
+    practicalTakeawayEn: "Don't pay automatically. First try free alternatives like Claude, Gemini, or the free version of ChatGPT. If after a week you feel you need more, then consider the paid plan.",
+    categoryLabelEn: "Tools",
   },
   {
     id: "clonacion-voz-3-segundos",
@@ -146,6 +208,31 @@ export const news: NewsItem[] = [
     readingTime: 4,
     relatedTools: ["elevenlabs", "murf"],
     source: "MIT Technology Review",
+    titleEn: "AI can now clone your voice with 3 seconds of audio — what you need to know",
+    summaryEn: "New tools can create a near-perfect copy of anyone's voice with just a few seconds of recording. This has incredible uses, but also serious risks.",
+    contentEn: `<p>Imagine someone takes a 3-second audio clip of your voice — from an Instagram video, a WhatsApp message, or a phone call — and with that, they can make "you" say anything. It sounds like science fiction, but it's already real.</p>
+
+<p>Several tech companies have developed tools that can <strong>clone a human voice with just a few seconds of sample</strong>. The result is so realistic that in tests, people can't tell the real voice from the artificial one more than 80% of the time.</p>
+
+<p><strong>The positive uses are fascinating:</strong></p>
+<ul>
+<li>People who lost their voice due to illness can recover a digital version of how they sounded</li>
+<li>Content creators can record podcasts or videos in multiple languages with their own voice</li>
+<li>Companies can create voice assistants that sound natural and human</li>
+</ul>
+
+<p><strong>But the risks are real:</strong></p>
+<ul>
+<li>Phone scams where "your child" calls you asking for emergency money</li>
+<li>Fake videos of politicians or public figures saying things they never said</li>
+<li>Identity theft in legal or financial contexts</li>
+</ul>
+
+<p>Cases of voice-cloning scams have already been reported in Latin America. The most common pattern: someone receives a call that sounds exactly like a family member, asking for an urgent transfer.</p>
+
+<p><strong>How to protect yourself?</strong> Establish a "code word" with your family — a word only you know that you can use in case of doubt. If someone calls asking for urgent money, hang up and call the saved number directly yourself.</p>`,
+    practicalTakeawayEn: "Agree on a secret word with your family that you can use to verify identity over the phone. If you receive a suspicious call asking for money, hang up and call directly yourself. Social media audio can be used to copy your voice.",
+    categoryLabelEn: "Society",
   },
   {
     id: "medicos-colombia-ia",
@@ -170,6 +257,22 @@ export const news: NewsItem[] = [
     date: "2026-03-08",
     readingTime: 5,
     source: "El Tiempo / Portafolio",
+    titleEn: "Why doctors in Colombia are starting to use AI for diagnosis",
+    summaryEn: "Hospitals in Bogota and Medellin are testing artificial intelligence tools that help detect diseases faster. They don't replace the doctor, but they give them superpowers.",
+    contentEn: `<p>In several hospitals in Bogota and Medellin, doctors are using a new tool: an artificial intelligence program that analyzes X-rays, lab tests, and medical histories to <strong>suggest possible diagnoses in seconds</strong>.</p>
+
+<p>It's not that AI replaces the doctor — the physician always makes the final decision. But imagine the difference: a radiologist who normally takes 15 minutes to review an image now receives an instant "second opinion" from the AI that flags areas deserving special attention.</p>
+
+<p><strong>How does it work in practice?</strong></p>
+<p>A patient gets a chest X-ray. The AI program analyzes the image in less than a second and tells the doctor: "I found a suspicious area in the right lung, 87% probability of being an anomaly." The doctor then examines that area with special care.</p>
+
+<p>Initial results are promising: in hospitals where it's used, conditions have been detected that might have been overlooked in a routine exam. This is especially important in rural areas of Colombia where specialists are scarce — AI allows a general practitioner to access specialist-level knowledge.</p>
+
+<p><strong>The challenges:</strong> These programs were primarily trained with patient data from the United States and Europe. Colombian doctors are working to adapt these tools to the most common health conditions in the Latin American population, where prevalent diseases can be different.</p>
+
+<p>Countries like Brazil, Chile, and Mexico are also implementing similar programs. The trend is clear: AI won't replace your doctor, but your doctor who uses AI will probably be more effective than one who doesn't.</p>`,
+    practicalTakeawayEn: "Medical AI doesn't replace your doctor, but it makes them more effective. If your doctor or clinic uses AI tools for diagnosis, it's a good sign — it means they're leveraging technology to give you better care. Ask at your next appointment if they already use these tools.",
+    categoryLabelEn: "Society",
   },
   {
     id: "google-veo-videos",
@@ -199,6 +302,26 @@ export const news: NewsItem[] = [
     readingTime: 4,
     relatedTools: ["runway", "pika"],
     source: "Google Blog",
+    titleEn: "Google launched an AI that can make 8-second videos — here's how it works",
+    summaryEn: "By just writing a description, Google's new tool creates a short video. It's not perfect yet, but it already shows where the future of visual content is heading.",
+    contentEn: `<p>Google introduced <strong>Veo 2</strong>, an AI program that can create short videos from a written description. You tell it "a sunset in Cartagena with seagulls flying over the sea" and in a few minutes, it generates a video that looks pretty close to reality.</p>
+
+<p><strong>How does it work?</strong> Think of it as an extremely fast digital artist. The program has "seen" millions of videos and learned how things move, how light changes, how water flows. When you describe something, it combines everything it learned to create something new.</p>
+
+<p>For now, the videos are short — 8 seconds max — and not always perfect. Sometimes people's hands look weird or movements aren't entirely natural. But the quality has improved dramatically compared to what existed just a year ago.</p>
+
+<p><strong>What is this useful for in real life?</strong></p>
+<ul>
+<li><strong>Advertising:</strong> A small shop could create a video ad without hiring a production team</li>
+<li><strong>Education:</strong> A teacher could generate animations to explain difficult concepts</li>
+<li><strong>Social media:</strong> Content creators could produce visual material quickly</li>
+</ul>
+
+<p>This also raises concerns about fake videos. Google says all videos generated with Veo 2 carry an invisible watermark so it can be verified they were created by AI.</p>
+
+<p>It's not available to the general public yet — only to selected creators through Google Labs. But similar tools like Runway and Pika are already available if you want to experiment with AI-generated video.</p>`,
+    practicalTakeawayEn: "You don't need to worry about mastering this technology yet, but you should understand it. If you manage social media for a business, in the coming months you'll be able to create promotional videos without cameras or equipment. Tools like Runway or Pika already let you experiment today.",
+    categoryLabelEn: "AI Models",
   },
   {
     id: "europa-regula-ia",
@@ -231,6 +354,30 @@ export const news: NewsItem[] = [
     date: "2026-03-03",
     readingTime: 5,
     source: "Parlamento Europeo",
+    titleEn: "Europe started regulating AI — what it means for Latin America",
+    summaryEn: "The European Union activated the world's first rules on artificial intelligence. This will affect the tools we all use, including in Latin America.",
+    contentEn: `<p>The European Union just put into effect the world's first rules on artificial intelligence, known as the <strong>AI Act</strong>. It's the first time a group of countries officially says: "AI can't do whatever it wants, there are limits."</p>
+
+<p><strong>What does the new law prohibit?</strong></p>
+<ul>
+<li>Using AI to socially score people (like China's social credit system)</li>
+<li>Mass facial recognition in public spaces (with some security exceptions)</li>
+<li>Covertly manipulating people's behavior</li>
+<li>Exploiting vulnerabilities of specific groups (children, elderly)</li>
+</ul>
+
+<p><strong>What does it require?</strong></p>
+<ul>
+<li>Companies must be transparent when you use AI — you have the right to know if you're talking to a program and not a person</li>
+<li>"High-risk" AI systems (those used for credit decisions, hiring, or medical diagnoses) must pass strict evaluations</li>
+<li>All AI-generated content (images, videos, audio) must be clearly labeled</li>
+</ul>
+
+<p><strong>How does this affect Latin America?</strong> In two important ways:</p>
+<p>First, the AI tools we use here — ChatGPT, Gemini, Midjourney — are from companies that operate in Europe. To comply with European law, they'll have to change how they work, and those changes reach all of us. For example, soon all AI-generated images must carry a mark indicating they're artificial.</p>
+<p>Second, several countries in the region — Colombia, Brazil, Chile, Mexico — are already working on their own AI laws, using European regulation as a reference. Colombia, for instance, has a bill in progress directly inspired by the European AI Act.</p>`,
+    practicalTakeawayEn: "In the coming months, you'll see more 'this content was generated with AI' notices on the tools you use. You'll also have more rights: if a company uses AI to make decisions that affect you (a loan, a job interview), they'll have to explain how it works.",
+    categoryLabelEn: "Legislation",
   },
   {
     id: "canva-ai-herramientas",
@@ -261,6 +408,27 @@ export const news: NewsItem[] = [
     readingTime: 4,
     relatedTools: ["canva"],
     source: "Canva Blog",
+    titleEn: "Canva added AI to everything: here's what you can do now without being a designer",
+    summaryEn: "The world's most popular design tool now has artificial intelligence integrated into every feature. Generate images, remove backgrounds, and even create full presentations, all with one click.",
+    contentEn: `<p>If you've ever used Canva to make an Instagram post, a logo, or a presentation, get ready: the tool just integrated artificial intelligence into practically <strong>all its features</strong>. And the best part is that most are included in the free plan.</p>
+
+<p><strong>What can you do now with Canva + AI?</strong></p>
+
+<p><strong>1. Generate images from scratch.</strong> You type "a coffee cup on a wooden table with a plant beside it, professional photography style" and Canva generates the image. No need to search stock photo sites or pay for images.</p>
+
+<p><strong>2. Remove backgrounds with one click.</strong> Upload your product photo, click, and the background disappears. Before you needed Photoshop and several minutes; now it takes 2 seconds.</p>
+
+<p><strong>3. Write text automatically.</strong> You tell it "write the text for an Instagram post about a bakery grand opening in Lima" and it gives you ready-to-use options, in whatever tone you choose.</p>
+
+<p><strong>4. Create complete presentations.</strong> You describe the topic and audience, and Canva generates a presentation with design, text, and images. You just adjust it.</p>
+
+<p><strong>5. Translate designs.</strong> You have a design in Spanish and need an English or Portuguese version. The AI translates all the text while keeping the design intact.</p>
+
+<p>For entrepreneurs and small businesses in Latin America, this is a huge change. Before, you needed to hire a designer, a copywriter, and maybe a photographer. Now, one person with Canva can do the work of all three for everyday content.</p>
+
+<p><strong>Note:</strong> Canva's AI is excellent for quick, day-to-day content, but for professional branding, major campaigns, or visual identity design, a human designer is still the best choice.</p>`,
+    practicalTakeawayEn: "If you manage your business's social media, go to Canva and try the new AI features. Start with image generation and automatic text writing — they'll save you hours every week. It's free to start.",
+    categoryLabelEn: "Tools",
   },
   {
     id: "empleos-ia-2026",
@@ -294,6 +462,30 @@ export const news: NewsItem[] = [
     readingTime: 6,
     relatedTools: ["chatgpt", "canva", "deepl"],
     source: "McKinsey Global Institute / Foro Económico Mundial",
+    titleEn: "These are the jobs changing the most because of AI in 2026 — and how to prepare",
+    summaryEn: "Artificial intelligence won't take your job tomorrow, but it will change how you do it. We tell you which sectors are most affected and what you can do today to adapt.",
+    contentEn: `<p>Every time a new AI tool comes out, alarming headlines appear: "AI will destroy millions of jobs." The reality is more nuanced. AI isn't eliminating entire jobs (yet), but it is <strong>transforming how many jobs are done</strong>. And that requires adaptation.</p>
+
+<p><strong>The sectors changing the most:</strong></p>
+
+<p><strong>1. Customer service.</strong> AI chatbots already handle between 40% and 60% of inquiries at many companies. But human agents haven't disappeared — they now focus on complex cases that AI can't solve. The job shifted from "answering simple questions all day" to "solving complicated problems with AI's help."</p>
+
+<p><strong>2. Marketing and advertising.</strong> Creating posts, writing emails, generating campaign images — all of this can now be done by AI in seconds. Marketing professionals who adapt are using these tools to produce 10 times more content. Those who don't compete against people who do.</p>
+
+<p><strong>3. Accounting and finance.</strong> Account reconciliation, expense classification, and basic reports can now be done by AI. Standout accountants are those who use AI for repetitive work and dedicate their time to strategic analysis and advisory.</p>
+
+<p><strong>4. Translation.</strong> Tools like DeepL produce translations that in many cases are as good as a professional's. Translators who survive specialize in technical fields (legal, medical) or creative translation (literature, marketing).</p>
+
+<p><strong>5. Programming.</strong> Programmers using AI tools report being 30% to 50% more productive. This doesn't mean fewer programmers are needed — on the contrary, there's more demand than ever — but the profile has changed. Now it matters more to know what to build than to write every line of code.</p>
+
+<p><strong>What can you do today?</strong></p>
+<ul>
+<li>Learn to use at least one AI tool relevant to your work</li>
+<li>Focus on skills AI still doesn't master: empathy, original creativity, negotiation, leadership</li>
+<li>Don't be afraid to experiment — most of these tools have free versions</li>
+</ul>`,
+    practicalTakeawayEn: "The key is not to compete against AI, but to use it as a tool. Dedicate an hour this week to learning an AI tool related to your work. ChatGPT, Canva with AI, or DeepL are good starting points. The person who knows how to use AI will have an advantage over the one who doesn't.",
+    categoryLabelEn: "Society",
   },
   {
     id: "apple-ia-iphone",
@@ -323,6 +515,27 @@ export const news: NewsItem[] = [
     date: "2026-02-20",
     readingTime: 4,
     source: "Apple Newsroom",
+    titleEn: "Apple activated AI on the iPhone: what you can do now that you couldn't before",
+    summaryEn: "Apple Intelligence features are now available in Spanish. Your iPhone can now summarize notifications, rewrite texts, and create images. Here's how to use them.",
+    contentEn: `<p>After months of waiting, Apple finally activated its artificial intelligence features — called <strong>Apple Intelligence</strong> — for iPhone users in Spanish. If you have an iPhone 15 Pro or newer, you can already use them.</p>
+
+<p><strong>What can your iPhone do now?</strong></p>
+
+<p><strong>1. Summarize notifications.</strong> Have 47 unread messages in a WhatsApp group? Your iPhone gives you a one-line summary: "They're organizing Friday's dinner, you're the only one who hasn't confirmed." No more reading 47 messages to find out what's important.</p>
+
+<p><strong>2. Rewrite any text.</strong> Select an email, message, or note and ask it to make it more professional, friendlier, or more concise. You wrote "hey, I need that now" and it converts it to "Hello, could you please send me the document at your earliest convenience? Thank you."</p>
+
+<p><strong>3. Create custom images.</strong> You can generate cartoon-style images from descriptions or from photos in your gallery. Ideal for custom stickers or fun images to share.</p>
+
+<p><strong>4. Improved Siri.</strong> Siri now understands what you ask better and can do more complex things. You can say "find the photos from mom's birthday last year and send them via WhatsApp" and it does it.</p>
+
+<p><strong>5. Remove objects from photos.</strong> Did someone photobomb your picture? Tap the object or person you want to remove and it disappears, with AI filling in the background automatically.</p>
+
+<p><strong>How to activate it?</strong> Go to Settings → Apple Intelligence and Siri → Turn on Apple Intelligence. You need an iPhone 15 Pro or later, and the device language set to Spanish. The initial download may take a few minutes.</p>
+
+<p><strong>About privacy:</strong> Apple assures that most processing happens directly on your phone, without sending your data to the cloud. When more power is needed, it uses special servers where data is deleted immediately after processing.</p>`,
+    practicalTakeawayEn: "If you have an iPhone 15 Pro or newer, activate Apple Intelligence in Settings. Start with notification summaries and text rewriting — these are the two features that will save you the most time day-to-day.",
+    categoryLabelEn: "Companies",
   },
   {
     id: "estafas-ia-latam",
@@ -355,6 +568,30 @@ export const news: NewsItem[] = [
     date: "2026-02-15",
     readingTime: 5,
     source: "Kaspersky / ESET Latinoamérica",
+    titleEn: "AI scams are growing in Latin America — here's how to protect yourself",
+    summaryEn: "Fake celebrity videos, cloned voices, and hyper-personalized messages. Scammers are using artificial intelligence to make their schemes more convincing. We give you a practical guide to avoid falling for them.",
+    contentEn: `<p>Scams aren't new, but artificial intelligence is making them much harder to detect. In recent months, reports of AI-powered fraud have increased significantly in Mexico, Colombia, Argentina, and Brazil.</p>
+
+<p><strong>The most common types of AI scams:</strong></p>
+
+<p><strong>1. Fake celebrity videos.</strong> Videos circulate where celebrities or business leaders "recommend" investments or miracle products. The video looks real, the voice sounds authentic, but everything was generated by AI. This type of content has been used for fake cryptocurrency investment scams.</p>
+
+<p><strong>2. Cloned family members' voices.</strong> You receive a call that sounds exactly like your child, your mother, or your partner, asking for urgent money. "I was robbed, I'm at a police station, I need you to transfer money now." The voice is an AI-created imitation from public audio.</p>
+
+<p><strong>3. Hyper-personalized emails and messages.</strong> These are no longer the poorly written "you won a million dollars" emails. Now AI can create messages that appear to come from your bank, your company, or your supplier, with your name, real data, and perfect language.</p>
+
+<p><strong>4. Fake profiles on social media and dating apps.</strong> AI generates photos of people who don't exist and maintains convincing conversations for weeks before asking for money or personal information.</p>
+
+<p><strong>Practical guide to protect yourself:</strong></p>
+<ul>
+<li><strong>Family code word:</strong> Agree with your family on a secret word you can ask for over the phone to verify identity</li>
+<li><strong>Verify through another channel:</strong> If you receive an urgent message from someone, call them directly through another means before acting</li>
+<li><strong>Be suspicious of urgency:</strong> Scams always rush. "Do it now," "today only," "it's urgent" are red flags</li>
+<li><strong>Check the source:</strong> Before clicking a link, verify that the website is official (with www. and the correct domain)</li>
+<li><strong>Don't share data over the phone:</strong> Your bank will never ask for your password or security code by phone or message</li>
+</ul>`,
+    practicalTakeawayEn: "AI scams are more convincing than ever. Establish a code word with your family today to verify identity over the phone. Never act out of urgency — always verify through another channel before sending money or sharing personal data.",
+    categoryLabelEn: "Society",
   },
 ]
 
