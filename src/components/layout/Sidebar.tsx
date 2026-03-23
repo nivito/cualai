@@ -14,11 +14,19 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
   const prefix = locale === "en" ? "/en" : "";
   const newsRoute = locale === "en" ? "/en/news" : "/noticias";
   const glossaryRoute = locale === "en" ? "/en/glossary" : "/glosario";
+  const whatIsAiRoute = locale === "en" ? "/en/what-is-ai" : "/que-es-ia";
+  const compareRoute = locale === "en" ? "/en/compare" : "/comparar";
+  const coursesRoute = locale === "en" ? "/en/courses" : "/cursos";
+  const modelsRoute = locale === "en" ? "/en/models" : "/modelos";
 
   // For active state detection, strip the /en prefix from pathname
   const cleanPath = locale === "en" ? pathname.replace(/^\/en/, "") || "/" : pathname;
   const newsClean = locale === "en" ? "/news" : "/noticias";
   const glossaryClean = locale === "en" ? "/glossary" : "/glosario";
+  const whatIsAiClean = locale === "en" ? "/what-is-ai" : "/que-es-ia";
+  const compareClean = locale === "en" ? "/compare" : "/comparar";
+  const coursesClean = locale === "en" ? "/courses" : "/cursos";
+  const modelsClean = locale === "en" ? "/models" : "/modelos";
 
   return (
     <>
@@ -48,10 +56,10 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
         <nav className="py-3">
           {/* ¿Qué es la IA? link */}
           <Link
-            href={prefix + "/que-es-ia"}
+            href={whatIsAiRoute}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              cleanPath.startsWith("/que-es-ia")
+              cleanPath.startsWith(whatIsAiClean)
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
@@ -62,10 +70,10 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
 
           {/* Comparar link */}
           <Link
-            href={prefix + "/comparar"}
+            href={compareRoute}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              cleanPath.startsWith("/comparar")
+              cleanPath.startsWith(compareClean)
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
@@ -90,10 +98,10 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
 
           {/* Cursos link */}
           <Link
-            href={prefix + "/cursos"}
+            href={coursesRoute}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              cleanPath.startsWith("/cursos")
+              cleanPath.startsWith(coursesClean)
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
@@ -104,10 +112,10 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
 
           {/* Modelos link */}
           <Link
-            href={prefix + "/modelos"}
+            href={modelsRoute}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              cleanPath.startsWith("/modelos")
+              cleanPath.startsWith(modelsClean)
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}

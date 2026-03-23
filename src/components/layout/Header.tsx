@@ -16,6 +16,8 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
   const prefix = locale === "en" ? "/en" : "";
   const newsRoute = locale === "en" ? "/en/news" : "/noticias";
   const glossaryRoute = locale === "en" ? "/en/glossary" : "/glosario";
+  const coursesRoute = locale === "en" ? "/en/courses" : "/cursos";
+  const modelsRoute = locale === "en" ? "/en/models" : "/modelos";
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,14 +35,22 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
         .replace(/^\/en/, "")
         .replace(/^\/news(\/|$|(?=\?))/, "/noticias$1")
         .replace(/^\/tool(\/|$|(?=\?))/, "/herramienta$1")
-        .replace(/^\/glossary(\/|$|(?=\?))/, "/glosario$1");
+        .replace(/^\/glossary(\/|$|(?=\?))/, "/glosario$1")
+        .replace(/^\/what-is-ai(\/|$|(?=\?))/, "/que-es-ia$1")
+        .replace(/^\/compare(\/|$|(?=\?))/, "/comparar$1")
+        .replace(/^\/courses(\/|$|(?=\?))/, "/cursos$1")
+        .replace(/^\/models(\/|$|(?=\?))/, "/modelos$1");
       router.push(esPath || "/");
     } else {
       // ES → EN: map route names and add /en prefix
       const enPath = pathname
         .replace(/^\/noticias(\/|$|(?=\?))/, "/news$1")
         .replace(/^\/herramienta(\/|$|(?=\?))/, "/tool$1")
-        .replace(/^\/glosario(\/|$|(?=\?))/, "/glossary$1");
+        .replace(/^\/glosario(\/|$|(?=\?))/, "/glossary$1")
+        .replace(/^\/que-es-ia(\/|$|(?=\?))/, "/what-is-ai$1")
+        .replace(/^\/comparar(\/|$|(?=\?))/, "/compare$1")
+        .replace(/^\/cursos(\/|$|(?=\?))/, "/courses$1")
+        .replace(/^\/modelos(\/|$|(?=\?))/, "/models$1");
       router.push(`/en${enPath}`);
     }
   }
@@ -80,13 +90,13 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
           {t.header.nav_news}
         </Link>
         <Link
-          href={prefix + "/cursos"}
+          href={coursesRoute}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
           {t.header.nav_courses}
         </Link>
         <Link
-          href={prefix + "/modelos"}
+          href={modelsRoute}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
           {t.header.nav_models}
