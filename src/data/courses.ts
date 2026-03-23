@@ -272,7 +272,7 @@ export const courses: Course[] = [
     institution: "Aztec Lab",
     description:
       "Aprende a usar herramientas reales de IA y automatización para crear tus propios sistemas sin depender de programadores — en 8 semanas.",
-    url: "https://azteclab.co/curso-automatiza-tu-trabajo",
+    url: "https://www.azteclab.co/profesionales",
     duration: "8 semanas",
     level: "intermedio",
     levelLabel: "Intermedio",
