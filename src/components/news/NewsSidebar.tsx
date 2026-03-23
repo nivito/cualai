@@ -4,14 +4,21 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { newsCategories, type NewsCategory } from "@/data/news"
+import { getDict, type Locale } from "@/i18n"
 
 export default function NewsSidebar({
   activeCategory,
+  locale = "es",
 }: {
   activeCategory?: NewsCategory
+  locale?: Locale
 }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const t = getDict(locale)
+
+  const prefix = locale === "en" ? "/en" : ""
+  const cleanPath = locale === "en" ? pathname.replace(/^\/en/, "") || "/" : pathname
 
   return (
     <>
@@ -42,32 +49,32 @@ export default function NewsSidebar({
           {/* Back to tools */}
           <div className="px-4 mb-3">
             <Link
-              href="/"
+              href={prefix + "/"}
               onClick={() => setOpen(false)}
               className="text-[10px] text-text-muted hover:text-accent transition-colors"
             >
-              ← Volver a herramientas
+              {t.news_sidebar.back}
             </Link>
           </div>
 
           <div className="px-4 mb-2">
             <span className="text-[10px] uppercase tracking-widest text-text-muted">
-              Noticias
+              {t.news_sidebar.news}
             </span>
           </div>
 
           {/* All news */}
           <Link
-            href="/noticias"
+            href={prefix + "/noticias"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              pathname === "/noticias" && !activeCategory
+              cleanPath === "/noticias" && !activeCategory
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>📰</span>
-            <span className="flex-1 truncate">Todas</span>
+            <span className="flex-1 truncate">{t.news_sidebar.all}</span>
           </Link>
 
           {/* Category filters */}
@@ -83,7 +90,7 @@ export default function NewsSidebar({
             return (
               <Link
                 key={cat.slug}
-                href={`/noticias?categoria=${cat.slug}`}
+                href={`${prefix}/noticias?categoria=${cat.slug}`}
                 onClick={() => setOpen(false)}
                 className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
                   isActive
@@ -100,16 +107,16 @@ export default function NewsSidebar({
           {/* Separator + categories link */}
           <div className="border-t border-border mt-3 pt-3 px-4 mb-2">
             <span className="text-[10px] uppercase tracking-widest text-text-muted">
-              Herramientas
+              {t.news_sidebar.tools_section}
             </span>
           </div>
           <Link
-            href="/"
+            href={prefix + "/"}
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-4 py-1.5 text-xs text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent transition-colors"
           >
             <span>🔍</span>
-            <span className="flex-1 truncate">Explorar herramientas</span>
+            <span className="flex-1 truncate">{t.news_sidebar.explore}</span>
           </Link>
         </nav>
       </aside>

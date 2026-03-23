@@ -1,8 +1,12 @@
 import Link from "next/link"
 import type { NewsItem } from "@/data/news"
+import { getDict, type Locale } from "@/i18n"
 
-export default function NewsCard({ item }: { item: NewsItem }) {
-  const date = new Date(item.date).toLocaleDateString("es-LA", {
+export default function NewsCard({ item, locale = "es" }: { item: NewsItem; locale?: Locale }) {
+  const t = getDict(locale)
+  const prefix = locale === "en" ? "/en" : ""
+
+  const date = new Date(item.date).toLocaleDateString(locale === "en" ? "en-US" : "es-LA", {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -10,7 +14,7 @@ export default function NewsCard({ item }: { item: NewsItem }) {
 
   return (
     <Link
-      href={`/noticias/${item.slug}`}
+      href={`${prefix}/noticias/${item.slug}`}
       className="group block border border-border rounded bg-bg-card hover:border-accent hover:shadow-[0_0_12px_rgba(88,166,255,0.1)] transition-all"
     >
       <div className="p-4">
@@ -35,9 +39,9 @@ export default function NewsCard({ item }: { item: NewsItem }) {
 
         {/* Read more */}
         <div className="flex items-center justify-between pt-2 border-t border-border">
-          <span className="text-[10px] text-text-muted">{item.readingTime} min de lectura</span>
+          <span className="text-[10px] text-text-muted">{t.news.reading_time(item.readingTime)}</span>
           <span className="text-[10px] text-text-muted group-hover:text-accent transition-colors">
-            Leer más →
+            {t.news.read_more}
           </span>
         </div>
       </div>

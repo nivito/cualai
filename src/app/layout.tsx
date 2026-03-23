@@ -13,7 +13,10 @@ export const metadata: Metadata = {
   },
   description:
     "Directorio de herramientas de inteligencia artificial en español. Encuentra la herramienta AI perfecta por categoría, precio y caso de uso. Para profesionales y equipos en LATAM.",
-  alternates: { canonical: BASE_URL },
+  alternates: {
+    canonical: BASE_URL,
+    languages: { es: BASE_URL, en: `${BASE_URL}/en` },
+  },
   openGraph: {
     title: "cual.ai — Directorio de herramientas de IA en español",
     description:

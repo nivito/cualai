@@ -7,6 +7,7 @@ import { getToolBySlug } from "@/data/tools"
 import { getSupabaseAdmin } from "@/lib/supabase"
 import { notFound } from "next/navigation"
 import { linkGlossaryTerms } from "@/lib/glossary-links"
+import { getDict } from "@/i18n"
 
 export const revalidate = 3600
 
@@ -38,10 +39,10 @@ export async function generateStaticParams() {
   return staticSlugs
 }
 
-async function getNewsItem(slug: string): Promise<NewsItem | undefined> {
+async function getNewsItem(slug: string): Promise<{ item: NewsItem; contentEn?: string; takeawayEn?: string } | undefined> {
   // Try static data first
   const staticItem = getNewsBySlug(slug)
-  if (staticItem) return staticItem
+  if (staticItem) return { item: staticItem }
 
   // Fallback to Supabase
   const supabase = getSupabaseAdmin()
@@ -56,30 +57,34 @@ async function getNewsItem(slug: string): Promise<NewsItem | undefined> {
   if (!row) return undefined
 
   return {
-    id: row.raw_data?.id || row.id,
-    slug: row.raw_data?.slug || row.id,
-    title: row.title,
-    summary: row.summary || "",
-    content: row.raw_data?.content || `<p>${row.summary}</p>`,
-    practicalTakeaway: row.raw_data?.practical_takeaway || "",
-    category: row.raw_data?.category || "herramientas",
-    categoryLabel: row.raw_data?.category_label || "Herramientas",
-    date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
-    readingTime: row.raw_data?.reading_time || 3,
-    source: row.source_name,
-    sourceUrl: row.source_url,
+    item: {
+      id: row.raw_data?.id || row.id,
+      slug: row.raw_data?.slug || row.id,
+      title: row.title,
+      summary: row.summary || "",
+      content: row.raw_data?.content || `<p>${row.summary}</p>`,
+      practicalTakeaway: row.raw_data?.practical_takeaway || "",
+      category: row.raw_data?.category || "herramientas",
+      categoryLabel: row.raw_data?.category_label || "Herramientas",
+      date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
+      readingTime: row.raw_data?.reading_time || 3,
+      source: row.source_name,
+      sourceUrl: row.source_url,
+    },
+    contentEn: row.raw_data?.content_en,
+    takeawayEn: row.raw_data?.practical_takeaway_en,
   }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const item = await getNewsItem(slug)
-  if (!item) return { title: "Noticia no encontrada — cual.ai" }
+  const result = await getNewsItem(slug)
+  if (!result) return { title: "Article not found — cual.ai" }
   return {
-    title: `${item.title} — cual.ai`,
-    description: item.summary,
+    title: `${result.item.title} — cual.ai`,
+    description: result.item.summary,
     alternates: {
-      canonical: `https://cual.ai/noticias/${slug}`,
+      canonical: `https://cual.ai/en/noticias/${slug}`,
       languages: {
         es: `https://cual.ai/noticias/${slug}`,
         en: `https://cual.ai/en/noticias/${slug}`,
@@ -88,17 +93,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-export default async function NoticiaDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function NoticiaDetailPageEn({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const item = await getNewsItem(slug)
-  if (!item) notFound()
+  const result = await getNewsItem(slug)
+  if (!result) notFound()
 
+  const { item, contentEn, takeawayEn } = result
   const { prev, next } = getAdjacentNews(slug)
   const relatedTools = (item.relatedTools ?? [])
     .map((s) => getToolBySlug(s))
     .filter(Boolean)
 
-  const date = new Date(item.date).toLocaleDateString("es-LA", {
+  const t = getDict("en")
+
+  const displayContent = contentEn || item.content
+  const displayTakeaway = takeawayEn || item.practicalTakeaway
+  const isSpanishOnly = !contentEn
+
+  const date = new Date(item.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -106,15 +118,22 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Header locale="en" />
       <div className="flex flex-1">
-        <NewsSidebar />
+        <NewsSidebar locale="en" />
         <main className="flex-1 min-w-0">
           <article className="max-w-2xl mx-auto py-8 px-4">
+            {/* Spanish-only banner */}
+            {isSpanishOnly && (
+              <div className="border border-yellow/30 rounded bg-yellow/5 p-3 mb-4">
+                <p className="text-xs text-yellow">{t.news.article_in_spanish}</p>
+              </div>
+            )}
+
             {/* Meta */}
             <div className="flex items-center gap-2 mb-4">
               <Link
-                href={`/noticias?categoria=${item.category}`}
+                href={`/en/noticias?categoria=${item.category}`}
                 className="text-[10px] uppercase tracking-widest text-accent font-semibold hover:text-accent-hover transition-colors"
               >
                 {item.categoryLabel}
@@ -123,7 +142,7 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
               <span className="text-[10px] text-text-muted">{date}</span>
               <span className="text-[10px] text-text-muted">·</span>
               <span className="text-[10px] text-text-muted">
-                {item.readingTime} min de lectura
+                {t.news.reading_time(item.readingTime)}
               </span>
             </div>
 
@@ -133,13 +152,13 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
             {/* Content */}
             <div
               className="prose-cual text-sm text-text leading-relaxed space-y-4 mb-8"
-              dangerouslySetInnerHTML={{ __html: linkGlossaryTerms(item.content) }}
+              dangerouslySetInnerHTML={{ __html: linkGlossaryTerms(displayContent) }}
             />
 
             {/* Source */}
             {item.source && (
               <p className="text-[10px] text-text-muted mb-8">
-                Fuente:{" "}
+                {t.news.source}{" "}
                 {item.sourceUrl ? (
                   <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-accent transition-colors">
                     {item.source}
@@ -153,10 +172,10 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
             {/* Practical takeaway */}
             <div className="border border-accent/30 rounded bg-accent/5 p-4 mb-8">
               <h2 className="text-xs font-semibold text-accent mb-2">
-                ¿Qué significa esto para ti?
+                {t.news.what_means}
               </h2>
               <p className="text-xs text-text leading-relaxed">
-                {item.practicalTakeaway}
+                {displayTakeaway}
               </p>
             </div>
 
@@ -164,13 +183,13 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
             {relatedTools.length > 0 && (
               <div className="mb-8">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-3">
-                  // Herramientas relacionadas
+                  {t.news.related_tools}
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {relatedTools.map((tool) => (
                     <Link
                       key={tool!.slug}
-                      href={`/herramienta/${tool!.slug}`}
+                      href={`/en/herramienta/${tool!.slug}`}
                       className="text-xs border border-border rounded px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
                     >
                       {tool!.name}
@@ -184,10 +203,10 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
             <div className="flex items-stretch gap-3 border-t border-border pt-6">
               {prev ? (
                 <Link
-                  href={`/noticias/${prev.slug}`}
+                  href={`/en/noticias/${prev.slug}`}
                   className="flex-1 border border-border rounded p-3 hover:border-accent transition-colors group"
                 >
-                  <span className="text-[10px] text-text-muted">← Anterior</span>
+                  <span className="text-[10px] text-text-muted">{t.news.prev}</span>
                   <p className="text-xs font-semibold mt-1 line-clamp-2 group-hover:text-accent transition-colors">
                     {prev.title}
                   </p>
@@ -197,10 +216,10 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
               )}
               {next ? (
                 <Link
-                  href={`/noticias/${next.slug}`}
+                  href={`/en/noticias/${next.slug}`}
                   className="flex-1 border border-border rounded p-3 hover:border-accent transition-colors group text-right"
                 >
-                  <span className="text-[10px] text-text-muted">Siguiente →</span>
+                  <span className="text-[10px] text-text-muted">{t.news.next}</span>
                   <p className="text-xs font-semibold mt-1 line-clamp-2 group-hover:text-accent transition-colors">
                     {next.title}
                   </p>
@@ -211,7 +230,7 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
             </div>
           </article>
 
-          <Footer />
+          <Footer locale="en" />
         </main>
       </div>
     </div>

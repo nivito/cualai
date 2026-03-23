@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { getDict, type Locale } from "@/i18n";
 
-export default function Footer() {
+export default function Footer({ locale = "es" }: { locale?: Locale }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const t = getDict(locale);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -38,14 +40,14 @@ export default function Footer() {
     <footer className="border-t border-border mt-12 py-8 px-4">
       <div className="max-w-lg mx-auto text-center">
         <h3 className="text-sm font-semibold mb-1">
-          Recibe las últimas noticias de AI para no técnicos
+          {t.footer.newsletter_title}
         </h3>
         <p className="text-text-muted text-xs mb-4">
-          Un email semanal con las mejores herramientas y noticias de inteligencia artificial, explicadas en simple. Sin spam.
+          {t.footer.newsletter_desc}
         </p>
         {status === "success" ? (
           <p className="text-green text-xs">
-            ✓ ¡Suscrito! Te enviaremos las mejores herramientas cada semana.
+            {t.footer.subscribe_success}
           </p>
         ) : (
           <form onSubmit={handleSubmit} className="flex gap-2 max-w-sm mx-auto">
@@ -63,7 +65,7 @@ export default function Footer() {
               disabled={status === "loading"}
               className="bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:bg-accent-hover transition-colors shrink-0 disabled:opacity-50"
             >
-              {status === "loading" ? "..." : "Suscribirse"}
+              {status === "loading" ? "..." : t.footer.subscribe_button}
             </button>
           </form>
         )}
@@ -71,7 +73,7 @@ export default function Footer() {
           <p className="text-red text-xs mt-2">{errorMsg}</p>
         )}
         <p className="text-text-muted text-[10px] mt-6">
-          cual.ai — Encuentra la herramienta AI perfecta —{" "}
+          {t.footer.tagline} —{" "}
           <a href="https://nivito.io" target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors">
             nivito.io
           </a>

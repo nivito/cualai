@@ -13,6 +13,7 @@ import {
   getCategoryBySlug,
   getSimilarTools,
 } from "@/data/tools";
+import { getDict } from "@/i18n";
 
 export function generateStaticParams() {
   return tools.map((t) => ({ slug: t.slug }));
@@ -26,11 +27,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const tool = getToolBySlug(slug);
   if (!tool) return {};
+  const t = getDict("en");
   return {
-    title: `${tool.name}: qué es, cómo usarlo y precio — cual.ai`,
-    description: `${tool.description} Descubre casos de uso, precios y alternativas en cual.ai.`,
+    title: t.tool.meta_title(tool.name),
+    description: t.tool.meta_desc(tool.description),
     alternates: {
-      canonical: `https://cual.ai/herramienta/${slug}`,
+      canonical: `https://cual.ai/en/herramienta/${slug}`,
       languages: {
         es: `https://cual.ai/herramienta/${slug}`,
         en: `https://cual.ai/en/herramienta/${slug}`,
@@ -39,19 +41,19 @@ export async function generateMetadata({
     openGraph: {
       title: `${tool.name} — cual.ai`,
       description: tool.description,
-      url: `https://cual.ai/herramienta/${slug}`,
+      url: `https://cual.ai/en/herramienta/${slug}`,
       type: "website",
       siteName: "cual.ai",
     },
     twitter: {
       card: "summary",
-      title: `${tool.name}: qué es, cómo usarlo y precio — cual.ai`,
+      title: t.tool.meta_title(tool.name),
       description: tool.description,
     },
   };
 }
 
-export default async function HerramientaPage({
+export default async function HerramientaPageEn({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -62,6 +64,7 @@ export default async function HerramientaPage({
 
   const similar = getSimilarTools(tool);
   const initial = tool.name.charAt(0).toUpperCase();
+  const t = getDict("en");
 
   const pricingColor =
     tool.pricing === "gratis"
@@ -70,7 +73,37 @@ export default async function HerramientaPage({
         ? "text-yellow"
         : "text-accent";
 
-  // JSON-LD: SoftwareApplication
+  const faqItems = [
+    {
+      q: t.tool.faq_what_for(tool.name),
+      a: tool.description,
+    },
+    {
+      q: t.tool.faq_price(tool.name),
+      a: tool.priceLabel,
+    },
+    {
+      q: t.tool.faq_free(tool.name),
+      a:
+        tool.pricing === "gratis"
+          ? t.tool.faq_free_yes(tool.name)
+          : tool.pricing === "freemium"
+            ? t.tool.faq_freemium(tool.name, tool.priceLabel)
+            : t.tool.faq_paid(tool.name, tool.priceLabel),
+    },
+    ...(similar.length > 0
+      ? [
+          {
+            q: t.tool.faq_alternatives_q(tool.name),
+            a: t.tool.faq_alternatives(
+              tool.name,
+              similar.map((s) => s.name).join(", ")
+            ),
+          },
+        ]
+      : []),
+  ];
+
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -88,7 +121,6 @@ export default async function HerramientaPage({
     aggregateRating: undefined,
   };
 
-  // JSON-LD: BreadcrumbList
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -97,45 +129,16 @@ export default async function HerramientaPage({
         "@type": "ListItem",
         position: 1,
         name: "cual.ai",
-        item: "https://cual.ai",
+        item: "https://cual.ai/en",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: tool.name,
-        item: `https://cual.ai/herramienta/${slug}`,
+        item: `https://cual.ai/en/herramienta/${slug}`,
       },
     ],
   };
-
-  // JSON-LD: FAQPage
-  const faqItems = [
-    {
-      q: `¿Para qué sirve ${tool.name}?`,
-      a: tool.description,
-    },
-    {
-      q: `¿Cuánto cuesta ${tool.name}?`,
-      a: tool.priceLabel,
-    },
-    {
-      q: `¿${tool.name} tiene versión gratuita?`,
-      a:
-        tool.pricing === "gratis"
-          ? `Sí, ${tool.name} es completamente gratuito.`
-          : tool.pricing === "freemium"
-            ? `Sí, ${tool.name} ofrece un plan gratuito con funciones limitadas. ${tool.priceLabel}`
-            : `${tool.name} es de pago. ${tool.priceLabel}`,
-    },
-    ...(similar.length > 0
-      ? [
-          {
-            q: `¿Cuáles son las mejores alternativas a ${tool.name}?`,
-            a: `Las principales alternativas a ${tool.name} son: ${similar.map((t) => t.name).join(", ")}. Puedes compararlas en cual.ai.`,
-          },
-        ]
-      : []),
-  ];
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -164,9 +167,9 @@ export default async function HerramientaPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Header />
+      <Header locale="en" />
       <div className="flex flex-1">
-        <Sidebar />
+        <Sidebar locale="en" />
         <main className="flex-1 min-w-0">
           <section className="py-8 px-4">
             <div className="max-w-3xl mx-auto">
@@ -184,7 +187,7 @@ export default async function HerramientaPage({
                       return (
                         <Link
                           key={catSlug}
-                          href={`/categoria/${catSlug}`}
+                          href={`/en/categoria/${catSlug}`}
                           className="text-[10px] text-text-muted hover:text-accent transition-colors"
                         >
                           {cat.icon} {cat.name}
@@ -214,12 +217,12 @@ export default async function HerramientaPage({
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-accent text-bg px-4 py-2 rounded text-xs font-semibold hover:bg-accent-hover transition-colors"
                   >
-                    Ir a la herramienta →
+                    {t.tool.visit}
                   </a>
                   <CompareButton slug={tool.slug} />
                 </div>
 
-                {/* Votos */}
+                {/* Votes */}
                 <div className="pt-4 border-t border-border mt-4">
                   <VoteButtons slug={tool.slug} />
                 </div>
@@ -229,7 +232,7 @@ export default async function HerramientaPage({
               {tool.useCases.length > 0 && (
                 <div className="border border-border rounded bg-bg-card p-6 mb-6">
                   <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-3">
-                    // Casos de uso
+                    {t.tool.use_cases}
                   </h2>
                   <ul className="space-y-2">
                     {tool.useCases.map((uc) => (
@@ -245,7 +248,7 @@ export default async function HerramientaPage({
               {/* FAQ visible */}
               <div className="border border-border rounded bg-bg-card p-6 mb-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-4">
-                  // Preguntas frecuentes
+                  {t.tool.faq}
                 </h2>
                 <div className="space-y-4">
                   {faqItems.map((item) => (
@@ -275,18 +278,18 @@ export default async function HerramientaPage({
               {similar.length > 0 && (
                 <div>
                   <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-4">
-                    // Herramientas similares
+                    {t.tool.similar}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {similar.map((t) => (
-                      <ToolCard key={t.id} tool={t} />
+                    {similar.map((s) => (
+                      <ToolCard key={s.id} tool={s} />
                     ))}
                   </div>
                 </div>
               )}
             </div>
           </section>
-          <Footer />
+          <Footer locale="en" />
         </main>
       </div>
     </div>

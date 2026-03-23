@@ -4,10 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { categories, getToolCountByCategory } from "@/data/tools";
+import { getDict, type Locale } from "@/i18n";
 
-export default function Sidebar() {
+export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const t = getDict(locale);
+
+  const prefix = locale === "en" ? "/en" : "";
+
+  // For active state detection, strip the /en prefix from pathname
+  const cleanPath = locale === "en" ? pathname.replace(/^\/en/, "") || "/" : pathname;
 
   return (
     <>
@@ -37,114 +44,114 @@ export default function Sidebar() {
         <nav className="py-3">
           {/* ¿Qué es la IA? link */}
           <Link
-            href="/que-es-ia"
+            href={prefix + "/que-es-ia"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              pathname.startsWith("/que-es-ia")
+              cleanPath.startsWith("/que-es-ia")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>🤖</span>
-            <span className="flex-1 truncate">¿Qué es la IA?</span>
+            <span className="flex-1 truncate">{t.sidebar.what_is_ai}</span>
           </Link>
 
           {/* Comparar link */}
           <Link
-            href="/comparar"
+            href={prefix + "/comparar"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              pathname.startsWith("/comparar")
+              cleanPath.startsWith("/comparar")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>⚖️</span>
-            <span className="flex-1 truncate">Comparar herramientas</span>
+            <span className="flex-1 truncate">{t.sidebar.compare}</span>
           </Link>
 
           {/* Noticias link */}
           <Link
-            href="/noticias"
+            href={prefix + "/noticias"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              pathname.startsWith("/noticias")
+              cleanPath.startsWith("/noticias")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>📰</span>
-            <span className="flex-1 truncate">Noticias AI</span>
+            <span className="flex-1 truncate">{t.sidebar.news}</span>
           </Link>
 
           {/* Cursos link */}
           <Link
-            href="/cursos"
+            href={prefix + "/cursos"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              pathname.startsWith("/cursos")
+              cleanPath.startsWith("/cursos")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>📚</span>
-            <span className="flex-1 truncate">Cursos</span>
+            <span className="flex-1 truncate">{t.sidebar.courses}</span>
           </Link>
 
           {/* Modelos link */}
           <Link
-            href="/modelos"
+            href={prefix + "/modelos"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              pathname.startsWith("/modelos")
+              cleanPath.startsWith("/modelos")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>🧠</span>
-            <span className="flex-1 truncate">Modelos AI</span>
+            <span className="flex-1 truncate">{t.sidebar.models}</span>
           </Link>
 
           {/* Glosario link */}
           <Link
-            href="/glosario"
+            href={prefix + "/glosario"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              pathname.startsWith("/glosario")
+              cleanPath.startsWith("/glosario")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>📖</span>
-            <span className="flex-1 truncate">Glosario</span>
+            <span className="flex-1 truncate">{t.sidebar.glossary}</span>
           </Link>
 
           {/* Feedback link */}
           <Link
-            href="/feedback"
+            href={prefix + "/feedback"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors mb-2 ${
-              pathname.startsWith("/feedback")
+              cleanPath.startsWith("/feedback")
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
             <span>💬</span>
-            <span className="flex-1 truncate">Feedback</span>
+            <span className="flex-1 truncate">{t.sidebar.feedback}</span>
           </Link>
 
           <div className="px-4 mb-2">
             <span className="text-[10px] uppercase tracking-widest text-text-muted">
-              Categorías
+              {t.sidebar.categories}
             </span>
           </div>
           {categories.map((cat) => {
-            const isActive = pathname === `/categoria/${cat.slug}`;
+            const isActive = cleanPath === `/categoria/${cat.slug}`;
             const count = getToolCountByCategory(cat.slug);
             return (
               <Link
                 key={cat.slug}
-                href={`/categoria/${cat.slug}`}
+                href={`${prefix}/categoria/${cat.slug}`}
                 onClick={() => setOpen(false)}
                 className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
                   isActive

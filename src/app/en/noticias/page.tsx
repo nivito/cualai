@@ -5,18 +5,19 @@ import NewsCard from "@/components/news/NewsCard"
 import { news as staticNews, newsCategories } from "@/data/news"
 import type { NewsCategory, NewsItem } from "@/data/news"
 import { getSupabaseAdmin } from "@/lib/supabase"
+import { getDict } from "@/i18n"
 
 export const metadata = {
-  title: "Noticias AI — cual.ai",
+  title: "AI News — cual.ai",
   description:
-    "Lo que está pasando en inteligencia artificial, explicado para todos. Noticias sin tecnicismos, con ejemplos del mundo real.",
+    "What's happening in artificial intelligence, explained for everyone. News without jargon, with real-world examples.",
   alternates: {
-    canonical: "https://cual.ai/noticias",
+    canonical: "https://cual.ai/en/noticias",
     languages: { es: "https://cual.ai/noticias", en: "https://cual.ai/en/noticias" },
   },
 }
 
-export const revalidate = 3600; // revalida cada hora
+export const revalidate = 3600;
 
 async function getNews(category?: NewsCategory): Promise<NewsItem[]> {
   let supabaseItems: NewsItem[] = [];
@@ -53,28 +54,24 @@ async function getNews(category?: NewsCategory): Promise<NewsItem[]> {
       }
     }
   } catch {
-    // Supabase failed — supabaseItems stays empty, we still merge static below
+    // Supabase failed — supabaseItems stays empty
   }
 
-  // Static articles (optionally filtered by category)
   const staticItems = category
     ? staticNews.filter((n) => n.category === category)
     : staticNews;
 
-  // Merge: Supabase first, then static articles whose slug isn't already present
   const seenSlugs = new Set(supabaseItems.map((n) => n.slug));
   const merged = [
     ...supabaseItems,
     ...staticItems.filter((n) => !seenSlugs.has(n.slug)),
   ];
 
-  // Sort by date descending
   merged.sort((a, b) => b.date.localeCompare(a.date));
-
   return merged;
 }
 
-export default async function NoticiasPage({
+export default async function NoticiasPageEn({
   searchParams,
 }: {
   searchParams: Promise<{ categoria?: string }>
@@ -82,20 +79,20 @@ export default async function NoticiasPage({
   const params = await searchParams
   const activeCategory = params.categoria as NewsCategory | undefined
   const filteredNews = await getNews(activeCategory)
+  const t = getDict("en")
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Header locale="en" />
       <div className="flex flex-1">
-        <NewsSidebar activeCategory={activeCategory} />
+        <NewsSidebar activeCategory={activeCategory} locale="en" />
         <main className="flex-1 min-w-0">
           {/* Header */}
           <section className="border-b border-border py-8 px-4">
             <div className="max-w-2xl mx-auto text-center">
-              <h1 className="text-2xl font-bold mb-2">Noticias AI</h1>
+              <h1 className="text-2xl font-bold mb-2">{t.news.title}</h1>
               <p className="text-text-muted text-xs">
-                Lo que está pasando en inteligencia artificial, explicado para
-                todos
+                {t.news.subtitle}
               </p>
             </div>
           </section>
@@ -104,31 +101,31 @@ export default async function NoticiasPage({
           <section className="py-8 px-4">
             {activeCategory && (
               <div className="flex items-center gap-2 mb-4 px-2">
-                <span className="text-xs text-text-muted">Filtrando:</span>
+                <span className="text-xs text-text-muted">{t.news.filtering}</span>
                 <span className="text-xs text-accent font-semibold">
                   {newsCategories.find((c) => c.slug === activeCategory)?.label}
                 </span>
                 <a
-                  href="/noticias"
+                  href="/en/noticias"
                   className="text-[10px] text-text-muted hover:text-accent transition-colors ml-2"
                 >
-                  [limpiar filtro]
+                  {t.news.clear_filter}
                 </a>
               </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
               {filteredNews.map((item) => (
-                <NewsCard key={item.id} item={item} />
+                <NewsCard key={item.id} item={item} locale="en" />
               ))}
             </div>
             {filteredNews.length === 0 && (
               <p className="text-text-muted text-xs text-center py-12">
-                No hay noticias en esta categoría todavía.
+                {t.news.no_news}
               </p>
             )}
           </section>
 
-          <Footer />
+          <Footer locale="en" />
         </main>
       </div>
     </div>

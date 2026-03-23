@@ -227,6 +227,60 @@ Fecha de hoy: ${today}`,
   }
 }
 
+// ── Claude: Translate articles to English ──────────────────
+
+async function translateArticlesToEnglish(
+  articles: Array<{ content: string; practical_takeaway: string }>
+): Promise<Array<{ content_en: string; practical_takeaway_en: string }>> {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey || articles.length === 0) return articles.map(() => ({ content_en: "", practical_takeaway_en: "" }));
+
+  const client = new Anthropic({ apiKey });
+
+  const payload = articles.map((a, i) => ({
+    index: i,
+    content: a.content,
+    practical_takeaway: a.practical_takeaway,
+  }));
+
+  try {
+    const message = await client.messages.create({
+      model: "claude-sonnet-4-5-20250514",
+      max_tokens: 4000,
+      messages: [
+        {
+          role: "user",
+          content: `Translate these Spanish news articles to English. Keep all HTML tags intact. Keep proper nouns (OpenAI, Claude, ChatGPT, etc.) unchanged. Return ONLY a valid JSON array (no markdown).
+
+INPUT:
+${JSON.stringify(payload)}
+
+Each object in the output array must have:
+- index: same index as input
+- content_en: the translated HTML content
+- practical_takeaway_en: the translated practical takeaway`,
+        },
+      ],
+    });
+
+    const text = message.content[0].type === "text" ? message.content[0].text : "";
+    const jsonStr = text.replace(/```json?\n?/g, "").replace(/```/g, "").trim();
+    const translations: Array<{ index: number; content_en: string; practical_takeaway_en: string }> = JSON.parse(jsonStr);
+
+    // Map back by index
+    return articles.map((_, i) => {
+      const t = translations.find((tr) => tr.index === i);
+      return {
+        content_en: t?.content_en || "",
+        practical_takeaway_en: t?.practical_takeaway_en || "",
+      };
+    });
+  } catch (err) {
+    console.error("Failed to translate articles to English:", err);
+    return articles.map(() => ({ content_en: "", practical_takeaway_en: "" }));
+  }
+}
+
 // ── Main Agent ──────────────────────────────────────────────
 
 export async function runContentAgent(): Promise<{
@@ -254,6 +308,9 @@ export async function runContentAgent(): Promise<{
     return { newsInserted: 0, errors: ["Claude returned no articles"] };
   }
 
+  // Translate articles to English
+  const translations = await translateArticlesToEnglish(articles);
+
   const supabase = getSupabaseAdmin();
   if (!supabase) {
     return { newsInserted: 0, errors: ["Supabase not configured"] };
@@ -261,7 +318,9 @@ export async function runContentAgent(): Promise<{
 
   // Insertar evitando duplicados por slug
   let inserted = 0;
-  for (const article of articles) {
+  for (let i = 0; i < articles.length; i++) {
+    const article = articles[i];
+    const translation = translations[i];
     const { error } = await supabase.from("news_items").insert({
       title: article.title,
       summary: article.summary,
@@ -276,6 +335,8 @@ export async function runContentAgent(): Promise<{
         category: article.category,
         category_label: article.category_label,
         reading_time: article.reading_time,
+        content_en: translation.content_en,
+        practical_takeaway_en: translation.practical_takeaway_en,
       },
     });
 

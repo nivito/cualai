@@ -1,14 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 import { getToolCount } from "@/data/tools";
+import { getDict, type Locale } from "@/i18n";
 
-export default function Header() {
+export default function Header({ locale = "es" }: { locale?: Locale }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [query, setQuery] = useState("");
   const toolCount = getToolCount();
+  const t = getDict(locale);
+
+  const prefix = locale === "en" ? "/en" : "";
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -17,12 +22,22 @@ export default function Header() {
     }
   }
 
+  const isEn = pathname.startsWith("/en");
+
+  function toggleLocale() {
+    if (isEn) {
+      router.push(pathname.replace(/^\/en/, "") || "/");
+    } else {
+      router.push(`/en${pathname}`);
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-sm">
       <div className="flex items-center h-12 px-4 gap-4">
         {/* Logo */}
         <Link
-          href="/"
+          href={prefix + "/"}
           className="text-accent font-bold text-sm shrink-0 hover:text-accent-hover transition-colors"
         >
           cual.ai
@@ -38,7 +53,7 @@ export default function Header() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Buscar herramientas AI..."
+              placeholder={t.header.search_placeholder}
               className="w-full bg-bg-card border border-border rounded px-3 py-1.5 pl-7 text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
             />
           </div>
@@ -46,32 +61,42 @@ export default function Header() {
 
         {/* Nav links */}
         <Link
-          href="/noticias"
+          href={prefix + "/noticias"}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
-          Noticias
+          {t.header.nav_news}
         </Link>
         <Link
-          href="/cursos"
+          href={prefix + "/cursos"}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
-          Cursos
+          {t.header.nav_courses}
         </Link>
         <Link
-          href="/modelos"
+          href={prefix + "/modelos"}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
-          Modelos
+          {t.header.nav_models}
         </Link>
         <Link
-          href="/glosario"
+          href={prefix + "/glosario"}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
-          Glosario
+          {t.header.nav_glossary}
         </Link>
         <span className="text-text-muted text-xs shrink-0 hidden sm:block">
-          {toolCount} herramientas
+          {t.header.tool_count(toolCount)}
         </span>
+
+        {/* Language switcher */}
+        <button
+          onClick={toggleLocale}
+          className="text-text-muted text-xs shrink-0 hidden sm:flex items-center gap-1 hover:text-accent transition-colors"
+        >
+          <span className={!isEn ? "text-accent font-semibold" : ""}>ES</span>
+          <span className="text-border">|</span>
+          <span className={isEn ? "text-accent font-semibold" : ""}>EN</span>
+        </button>
       </div>
     </header>
   );
