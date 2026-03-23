@@ -282,7 +282,7 @@ export default async function HerramientaPageEn({
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {similar.map((s) => (
-                      <ToolCard key={s.id} tool={s} />
+                      <ToolCard key={s.id} tool={s} locale="en" />
                     ))}
                   </div>
                 </div>

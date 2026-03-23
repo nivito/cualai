@@ -49,7 +49,7 @@ export default async function HomeEn() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
               {featured.map((tool) => (
-                <ToolCard key={tool.id} tool={tool} />
+                <ToolCard key={tool.id} tool={tool} locale="en" />
               ))}
             </div>
           </section>
@@ -101,7 +101,7 @@ export default async function HomeEn() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
               {sortToolsByVotes([...tools], votes).map((tool) => (
-                <ToolCard key={tool.id} tool={tool} />
+                <ToolCard key={tool.id} tool={tool} locale="en" />
               ))}
             </div>
           </section>

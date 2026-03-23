@@ -15,13 +15,14 @@ function PricingBadge({ tool }: { tool: Tool }) {
   return <span className={`text-[10px] ${color}`}>{tool.priceLabel}</span>;
 }
 
-export default function ToolCard({ tool }: { tool: Tool }) {
+export default function ToolCard({ tool, locale = "es" }: { tool: Tool; locale?: "es" | "en" }) {
   const firstCat = categories.find((c) => c.slug === tool.categories[0]);
   const initial = tool.name.charAt(0).toUpperCase();
+  const prefix = locale === "en" ? "/en" : "";
 
   return (
     <Link
-      href={`/herramienta/${tool.slug}`}
+      href={`${prefix}/herramienta/${tool.slug}`}
       className="group relative block border border-border rounded bg-bg-card hover:border-accent hover:shadow-[0_0_12px_rgba(88,166,255,0.1)] transition-all"
     >
       {/* Compare button */}
