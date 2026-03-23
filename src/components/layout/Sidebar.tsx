@@ -169,6 +169,35 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
               </Link>
             );
           })}
+
+          {/* Language selector */}
+          <div className="px-3 py-4 border-t border-border mt-4">
+            <p className="text-[10px] uppercase tracking-widest text-text-muted mb-2">Language</p>
+            <div className="flex gap-2">
+              <Link
+                href={locale === "en" ? (pathname.replace(/^\/en/, "") || "/") : pathname}
+                onClick={() => setOpen(false)}
+                className={`text-xs px-3 py-1.5 rounded border transition-colors ${
+                  locale !== "en"
+                    ? "border-accent text-accent bg-accent/10"
+                    : "border-border text-text-muted hover:border-accent hover:text-accent"
+                }`}
+              >
+                🇪🇸 Español
+              </Link>
+              <Link
+                href={locale === "en" ? pathname : `/en${pathname}`}
+                onClick={() => setOpen(false)}
+                className={`text-xs px-3 py-1.5 rounded border transition-colors ${
+                  locale === "en"
+                    ? "border-accent text-accent bg-accent/10"
+                    : "border-border text-text-muted hover:border-accent hover:text-accent"
+                }`}
+              >
+                🇺🇸 English
+              </Link>
+            </div>
+          </div>
         </nav>
       </aside>
     </>
