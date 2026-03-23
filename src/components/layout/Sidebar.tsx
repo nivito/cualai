@@ -12,9 +12,13 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
   const t = getDict(locale);
 
   const prefix = locale === "en" ? "/en" : "";
+  const newsRoute = locale === "en" ? "/en/news" : "/noticias";
+  const glossaryRoute = locale === "en" ? "/en/glossary" : "/glosario";
 
   // For active state detection, strip the /en prefix from pathname
   const cleanPath = locale === "en" ? pathname.replace(/^\/en/, "") || "/" : pathname;
+  const newsClean = locale === "en" ? "/news" : "/noticias";
+  const glossaryClean = locale === "en" ? "/glossary" : "/glosario";
 
   return (
     <>
@@ -72,10 +76,10 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
 
           {/* Noticias link */}
           <Link
-            href={prefix + "/noticias"}
+            href={newsRoute}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              cleanPath.startsWith("/noticias")
+              cleanPath.startsWith(newsClean)
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
@@ -114,10 +118,10 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
 
           {/* Glosario link */}
           <Link
-            href={prefix + "/glosario"}
+            href={glossaryRoute}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              cleanPath.startsWith("/glosario")
+              cleanPath.startsWith(glossaryClean)
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}

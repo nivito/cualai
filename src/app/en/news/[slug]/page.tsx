@@ -84,10 +84,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${result.item.title} — cual.ai`,
     description: result.item.summary,
     alternates: {
-      canonical: `https://cual.ai/en/noticias/${slug}`,
+      canonical: `https://cual.ai/en/news/${slug}`,
       languages: {
         es: `https://cual.ai/noticias/${slug}`,
-        en: `https://cual.ai/en/noticias/${slug}`,
+        en: `https://cual.ai/en/news/${slug}`,
       },
     },
   }
@@ -133,7 +133,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
             {/* Meta */}
             <div className="flex items-center gap-2 mb-4">
               <Link
-                href={`/en/noticias?categoria=${item.category}`}
+                href={`/en/news?categoria=${item.category}`}
                 className="text-[10px] uppercase tracking-widest text-accent font-semibold hover:text-accent-hover transition-colors"
               >
                 {item.categoryLabel}
@@ -189,7 +189,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
                   {relatedTools.map((tool) => (
                     <Link
                       key={tool!.slug}
-                      href={`/en/herramienta/${tool!.slug}`}
+                      href={`/en/tool/${tool!.slug}`}
                       className="text-xs border border-border rounded px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
                     >
                       {tool!.name}
@@ -203,7 +203,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
             <div className="flex items-stretch gap-3 border-t border-border pt-6">
               {prev ? (
                 <Link
-                  href={`/en/noticias/${prev.slug}`}
+                  href={`/en/news/${prev.slug}`}
                   className="flex-1 border border-border rounded p-3 hover:border-accent transition-colors group"
                 >
                   <span className="text-[10px] text-text-muted">{t.news.prev}</span>
@@ -216,7 +216,7 @@ export default async function NoticiaDetailPageEn({ params }: { params: Promise<
               )}
               {next ? (
                 <Link
-                  href={`/en/noticias/${next.slug}`}
+                  href={`/en/news/${next.slug}`}
                   className="flex-1 border border-border rounded p-3 hover:border-accent transition-colors group text-right"
                 >
                   <span className="text-[10px] text-text-muted">{t.news.next}</span>

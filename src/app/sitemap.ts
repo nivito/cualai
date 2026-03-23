@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // English tool pages
   const toolUrlsEn: MetadataRoute.Sitemap = tools.map((t) => ({
-    url: `${BASE_URL}/en/herramienta/${t.slug}`,
+    url: `${BASE_URL}/en/tool/${t.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.6,
@@ -66,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/en/noticias`,
+      url: `${BASE_URL}/en/news`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.6,
@@ -78,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/en/glosario`,
+      url: `${BASE_URL}/en/glossary`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.6,

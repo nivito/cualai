@@ -12,7 +12,7 @@ export const metadata = {
     "Lo que está pasando en inteligencia artificial, explicado para todos. Noticias sin tecnicismos, con ejemplos del mundo real.",
   alternates: {
     canonical: "https://cual.ai/noticias",
-    languages: { es: "https://cual.ai/noticias", en: "https://cual.ai/en/noticias" },
+    languages: { es: "https://cual.ai/noticias", en: "https://cual.ai/en/news" },
   },
 }
 

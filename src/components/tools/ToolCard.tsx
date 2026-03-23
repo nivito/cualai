@@ -20,11 +20,12 @@ export default function ToolCard({ tool, locale = "es" }: { tool: Tool; locale?:
   const firstCat = categories.find((c) => c.slug === tool.categories[0]);
   const initial = tool.name.charAt(0).toUpperCase();
   const prefix = locale === "en" ? "/en" : "";
+  const toolRoute = locale === "en" ? "tool" : "herramienta";
   const localized = getLocalizedTool(tool, locale);
 
   return (
     <Link
-      href={`${prefix}/herramienta/${tool.slug}`}
+      href={`${prefix}/${toolRoute}/${tool.slug}`}
       className="group relative block border border-border rounded bg-bg-card hover:border-accent hover:shadow-[0_0_12px_rgba(88,166,255,0.1)] transition-all"
     >
       {/* Compare button */}

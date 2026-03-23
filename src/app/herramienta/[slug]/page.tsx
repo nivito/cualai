@@ -33,7 +33,7 @@ export async function generateMetadata({
       canonical: `https://cual.ai/herramienta/${slug}`,
       languages: {
         es: `https://cual.ai/herramienta/${slug}`,
-        en: `https://cual.ai/en/herramienta/${slug}`,
+        en: `https://cual.ai/en/tool/${slug}`,
       },
     },
     openGraph: {

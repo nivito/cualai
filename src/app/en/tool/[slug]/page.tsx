@@ -33,16 +33,16 @@ export async function generateMetadata({
     title: t.tool.meta_title(tool.name),
     description: t.tool.meta_desc(loc.description),
     alternates: {
-      canonical: `https://cual.ai/en/herramienta/${slug}`,
+      canonical: `https://cual.ai/en/tool/${slug}`,
       languages: {
         es: `https://cual.ai/herramienta/${slug}`,
-        en: `https://cual.ai/en/herramienta/${slug}`,
+        en: `https://cual.ai/en/tool/${slug}`,
       },
     },
     openGraph: {
       title: `${tool.name} — cual.ai`,
       description: loc.description,
-      url: `https://cual.ai/en/herramienta/${slug}`,
+      url: `https://cual.ai/en/tool/${slug}`,
       type: "website",
       siteName: "cual.ai",
     },
@@ -137,7 +137,7 @@ export default async function HerramientaPageEn({
         "@type": "ListItem",
         position: 2,
         name: tool.name,
-        item: `https://cual.ai/en/herramienta/${slug}`,
+        item: `https://cual.ai/en/tool/${slug}`,
       },
     ],
   };

@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `https://cual.ai/noticias/${slug}`,
       languages: {
         es: `https://cual.ai/noticias/${slug}`,
-        en: `https://cual.ai/en/noticias/${slug}`,
+        en: `https://cual.ai/en/news/${slug}`,
       },
     },
   }

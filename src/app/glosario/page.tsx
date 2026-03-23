@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Explicamos en español claro (y con algo de humor) los términos más usados en IA y tecnología: LLM, token, GPU, VPS, API, OpenAI, Anthropic, Perplexity y más. Sin tecnicismos innecesarios.",
   alternates: {
     canonical: "https://cual.ai/glosario",
-    languages: { es: "https://cual.ai/glosario", en: "https://cual.ai/en/glosario" },
+    languages: { es: "https://cual.ai/glosario", en: "https://cual.ai/en/glossary" },
   },
   openGraph: {
     title: "Glosario de AI y Tecnología | cual.ai",

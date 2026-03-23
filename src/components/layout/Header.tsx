@@ -14,6 +14,8 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
   const t = getDict(locale);
 
   const prefix = locale === "en" ? "/en" : "";
+  const newsRoute = locale === "en" ? "/en/news" : "/noticias";
+  const glossaryRoute = locale === "en" ? "/en/glossary" : "/glosario";
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,9 +28,20 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
 
   function toggleLocale() {
     if (isEn) {
-      router.push(pathname.replace(/^\/en/, "") || "/");
+      // EN → ES: strip /en prefix and map route names
+      const esPath = pathname
+        .replace(/^\/en/, "")
+        .replace(/^\/news(\/|$|(?=\?))/, "/noticias$1")
+        .replace(/^\/tool(\/|$|(?=\?))/, "/herramienta$1")
+        .replace(/^\/glossary(\/|$|(?=\?))/, "/glosario$1");
+      router.push(esPath || "/");
     } else {
-      router.push(`/en${pathname}`);
+      // ES → EN: map route names and add /en prefix
+      const enPath = pathname
+        .replace(/^\/noticias(\/|$|(?=\?))/, "/news$1")
+        .replace(/^\/herramienta(\/|$|(?=\?))/, "/tool$1")
+        .replace(/^\/glosario(\/|$|(?=\?))/, "/glossary$1");
+      router.push(`/en${enPath}`);
     }
   }
 
@@ -61,7 +74,7 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
 
         {/* Nav links */}
         <Link
-          href={prefix + "/noticias"}
+          href={newsRoute}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
           {t.header.nav_news}
@@ -79,7 +92,7 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
           {t.header.nav_models}
         </Link>
         <Link
-          href={prefix + "/glosario"}
+          href={glossaryRoute}
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
           {t.header.nav_glossary}

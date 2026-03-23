@@ -61,7 +61,7 @@ export default async function HomeEn() {
                 {t.home.latest_news}
               </h2>
               <a
-                href="/en/noticias"
+                href="/en/news"
                 className="text-[10px] text-text-muted hover:text-accent transition-colors"
               >
                 {t.home.see_all_news}

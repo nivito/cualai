@@ -11,14 +11,14 @@ export const metadata: Metadata = {
   description:
     "We explain in plain English the most common AI and tech terms: LLM, token, GPU, VPS, API, OpenAI, Anthropic, Perplexity and more. No unnecessary jargon.",
   alternates: {
-    canonical: "https://cual.ai/en/glosario",
-    languages: { es: "https://cual.ai/glosario", en: "https://cual.ai/en/glosario" },
+    canonical: "https://cual.ai/en/glossary",
+    languages: { es: "https://cual.ai/glosario", en: "https://cual.ai/en/glossary" },
   },
   openGraph: {
     title: "AI & Technology Glossary | cual.ai",
     description:
       "AI and tech terms everyone uses and nobody explains — defined in plain language for normal humans.",
-    url: "https://cual.ai/en/glosario",
+    url: "https://cual.ai/en/glossary",
   },
 };
 

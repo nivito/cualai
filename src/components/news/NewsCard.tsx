@@ -4,7 +4,7 @@ import { getDict, type Locale } from "@/i18n"
 
 export default function NewsCard({ item, locale = "es" }: { item: NewsItem; locale?: Locale }) {
   const t = getDict(locale)
-  const prefix = locale === "en" ? "/en" : ""
+  const newsBase = locale === "en" ? "/en/news" : "/noticias"
 
   const date = new Date(item.date).toLocaleDateString(locale === "en" ? "en-US" : "es-LA", {
     year: "numeric",
@@ -14,7 +14,7 @@ export default function NewsCard({ item, locale = "es" }: { item: NewsItem; loca
 
   return (
     <Link
-      href={`${prefix}/noticias/${item.slug}`}
+      href={`${newsBase}/${item.slug}`}
       className="group block border border-border rounded bg-bg-card hover:border-accent hover:shadow-[0_0_12px_rgba(88,166,255,0.1)] transition-all"
     >
       <div className="p-4">

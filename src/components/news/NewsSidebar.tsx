@@ -18,7 +18,9 @@ export default function NewsSidebar({
   const t = getDict(locale)
 
   const prefix = locale === "en" ? "/en" : ""
+  const newsBase = locale === "en" ? "/en/news" : "/noticias"
   const cleanPath = locale === "en" ? pathname.replace(/^\/en/, "") || "/" : pathname
+  const newsClean = locale === "en" ? "/news" : "/noticias"
 
   return (
     <>
@@ -65,10 +67,10 @@ export default function NewsSidebar({
 
           {/* All news */}
           <Link
-            href={prefix + "/noticias"}
+            href={newsBase}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
-              cleanPath === "/noticias" && !activeCategory
+              cleanPath === newsClean && !activeCategory
                 ? "bg-bg-hover text-accent border-l-2 border-accent"
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
@@ -90,7 +92,7 @@ export default function NewsSidebar({
             return (
               <Link
                 key={cat.slug}
-                href={`${prefix}/noticias?categoria=${cat.slug}`}
+                href={`${newsBase}?categoria=${cat.slug}`}
                 onClick={() => setOpen(false)}
                 className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
                   isActive

@@ -12,8 +12,8 @@ export const metadata = {
   description:
     "What's happening in artificial intelligence, explained for everyone. News without jargon, with real-world examples.",
   alternates: {
-    canonical: "https://cual.ai/en/noticias",
-    languages: { es: "https://cual.ai/noticias", en: "https://cual.ai/en/noticias" },
+    canonical: "https://cual.ai/en/news",
+    languages: { es: "https://cual.ai/noticias", en: "https://cual.ai/en/news" },
   },
 }
 
@@ -106,7 +106,7 @@ export default async function NoticiasPageEn({
                   {newsCategories.find((c) => c.slug === activeCategory)?.label}
                 </span>
                 <a
-                  href="/en/noticias"
+                  href="/en/news"
                   className="text-[10px] text-text-muted hover:text-accent transition-colors ml-2"
                 >
                   {t.news.clear_filter}
