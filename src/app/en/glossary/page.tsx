@@ -31,7 +31,7 @@ export default function GlosarioPageEn() {
     <div className="min-h-screen flex flex-col">
       <Header locale="en" />
       <div className="flex flex-1">
-        <GlosarioSidebar />
+        <GlosarioSidebar locale="en" />
         <main className="flex-1 min-w-0">
           <div className="max-w-3xl mx-auto px-4 py-10">
             {/* Header */}
@@ -118,14 +118,14 @@ export default function GlosarioPageEn() {
                         <span className="text-2xl shrink-0">{term.emoji}</span>
                         <div>
                           <h2 className="text-sm font-bold text-text">{term.term}</h2>
-                          <p className="text-xs text-accent mt-0.5">{term.short}</p>
+                          <p className="text-xs text-accent mt-0.5">{term.shortEn ?? term.short}</p>
                         </div>
                       </div>
-                      <p className="text-xs text-text leading-relaxed mb-3">{term.long}</p>
+                      <p className="text-xs text-text leading-relaxed mb-3">{term.longEn ?? term.long}</p>
                       <div className="bg-bg rounded p-3 border border-border">
                         <p className="text-xs text-text-muted leading-relaxed">
                           <span className="text-text-muted font-medium">{t.glossary.example}</span>{" "}
-                          {term.example}
+                          {term.exampleEn ?? term.example}
                         </p>
                       </div>
                     </div>

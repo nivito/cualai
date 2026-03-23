@@ -5,7 +5,7 @@ import { useState } from "react"
 
 const LETTERS = ["A", "B", "C", "E", "F", "G", "H", "I", "L", "M", "O", "P", "R", "S", "T", "V"]
 
-export default function GlosarioSidebar({ activeLetter }: { activeLetter?: string }) {
+export default function GlosarioSidebar({ activeLetter, locale = "es" }: { activeLetter?: string; locale?: "es" | "en" }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -37,23 +37,23 @@ export default function GlosarioSidebar({ activeLetter }: { activeLetter?: strin
           {/* Back */}
           <div className="px-4 mb-3">
             <Link
-              href="/"
+              href={locale === "en" ? "/en" : "/"}
               onClick={() => setOpen(false)}
               className="text-[10px] text-text-muted hover:text-accent transition-colors"
             >
-              ← Volver a herramientas
+              {locale === "en" ? "← Back to tools" : "← Volver a herramientas"}
             </Link>
           </div>
 
           <div className="px-4 mb-2">
             <span className="text-[10px] uppercase tracking-widest text-text-muted">
-              Glosario — A–Z
+              {locale === "en" ? "Glossary — A–Z" : "Glosario — A–Z"}
             </span>
           </div>
 
           {/* All terms */}
           <Link
-            href="/glosario"
+            href={locale === "en" ? "/en/glossary" : "/glosario"}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
               !activeLetter
@@ -62,14 +62,14 @@ export default function GlosarioSidebar({ activeLetter }: { activeLetter?: strin
             }`}
           >
             <span>📖</span>
-            <span className="flex-1 truncate">Todos los términos</span>
+            <span className="flex-1 truncate">{locale === "en" ? "All terms" : "Todos los términos"}</span>
           </Link>
 
           {/* Letter links */}
           {LETTERS.map((letter) => (
             <a
               key={letter}
-              href={`/glosario#letra-${letter}`}
+              href={`${locale === "en" ? "/en/glossary" : "/glosario"}#letra-${letter}`}
               onClick={() => setOpen(false)}
               className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
                 activeLetter === letter
@@ -85,24 +85,24 @@ export default function GlosarioSidebar({ activeLetter }: { activeLetter?: strin
           {/* Separator */}
           <div className="border-t border-border mt-3 pt-3 px-4 mb-2">
             <span className="text-[10px] uppercase tracking-widest text-text-muted">
-              Más secciones
+              {locale === "en" ? "More sections" : "Más secciones"}
             </span>
           </div>
           <Link
-            href="/modelos"
+            href={locale === "en" ? "/en/modelos" : "/modelos"}
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-4 py-1.5 text-xs text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent transition-colors"
           >
             <span>🧠</span>
-            <span className="flex-1 truncate">Modelos AI</span>
+            <span className="flex-1 truncate">{locale === "en" ? "AI Models" : "Modelos AI"}</span>
           </Link>
           <Link
-            href="/"
+            href={locale === "en" ? "/en" : "/"}
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-4 py-1.5 text-xs text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent transition-colors"
           >
             <span>🔍</span>
-            <span className="flex-1 truncate">Explorar herramientas</span>
+            <span className="flex-1 truncate">{locale === "en" ? "Explore tools" : "Explorar herramientas"}</span>
           </Link>
         </nav>
       </aside>

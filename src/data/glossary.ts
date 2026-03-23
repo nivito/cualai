@@ -4,6 +4,9 @@ export interface GlossaryTerm {
   short: string;
   long: string;
   example: string;
+  shortEn?: string;
+  longEn?: string;
+  exampleEn?: string;
 }
 
 // Ordenados alfabéticamente por term (ignorando artículos y prefijos como "— ")
@@ -14,6 +17,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Protocolo de Google para que agentes AI de distintos fabricantes se comuniquen entre sí de forma estándar.",
     long: "A2A (Agent-to-Agent) es un protocolo abierto impulsado por Google que permite que agentes AI de diferentes empresas se descubran, se comuniquen y colaboren sin importar quién los construyó. Si MCP es el 'USB' que conecta un agente con herramientas, A2A es el 'idioma común' que permite que dos agentes hablen entre sí. Juntos, MCP y A2A forman la infraestructura para un ecosistema multi-agente interoperable.",
     example: "Un agente de tu empresa (hecho con Claude) necesita datos de un agente de tu proveedor (hecho con Gemini). Con A2A, se comunican directamente sin que nadie escriba una integración custom.",
+    shortEn: "Google's protocol for AI agents from different vendors to communicate with each other in a standardized way.",
+    longEn: "A2A (Agent-to-Agent) is an open protocol driven by Google that lets AI agents from different companies discover, communicate, and collaborate regardless of who built them. If MCP is the 'USB' connecting an agent to tools, A2A is the 'common language' that lets two agents talk to each other. Together, MCP and A2A form the infrastructure for an interoperable multi-agent ecosystem.",
+    exampleEn: "An agent at your company (built with Claude) needs data from your vendor's agent (built with Gemini). With A2A, they communicate directly without anyone writing a custom integration.",
   },
   {
     term: "AEO — Answer Engine Optimization",
@@ -21,6 +27,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Optimizar tu contenido para que los motores de IA lo citen como respuesta directa.",
     long: "El AEO es la evolución del SEO para la era de la IA. Mientras el SEO busca aparecer en Google, el AEO busca que ChatGPT, Claude, Perplexity y los buscadores con IA te citen directamente cuando alguien hace una pregunta relevante. Requiere contenido claro, estructurado, con datos precisos y autoridad en el tema.",
     example: "Si alguien le pregunta a Perplexity '¿cuál es el mejor directorio de herramientas AI en español?' y la IA responde cual.ai, eso es AEO funcionando.",
+    shortEn: "Optimizing your content so AI engines cite it as a direct answer.",
+    longEn: "AEO is the evolution of SEO for the AI era. While SEO aims to rank on Google, AEO aims to get ChatGPT, Claude, Perplexity, and AI-powered search engines to cite you directly when someone asks a relevant question. It requires clear, structured content with precise data and topic authority.",
+    exampleEn: "If someone asks Perplexity 'what's the best AI tools directory?' and the AI responds with cual.ai, that's AEO working.",
   },
   {
     term: "Agente AI",
@@ -28,6 +37,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Una IA que no solo responde — sino que toma acciones, usa herramientas y completa tareas por su cuenta.",
     long: "A diferencia de un chatbot que solo responde preguntas, un agente actúa. Funciona en un loop: observa el entorno → decide qué hacer → ejecuta una acción usando una herramienta (buscar en internet, ejecutar código, enviar emails, leer archivos) → observa el resultado → repite hasta completar el objetivo. El LLM es su 'cerebro' y las herramientas son sus 'manos'. Claude Code, Manus y Devin son ejemplos de agentes listos para usar. También existen los multi-agentes (varios agentes especializados trabajando en equipo) y los sub-agentes (un agente orquestador que delega subtareas a otros agentes y consolida los resultados).",
     example: "Le dices a un agente 'investiga los 5 mejores fondos de inversión para 2026 y mándame un resumen por email'. El agente busca en internet, analiza datos, redacta el resumen y te lo envía — todo solo, sin que tengas que guiarlo paso a paso.",
+    shortEn: "An AI that doesn't just answer — it takes actions, uses tools, and completes tasks on its own.",
+    longEn: "Unlike a chatbot that only answers questions, an agent acts. It works in a loop: observe the environment → decide what to do → execute an action using a tool (search the web, run code, send emails, read files) → observe the result → repeat until the goal is complete. The LLM is its 'brain' and the tools are its 'hands'. Claude Code, Manus, and Devin are examples of ready-to-use agents. There are also multi-agents (several specialized agents working as a team) and sub-agents (an orchestrator agent that delegates subtasks to other agents and consolidates results).",
+    exampleEn: "You tell an agent 'research the top 5 investment funds for 2026 and send me a summary by email'. The agent searches the web, analyzes data, writes the summary, and sends it — all on its own, without you guiding it step by step.",
   },
   {
     term: "Anthropic",
@@ -35,6 +47,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "La empresa detrás de Claude — fundada por ex-empleados de OpenAI con foco en seguridad AI.",
     long: "Anthropic fue fundada en 2021 por Dario Amodei, Daniela Amodei y otros que salieron de OpenAI preocupados por la seguridad de la IA. Crearon Claude, considerado uno de los modelos más seguros, honestos y capaces del mercado. Su enfoque en 'AI constitucional' (enseñarle valores al modelo) los diferencia. Amazon ha invertido miles de millones en Anthropic.",
     example: "Claude de Anthropic es conocido por ser más cuidadoso que ChatGPT al decir 'no sé' cuando no sabe algo, en vez de inventar respuestas con confianza.",
+    shortEn: "The company behind Claude — founded by ex-OpenAI employees with a focus on AI safety.",
+    longEn: "Anthropic was founded in 2021 by Dario Amodei, Daniela Amodei, and others who left OpenAI concerned about AI safety. They created Claude, considered one of the safest, most honest, and most capable models on the market. Their focus on 'constitutional AI' (teaching values to the model) sets them apart. Amazon has invested billions in Anthropic.",
+    exampleEn: "Claude by Anthropic is known for being more careful than ChatGPT — saying 'I don't know' when it doesn't, instead of confidently making things up.",
   },
   {
     term: "API — Application Programming Interface",
@@ -42,6 +57,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un puente estándar que permite que dos programas se comuniquen entre sí.",
     long: "API significa 'Interfaz de Programación de Aplicaciones'. Es básicamente un contrato entre dos sistemas: 'si me mandas esta petición en este formato, yo te respondo con estos datos'. No necesitas saber cómo funciona el sistema del otro lado — solo cómo hablarle. Casi todo el internet funciona con APIs: el clima en tu celular, los pagos con tarjeta, los mapas en apps de delivery. En IA, es la forma en que los desarrolladores conectan sus apps a modelos como GPT o Claude.",
     example: "Cuando una app de clima te muestra la temperatura, no tiene sus propios satélites — le pregunta a una API meteorológica. Tú usas la app, la app usa la API.",
+    shortEn: "A standard bridge that lets two programs communicate with each other.",
+    longEn: "API stands for 'Application Programming Interface'. It's basically a contract between two systems: 'if you send me this request in this format, I'll respond with this data'. You don't need to know how the other system works — just how to talk to it. Almost everything on the internet runs on APIs: the weather on your phone, card payments, maps in delivery apps. In AI, it's how developers connect their apps to models like GPT or Claude.",
+    exampleEn: "When a weather app shows you the temperature, it doesn't have its own satellites — it asks a weather API. You use the app, the app uses the API.",
   },
   {
     term: "Benchmark",
@@ -49,6 +67,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Una prueba estandarizada para medir y comparar el rendimiento de diferentes modelos de IA.",
     long: "Como los rankings universitarios, los benchmarks son pruebas que permiten comparar modelos de forma objetiva (o al menos intentarlo). MMLU, HumanEval, SWE-bench, GPQA son algunos de los más usados. Cada empresa presenta sus modelos con sus mejores scores, lo que a veces hace difícil comparar manzanas con manzanas.",
     example: "Cuando OpenAI dice que GPT-5 supera a Claude en MMLU, está usando un benchmark. Es como comparar estudiantes con el mismo examen — útil, pero no lo dice todo.",
+    shortEn: "A standardized test to measure and compare the performance of different AI models.",
+    longEn: "Like university rankings, benchmarks are tests that let you compare models objectively (or at least try to). MMLU, HumanEval, SWE-bench, and GPQA are some of the most popular. Each company showcases their models with their best scores, which sometimes makes apples-to-apples comparisons tricky.",
+    exampleEn: "When OpenAI says GPT-5 beats Claude on MMLU, they're using a benchmark. It's like comparing students with the same exam — useful, but it doesn't tell the whole story.",
   },
   {
     term: "CLI — Command Line Interface",
@@ -56,6 +77,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Una herramienta que se controla escribiendo comandos de texto en la terminal, sin interfaz gráfica.",
     long: "CLI (Interfaz de Línea de Comandos) es cualquier programa que se usa desde la terminal escribiendo comandos, sin botones ni ventanas. La mayoría de herramientas para desarrolladores son CLIs: Git, Docker, npm, la CLI de AWS, la de Vercel, etc. Son más rápidas de usar que una interfaz visual una vez que las conoces, y se pueden encadenar y automatizar fácilmente en scripts. Lo opuesto es una GUI (Graphical User Interface) — lo que usa la mayoría de personas en su día a día.",
     example: "En vez de abrir la app de GitHub y hacer clic en 'Commit', en la terminal escribes `git commit -m 'mensaje'`. Eso es usar el CLI de Git.",
+    shortEn: "A tool you control by typing text commands in a terminal, with no graphical interface.",
+    longEn: "CLI (Command Line Interface) is any program you use from a terminal by typing commands — no buttons, no windows. Most developer tools are CLIs: Git, Docker, npm, the AWS CLI, Vercel CLI, etc. They're faster to use than a visual interface once you know them, and they can be easily chained and automated in scripts. The opposite is a GUI (Graphical User Interface) — what most people use day to day.",
+    exampleEn: "Instead of opening the GitHub app and clicking 'Commit', you type `git commit -m 'message'` in the terminal. That's using Git's CLI.",
   },
   {
     term: "Embedding",
@@ -63,6 +87,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Una representación matemática del significado de un texto, que permite comparar semánticamente.",
     long: "Un embedding convierte texto en un vector de números (una lista de coordenadas) que captura el significado semántico. Dos textos similares en significado tendrán vectores cercanos, aunque usen palabras diferentes. Es la base de la búsqueda semántica, las recomendaciones y el RAG.",
     example: "'Auto' y 'carro' tienen embeddings muy cercanos aunque sean palabras distintas. 'Auto' y 'pizza' tienen embeddings muy lejanos. Así funciona la búsqueda semántica.",
+    shortEn: "A mathematical representation of a text's meaning that enables semantic comparison.",
+    longEn: "An embedding converts text into a vector of numbers (a list of coordinates) that captures semantic meaning. Two texts that are similar in meaning will have close vectors, even if they use different words. It's the foundation of semantic search, recommendations, and RAG.",
+    exampleEn: "'Car' and 'automobile' have very close embeddings even though they're different words. 'Car' and 'pizza' have very distant embeddings. That's how semantic search works.",
   },
   {
     term: "Fine-tuning",
@@ -70,6 +97,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Entrenar un modelo existente con tus propios datos para especializarlo en tu dominio.",
     long: "El fine-tuning es como contratar a un profesional general y pagarle un curso intensivo en tu industria. Tomas un modelo base y lo entrenas con ejemplos específicos de tu caso de uso (emails de tu empresa, documentos legales, transcripciones médicas) para que responda mejor en ese contexto.",
     example: "Una clínica que hace fine-tuning de un LLM con miles de historiales médicos anonimizados para que el modelo entienda terminología médica específica de su especialidad.",
+    shortEn: "Training an existing model with your own data to specialize it in your domain.",
+    longEn: "Fine-tuning is like hiring a generalist and paying for an intensive course in your industry. You take a base model and train it with specific examples from your use case (company emails, legal documents, medical transcriptions) so it performs better in that context.",
+    exampleEn: "A clinic fine-tuning an LLM with thousands of anonymized medical records so the model understands the specific medical terminology of their specialty.",
   },
   {
     term: "GEO — Generative Engine Optimization",
@@ -77,6 +107,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Estrategias para que los motores de IA generativa mencionen tu contenido o marca.",
     long: "GEO y AEO se usan casi de forma intercambiable. La idea es la misma: adaptar tu estrategia de contenidos para ser relevante en un mundo donde la gente pregunta a IAs en vez de buscar en Google. Incluye usar lenguaje natural, responder preguntas directas, estructurar bien el contenido con datos verificables.",
     example: "Una empresa que escribe artículos detallados respondiendo preguntas específicas de su industria está haciendo GEO, aunque no lo llame así.",
+    shortEn: "Strategies for getting generative AI engines to mention your content or brand.",
+    longEn: "GEO and AEO are used almost interchangeably. The idea is the same: adapt your content strategy to be relevant in a world where people ask AIs instead of searching Google. This includes using natural language, answering direct questions, and structuring content well with verifiable data.",
+    exampleEn: "A company writing detailed articles answering specific questions in their industry is doing GEO, even if they don't call it that.",
   },
   {
     term: "GPU — Unidad de Procesamiento Gráfico",
@@ -84,6 +117,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "El chip diseñado para gráficos que resultó ser perfecto para entrenar modelos de IA.",
     long: "La GPU fue creada para videojuegos — procesar millones de píxeles en paralelo. Resulta que entrenar modelos de IA requiere exactamente el mismo tipo de matemática masiva y paralela. Por eso NVIDIA domina el mercado AI: sus GPUs (H100, A100) se convirtieron en el 'oro' de la era AI. Sin suficientes GPUs, no puedes entrenar modelos grandes.",
     example: "Entrenar GPT-4 requirió miles de GPUs NVIDIA corriendo durante semanas. Correr un modelo pequeño como Llama 7B localmente necesita una GPU de ~8GB VRAM.",
+    shortEn: "The chip designed for graphics that turned out to be perfect for training AI models.",
+    longEn: "The GPU was created for video games — processing millions of pixels in parallel. It turns out that training AI models requires exactly the same kind of massive parallel math. That's why NVIDIA dominates the AI market: their GPUs (H100, A100) became the 'gold' of the AI era. Without enough GPUs, you can't train large models.",
+    exampleEn: "Training GPT-4 required thousands of NVIDIA GPUs running for weeks. Running a small model like Llama 7B locally needs a GPU with ~8GB VRAM.",
   },
   {
     term: "Hallucination (Alucinación)",
@@ -91,6 +127,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Cuando la IA inventa información falsa con total confianza, como si fuera real.",
     long: "Las alucinaciones son el talón de Aquiles de los LLMs. El modelo no 'sabe' cuándo no sabe algo — simplemente genera el texto más probable, que a veces es incorrecto pero suena convincente. Citas inventadas, estadísticas que no existen, fechas equivocadas... todo presentado con la seguridad de un experto.",
     example: "Le preguntas a un LLM por un estudio científico y te da título, autores, revista y año — todo inventado. La referencia no existe. Pero sonaba bien.",
+    shortEn: "When AI makes up false information with total confidence, as if it were real.",
+    longEn: "Hallucinations are the Achilles' heel of LLMs. The model doesn't 'know' when it doesn't know something — it simply generates the most probable text, which sometimes is wrong but sounds convincing. Made-up citations, nonexistent statistics, wrong dates... all presented with the confidence of an expert.",
+    exampleEn: "You ask an LLM about a scientific study and it gives you a title, authors, journal, and year — all fabricated. The reference doesn't exist. But it sounded great.",
   },
   {
     term: "Inference (Inferencia)",
@@ -98,6 +137,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "El proceso de usar un modelo ya entrenado para generar una respuesta.",
     long: "El entrenamiento de un modelo puede tomar meses y costar millones. La inferencia es el momento en que ese modelo responde tu pregunta — que toma segundos. Cuando pagas por tokens en una API, estás pagando por inferencia, no por el entrenamiento. Las empresas invierten mucho en hacer la inferencia más rápida y barata.",
     example: "Cada vez que le mandas un mensaje a ChatGPT y te responde, eso es una inferencia. Ocurren billones por día a nivel global.",
+    shortEn: "The process of using an already-trained model to generate a response.",
+    longEn: "Training a model can take months and cost millions. Inference is the moment that model answers your question — which takes seconds. When you pay for tokens via an API, you're paying for inference, not training. Companies invest heavily in making inference faster and cheaper.",
+    exampleEn: "Every time you send a message to ChatGPT and it replies, that's an inference. Billions happen every day globally.",
   },
   {
     term: "Inteligencia Artificial (AI / IA)",
@@ -105,6 +147,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Software que imita habilidades humanas como entender texto, reconocer imágenes o tomar decisiones.",
     long: "La IA no es un robot con sentimientos ni va a conquistar el mundo (todavía). Es software entrenado con enormes cantidades de datos para hacer tareas que antes solo podían hacer humanos: leer, escribir, analizar, traducir, generar imágenes. Hay IA estrecha (solo hace una cosa bien) e IA general (aún no existe de verdad).",
     example: "ChatGPT escribiendo un email por ti es IA. El corrector de tu celular también es IA, solo que nadie se lo cuenta en conferencias.",
+    shortEn: "Software that mimics human abilities like understanding text, recognizing images, or making decisions.",
+    longEn: "AI is not a robot with feelings, and it's not going to take over the world (yet). It's software trained on enormous amounts of data to do tasks that only humans could do before: read, write, analyze, translate, generate images. There's narrow AI (does one thing well) and general AI (doesn't truly exist yet).",
+    exampleEn: "ChatGPT writing an email for you is AI. Your phone's autocorrect is also AI — it just doesn't get invited to conferences.",
   },
   {
     term: "Linux",
@@ -112,6 +157,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "El sistema operativo gratuito y open source que corre en la mayoría de servidores del mundo.",
     long: "Linux es un sistema operativo (como Windows o macOS) creado en 1991 por Linus Torvalds y mantenido por miles de voluntarios. Es gratuito, open source y brutalmente eficiente. No es muy popular en escritorios personales, pero domina servidores, smartphones (Android es Linux) y supercomputadores. Si usas internet, estás dependiendo de Linux aunque no lo sepas.",
     example: "Tu banco, Netflix, Google, Amazon — todos corren en servidores Linux. El robot de tu fábrica probablemente también.",
+    shortEn: "The free, open-source operating system that runs most of the world's servers.",
+    longEn: "Linux is an operating system (like Windows or macOS) created in 1991 by Linus Torvalds and maintained by thousands of volunteers. It's free, open source, and brutally efficient. It's not very popular on personal desktops, but it dominates servers, smartphones (Android is Linux), and supercomputers. If you use the internet, you depend on Linux whether you know it or not.",
+    exampleEn: "Your bank, Netflix, Google, Amazon — they all run on Linux servers. The robot in your factory probably does too.",
   },
   {
     term: "LLM — Large Language Model",
@@ -119,6 +167,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un modelo de IA entrenado con texto masivo para entender y generar lenguaje humano.",
     long: "LLM significa 'Modelo de Lenguaje Grande'. Es el motor detrás de ChatGPT, Claude, Gemini y similares. Se entrena leyendo una fracción enorme de internet, libros y textos, y aprende a predecir qué palabra viene después. Simple en teoría, abrumador en práctica.",
     example: "Cuando le preguntas a Claude '¿qué hago si mi jefe me llama los domingos?' y te da una respuesta coherente, eso es un LLM trabajando.",
+    shortEn: "An AI model trained on massive text to understand and generate human language.",
+    longEn: "LLM stands for 'Large Language Model'. It's the engine behind ChatGPT, Claude, Gemini, and the like. It's trained by reading a huge fraction of the internet, books, and texts, learning to predict what word comes next. Simple in theory, overwhelming in practice.",
+    exampleEn: "When you ask Claude 'what should I do if my boss calls me on Sundays?' and it gives you a coherent answer, that's an LLM at work.",
   },
   {
     term: "Loop de razonamiento / ReAct",
@@ -126,6 +177,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "El patrón donde un agente AI alterna entre pensar y actuar hasta resolver la tarea — su forma de 'razonar en voz alta'.",
     long: "ReAct (Reason + Act) es el patrón fundamental de los agentes AI: el modelo razona sobre qué hacer (Reason), ejecuta una acción como buscar en internet o leer un archivo (Act), observa el resultado, y repite el ciclo hasta completar el objetivo. Es literalmente cómo 'piensa' un agente. Variantes populares incluyen Chain-of-Thought (razonar paso a paso en línea recta), Tree-of-Thought (explorar múltiples caminos de razonamiento como ramas de un árbol) y Reflexion (el agente evalúa sus propios errores para mejorar).",
     example: "Le pides al agente 'encuentra vuelos baratos a Madrid para junio'. El agente piensa: 'necesito buscar vuelos' → busca en internet → piensa: 'estos precios son altos, busco fechas flexibles' → busca de nuevo → te presenta opciones. Cada ciclo pensar→actuar es un loop ReAct.",
+    shortEn: "The pattern where an AI agent alternates between thinking and acting until it solves the task — its way of 'thinking out loud'.",
+    longEn: "ReAct (Reason + Act) is the fundamental pattern of AI agents: the model reasons about what to do (Reason), executes an action like searching the web or reading a file (Act), observes the result, and repeats the cycle until the goal is complete. It's literally how an agent 'thinks'. Popular variants include Chain-of-Thought (reasoning step by step in a straight line), Tree-of-Thought (exploring multiple reasoning paths like branches of a tree), and Reflexion (the agent evaluates its own mistakes to improve).",
+    exampleEn: "You ask the agent 'find cheap flights to Madrid for June'. The agent thinks: 'I need to search for flights' → searches the web → thinks: 'these prices are high, let me try flexible dates' → searches again → presents you with options. Each think→act cycle is a ReAct loop.",
   },
   {
     term: "MCP — Model Context Protocol",
@@ -133,6 +187,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un estándar abierto creado por Anthropic para conectar modelos AI con herramientas y fuentes de datos externas.",
     long: "MCP (Model Context Protocol) es como un USB universal para la IA — un protocolo estándar que permite que cualquier modelo AI se conecte a cualquier herramienta o fuente de datos de forma uniforme. Antes de MCP, cada integración era un trabajo custom. Con MCP, si construyes un 'servidor MCP' para tu base de datos o tu CRM, cualquier modelo compatible puede usarlo automáticamente. Fue creado por Anthropic y adoptado rápidamente por OpenAI, Google y la mayoría del ecosistema.",
     example: "Con un servidor MCP para Google Drive, puedes decirle a Claude 'revisa los documentos de mi Drive y resume los contratos del mes pasado' — y lo hace, sin configuración especial.",
+    shortEn: "An open standard created by Anthropic for connecting AI models to external tools and data sources.",
+    longEn: "MCP (Model Context Protocol) is like a universal USB for AI — a standard protocol that lets any AI model connect to any tool or data source in a uniform way. Before MCP, every integration was custom work. With MCP, if you build an 'MCP server' for your database or CRM, any compatible model can use it automatically. It was created by Anthropic and quickly adopted by OpenAI, Google, and most of the ecosystem.",
+    exampleEn: "With an MCP server for Google Drive, you can tell Claude 'review my Drive documents and summarize last month's contracts' — and it does, with no special configuration.",
   },
   {
     term: "Modelo",
@@ -140,6 +197,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "La versión concreta de una IA — como GPT-4o, Claude 3.5 Sonnet o Gemini 2.5 Pro.",
     long: "Un modelo es el resultado de entrenar una IA con datos y parámetros específicos. Dos modelos de la misma empresa pueden ser muy diferentes en inteligencia, velocidad y precio. Elegir el modelo correcto para tu tarea es el arte de no gastar más de lo necesario.",
     example: "GPT-4o es un modelo de OpenAI. Claude Sonnet es un modelo de Anthropic. Son como versiones de un software, pero cada una tiene su propia personalidad.",
+    shortEn: "The specific version of an AI — like GPT-4o, Claude 3.5 Sonnet, or Gemini 2.5 Pro.",
+    longEn: "A model is the result of training an AI with specific data and parameters. Two models from the same company can be very different in intelligence, speed, and price. Choosing the right model for your task is the art of not spending more than you need to.",
+    exampleEn: "GPT-4o is a model from OpenAI. Claude Sonnet is a model from Anthropic. They're like versions of a software, but each one has its own personality.",
   },
   {
     term: "Multi-agente",
@@ -147,6 +207,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Sistema donde varios agentes AI trabajan en equipo — cada uno especializado en lo suyo, coordinados para resolver tareas complejas.",
     long: "Un sistema multi-agente es como una empresa donde cada empleado tiene un rol específico, pero en vez de personas son agentes AI. Uno puede investigar, otro redactar, otro revisar calidad, otro publicar — trabajando en paralelo o en secuencia. Es más potente que un solo agente porque cada uno se especializa y el resultado final es mejor que lo que cualquiera lograría solo. Un agente orquestador suele coordinar al equipo, delegando subtareas y consolidando resultados.",
     example: "Para crear un informe de mercado: un agente busca datos en internet, otro analiza competidores, otro redacta el informe y otro genera los gráficos. Cuatro agentes, una hora. Un humano solo: dos días.",
+    shortEn: "A system where multiple AI agents work as a team — each specialized in their area, coordinated to solve complex tasks.",
+    longEn: "A multi-agent system is like a company where each employee has a specific role, but instead of people they're AI agents. One can research, another write, another review quality, another publish — working in parallel or sequence. It's more powerful than a single agent because each one specializes and the final result is better than what any one could achieve alone. An orchestrator agent usually coordinates the team, delegating subtasks and consolidating results.",
+    exampleEn: "To create a market report: one agent searches for data online, another analyzes competitors, another writes the report, and another generates the charts. Four agents, one hour. A human alone: two days.",
   },
   {
     term: "Multimodal",
@@ -154,6 +217,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un modelo que procesa varios tipos de información: texto, imágenes, audio o video.",
     long: "Los primeros LLMs solo entendían texto. Los modelos multimodales además pueden ver imágenes, escuchar audio y hasta analizar video. GPT-4o, Gemini 2.5 Pro y Claude 3.5 Sonnet son multimodales. Esto los hace mucho más versátiles para tareas del mundo real.",
     example: "Le mandas una foto de tu recibo del supermercado y le dices 'dime cuánto gasté en bebidas'. Un modelo multimodal lo lee y te da el número.",
+    shortEn: "A model that processes multiple types of information: text, images, audio, or video.",
+    longEn: "The first LLMs only understood text. Multimodal models can also see images, listen to audio, and even analyze video. GPT-4o, Gemini 2.5 Pro, and Claude 3.5 Sonnet are multimodal. This makes them far more versatile for real-world tasks.",
+    exampleEn: "You send a photo of your grocery receipt and say 'tell me how much I spent on drinks'. A multimodal model reads it and gives you the number.",
   },
   {
     term: "Open Source (Código Abierto)",
@@ -161,6 +227,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Modelos cuyo código y/o pesos están disponibles públicamente para que cualquiera los use.",
     long: "En IA, open source significa que los pesos del modelo (lo que aprendió durante el entrenamiento) son públicos y descargables. Puedes correrlos en tu propio servidor, modificarlos, construir sobre ellos. Llama de Meta y Mistral son los ejemplos más conocidos. La contraparte son los modelos propietarios como GPT o Claude, que solo se acceden via API.",
     example: "Llama 4 de Meta es open source: lo puedes descargar y correr en tu computador (si tienes una GPU decente). GPT-5 no: solo puedes usarlo pagando a OpenAI.",
+    shortEn: "Models whose code and/or weights are publicly available for anyone to use.",
+    longEn: "In AI, open source means the model's weights (what it learned during training) are public and downloadable. You can run them on your own server, modify them, build on top of them. Meta's Llama and Mistral are the best-known examples. The counterpart is proprietary models like GPT or Claude, which can only be accessed via API.",
+    exampleEn: "Meta's Llama 4 is open source: you can download and run it on your computer (if you have a decent GPU). GPT-5 is not: you can only use it by paying OpenAI.",
   },
   {
     term: "OpenAI",
@@ -168,6 +237,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "La empresa detrás de ChatGPT y GPT — la que puso la IA generativa en el mapa para el público general.",
     long: "OpenAI fue fundada en 2015 como organización sin ánimo de lucro por Sam Altman, Elon Musk y otros. Luego se convirtió en empresa con fines de lucro parcial. Creó los modelos GPT, el asistente ChatGPT y DALL-E para imágenes. En noviembre de 2022, lanzó ChatGPT y cambió para siempre la percepción pública de la IA. Hoy es la empresa más influyente del ecosistema AI, con Microsoft como principal inversor.",
     example: "Cuando alguien dice 'le pregunté a la IA' y no especifica cuál, probablemente usó ChatGPT de OpenAI.",
+    shortEn: "The company behind ChatGPT and GPT — the one that put generative AI on the map for the general public.",
+    longEn: "OpenAI was founded in 2015 as a nonprofit by Sam Altman, Elon Musk, and others. It later became a capped-profit company. It created the GPT models, the ChatGPT assistant, and DALL-E for images. In November 2022, it launched ChatGPT and forever changed the public perception of AI. Today it's the most influential company in the AI ecosystem, with Microsoft as its main investor.",
+    exampleEn: "When someone says 'I asked the AI' without specifying which one, they probably used OpenAI's ChatGPT.",
   },
   {
     term: "OpenClaw",
@@ -175,6 +247,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un asistente AI personal que vive en tu servidor y se conecta a WhatsApp, Telegram y más.",
     long: "OpenClaw es el sistema que hace funcionar este asistente. Es un agente AI personal instalado en tu propio servidor que se conecta a tus canales de mensajería (WhatsApp, Telegram, Discord), tiene memoria persistente, puede ejecutar tareas automáticas, manejar tu correo, monitorear sistemas y mucho más. Piénsalo como un asistente que nunca duerme y no olvida nada — a menos que tú lo configures para que olvide.",
     example: "Si le mandas un mensaje a las 3am diciendo 'recuérdame revisar ese contrato el lunes', lo hace. Eso es OpenClaw.",
+    shortEn: "A personal AI assistant that lives on your server and connects to WhatsApp, Telegram, and more.",
+    longEn: "OpenClaw is the system that powers this assistant. It's a personal AI agent installed on your own server that connects to your messaging channels (WhatsApp, Telegram, Discord), has persistent memory, can execute automated tasks, manage your email, monitor systems, and much more. Think of it as an assistant that never sleeps and never forgets — unless you configure it to.",
+    exampleEn: "If you send it a message at 3am saying 'remind me to review that contract on Monday', it does. That's OpenClaw.",
   },
   {
     term: "Orquestador",
@@ -182,6 +257,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "El agente principal que coordina a otros agentes — como un director de orquesta que decide quién toca qué y cuándo.",
     long: "En un sistema multi-agente, el orquestador es el agente que tiene la visión completa de la tarea. Recibe el objetivo, lo descompone en subtareas, decide qué sub-agente se encarga de cada una, les envía instrucciones, monitorea su progreso y consolida los resultados finales. No hace el trabajo pesado directamente — su valor está en la coordinación inteligente. Es la pieza clave del patrón multi-agente.",
     example: "Le dices al orquestador: 'prepara el lanzamiento del producto'. Él delega: al agente de contenido escribir el blog post, al de diseño crear las imágenes, al de email preparar la campaña, y al de redes programar los posts. Al final, consolida todo en un timeline.",
+    shortEn: "The main agent that coordinates other agents — like a conductor deciding who plays what and when.",
+    longEn: "In a multi-agent system, the orchestrator is the agent with the complete view of the task. It receives the goal, breaks it down into subtasks, decides which sub-agent handles each one, sends them instructions, monitors their progress, and consolidates the final results. It doesn't do the heavy lifting directly — its value lies in intelligent coordination. It's the key piece of the multi-agent pattern.",
+    exampleEn: "You tell the orchestrator: 'prepare the product launch'. It delegates: the content agent writes the blog post, the design agent creates the images, the email agent prepares the campaign, and the social media agent schedules the posts. In the end, it consolidates everything into a timeline.",
   },
   {
     term: "Perplexity",
@@ -189,6 +267,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un buscador potenciado por IA que responde preguntas con fuentes citadas — la alternativa a Google.",
     long: "Perplexity AI es un motor de búsqueda que en vez de darte una lista de links, te da una respuesta directa generada por IA con las fuentes citadas al lado. Combina búsqueda web en tiempo real con modelos de lenguaje. Es especialmente útil para preguntas que requieren sintetizar información de varias fuentes. Muchos lo usan como sustituto de Google para investigación rápida.",
     example: "En Google buscas 'mejores herramientas AI para marketing 2026' y obtienes 10 links para revisar. En Perplexity obtienes una lista organizada con explicaciones y fuentes, listo para leer.",
+    shortEn: "An AI-powered search engine that answers questions with cited sources — the alternative to Google.",
+    longEn: "Perplexity AI is a search engine that instead of giving you a list of links, gives you a direct AI-generated answer with cited sources alongside it. It combines real-time web search with language models. It's especially useful for questions that require synthesizing information from multiple sources. Many use it as a Google replacement for quick research.",
+    exampleEn: "On Google you search 'best AI tools for marketing 2026' and get 10 links to review. On Perplexity you get an organized list with explanations and sources, ready to read.",
   },
   {
     term: "Prompt",
@@ -196,6 +277,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "El texto que le escribes a una IA para pedirle algo — tu pregunta, instrucción o contexto.",
     long: "El prompt es simplemente lo que le dices al modelo. Puede ser una pregunta corta ('¿qué es un token?') o un bloque de texto largo con instrucciones detalladas, contexto, ejemplos y restricciones. La calidad del prompt determina enormemente la calidad de la respuesta — de ahí nació el oficio del 'prompt engineer'.",
     example: "Decirle a la IA 'resume esto' es un prompt. Decirle 'eres un experto en finanzas, resume esto en 3 puntos para un CEO no técnico, sin jerga' es un buen prompt.",
+    shortEn: "The text you write to an AI to ask for something — your question, instruction, or context.",
+    longEn: "The prompt is simply what you tell the model. It can be a short question ('what is a token?') or a long block of text with detailed instructions, context, examples, and constraints. The quality of the prompt enormously determines the quality of the response — hence the profession of 'prompt engineer' was born.",
+    exampleEn: "Telling the AI 'summarize this' is a prompt. Telling it 'you are a finance expert, summarize this in 3 points for a non-technical CEO, no jargon' is a good prompt.",
   },
   {
     term: "RAG — Retrieval Augmented Generation",
@@ -203,6 +287,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Técnica para darle a la IA acceso a documentos externos antes de que responda.",
     long: "RAG (Generación Aumentada por Recuperación) es la solución a uno de los grandes problemas de los LLMs: que solo saben lo que aprendieron durante su entrenamiento. Con RAG, antes de responder, el modelo busca en una base de documentos propia (tu manual, tu base de conocimiento, tus políticas) y usa esa información para dar respuestas precisas y actualizadas.",
     example: "Un chatbot de soporte que responde preguntas de tu manual de producto usando RAG. Sin RAG, inventaría respuestas. Con RAG, cita el manual.",
+    shortEn: "A technique for giving AI access to external documents before it responds.",
+    longEn: "RAG (Retrieval Augmented Generation) is the solution to one of the biggest problems with LLMs: they only know what they learned during training. With RAG, before responding, the model searches a custom document base (your manual, your knowledge base, your policies) and uses that information to give precise, up-to-date answers.",
+    exampleEn: "A support chatbot that answers questions from your product manual using RAG. Without RAG, it would make up answers. With RAG, it cites the manual.",
   },
   {
     term: "RAM — Memoria de Acceso Aleatorio",
@@ -210,6 +297,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "La memoria de trabajo de tu computador — lo que está activo ahora mismo.",
     long: "La RAM es donde el computador guarda todo lo que está usando en este momento: las apps abiertas, los archivos cargados, el estado de los programas. Es diferente al disco duro (almacenamiento permanente): la RAM es rápida pero temporal — al apagar el equipo, se borra. En IA, la RAM (y especialmente la VRAM de la GPU) determina qué tan grandes son los modelos que puedes correr localmente.",
     example: "Si tienes muchas pestañas abiertas y el computador se pone lento, es porque la RAM está llena. Cerrar pestañas libera RAM. El disco duro no tiene nada que ver.",
+    shortEn: "Your computer's working memory — what's active right now.",
+    longEn: "RAM is where the computer stores everything it's currently using: open apps, loaded files, program states. It's different from the hard drive (permanent storage): RAM is fast but temporary — when you shut down, it's wiped. In AI, RAM (and especially GPU VRAM) determines how large the models you can run locally are.",
+    exampleEn: "If you have tons of tabs open and your computer slows down, it's because RAM is full. Closing tabs frees RAM. The hard drive has nothing to do with it.",
   },
   {
     term: "Servidor",
@@ -217,6 +307,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Una computadora que responde solicitudes de otras — como la cocina de un restaurante.",
     long: "Un servidor es simplemente un computador configurado para recibir y responder solicitudes de otros dispositivos. Puede ser físico (una máquina en un datacenter) o virtual (una porción de una máquina más grande). Los servidores web sirven páginas, los de base de datos guardan información, los de correo mandan emails. Cuando abres cual.ai, un servidor en algún lugar del mundo responde tu petición en milisegundos.",
     example: "Cuando escribes cual.ai en tu navegador, tu celular hace una petición a un servidor de Vercel en algún datacenter, que responde con el HTML de la página.",
+    shortEn: "A computer that responds to requests from others — like the kitchen of a restaurant.",
+    longEn: "A server is simply a computer configured to receive and respond to requests from other devices. It can be physical (a machine in a datacenter) or virtual (a portion of a larger machine). Web servers serve pages, database servers store information, mail servers send emails. When you open cual.ai, a server somewhere in the world responds to your request in milliseconds.",
+    exampleEn: "When you type cual.ai in your browser, your phone sends a request to a Vercel server in some datacenter, which responds with the page's HTML.",
   },
   {
     term: "Sistema de Instrucciones (System Prompt)",
@@ -224,6 +317,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Instrucciones ocultas que configuran cómo se comporta la IA antes de que empieces a hablar con ella.",
     long: "Cuando usas ChatGPT, Claude o cualquier app de IA, hay instrucciones que tú no ves que le dicen al modelo cómo comportarse: su personalidad, qué puede o no puede hacer, en qué idioma responder, etc. Las empresas usan esto para crear versiones especializadas de un modelo genérico.",
     example: "Cuando un chatbot de atención al cliente 'solo sabe hablar de productos de la empresa', eso es un system prompt que le dice que no hable de nada más.",
+    shortEn: "Hidden instructions that configure how the AI behaves before you start talking to it.",
+    longEn: "When you use ChatGPT, Claude, or any AI app, there are instructions you can't see that tell the model how to behave: its personality, what it can and can't do, what language to respond in, etc. Companies use this to create specialized versions of a generic model.",
+    exampleEn: "When a customer support chatbot 'only knows how to talk about the company's products', that's a system prompt telling it not to discuss anything else.",
   },
   {
     term: "Skill (Habilidad de Agente)",
@@ -231,6 +327,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un módulo que le agrega capacidades específicas a un agente AI — como un plugin especializado.",
     long: "En el contexto de agentes AI como OpenClaw, un skill es un conjunto de instrucciones y herramientas empaquetadas para que el agente sepa cómo realizar una tarea específica: consultar el clima, manejar emails, buscar en GitHub, transcribir audio, etc. Es como instalarle una habilidad nueva al agente. Los skills se pueden compartir, actualizar y combinar — convirtiendo un agente genérico en un especialista para tu flujo de trabajo.",
     example: "OpenClaw tiene un skill de Gmail que le enseña cómo leer, buscar y enviar correos. Sin ese skill, el agente no sabría cómo conectarse a tu bandeja de entrada.",
+    shortEn: "A module that adds specific capabilities to an AI agent — like a specialized plugin.",
+    longEn: "In the context of AI agents like OpenClaw, a skill is a packaged set of instructions and tools that teaches the agent how to perform a specific task: check the weather, manage emails, search GitHub, transcribe audio, etc. It's like installing a new ability in the agent. Skills can be shared, updated, and combined — turning a generic agent into a specialist for your workflow.",
+    exampleEn: "OpenClaw has a Gmail skill that teaches it how to read, search, and send emails. Without that skill, the agent wouldn't know how to connect to your inbox.",
   },
   {
     term: "Sub-agente",
@@ -238,6 +337,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un agente especializado que recibe instrucciones de un orquestador y ejecuta una subtarea concreta — el obrero del equipo.",
     long: "En un sistema multi-agente, los sub-agentes son los que hacen el trabajo de campo. Cada uno está especializado en algo: buscar información, escribir texto, analizar datos, generar código, etc. Reciben instrucciones del orquestador, ejecutan su tarea, y devuelven el resultado. Operan bajo supervisión — no deciden qué hacer, sino cómo hacer bien lo que les pidieron. Son como los músicos de la orquesta: cada uno domina su instrumento.",
     example: "El orquestador dice: 'necesito un resumen de este PDF de 200 páginas'. El sub-agente de lectura lo procesa, extrae los puntos clave, y devuelve el resumen al orquestador — que lo combina con el trabajo de otros sub-agentes.",
+    shortEn: "A specialized agent that receives instructions from an orchestrator and executes a specific subtask — the worker of the team.",
+    longEn: "In a multi-agent system, sub-agents are the ones doing the fieldwork. Each one specializes in something: searching for information, writing text, analyzing data, generating code, etc. They receive instructions from the orchestrator, execute their task, and return the result. They operate under supervision — they don't decide what to do, but how to do well what they were asked. They're like the musicians in an orchestra: each one masters their instrument.",
+    exampleEn: "The orchestrator says: 'I need a summary of this 200-page PDF'. The reading sub-agent processes it, extracts the key points, and returns the summary to the orchestrator — which combines it with the work of other sub-agents.",
   },
   {
     term: "Temperatura",
@@ -245,6 +347,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un parámetro que controla qué tan creativa o predecible es la respuesta de un modelo.",
     long: "La temperatura va de 0 a 2 (según el modelo). Temperatura 0 = respuestas muy deterministas y consistentes, siempre la misma respuesta para la misma pregunta. Temperatura alta = más variedad, creatividad y también más riesgo de que diga cosas raras. Para tareas técnicas o de precisión, temperatura baja. Para creatividad, temperatura alta.",
     example: "Para que la IA genere código o responda fechas, temperatura 0. Para que te escriba un poema sorprendente, temperatura 0.9.",
+    shortEn: "A parameter that controls how creative or predictable a model's response is.",
+    longEn: "Temperature ranges from 0 to 2 (depending on the model). Temperature 0 = very deterministic, consistent responses — always the same answer to the same question. High temperature = more variety, creativity, and also more risk of saying weird things. For technical or precision tasks, low temperature. For creativity, high temperature.",
+    exampleEn: "For the AI to generate code or answer dates, temperature 0. For it to write you a surprising poem, temperature 0.9.",
   },
   {
     term: "Terminal / Línea de comandos",
@@ -252,6 +357,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Una interfaz de texto para controlar tu computador escribiendo comandos, sin botones ni menús.",
     long: "La terminal (también llamada consola, shell o línea de comandos) es la forma de hablarle directamente al sistema operativo en texto puro. Parece intimidante, pero es simplemente un idioma diferente. Los desarrolladores la usan porque es más rápida y poderosa que hacer clic en menús. En Linux y Mac se llama Terminal; en Windows, PowerShell o CMD.",
     example: "En vez de abrir el explorador de archivos, hacer clic en una carpeta y buscar un archivo, en terminal escribes: `ls -la /carpeta`. Mismo resultado, 3 segundos.",
+    shortEn: "A text interface for controlling your computer by typing commands, with no buttons or menus.",
+    longEn: "The terminal (also called console, shell, or command line) is the way to talk directly to the operating system in plain text. It looks intimidating, but it's simply a different language. Developers use it because it's faster and more powerful than clicking through menus. On Linux and Mac it's called Terminal; on Windows, PowerShell or CMD.",
+    exampleEn: "Instead of opening the file explorer, clicking a folder, and searching for a file, in the terminal you type: `ls -la /folder`. Same result, 3 seconds.",
   },
   {
     term: "Token",
@@ -259,6 +367,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "La unidad mínima que procesa un LLM — aproximadamente ¾ de una palabra en español.",
     long: "Los modelos no leen palabras completas sino fragmentos llamados tokens. Una palabra corta puede ser 1 token, una larga puede ser 2 o 3. También los espacios y signos de puntuación cuentan. Por eso los precios de las APIs se miden en 'por millón de tokens'. Esta definición tiene aproximadamente 60 tokens.",
     example: "La palabra 'automáticamente' puede ser 4-5 tokens. 'AI' es 1. Así que escribir en español cuesta un poco más de tokens que en inglés (mala suerte).",
+    shortEn: "The smallest unit an LLM processes — roughly ¾ of a word in English.",
+    longEn: "Models don't read whole words but fragments called tokens. A short word can be 1 token, a long one can be 2 or 3. Spaces and punctuation count too. That's why API prices are measured in 'per million tokens'. This definition is roughly 50 tokens.",
+    exampleEn: "The word 'automatically' might be 2-3 tokens. 'AI' is 1. So writing in English is slightly cheaper in tokens than Spanish (lucky you).",
   },
   {
     term: "Tool / Herramienta (AI)",
@@ -266,6 +377,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Una función que un agente AI puede llamar para interactuar con el mundo real — sus 'manos' para hacer cosas.",
     long: "Sin herramientas, un modelo de IA solo puede generar texto. Con tools, puede actuar: buscar en Google, ejecutar código, leer PDFs, enviar emails, consultar bases de datos, hacer llamadas a APIs, crear archivos, publicar en redes sociales — básicamente cualquier cosa que se pueda hacer por software. Las tools son lo que convierte a un chatbot en un agente. El protocolo MCP estandariza cómo se conectan estas herramientas a los modelos, y cada tool define qué parámetros necesita y qué devuelve.",
     example: "Le dices a Claude 'busca el clima en Madrid'. Sin tools, te diría 'no puedo acceder a internet'. Con una tool de búsqueda web, realmente busca el clima y te da el dato actualizado.",
+    shortEn: "A function an AI agent can call to interact with the real world — its 'hands' for getting things done.",
+    longEn: "Without tools, an AI model can only generate text. With tools, it can act: search Google, execute code, read PDFs, send emails, query databases, make API calls, create files, post on social media — basically anything that can be done through software. Tools are what turn a chatbot into an agent. The MCP protocol standardizes how these tools connect to models, and each tool defines what parameters it needs and what it returns.",
+    exampleEn: "You tell Claude 'look up the weather in Madrid'. Without tools, it would say 'I can't access the internet'. With a web search tool, it actually looks up the weather and gives you the current data.",
   },
   {
     term: "Ventana de Contexto",
@@ -273,6 +387,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "La cantidad de texto que un modelo puede 'recordar' dentro de una misma conversación.",
     long: "La ventana de contexto es la memoria de trabajo del modelo — todo lo que puede leer y considerar en un momento dado. Si tu conversación supera ese límite, el modelo literalmente olvida lo que dijiste al principio. Los modelos modernos tienen ventanas de 128K, 200K o hasta 1 millón de tokens, lo que equivale a varios libros completos.",
     example: "Si le pegas una novela entera a Claude con ventana de 200K tokens, la puede leer toda. Si le pegas dos novelas largas a un modelo con 32K, empezará a 'olvidar' el principio.",
+    shortEn: "The amount of text a model can 'remember' within a single conversation.",
+    longEn: "The context window is the model's working memory — everything it can read and consider at any given time. If your conversation exceeds that limit, the model literally forgets what you said at the beginning. Modern models have windows of 128K, 200K, or even 1 million tokens, equivalent to several complete books.",
+    exampleEn: "If you paste an entire novel into Claude with a 200K token window, it can read the whole thing. If you paste two long novels into a model with 32K, it'll start 'forgetting' the beginning.",
   },
   {
     term: "VPN — Red Privada Virtual",
@@ -280,6 +397,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un túnel cifrado que protege tu conexión a internet y puede cambiar tu ubicación virtual.",
     long: "Una VPN (Virtual Private Network) encripta todo tu tráfico de internet y lo redirige por un servidor en otro lugar. Esto hace dos cosas: protege tus datos en redes WiFi públicas (cafeterías, aeropuertos), y oculta tu ubicación real (puedes 'aparecer' en otro país). Lo usan por privacidad, seguridad corporativa, y sí — para ver Netflix de otros países.",
     example: "En un aeropuerto conectado al WiFi público, sin VPN cualquiera en la red podría interceptar tu tráfico. Con VPN, ven ruido cifrado inútil.",
+    shortEn: "An encrypted tunnel that protects your internet connection and can change your virtual location.",
+    longEn: "A VPN (Virtual Private Network) encrypts all your internet traffic and routes it through a server elsewhere. This does two things: protects your data on public WiFi networks (coffee shops, airports), and hides your real location (you can 'appear' in another country). People use them for privacy, corporate security, and yes — to watch Netflix from other countries.",
+    exampleEn: "At an airport connected to public WiFi, without a VPN anyone on the network could intercept your traffic. With a VPN, they see useless encrypted noise.",
   },
   {
     term: "VPS — Servidor Privado Virtual",
@@ -287,5 +407,8 @@ export const glossaryTerms: GlossaryTerm[] = [
     short: "Un servidor en la nube que puedes alquilar por horas o meses — tu propio espacio en un datacenter.",
     long: "Un VPS (Virtual Private Server) es una fracción virtual de un servidor físico grande. Le alquilas a una empresa como DigitalOcean, Hetzner o AWS una porción de sus máquinas y tienes control total: instalar lo que quieras, configurar como necesites, acceder 24/7 por terminal. Ideal para correr apps, bots, bases de datos o sitios web sin pagar por hardware propio.",
     example: "Este asistente AI corre en un VPS. En vez de tener un servidor físico en casa, alquilamos espacio en un datacenter en algún lugar del mundo por ~$5-20/mes.",
+    shortEn: "A cloud server you can rent by the hour or month — your own space in a datacenter.",
+    longEn: "A VPS (Virtual Private Server) is a virtual fraction of a large physical server. You rent a portion of a company's machines (like DigitalOcean, Hetzner, or AWS) and get full control: install whatever you want, configure as you need, access 24/7 via terminal. Ideal for running apps, bots, databases, or websites without paying for your own hardware.",
+    exampleEn: "This AI assistant runs on a VPS. Instead of having a physical server at home, we rent space in a datacenter somewhere in the world for ~$5-20/month.",
   },
 ];
