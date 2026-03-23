@@ -3,6 +3,7 @@ import type { Tool } from "@/data/tools";
 import { categories } from "@/data/tools";
 import VoteButtons from "@/components/tools/VoteButtons";
 import CompareButton from "@/components/comparator/CompareButton";
+import { getLocalizedTool, getLocalizedCategory } from "@/i18n";
 
 function PricingBadge({ tool }: { tool: Tool }) {
   const color =
@@ -19,6 +20,7 @@ export default function ToolCard({ tool, locale = "es" }: { tool: Tool; locale?:
   const firstCat = categories.find((c) => c.slug === tool.categories[0]);
   const initial = tool.name.charAt(0).toUpperCase();
   const prefix = locale === "en" ? "/en" : "";
+  const localized = getLocalizedTool(tool, locale);
 
   return (
     <Link
@@ -42,7 +44,7 @@ export default function ToolCard({ tool, locale = "es" }: { tool: Tool; locale?:
             </h3>
             {firstCat && (
               <span className="text-[10px] text-text-muted">
-                {firstCat.icon} {firstCat.name}
+                {firstCat.icon} {getLocalizedCategory(firstCat, locale)}
               </span>
             )}
           </div>
@@ -50,7 +52,7 @@ export default function ToolCard({ tool, locale = "es" }: { tool: Tool; locale?:
 
         {/* Description */}
         <p className="text-xs text-text-muted leading-relaxed line-clamp-2 mb-3">
-          {tool.description}
+          {localized.description}
         </p>
 
         {/* Footer */}

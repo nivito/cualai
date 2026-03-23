@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { categories, getToolCountByCategory } from "@/data/tools";
-import { getDict, type Locale } from "@/i18n";
+import { getDict, getLocalizedCategory, type Locale } from "@/i18n";
 
 export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
   const pathname = usePathname();
@@ -160,7 +160,7 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
                 }`}
               >
                 <span>{cat.icon}</span>
-                <span className="flex-1 truncate">{cat.name}</span>
+                <span className="flex-1 truncate">{getLocalizedCategory(cat, locale)}</span>
                 <span className="text-[10px] text-text-muted">{count}</span>
               </Link>
             );

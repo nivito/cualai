@@ -13,7 +13,7 @@ import {
   getCategoryBySlug,
   getSimilarTools,
 } from "@/data/tools";
-import { getDict } from "@/i18n";
+import { getDict, getLocalizedTool, getLocalizedCategory } from "@/i18n";
 
 export function generateStaticParams() {
   return tools.map((t) => ({ slug: t.slug }));
@@ -30,7 +30,7 @@ export async function generateMetadata({
   const t = getDict("en");
   return {
     title: t.tool.meta_title(tool.name),
-    description: t.tool.meta_desc(tool.description),
+    description: t.tool.meta_desc(tool.descriptionEn || tool.description),
     alternates: {
       canonical: `https://cual.ai/en/herramienta/${slug}`,
       languages: {
@@ -40,7 +40,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: `${tool.name} — cual.ai`,
-      description: tool.description,
+      description: tool.descriptionEn || tool.description,
       url: `https://cual.ai/en/herramienta/${slug}`,
       type: "website",
       siteName: "cual.ai",
@@ -48,7 +48,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary",
       title: t.tool.meta_title(tool.name),
-      description: tool.description,
+      description: tool.descriptionEn || tool.description,
     },
   };
 }
@@ -65,6 +65,7 @@ export default async function HerramientaPageEn({
   const similar = getSimilarTools(tool);
   const initial = tool.name.charAt(0).toUpperCase();
   const t = getDict("en");
+  const localized = getLocalizedTool(tool, "en");
 
   const pricingColor =
     tool.pricing === "gratis"
@@ -76,7 +77,7 @@ export default async function HerramientaPageEn({
   const faqItems = [
     {
       q: t.tool.faq_what_for(tool.name),
-      a: tool.description,
+      a: tool.descriptionEn || tool.description,
     },
     {
       q: t.tool.faq_price(tool.name),
@@ -109,7 +110,7 @@ export default async function HerramientaPageEn({
     "@type": "SoftwareApplication",
     name: tool.name,
     url: tool.url,
-    description: tool.longDescription || tool.description,
+    description: tool.longDescriptionEn || tool.longDescription || tool.description,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     offers: {
@@ -190,7 +191,7 @@ export default async function HerramientaPageEn({
                           href={`/en/categoria/${catSlug}`}
                           className="text-[10px] text-text-muted hover:text-accent transition-colors"
                         >
-                          {cat.icon} {cat.name}
+                          {cat.icon} {cat.nameEn ?? cat.name}
                         </Link>
                       );
                     })}
@@ -201,10 +202,10 @@ export default async function HerramientaPageEn({
               {/* Info card */}
               <div className="border border-border rounded bg-bg-card p-6 mb-6">
                 <p className="text-sm leading-relaxed mb-4">
-                  {tool.description}
+                  {tool.descriptionEn || tool.description}
                 </p>
                 <p className="text-xs text-text-muted leading-relaxed mb-6">
-                  {tool.longDescription}
+                  {tool.longDescriptionEn || tool.longDescription}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border">
