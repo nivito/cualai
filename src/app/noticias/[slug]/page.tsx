@@ -6,6 +6,7 @@ import { getAllNewsSlugs, getNewsBySlug, getAdjacentNews, type NewsItem } from "
 import { getToolBySlug } from "@/data/tools"
 import { getSupabaseAdmin } from "@/lib/supabase"
 import { notFound } from "next/navigation"
+import { linkGlossaryTerms } from "@/lib/glossary-links"
 
 export const revalidate = 3600
 
@@ -125,7 +126,7 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
             {/* Content */}
             <div
               className="prose-cual text-sm text-text leading-relaxed space-y-4 mb-8"
-              dangerouslySetInnerHTML={{ __html: item.content }}
+              dangerouslySetInnerHTML={{ __html: linkGlossaryTerms(item.content) }}
             />
 
             {/* Source */}

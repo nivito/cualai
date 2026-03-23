@@ -68,3 +68,16 @@ body {
 .prose-cual li strong {
   color: var(--color-text);
 }
+
+.prose-cual .glossary-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.prose-cual .glossary-link:hover {
+  color: var(--color-accent-hover);
+  text-decoration-style: solid;
+}
