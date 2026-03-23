@@ -1607,6 +1607,24 @@ export const tools: Tool[] = [
       "Fabricación digital",
     ],
   },
+  {
+    id: "arturito-ai",
+    name: "Arturito AI",
+    slug: "arturito-ai",
+    description: "Asistente virtual con IA para WhatsApp, Instagram y Web que automatiza atención al cliente, ventas y soporte sin intervención humana.",
+    longDescription: "Arturito es un asistente virtual impulsado por IA que responde mensajes en WhatsApp, Instagram y sitios web de forma automática, 24/7. Ideal para negocios que quieren capturar leads fuera de horario, automatizar preguntas frecuentes y gestionar atención al cliente sin aumentar el equipo. Se entrena con la lógica y el tono del negocio, y puede resolver dudas, filtrar prospectos y guiar decisiones de compra.",
+    url: "https://www.arturito.ai",
+    categories: ["agentes-productividad"],
+    pricing: "pago",
+    priceLabel: "Planes de pago",
+    featured: false,
+    tags: ["whatsapp", "instagram", "chatbot", "atención al cliente", "automatización", "ventas"],
+    useCases: [
+      "Responder consultas automáticamente en WhatsApp e Instagram",
+      "Calificar leads sin intervención humana",
+      "Soporte al cliente 24/7",
+    ],
+  },
 ]
 
 // ── Helper functions ──────────────────────────────────────────
