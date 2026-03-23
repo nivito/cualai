@@ -28,9 +28,10 @@ export async function generateMetadata({
   const tool = getToolBySlug(slug);
   if (!tool) return {};
   const t = getDict("en");
+  const loc = getLocalizedTool(tool, "en");
   return {
     title: t.tool.meta_title(tool.name),
-    description: t.tool.meta_desc(tool.descriptionEn || tool.description),
+    description: t.tool.meta_desc(loc.description),
     alternates: {
       canonical: `https://cual.ai/en/herramienta/${slug}`,
       languages: {
@@ -40,7 +41,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: `${tool.name} — cual.ai`,
-      description: tool.descriptionEn || tool.description,
+      description: loc.description,
       url: `https://cual.ai/en/herramienta/${slug}`,
       type: "website",
       siteName: "cual.ai",
@@ -48,7 +49,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary",
       title: t.tool.meta_title(tool.name),
-      description: tool.descriptionEn || tool.description,
+      description: loc.description,
     },
   };
 }
@@ -77,7 +78,7 @@ export default async function HerramientaPageEn({
   const faqItems = [
     {
       q: t.tool.faq_what_for(tool.name),
-      a: tool.descriptionEn || tool.description,
+      a: localized.description,
     },
     {
       q: t.tool.faq_price(tool.name),
@@ -110,7 +111,7 @@ export default async function HerramientaPageEn({
     "@type": "SoftwareApplication",
     name: tool.name,
     url: tool.url,
-    description: tool.longDescriptionEn || tool.longDescription || tool.description,
+    description: localized.longDescription || localized.description,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     offers: {
@@ -191,7 +192,7 @@ export default async function HerramientaPageEn({
                           href={`/en/categoria/${catSlug}`}
                           className="text-[10px] text-text-muted hover:text-accent transition-colors"
                         >
-                          {cat.icon} {cat.nameEn ?? cat.name}
+                          {cat.icon} {getLocalizedCategory(cat, "en")}
                         </Link>
                       );
                     })}
@@ -202,10 +203,10 @@ export default async function HerramientaPageEn({
               {/* Info card */}
               <div className="border border-border rounded bg-bg-card p-6 mb-6">
                 <p className="text-sm leading-relaxed mb-4">
-                  {tool.descriptionEn || tool.description}
+                  {localized.description}
                 </p>
                 <p className="text-xs text-text-muted leading-relaxed mb-6">
-                  {tool.longDescriptionEn || tool.longDescription}
+                  {localized.longDescription}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border">
