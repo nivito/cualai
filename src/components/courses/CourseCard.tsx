@@ -18,7 +18,19 @@ const priceBgColors = {
   pago: "text-yellow",
 };
 
-export default function CourseCard({ course }: { course: Course }) {
+const levelLabelEN: Record<string, string> = {
+  "Básico": "Beginner",
+  "Intermedio": "Intermediate",
+  "Avanzado": "Advanced",
+};
+
+const pricingLabelEN: Record<string, string> = {
+  "GRATIS": "FREE",
+  "FREEMIUM": "FREEMIUM",
+  "DE PAGO": "PAID",
+};
+
+export default function CourseCard({ course, locale = "es" }: { course: Course; locale?: "es" | "en" }) {
   return (
     <a
       href={course.url}
@@ -35,7 +47,7 @@ export default function CourseCard({ course }: { course: Course }) {
           <span
             className={`text-[10px] font-semibold shrink-0 ml-2 ${levelColors[course.level]}`}
           >
-            {levelIcons[course.level]} {course.levelLabel}
+            {levelIcons[course.level]} {locale === "en" ? levelLabelEN[course.levelLabel] ?? course.levelLabel : course.levelLabel}
           </span>
         </div>
 
@@ -53,7 +65,7 @@ export default function CourseCard({ course }: { course: Course }) {
         <div className="flex items-center gap-3 text-[10px] text-text-muted mb-3">
           <span>⏱ {course.duration}</span>
           <span>🌐 {course.languageLabel}</span>
-          {course.hasCertificate && <span>📜 Certificado</span>}
+          {course.hasCertificate && <span>📜 {locale === "en" ? "Certificate" : "Certificado"}</span>}
         </div>
 
         {/* Footer: price + CTA */}
@@ -62,11 +74,17 @@ export default function CourseCard({ course }: { course: Course }) {
             <span
               className={`text-xs font-semibold ${priceBgColors[course.pricing]}`}
             >
-              {course.pricing === "gratis"
-                ? "GRATIS"
-                : course.pricing === "freemium"
-                  ? "FREEMIUM"
-                  : "DE PAGO"}
+              {locale === "en"
+                ? course.pricing === "gratis"
+                  ? "FREE"
+                  : course.pricing === "freemium"
+                    ? "FREEMIUM"
+                    : "PAID"
+                : course.pricing === "gratis"
+                  ? "GRATIS"
+                  : course.pricing === "freemium"
+                    ? "FREEMIUM"
+                    : "DE PAGO"}
             </span>
             {course.priceLabel !== "Gratis" &&
               course.pricing === "gratis" && (
@@ -81,7 +99,7 @@ export default function CourseCard({ course }: { course: Course }) {
             )}
           </div>
           <span className="text-[10px] text-text-muted group-hover:text-accent transition-colors">
-            Ir al curso →
+            {locale === "en" ? "Go to course →" : "Ir al curso →"}
           </span>
         </div>
       </div>
@@ -90,7 +108,7 @@ export default function CourseCard({ course }: { course: Course }) {
       {course.featured && (
         <div className="border-t border-accent/30 px-4 py-1.5 bg-accent/5">
           <span className="text-[10px] text-accent font-semibold">
-            ⭐ Destacado
+            ⭐ {locale === "en" ? "Featured" : "Destacado"}
           </span>
         </div>
       )}

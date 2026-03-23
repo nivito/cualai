@@ -121,7 +121,7 @@ export default function CoursesPage() {
             {filtered.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {filtered.map((course) => (
-                  <CourseCard key={course.id} course={course} />
+                  <CourseCard key={course.id} course={course} locale="en" />
                 ))}
               </div>
             ) : (
