@@ -53,18 +53,18 @@ export default function CourseCard({ course, locale = "es" }: { course: Course; 
 
         {/* Name */}
         <h3 className="text-sm font-semibold leading-snug mb-2 group-hover:text-accent transition-colors line-clamp-2">
-          {course.name}
+          {locale === "en" ? (course.nameEn ?? course.name) : course.name}
         </h3>
 
         {/* Description */}
         <p className="text-xs text-text-muted leading-relaxed line-clamp-2 mb-3">
-          {course.description}
+          {locale === "en" ? (course.descriptionEn ?? course.description) : course.description}
         </p>
 
         {/* Duration + Language */}
         <div className="flex items-center gap-3 text-[10px] text-text-muted mb-3">
-          <span>⏱ {course.duration}</span>
-          <span>🌐 {course.languageLabel}</span>
+          <span>⏱ {locale === "en" ? (course.durationEn ?? course.duration) : course.duration}</span>
+          <span>🌐 {locale === "en" ? (course.languageLabelEn ?? course.languageLabel) : course.languageLabel}</span>
           {course.hasCertificate && <span>📜 {locale === "en" ? "Certificate" : "Certificado"}</span>}
         </div>
 
