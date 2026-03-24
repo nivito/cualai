@@ -2019,6 +2019,27 @@ export const tools: Tool[] = [
     tags: ["gemelo digital", "3D", "medición", "BIM", "documentación", "escaneo"],
     useCases: ["Documentar condiciones existentes antes de renovación", "Mediciones precisas desde escaneo 3D", "Auditorías de espacios automáticas", "Gestión de activos con gemelo digital"],
   },
+  {
+    id: "spybee",
+    name: "Spybee",
+    slug: "spybee",
+    description: "Plataforma colombiana de supervisión de obras con IA: integra drones, cámaras 360° y time-lapse para anticipar riesgos y retrasos en tiempo real.",
+    longDescription: "Spybee es una startup colombiana presente en 12 países que transforma la supervisión de proyectos de construcción con inteligencia artificial. Integra datos de drones, cámaras 360°, time-lapse y WhatsApp para crear gemelos digitales en la nube del estado actual de las obras. Su IA anticipa riesgos, detecta desviaciones en tiempo real y permite calcular distancias, áreas y volúmenes directamente sobre modelos BIM y nubes de puntos. Diseñada para eliminar los retrasos por decisiones tardías.",
+    descriptionEn: "Colombian AI construction monitoring platform: integrates drones, 360° cameras, and time-lapse to anticipate risks and delays in real time.",
+    longDescriptionEn: "Spybee is a Colombian startup present in 12 countries that transforms construction project supervision with artificial intelligence. It integrates data from drones, 360° cameras, time-lapse, and WhatsApp to create cloud-based digital twins of the current state of construction sites. Its AI anticipates risks, detects deviations in real time, and allows measuring distances, areas, and volumes directly on BIM models and point clouds. Designed to eliminate delays caused by late decisions.",
+    url: "https://home.spybee.com.co",
+    categories: ["arquitectura-aec", "medicion-obra"],
+    pricing: "pago",
+    priceLabel: "Precio a consultar",
+    featured: true,
+    tags: ["construcción", "drones", "gemelo digital", "BIM", "supervisión de obras", "Colombia", "IA"],
+    useCases: [
+      "Supervisión remota de obras con drones y 360°",
+      "Detección temprana de retrasos y riesgos",
+      "Medición de áreas y volúmenes sobre modelos BIM",
+      "Gestión de proyectos de construcción con IA",
+    ],
+  },
 ]
 
 // ── Helper functions ──────────────────────────────────────────
