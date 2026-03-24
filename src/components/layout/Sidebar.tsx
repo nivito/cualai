@@ -238,7 +238,7 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
                 }`}
               >
                 🇺🇸 English
-              </Link>
+              </button>
             </div>
           </div>
         </nav>
