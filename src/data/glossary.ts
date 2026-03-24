@@ -1,5 +1,6 @@
 export interface GlossaryTerm {
   term: string;
+  termEn?: string;
   emoji: string;
   short: string;
   long: string;
@@ -33,6 +34,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Agente AI",
+    termEn: "AI Agent",
     emoji: "🦾",
     short: "Una IA que no solo responde — sino que toma acciones, usa herramientas y completa tareas por su cuenta.",
     long: "A diferencia de un chatbot que solo responde preguntas, un agente actúa. Funciona en un loop: observa el entorno → decide qué hacer → ejecuta una acción usando una herramienta (buscar en internet, ejecutar código, enviar emails, leer archivos) → observa el resultado → repite hasta completar el objetivo. El LLM es su 'cerebro' y las herramientas son sus 'manos'. Claude Code, Manus y Devin son ejemplos de agentes listos para usar. También existen los multi-agentes (varios agentes especializados trabajando en equipo) y los sub-agentes (un agente orquestador que delega subtareas a otros agentes y consolida los resultados).",
@@ -113,6 +115,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "GPU — Unidad de Procesamiento Gráfico",
+    termEn: "GPU — Graphics Processing Unit",
     emoji: "🎮",
     short: "El chip diseñado para gráficos que resultó ser perfecto para entrenar modelos de IA.",
     long: "La GPU fue creada para videojuegos — procesar millones de píxeles en paralelo. Resulta que entrenar modelos de IA requiere exactamente el mismo tipo de matemática masiva y paralela. Por eso NVIDIA domina el mercado AI: sus GPUs (H100, A100) se convirtieron en el 'oro' de la era AI. Sin suficientes GPUs, no puedes entrenar modelos grandes.",
@@ -123,6 +126,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Hallucination (Alucinación)",
+    termEn: "Hallucination",
     emoji: "🌀",
     short: "Cuando la IA inventa información falsa con total confianza, como si fuera real.",
     long: "Las alucinaciones son el talón de Aquiles de los LLMs. El modelo no 'sabe' cuándo no sabe algo — simplemente genera el texto más probable, que a veces es incorrecto pero suena convincente. Citas inventadas, estadísticas que no existen, fechas equivocadas... todo presentado con la seguridad de un experto.",
@@ -133,6 +137,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Inference (Inferencia)",
+    termEn: "Inference",
     emoji: "⚡",
     short: "El proceso de usar un modelo ya entrenado para generar una respuesta.",
     long: "El entrenamiento de un modelo puede tomar meses y costar millones. La inferencia es el momento en que ese modelo responde tu pregunta — que toma segundos. Cuando pagas por tokens en una API, estás pagando por inferencia, no por el entrenamiento. Las empresas invierten mucho en hacer la inferencia más rápida y barata.",
@@ -143,6 +148,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Inteligencia Artificial (AI / IA)",
+    termEn: "Artificial Intelligence (AI)",
     emoji: "🤖",
     short: "Software que imita habilidades humanas como entender texto, reconocer imágenes o tomar decisiones.",
     long: "La IA no es un robot con sentimientos ni va a conquistar el mundo (todavía). Es software entrenado con enormes cantidades de datos para hacer tareas que antes solo podían hacer humanos: leer, escribir, analizar, traducir, generar imágenes. Hay IA estrecha (solo hace una cosa bien) e IA general (aún no existe de verdad).",
@@ -173,6 +179,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Loop de razonamiento / ReAct",
+    termEn: "Reasoning Loop / ReAct",
     emoji: "🔄",
     short: "El patrón donde un agente AI alterna entre pensar y actuar hasta resolver la tarea — su forma de 'razonar en voz alta'.",
     long: "ReAct (Reason + Act) es el patrón fundamental de los agentes AI: el modelo razona sobre qué hacer (Reason), ejecuta una acción como buscar en internet o leer un archivo (Act), observa el resultado, y repite el ciclo hasta completar el objetivo. Es literalmente cómo 'piensa' un agente. Variantes populares incluyen Chain-of-Thought (razonar paso a paso en línea recta), Tree-of-Thought (explorar múltiples caminos de razonamiento como ramas de un árbol) y Reflexion (el agente evalúa sus propios errores para mejorar).",
@@ -193,6 +200,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Modelo",
+    termEn: "Model",
     emoji: "📦",
     short: "La versión concreta de una IA — como GPT-4o, Claude 3.5 Sonnet o Gemini 2.5 Pro.",
     long: "Un modelo es el resultado de entrenar una IA con datos y parámetros específicos. Dos modelos de la misma empresa pueden ser muy diferentes en inteligencia, velocidad y precio. Elegir el modelo correcto para tu tarea es el arte de no gastar más de lo necesario.",
@@ -203,6 +211,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Multi-agente",
+    termEn: "Multi-agent",
     emoji: "👥",
     short: "Sistema donde varios agentes AI trabajan en equipo — cada uno especializado en lo suyo, coordinados para resolver tareas complejas.",
     long: "Un sistema multi-agente es como una empresa donde cada empleado tiene un rol específico, pero en vez de personas son agentes AI. Uno puede investigar, otro redactar, otro revisar calidad, otro publicar — trabajando en paralelo o en secuencia. Es más potente que un solo agente porque cada uno se especializa y el resultado final es mejor que lo que cualquiera lograría solo. Un agente orquestador suele coordinar al equipo, delegando subtareas y consolidando resultados.",
@@ -253,6 +262,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Orquestador",
+    termEn: "Orchestrator",
     emoji: "🎼",
     short: "El agente principal que coordina a otros agentes — como un director de orquesta que decide quién toca qué y cuándo.",
     long: "En un sistema multi-agente, el orquestador es el agente que tiene la visión completa de la tarea. Recibe el objetivo, lo descompone en subtareas, decide qué sub-agente se encarga de cada una, les envía instrucciones, monitorea su progreso y consolida los resultados finales. No hace el trabajo pesado directamente — su valor está en la coordinación inteligente. Es la pieza clave del patrón multi-agente.",
@@ -303,6 +313,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Servidor",
+    termEn: "Server",
     emoji: "🗄️",
     short: "Una computadora que responde solicitudes de otras — como la cocina de un restaurante.",
     long: "Un servidor es simplemente un computador configurado para recibir y responder solicitudes de otros dispositivos. Puede ser físico (una máquina en un datacenter) o virtual (una porción de una máquina más grande). Los servidores web sirven páginas, los de base de datos guardan información, los de correo mandan emails. Cuando abres cual.ai, un servidor en algún lugar del mundo responde tu petición en milisegundos.",
@@ -313,6 +324,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Sistema de Instrucciones (System Prompt)",
+    termEn: "System Prompt",
     emoji: "⚙️",
     short: "Instrucciones ocultas que configuran cómo se comporta la IA antes de que empieces a hablar con ella.",
     long: "Cuando usas ChatGPT, Claude o cualquier app de IA, hay instrucciones que tú no ves que le dicen al modelo cómo comportarse: su personalidad, qué puede o no puede hacer, en qué idioma responder, etc. Las empresas usan esto para crear versiones especializadas de un modelo genérico.",
@@ -323,6 +335,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Skill (Habilidad de Agente)",
+    termEn: "Skill (Agent Capability)",
     emoji: "🧩",
     short: "Un módulo que le agrega capacidades específicas a un agente AI — como un plugin especializado.",
     long: "En el contexto de agentes AI como OpenClaw, un skill es un conjunto de instrucciones y herramientas empaquetadas para que el agente sepa cómo realizar una tarea específica: consultar el clima, manejar emails, buscar en GitHub, transcribir audio, etc. Es como instalarle una habilidad nueva al agente. Los skills se pueden compartir, actualizar y combinar — convirtiendo un agente genérico en un especialista para tu flujo de trabajo.",
@@ -333,6 +346,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Sub-agente",
+    termEn: "Sub-agent",
     emoji: "🐝",
     short: "Un agente especializado que recibe instrucciones de un orquestador y ejecuta una subtarea concreta — el obrero del equipo.",
     long: "En un sistema multi-agente, los sub-agentes son los que hacen el trabajo de campo. Cada uno está especializado en algo: buscar información, escribir texto, analizar datos, generar código, etc. Reciben instrucciones del orquestador, ejecutan su tarea, y devuelven el resultado. Operan bajo supervisión — no deciden qué hacer, sino cómo hacer bien lo que les pidieron. Son como los músicos de la orquesta: cada uno domina su instrumento.",
@@ -343,6 +357,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Temperatura",
+    termEn: "Temperature",
     emoji: "🌡️",
     short: "Un parámetro que controla qué tan creativa o predecible es la respuesta de un modelo.",
     long: "La temperatura va de 0 a 2 (según el modelo). Temperatura 0 = respuestas muy deterministas y consistentes, siempre la misma respuesta para la misma pregunta. Temperatura alta = más variedad, creatividad y también más riesgo de que diga cosas raras. Para tareas técnicas o de precisión, temperatura baja. Para creatividad, temperatura alta.",
@@ -353,6 +368,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Terminal / Línea de comandos",
+    termEn: "Terminal / Command Line",
     emoji: "🖥️",
     short: "Una interfaz de texto para controlar tu computador escribiendo comandos, sin botones ni menús.",
     long: "La terminal (también llamada consola, shell o línea de comandos) es la forma de hablarle directamente al sistema operativo en texto puro. Parece intimidante, pero es simplemente un idioma diferente. Los desarrolladores la usan porque es más rápida y poderosa que hacer clic en menús. En Linux y Mac se llama Terminal; en Windows, PowerShell o CMD.",
@@ -373,6 +389,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Tool / Herramienta (AI)",
+    termEn: "Tool (AI)",
     emoji: "🔧",
     short: "Una función que un agente AI puede llamar para interactuar con el mundo real — sus 'manos' para hacer cosas.",
     long: "Sin herramientas, un modelo de IA solo puede generar texto. Con tools, puede actuar: buscar en Google, ejecutar código, leer PDFs, enviar emails, consultar bases de datos, hacer llamadas a APIs, crear archivos, publicar en redes sociales — básicamente cualquier cosa que se pueda hacer por software. Las tools son lo que convierte a un chatbot en un agente. El protocolo MCP estandariza cómo se conectan estas herramientas a los modelos, y cada tool define qué parámetros necesita y qué devuelve.",
@@ -383,6 +400,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "Ventana de Contexto",
+    termEn: "Context Window",
     emoji: "🪟",
     short: "La cantidad de texto que un modelo puede 'recordar' dentro de una misma conversación.",
     long: "La ventana de contexto es la memoria de trabajo del modelo — todo lo que puede leer y considerar en un momento dado. Si tu conversación supera ese límite, el modelo literalmente olvida lo que dijiste al principio. Los modelos modernos tienen ventanas de 128K, 200K o hasta 1 millón de tokens, lo que equivale a varios libros completos.",

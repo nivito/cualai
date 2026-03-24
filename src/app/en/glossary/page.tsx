@@ -68,7 +68,7 @@ export default function GlosarioPageEn() {
             {/* Alphabetic nav */}
             <div className="bg-bg-card border border-border rounded-lg p-4 mb-6 sticky top-12 z-10">
               <div className="flex flex-wrap gap-1">
-                {Array.from(new Set(terms.map((term) => term.term[0].toUpperCase()))).map((letter) => (
+                {Array.from(new Set(terms.map((term) => (term.termEn ?? term.term)[0].toUpperCase()))).map((letter) => (
                   <a
                     key={letter}
                     href={`#letra-${letter}`}
@@ -84,23 +84,28 @@ export default function GlosarioPageEn() {
             <div className="bg-bg-card border border-border rounded-lg p-4 mb-8">
               <p className="text-xs text-text-muted mb-3 font-medium uppercase tracking-wide">{t.glossary.all_terms}</p>
               <div className="flex flex-wrap gap-2">
-                {terms.map((term) => (
-                  <a
-                    key={term.term}
-                    href={`#${term.term.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-                    className="text-xs text-accent hover:underline"
-                  >
-                    {term.term.split(" (")[0].split(" —")[0]}
-                  </a>
-                ))}
+                {terms.map((term) => {
+                  const display = term.termEn ?? term.term;
+                  return (
+                    <a
+                      key={term.term}
+                      href={`#${display.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
+                      className="text-xs text-accent hover:underline"
+                    >
+                      {display.split(" (")[0].split(" —")[0]}
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
             {/* Terms with letter separators */}
             <div className="space-y-6">
               {terms.map((term, i) => {
-                const letter = term.term[0].toUpperCase();
-                const prevLetter = i > 0 ? terms[i - 1].term[0].toUpperCase() : null;
+                const display = term.termEn ?? term.term;
+                const letter = display[0].toUpperCase();
+                const prevDisplay = i > 0 ? (terms[i - 1].termEn ?? terms[i - 1].term) : "";
+                const prevLetter = prevDisplay ? prevDisplay[0].toUpperCase() : null;
                 const showLetterHeader = letter !== prevLetter;
                 return (
                   <div key={term.term}>
@@ -111,13 +116,13 @@ export default function GlosarioPageEn() {
                       </div>
                     )}
                     <div
-                      id={term.term.toLowerCase().replace(/[^a-z0-9]/g, "-")}
+                      id={display.toLowerCase().replace(/[^a-z0-9]/g, "-")}
                       className="border border-border rounded-lg p-5 bg-bg-card scroll-mt-24"
                     >
                       <div className="flex items-start gap-3 mb-3">
                         <span className="text-2xl shrink-0">{term.emoji}</span>
                         <div>
-                          <h2 className="text-sm font-bold text-text">{term.term}</h2>
+                          <h2 className="text-sm font-bold text-text">{display}</h2>
                           <p className="text-xs text-accent mt-0.5">{term.shortEn ?? term.short}</p>
                         </div>
                       </div>
