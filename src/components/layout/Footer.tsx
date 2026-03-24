@@ -58,7 +58,7 @@ export default function Footer({ locale = "es" }: { locale?: Locale }) {
               placeholder="tu@email.com"
               required
               disabled={status === "loading"}
-              className="flex-1 bg-bg-card border border-border rounded px-3 py-2 text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
+              className="flex-1 bg-bg-card border border-border rounded px-3 py-2 text-base md:text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
             />
             <button
               type="submit"

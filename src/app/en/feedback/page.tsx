@@ -98,7 +98,7 @@ export default function FeedbackPageEn() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@email.com"
-                    className="w-full bg-bg-card border border-border rounded px-3 py-2 text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent transition-colors"
+                    className="w-full bg-bg-card border border-border rounded px-3 py-2 text-base md:text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent transition-colors"
                   />
                 </div>
 
@@ -114,7 +114,7 @@ export default function FeedbackPageEn() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Suggest a new tool, a feature, or anything you'd like us to improve on cual.ai."
-                    className="w-full bg-bg-card border border-border rounded px-3 py-2 text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent transition-colors resize-vertical"
+                    className="w-full bg-bg-card border border-border rounded px-3 py-2 text-base md:text-sm text-text placeholder:text-text-muted/50 focus:outline-none focus:border-accent transition-colors resize-vertical"
                   />
                   <p className="text-[10px] text-text-muted mt-1">Minimum 20 characters</p>
                 </div>

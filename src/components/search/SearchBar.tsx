@@ -148,7 +148,7 @@ export default function SearchBar({
           autoFocus={autoFocus}
           placeholder=""
           className={`w-full bg-bg-card border border-border rounded text-text focus:outline-none focus:border-accent transition-colors ${
-            large ? "px-4 py-3.5 pl-9 text-sm" : "px-3 py-2 pl-7 text-xs"
+            large ? "px-4 py-3.5 pl-9 text-base md:text-sm" : "px-3 py-2 pl-7 text-base md:text-xs"
           }`}
         />
 

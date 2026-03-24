@@ -88,7 +88,7 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t.header.search_placeholder}
-              className="w-full bg-bg-card border border-border rounded px-3 py-1.5 pl-7 text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+              className="w-full bg-bg-card border border-border rounded px-3 py-1.5 pl-7 text-base md:text-xs text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
             />
           </div>
         </form>
