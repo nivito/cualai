@@ -1,15 +1,52 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { categories, getToolCountByCategory } from "@/data/tools";
 import { getDict, getLocalizedCategory, type Locale } from "@/i18n";
 
 export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const t = getDict(locale);
+
+  const routeMap: Array<[string, string]> = [
+    ["/noticias", "/news"],
+    ["/herramienta", "/tool"],
+    ["/glosario", "/glossary"],
+    ["/que-es-ia", "/what-is-ai"],
+    ["/comparar", "/compare"],
+    ["/cursos", "/courses"],
+    ["/modelos", "/models"],
+  ];
+
+  function mapRoute(path: string, from: string, to: string): string {
+    if (path === from || path.startsWith(from + "/") || path.startsWith(from + "?")) {
+      return to + path.slice(from.length);
+    }
+    return path;
+  }
+
+  function getEsPath(): string {
+    const withoutEn = pathname.replace(/^\/en/, "") || "/";
+    let esPath = withoutEn;
+    for (const [es, en] of routeMap) {
+      const mapped = mapRoute(withoutEn, en, es);
+      if (mapped !== withoutEn) { esPath = mapped; break; }
+    }
+    return esPath || "/";
+  }
+
+  function getEnPath(): string {
+    let enPath = pathname;
+    for (const [es, en] of routeMap) {
+      const mapped = mapRoute(pathname, es, en);
+      if (mapped !== pathname) { enPath = mapped; break; }
+    }
+    return "/en" + enPath;
+  }
 
   const prefix = locale === "en" ? "/en" : "";
   const newsRoute = locale === "en" ? "/en/news" : "/noticias";
@@ -182,9 +219,8 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
           <div className="px-3 py-4 border-t border-border mt-4">
             <p className="text-[10px] uppercase tracking-widest text-text-muted mb-2">Language</p>
             <div className="flex gap-2">
-              <Link
-                href={locale === "en" ? (pathname.replace(/^\/en/, "") || "/") : pathname}
-                onClick={() => setOpen(false)}
+              <button
+                onClick={() => { setOpen(false); router.push(getEsPath()); }}
                 className={`text-xs px-3 py-1.5 rounded border transition-colors ${
                   locale !== "en"
                     ? "border-accent text-accent bg-accent/10"
@@ -192,10 +228,9 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
                 }`}
               >
                 🇪🇸 Español
-              </Link>
-              <Link
-                href={locale === "en" ? pathname : `/en${pathname}`}
-                onClick={() => setOpen(false)}
+              </button>
+              <button
+                onClick={() => { setOpen(false); router.push(getEnPath()); }}
                 className={`text-xs px-3 py-1.5 rounded border transition-colors ${
                   locale === "en"
                     ? "border-accent text-accent bg-accent/10"
