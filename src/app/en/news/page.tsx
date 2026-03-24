@@ -47,9 +47,15 @@ async function getNews(category?: NewsCategory): Promise<NewsItem[]> {
           practicalTakeaway: row.raw_data?.practical_takeaway || "",
           category: (row.raw_data?.category || "herramientas") as NewsCategory,
           categoryLabel: row.raw_data?.category_label || "Herramientas",
+          categoryLabelEn: row.raw_data?.category_label_en,
           date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
           readingTime: row.raw_data?.reading_time || 3,
           source: row.source_name,
+          // EN translations
+          titleEn: row.raw_data?.title_en,
+          summaryEn: row.raw_data?.summary_en,
+          contentEn: row.raw_data?.content_en,
+          practicalTakeawayEn: row.raw_data?.practical_takeaway_en,
         }));
       }
     }

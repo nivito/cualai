@@ -68,6 +68,7 @@ async function getNewsItem(slug: string): Promise<{ item: NewsItem; contentEn?: 
       practicalTakeaway: row.raw_data?.practical_takeaway || "",
       category: row.raw_data?.category || "herramientas",
       categoryLabel: row.raw_data?.category_label || "Herramientas",
+      categoryLabelEn: row.raw_data?.category_label_en,
       date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
       readingTime: row.raw_data?.reading_time || 3,
       source: row.source_name,

@@ -229,24 +229,35 @@ Fecha de hoy: ${today}`,
 
 // ── Claude: Translate articles to English ──────────────────
 
+interface ArticleTranslation {
+  title_en: string;
+  summary_en: string;
+  content_en: string;
+  practical_takeaway_en: string;
+  category_label_en: string;
+}
+
 async function translateArticlesToEnglish(
-  articles: Array<{ content: string; practical_takeaway: string }>
-): Promise<Array<{ content_en: string; practical_takeaway_en: string }>> {
+  articles: Array<{ title: string; summary: string; content: string; practical_takeaway: string; category_label: string }>
+): Promise<ArticleTranslation[]> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey || articles.length === 0) return articles.map(() => ({ content_en: "", practical_takeaway_en: "" }));
+  if (!apiKey || articles.length === 0) return articles.map(() => ({ title_en: "", summary_en: "", content_en: "", practical_takeaway_en: "", category_label_en: "" }));
 
   const client = new Anthropic({ apiKey });
 
   const payload = articles.map((a, i) => ({
     index: i,
+    title: a.title,
+    summary: a.summary,
     content: a.content,
     practical_takeaway: a.practical_takeaway,
+    category_label: a.category_label,
   }));
 
   try {
     const message = await client.messages.create({
       model: "claude-sonnet-4-5-20250514",
-      max_tokens: 4000,
+      max_tokens: 6000,
       messages: [
         {
           role: "user",
@@ -257,27 +268,33 @@ ${JSON.stringify(payload)}
 
 Each object in the output array must have:
 - index: same index as input
+- title_en: the translated title
+- summary_en: the translated summary
 - content_en: the translated HTML content
-- practical_takeaway_en: the translated practical takeaway`,
+- practical_takeaway_en: the translated practical takeaway
+- category_label_en: the translated category label`,
         },
       ],
     });
 
     const text = message.content[0].type === "text" ? message.content[0].text : "";
     const jsonStr = text.replace(/```json?\n?/g, "").replace(/```/g, "").trim();
-    const translations: Array<{ index: number; content_en: string; practical_takeaway_en: string }> = JSON.parse(jsonStr);
+    const translations: Array<{ index: number; title_en: string; summary_en: string; content_en: string; practical_takeaway_en: string; category_label_en: string }> = JSON.parse(jsonStr);
 
     // Map back by index
     return articles.map((_, i) => {
       const t = translations.find((tr) => tr.index === i);
       return {
+        title_en: t?.title_en || "",
+        summary_en: t?.summary_en || "",
         content_en: t?.content_en || "",
         practical_takeaway_en: t?.practical_takeaway_en || "",
+        category_label_en: t?.category_label_en || "",
       };
     });
   } catch (err) {
     console.error("Failed to translate articles to English:", err);
-    return articles.map(() => ({ content_en: "", practical_takeaway_en: "" }));
+    return articles.map(() => ({ title_en: "", summary_en: "", content_en: "", practical_takeaway_en: "", category_label_en: "" }));
   }
 }
 
@@ -335,8 +352,11 @@ export async function runContentAgent(): Promise<{
         category: article.category,
         category_label: article.category_label,
         reading_time: article.reading_time,
+        title_en: translation.title_en,
+        summary_en: translation.summary_en,
         content_en: translation.content_en,
         practical_takeaway_en: translation.practical_takeaway_en,
+        category_label_en: translation.category_label_en,
       },
     });
 
