@@ -329,7 +329,7 @@ export default async function ComparePage({
               )}
             </div>
           </section>
-          <Footer />
+          <Footer locale="en" />
         </main>
       </div>
     </div>

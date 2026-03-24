@@ -180,7 +180,7 @@ export default function FeedbackPageEn() {
             )}
           </div>
 
-          <Footer />
+          <Footer locale="en" />
         </main>
       </div>
     </div>

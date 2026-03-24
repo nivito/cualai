@@ -142,7 +142,7 @@ export default function CoursesPage() {
             )}
           </section>
 
-          <Footer />
+          <Footer locale="en" />
         </main>
       </div>
     </div>

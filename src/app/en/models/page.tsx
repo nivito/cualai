@@ -216,7 +216,7 @@ export default function ModelsPage() {
             </div>
           </section>
 
-          <Footer />
+          <Footer locale="en" />
         </main>
       </div>
     </div>

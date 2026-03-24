@@ -506,7 +506,7 @@ export default function WhatIsAIPage() {
 
         </main>
       </div>
-      <Footer />
+      <Footer locale="en" />
     </div>
   );
 }
