@@ -101,7 +101,7 @@ export default function NewsSidebar({
                 }`}
               >
                 <span>{icons[cat.slug]}</span>
-                <span className="flex-1 truncate">{cat.label}</span>
+                <span className="flex-1 truncate">{locale === "en" ? cat.labelEn : cat.label}</span>
               </Link>
             )
           })}

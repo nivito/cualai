@@ -25,12 +25,12 @@ export interface NewsItem {
   categoryLabelEn?: string
 }
 
-export const newsCategories: { slug: NewsCategory; label: string }[] = [
-  { slug: "modelos-ia", label: "Modelos de IA" },
-  { slug: "herramientas", label: "Herramientas" },
-  { slug: "empresas", label: "Empresas" },
-  { slug: "sociedad", label: "Sociedad" },
-  { slug: "legislacion", label: "Legislación" },
+export const newsCategories: { slug: NewsCategory; label: string; labelEn: string }[] = [
+  { slug: "modelos-ia", label: "Modelos de IA", labelEn: "AI Models" },
+  { slug: "herramientas", label: "Herramientas", labelEn: "Tools" },
+  { slug: "empresas", label: "Empresas", labelEn: "Companies" },
+  { slug: "sociedad", label: "Sociedad", labelEn: "Society" },
+  { slug: "legislacion", label: "Legislación", labelEn: "Regulation" },
 ]
 
 export const news: NewsItem[] = [
