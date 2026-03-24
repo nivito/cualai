@@ -39,29 +39,30 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
       ["/modelos", "/models"],
     ];
 
+    function mapRoute(path: string, from: string, to: string): string {
+      if (path === from || path.startsWith(from + "/") || path.startsWith(from + "?")) {
+        return to + path.slice(from.length);
+      }
+      return path;
+    }
+
     if (isEn) {
-      // EN → ES: strip /en prefix, then map route segment
+      // EN → ES: strip /en prefix, then map segment
       const withoutEn = pathname.replace(/^\/en/, "") || "/";
       let esPath = withoutEn;
       for (const [es, en] of routeMap) {
-        const enRegex = new RegExp(`^${en.replace("/", "\\/")}(\\/|$|\\?)`);
-        if (enRegex.test(withoutEn)) {
-          esPath = withoutEn.replace(en, es);
-          break;
-        }
+        const mapped = mapRoute(withoutEn, en, es);
+        if (mapped !== withoutEn) { esPath = mapped; break; }
       }
       router.push(esPath || "/");
     } else {
-      // ES → EN: map route segment, then add /en prefix
+      // ES → EN: map segment, then add /en prefix
       let enPath = pathname;
       for (const [es, en] of routeMap) {
-        const esRegex = new RegExp(`^${es.replace("/", "\\/")}(\\/|$|\\?)`);
-        if (esRegex.test(pathname)) {
-          enPath = pathname.replace(es, en);
-          break;
-        }
+        const mapped = mapRoute(pathname, es, en);
+        if (mapped !== pathname) { enPath = mapped; break; }
       }
-      router.push(`/en${enPath}`);
+      router.push("/en" + enPath);
     }
   }
 
