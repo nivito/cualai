@@ -47,7 +47,7 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
     }
 
     if (isEn) {
-      // EN → ES: strip /en prefix, then map segment
+      // EN → ES: strip /en prefix, then map to ES route
       const withoutEn = pathname.replace(/^\/en/, "") || "/";
       let esPath = withoutEn;
       for (const [es, en] of routeMap) {
