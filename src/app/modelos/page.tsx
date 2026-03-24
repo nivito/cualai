@@ -38,7 +38,8 @@ export default function ModelosPage() {
                 Comparativa de modelos de IA
               </h1>
               <p className="text-text-muted text-xs">
-                {aiModels.length} modelos de {companies.length} empresas · precios de API y planes de usuario
+                {aiModels.length} modelos de {companies.length} empresas · precios de API y planes de usuario · Fuentes: páginas oficiales de cada modelo y{" "}
+                  <a href="https://llm-stats.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-hover transition-colors">llm-stats.com</a>
               </p>
             </div>
           </section>
