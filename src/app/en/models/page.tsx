@@ -23,6 +23,25 @@ export const metadata: Metadata = {
   },
 };
 
+const TYPE_LABEL_EN: Record<string, string> = {
+  Texto: "Text",
+  Código: "Code",
+  Razonamiento: "Reasoning",
+  Multimodal: "Multimodal",
+  Video: "Video",
+  Imagen: "Image",
+  Audio: "Audio",
+};
+
+const SPEED_LABEL_EN: Record<string, string> = {
+  Rápido: "Fast",
+  "Muy rápido": "Very fast",
+  Medio: "Medium",
+  "Lento (razona antes de responder)": "Slow (reasons before answering)",
+  "Medio (razona internamente)": "Medium (reasons internally)",
+  Lento: "Slow",
+};
+
 export default function ModelsPage() {
   const newModels = aiModels.filter((m) => m.isNew);
 
@@ -109,7 +128,7 @@ export default function ModelsPage() {
                               key={t}
                               className="text-[10px] px-1.5 py-0.5 rounded border border-border text-text-muted"
                             >
-                              {t}
+                              {TYPE_LABEL_EN[t] ?? t}
                             </span>
                           ))}
                           {model.typeLabels.length > 2 && (
@@ -137,7 +156,7 @@ export default function ModelsPage() {
                               : "text-red-400"
                           }`}
                         >
-                          {model.speedLabel}
+                          {SPEED_LABEL_EN[model.speedLabel] ?? model.speedLabel}
                         </span>
                       </td>
                       <td className="px-3 py-2.5">
