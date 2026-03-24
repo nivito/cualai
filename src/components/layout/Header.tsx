@@ -29,28 +29,38 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
   const isEn = pathname.startsWith("/en");
 
   function toggleLocale() {
+    const routeMap: Array<[string, string]> = [
+      ["/noticias", "/news"],
+      ["/herramienta", "/tool"],
+      ["/glosario", "/glossary"],
+      ["/que-es-ia", "/what-is-ai"],
+      ["/comparar", "/compare"],
+      ["/cursos", "/courses"],
+      ["/modelos", "/models"],
+    ];
+
     if (isEn) {
-      // EN → ES: strip /en prefix and map route names
-      const esPath = pathname
-        .replace(/^\/en/, "")
-        .replace(/^\/news(\/|$|(?=\?))/, "/noticias$1")
-        .replace(/^\/tool(\/|$|(?=\?))/, "/herramienta$1")
-        .replace(/^\/glossary(\/|$|(?=\?))/, "/glosario$1")
-        .replace(/^\/what-is-ai(\/|$|(?=\?))/, "/que-es-ia$1")
-        .replace(/^\/compare(\/|$|(?=\?))/, "/comparar$1")
-        .replace(/^\/courses(\/|$|(?=\?))/, "/cursos$1")
-        .replace(/^\/models(\/|$|(?=\?))/, "/modelos$1");
+      // EN → ES: strip /en prefix, then map route segment
+      const withoutEn = pathname.replace(/^\/en/, "") || "/";
+      let esPath = withoutEn;
+      for (const [es, en] of routeMap) {
+        const enRegex = new RegExp(`^${en.replace("/", "\\/")}(\\/|$|\\?)`);
+        if (enRegex.test(withoutEn)) {
+          esPath = withoutEn.replace(en, es);
+          break;
+        }
+      }
       router.push(esPath || "/");
     } else {
-      // ES → EN: map route names and add /en prefix
-      const enPath = pathname
-        .replace(/^\/noticias(\/|$|(?=\?))/, "/news$1")
-        .replace(/^\/herramienta(\/|$|(?=\?))/, "/tool$1")
-        .replace(/^\/glosario(\/|$|(?=\?))/, "/glossary$1")
-        .replace(/^\/que-es-ia(\/|$|(?=\?))/, "/what-is-ai$1")
-        .replace(/^\/comparar(\/|$|(?=\?))/, "/compare$1")
-        .replace(/^\/cursos(\/|$|(?=\?))/, "/courses$1")
-        .replace(/^\/modelos(\/|$|(?=\?))/, "/models$1");
+      // ES → EN: map route segment, then add /en prefix
+      let enPath = pathname;
+      for (const [es, en] of routeMap) {
+        const esRegex = new RegExp(`^${es.replace("/", "\\/")}(\\/|$|\\?)`);
+        if (esRegex.test(pathname)) {
+          enPath = pathname.replace(es, en);
+          break;
+        }
+      }
       router.push(`/en${enPath}`);
     }
   }
