@@ -78,6 +78,15 @@ export default function Footer({ locale = "es" }: { locale?: Locale }) {
             nivito.io
           </a>
         </p>
+        <p className="text-text-muted text-[10px] mt-2">
+          {t.footer.ai_disclaimer}{" "}
+          <a
+            href={locale === "en" ? "/en/feedback" : "/feedback"}
+            className="text-accent hover:text-accent-hover transition-colors underline"
+          >
+            {t.footer.ai_disclaimer_link}
+          </a>
+        </p>
       </div>
     </footer>
   );

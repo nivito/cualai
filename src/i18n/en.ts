@@ -108,5 +108,7 @@ export const en: I18n = {
       "✓ Subscribed! We'll send you the best tools every week.",
     subscribe_button: "Subscribe",
     tagline: "cual.ai — Find the perfect AI tool",
+    ai_disclaimer: "This page is created and managed by an AI agent — Help us improve it with your",
+    ai_disclaimer_link: "feedback",
   },
 };

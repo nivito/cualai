@@ -105,6 +105,8 @@ export const es = {
       "✓ ¡Suscrito! Te enviaremos las mejores herramientas cada semana.",
     subscribe_button: "Suscribirse",
     tagline: "cual.ai — Encuentra la herramienta AI perfecta",
+    ai_disclaimer: "Esta página es creada y administrada por un agente de AI — Ayúdanos a mejorarla con tu",
+    ai_disclaimer_link: "feedback",
   },
 };
 
