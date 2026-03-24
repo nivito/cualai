@@ -35,6 +35,7 @@ export const categories: Category[] = [
   { slug: "desarrollo", name: "Desarrollo", nameEn: "Development", icon: "💻" },
   { slug: "ecommerce", name: "E-commerce", nameEn: "E-commerce", icon: "🛒" },
   { slug: "educacion", name: "Educación", nameEn: "Education", icon: "🎓" },
+  { slug: "electronica-hardware", name: "Electrónica & Hardware", nameEn: "Electronics & Hardware", icon: "⚡" },
   { slug: "finanzas", name: "Finanzas", nameEn: "Finance", icon: "💰" },
   { slug: "imagenes-diseno", name: "Imágenes & Diseño", nameEn: "Images & Design", icon: "🎨" },
   { slug: "impresion-3d", name: "Impresión 3D", nameEn: "3D Printing", icon: "🖨️" },
@@ -797,6 +798,28 @@ export const tools: Tool[] = [
     featured: false,
     tags: ["estudio", "flashcards", "memorización", "tests", "apuntes"],
     useCases: ["Crear flashcards automáticas", "Preparar exámenes eficientemente", "Estudiar con repetición espaciada", "Convertir apuntes en material de estudio"],
+  },
+  // ── Electrónica & Hardware ──
+  {
+    id: "flux-ai",
+    name: "Flux",
+    slug: "flux-ai",
+    description: "Diseño de PCBs con IA: genera esquemáticos y layouts de circuitos desde una descripción en lenguaje natural.",
+    longDescription: "Flux es una plataforma de diseño de PCBs (placas de circuito impreso) completamente potenciada por IA. Permite generar esquemáticos y layouts de circuitos completos describiendo lo que necesitas en lenguaje natural — desde sensores de temperatura hasta drivers de motores brushless o módulos WiFi/BLE. La IA selecciona los componentes adecuados, diseña las conexiones y genera el layout listo para fabricación. Es la herramienta AI-first más avanzada para ingenieros de hardware y makers.",
+    descriptionEn: "AI-powered PCB design: generates schematics and circuit layouts from a natural language description.",
+    longDescriptionEn: "Flux is a fully AI-powered PCB (printed circuit board) design platform. It allows generating complete circuit schematics and layouts by describing what you need in natural language — from temperature sensors to brushless motor drivers or WiFi/BLE modules. The AI selects the right components, designs the connections, and generates a fabrication-ready layout. It is the most advanced AI-first tool for hardware engineers and makers.",
+    url: "https://www.flux.ai",
+    categories: ["electronica-hardware", "desarrollo"],
+    pricing: "freemium",
+    priceLabel: "Gratis limitado / Pro desde $30/mes",
+    featured: true,
+    tags: ["PCB", "electrónica", "hardware", "circuitos", "esquemáticos", "IoT", "makers"],
+    useCases: [
+      "Diseño de PCBs desde descripción en lenguaje natural",
+      "Generación automática de esquemáticos",
+      "Selección de componentes electrónicos con IA",
+      "Prototipado rápido de hardware IoT",
+    ],
   },
   // ── E-commerce ──
   {
