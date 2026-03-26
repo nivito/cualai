@@ -494,3 +494,133 @@ export const expertTechniques: ExpertTechnique[] = [
     whenEn: "Large projects, long documents, multi-stage workflows.",
   },
 ];
+
+// ─── Agent Era ──────────────────────────────────────────────────────
+
+export interface AgentPromptExample {
+  id: string;
+  title: string;
+  titleEn: string;
+  description: string;
+  descriptionEn: string;
+  parts: PromptPart[];
+  partsEn?: PromptPart[];
+  concept: string;
+  conceptEn: string;
+}
+
+export const agentConcepts = [
+  {
+    id: "orchestration",
+    title: "Orquestación de Agentes",
+    titleEn: "Agent Orchestration",
+    description: "En la era de los agentes, ya no solo le das instrucciones a un modelo — coordinas múltiples agentes especializados. Un agente orquestador recibe la tarea, la divide y delega a sub-agentes.",
+    descriptionEn: "In the age of agents, you do not just give instructions to a model — you coordinate multiple specialized agents. An orchestrator agent receives the task, breaks it down, and delegates to sub-agents.",
+    icon: "🎯",
+  },
+  {
+    id: "subagents",
+    title: "Sub-agentes Especializados",
+    titleEn: "Specialized Sub-agents",
+    description: "Cada agente tiene un rol específico: uno busca información, otro escribe código, otro revisa, otro ejecuta. El prompting cambia porque debes diseñar el sistema completo, no solo una instrucción.",
+    descriptionEn: "Each agent has a specific role: one searches for information, another writes code, another reviews, another executes. Prompting changes because you design the whole system, not just one instruction.",
+    icon: "🤖",
+  },
+  {
+    id: "nested-prompts",
+    title: "Prompts Anidados",
+    titleEn: "Nested Prompts",
+    description: "Un agente puede generar prompts para otros agentes. El prompt de nivel superior define el objetivo global; los prompts anidados definen las subtareas con su propio Persona/Tarea/Contexto/Formato.",
+    descriptionEn: "An agent can generate prompts for other agents. The top-level prompt defines the global objective; nested prompts define subtasks with their own Persona/Task/Context/Format.",
+    icon: "🪆",
+  },
+  {
+    id: "system-prompts",
+    title: "System Prompts vs User Prompts",
+    titleEn: "System Prompts vs User Prompts",
+    description: "Los agentes tienen dos capas: el system prompt (instrucciones permanentes del desarrollador) y el user prompt (input del usuario). Saber cuándo poner algo en cada capa es crítico para el comportamiento del agente.",
+    descriptionEn: "Agents have two layers: the system prompt (permanent developer instructions) and the user prompt (user input). Knowing when to put something in each layer is critical for agent behavior.",
+    icon: "⚙️",
+  },
+  {
+    id: "context-passing",
+    title: "Pasaje de Contexto entre Agentes",
+    titleEn: "Context Passing Between Agents",
+    description: "Cuando un agente pasa el resultado a otro, el prompt de transición es crítico. Debes definir exactamente qué información se transfiere, en qué formato, y qué contexto mantiene el agente receptor.",
+    descriptionEn: "When an agent passes results to another, the transition prompt is critical. You must define exactly what information is transferred, in what format, and what context the receiving agent maintains.",
+    icon: "🔗",
+  },
+  {
+    id: "tool-use",
+    title: "Prompts para Uso de Herramientas",
+    titleEn: "Tool-Use Prompts",
+    description: "Los agentes modernos pueden ejecutar código, buscar en la web, llamar APIs. El prompting debe especificar cuándo usar cada herramienta, cómo interpretar el resultado y cómo incorporarlo a la respuesta.",
+    descriptionEn: "Modern agents can execute code, search the web, call APIs. Prompting must specify when to use each tool, how to interpret the result, and how to incorporate it into the response.",
+    icon: "🔧",
+  },
+];
+
+export const agentExamples: AgentPromptExample[] = [
+  {
+    id: "research-agent",
+    title: "Agente de investigación con sub-agentes",
+    titleEn: "Research agent with sub-agents",
+    description: "Prompt para un agente orquestador que coordina búsqueda + síntesis",
+    descriptionEn: "Prompt for an orchestrator agent that coordinates search + synthesis",
+    concept: "Orquestación",
+    conceptEn: "Orchestration",
+    parts: [
+      { type: "persona", text: "Eres un agente orquestador de investigación." },
+      { type: "task", text: " Tu tarea es investigar a fondo el tema: [TEMA]." },
+      { type: "context", text: " Tienes acceso a dos sub-agentes: (1) SearchAgent — busca fuentes recientes, (2) SynthesisAgent — sintetiza y redacta. Primero lanza SearchAgent con la query relevante, luego pasa sus resultados a SynthesisAgent." },
+      { type: "format", text: " El output final debe ser un informe estructurado con: Resumen ejecutivo (3 bullets), Hallazgos principales (max 5), Fuentes citadas, Gaps de información identificados." },
+    ],
+  },
+  {
+    id: "code-review-agent",
+    title: "Pipeline de revisión de código",
+    titleEn: "Code review pipeline",
+    description: "Prompt anidado: agente principal delega a agente de seguridad y agente de calidad",
+    descriptionEn: "Nested prompt: main agent delegates to security agent and quality agent",
+    concept: "Prompts Anidados",
+    conceptEn: "Nested Prompts",
+    parts: [
+      { type: "persona", text: "Eres el CodeReviewOrchestrator." },
+      { type: "task", text: " Revisa el siguiente PR: [DIFF]." },
+      { type: "context", text: " Debes lanzar dos sub-agentes en paralelo: SecurityAgent (busca vulnerabilidades OWASP) y QualityAgent (verifica clean code, complejidad, tests). Espera ambos resultados antes de generar el reporte final." },
+      { type: "format", text: " Reporte final: sección de Seguridad + sección de Calidad + Veredicto (APPROVE / REQUEST_CHANGES) + lista priorizada de cambios requeridos." },
+    ],
+  },
+  {
+    id: "system-vs-user",
+    title: "System prompt de un agente de soporte",
+    titleEn: "System prompt of a support agent",
+    description: "Diferencia entre instrucciones del sistema (permanentes) vs input del usuario",
+    descriptionEn: "Difference between system instructions (permanent) vs user input",
+    concept: "System vs User Prompt",
+    conceptEn: "System vs User Prompt",
+    parts: [
+      { type: "plain", text: "SYSTEM: " },
+      { type: "persona", text: "Eres un agente de soporte para [Empresa]." },
+      { type: "context", text: " Tienes acceso a la base de conocimiento interna (tool: search_kb) y al historial del cliente (tool: get_customer_history). Nunca reveles información de otros clientes." },
+      { type: "format", text: " Responde siempre en el idioma del usuario. Si no sabes la respuesta, escala al humano con: ESCALATE:[motivo]." },
+      { type: "plain", text: "\n\nUSER: " },
+      { type: "task", text: "Mi factura del mes pasado tiene un cobro que no reconozco de $45.000." },
+    ],
+  },
+  {
+    id: "context-passing-example",
+    title: "Pasaje de contexto entre agentes",
+    titleEn: "Context passing between agents",
+    description: "Cómo estructurar el handoff de un agente a otro",
+    descriptionEn: "How to structure the handoff from one agent to another",
+    concept: "Pasaje de Contexto",
+    conceptEn: "Context Passing",
+    parts: [
+      { type: "persona", text: "Eres el WriterAgent." },
+      { type: "task", text: " Recibe el output del ResearchAgent y escribe un artículo de blog." },
+      { type: "context", text: " INPUT DEL RESEARCH AGENT: {research_output}. Audiencia objetivo: profesionales de tecnología en LATAM. Tono: técnico pero accesible. No repitas información ya cubierta en artículos previos: {previous_articles_list}." },
+      { type: "format", text: " Output: Título SEO + meta description + artículo (800-1200 palabras) con H2s y H3s + 3 call-to-actions sugeridos." },
+    ],
+  },
+];
