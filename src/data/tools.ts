@@ -2063,6 +2063,27 @@ export const tools: Tool[] = [
       "Gestión de proyectos de construcción con IA",
     ],
   },
+  {
+    id: "bland-ai",
+    name: "Bland AI",
+    slug: "bland-ai",
+    description: "Plataforma empresarial de Voice AI para automatizar llamadas telefónicas a escala con agentes conversacionales de IA.",
+    longDescription: "Bland AI permite a empresas automatizar millones de llamadas telefónicas con agentes de voz basados en IA que suenan naturales y resuelven consultas en tiempo real. Ofrece infraestructura propia (hardware, modelos y servidores) para máxima privacidad y latencia mínima, con una red global de entrega de voz. Soporta casos como agendamiento de citas, calificación de leads, ventas outbound y soporte al cliente. Los agentes se configuran con lenguaje natural y se despliegan en producción en menos de 30 días.",
+    descriptionEn: "Enterprise Voice AI platform to automate phone calls at scale with conversational AI agents.",
+    longDescriptionEn: "Bland AI enables companies to automate millions of phone calls with AI voice agents that sound natural and resolve queries in real time. It offers proprietary infrastructure (hardware, models, and servers) for maximum privacy and minimum latency, with a global voice delivery network. Supports use cases like appointment scheduling, lead qualification, outbound sales, and customer support. Agents are configured with natural language and deployed to production in under 30 days.",
+    url: "https://www.bland.ai",
+    categories: ["voz-audio", "agentes-productividad"],
+    pricing: "freemium",
+    priceLabel: "Desde $0.09/min",
+    featured: false,
+    tags: ["voz", "llamadas", "automatización", "call center", "agentes de voz", "outbound", "enterprise"],
+    useCases: [
+      "Automatización de llamadas de ventas outbound",
+      "Agendamiento de citas por teléfono",
+      "Calificación de leads mediante llamadas",
+      "Soporte al cliente automatizado por voz",
+    ],
+  },
 ]
 
 // ── Helper functions ──────────────────────────────────────────
