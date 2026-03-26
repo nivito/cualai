@@ -18,6 +18,7 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
   const glossaryRoute = locale === "en" ? "/en/glossary" : "/glosario";
   const coursesRoute = locale === "en" ? "/en/courses" : "/cursos";
   const modelsRoute = locale === "en" ? "/en/models" : "/modelos";
+  const promptsRoute = locale === "en" ? "/en/prompts" : "/prompts";
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -37,6 +38,7 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
       ["/comparar", "/compare"],
       ["/cursos", "/courses"],
       ["/modelos", "/models"],
+      ["/prompts", "/prompts"],
     ];
 
     function mapRoute(path: string, from: string, to: string): string {
@@ -105,6 +107,12 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
           className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
         >
           {t.header.nav_courses}
+        </Link>
+        <Link
+          href={promptsRoute}
+          className="text-text-muted text-xs shrink-0 hidden sm:block hover:text-accent transition-colors"
+        >
+          {t.header.nav_prompts}
         </Link>
         <Link
           href={modelsRoute}

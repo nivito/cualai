@@ -20,6 +20,7 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
     ["/comparar", "/compare"],
     ["/cursos", "/courses"],
     ["/modelos", "/models"],
+    ["/prompts", "/prompts"],
   ];
 
   function mapRoute(path: string, from: string, to: string): string {
@@ -55,6 +56,7 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
   const compareRoute = locale === "en" ? "/en/compare" : "/comparar";
   const coursesRoute = locale === "en" ? "/en/courses" : "/cursos";
   const modelsRoute = locale === "en" ? "/en/models" : "/modelos";
+  const promptsRoute = locale === "en" ? "/en/prompts" : "/prompts";
 
   // For active state detection, strip the /en prefix from pathname
   const cleanPath = locale === "en" ? pathname.replace(/^\/en/, "") || "/" : pathname;
@@ -64,6 +66,7 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
   const compareClean = locale === "en" ? "/compare" : "/comparar";
   const coursesClean = locale === "en" ? "/courses" : "/cursos";
   const modelsClean = locale === "en" ? "/models" : "/modelos";
+  const promptsClean = "/prompts";
 
   return (
     <>
@@ -173,6 +176,20 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
           >
             <span>📖</span>
             <span className="flex-1 truncate">{t.sidebar.glossary}</span>
+          </Link>
+
+          {/* Prompts link */}
+          <Link
+            href={promptsRoute}
+            onClick={() => setOpen(false)}
+            className={`flex items-center gap-2 px-4 py-1.5 text-xs transition-colors ${
+              cleanPath.startsWith(promptsClean)
+                ? "bg-bg-hover text-accent border-l-2 border-accent"
+                : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
+            }`}
+          >
+            <span>✍️</span>
+            <span className="flex-1 truncate">{t.sidebar.prompts}</span>
           </Link>
 
           {/* Feedback link */}
