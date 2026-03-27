@@ -2084,6 +2084,27 @@ export const tools: Tool[] = [
       "Soporte al cliente automatizado por voz",
     ],
   },
+  {
+    id: "base44",
+    name: "Base44",
+    slug: "base44",
+    description: "Plataforma no-code con IA para crear aplicaciones web completas con backend, agentes AI y automatizaciones en minutos.",
+    longDescription: "Base44 es una plataforma que permite construir aplicaciones web completas sin código, con un backend nativo para agentes de IA. Combina generación de apps con IA, superagentes que se conectan a tus herramientas y corren 24/7, integraciones con servicios externos, y un marketplace de templates listos para personalizar. Ideal para product managers, emprendedores y equipos de operaciones que necesitan lanzar productos internos o externos rápidamente sin depender de un equipo de desarrollo.",
+    descriptionEn: "No-code AI platform to build complete web applications with backend, AI agents, and automations in minutes.",
+    longDescriptionEn: "Base44 is a platform that allows building complete web applications without code, with a native backend for AI agents. It combines AI-powered app generation, superagents that connect to your tools and run 24/7, integrations with external services, and a marketplace of ready-to-customize templates. Ideal for product managers, entrepreneurs, and operations teams who need to launch internal or external products quickly without depending on a development team.",
+    url: "https://base44.com",
+    categories: ["desarrollo", "agentes-productividad"],
+    pricing: "freemium",
+    priceLabel: "Plan gratuito disponible",
+    featured: false,
+    tags: ["no-code", "agentes AI", "backend", "automatización", "app builder", "superagentes", "productividad"],
+    useCases: [
+      "Crear aplicaciones web internas sin código",
+      "Desplegar agentes AI conectados a herramientas externas",
+      "Automatizar flujos de operaciones y marketing",
+      "Prototipado rápido de productos digitales",
+    ],
+  },
 ]
 
 // ── Helper functions ──────────────────────────────────────────
