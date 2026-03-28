@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import ComparatorWidget from "@/components/comparator/ComparatorWidget";
 import "./globals.css";
 
@@ -117,6 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         {children}
         <ComparatorWidget />
+        <SpeedInsights />
       </body>
     </html>
   );
