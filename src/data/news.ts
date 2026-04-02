@@ -35,6 +35,86 @@ export const newsCategories: { slug: NewsCategory; label: string; labelEn: strin
 
 export const news: NewsItem[] = [
   {
+    id: "claude-code-source-leak",
+    slug: "el-codigo-de-claude-code-se-filtro-accidentalmente-esto-es-lo-que-revela",
+    title: "Se filtró el código fuente de Claude Code por accidente: esto es lo que revela",
+    summary: "Anthropic publicó por error un archivo de 59.8 MB con todo el código fuente de Claude Code dentro del paquete de npm. Un pasante lo descubrió, se viralizó en horas, y ahora sabemos cómo funciona por dentro una de las herramientas de IA más populares del mundo.",
+    content: `<p>Imaginate que una empresa de autos publicara por accidente los planos completos de su modelo más vendido. Eso es básicamente lo que le pasó a Anthropic con <strong>Claude Code</strong>, su herramienta de programación con IA que genera miles de millones de dólares al año.</p>
+
+<p>El 31 de marzo de 2026, alguien en Anthropic subió una actualización del paquete de Claude Code a npm (el "app store" de los programadores) y se le fue incluir un archivo llamado <strong>source map</strong> de 59.8 MB. Ese archivo es como un mapa del tesoro: contiene todo el código fuente original, unas 512,000 líneas de TypeScript. Básicamente, las instrucciones completas de cómo funciona Claude Code por dentro.</p>
+
+<p>¿Quién lo descubrió? Un pasante de una empresa llamada Solayer Labs, conocido como <strong>@Fried_rice en X</strong>. Lo publicó y en cuestión de horas se volvió viral. Miles de desarrolladores se pusieron a revisar el código como si fuera el estreno de una película muy esperada.</p>
+
+<p><strong>¿Qué se encontró adentro?</strong></p>
+
+<p><strong>1. Un sistema de memoria en 3 capas</strong></p>
+<p>Claude Code no solo responde preguntas — te recuerda. Tiene un sistema de memoria con tres niveles: un archivo índice liviano (MEMORY.md) que funciona como una libreta de apuntes rápidos, archivos por tema donde guarda lo que sabe de cada proyecto, y transcripciones de conversaciones anteriores que nunca carga completas sino que busca dentro de ellas cuando las necesita. Es como tener un asistente que toma notas organizadas de todo lo que hablaste con él.</p>
+
+<p><strong>2. "Modo Encubierto" para repositorios open-source</strong></p>
+<p>Esta fue la revelación más polémica. El código muestra que Claude Code tiene un modo llamado "Undercover Mode" donde puede hacer contribuciones a proyectos de código abierto sin que nadie sepa que fue una IA. El prompt del sistema dice literalmente: <em>"Estás operando ENCUBIERTO en un repositorio PÚBLICO/OPEN-SOURCE. No reveles tu identidad."</em> Esto generó un debate enorme sobre la ética de las contribuciones de IA en el mundo open-source.</p>
+
+<p><strong>3. El sistema "AutoDream"</strong></p>
+<p>Claude Code puede literalmente "soñar" entre sesiones. AutoDream es un sistema que permite que la IA siga procesando y desarrollando ideas en segundo plano mientras no la estás usando. Es como si tu asistente siguiera pensando en tu problema después de que te fuiste de la oficina.</p>
+
+<p><strong>4. La bandera KAIROS</strong></p>
+<p>KAIROS es un sistema de memoria persistente que permite a Claude Code mantener un perfil detallado de cada usuario entre sesiones. Su objetivo declarado: tener "una imagen completa de quién es el usuario, cómo le gusta colaborar, qué comportamientos evitar o repetir". Básicamente, entre más lo uses, mejor te conoce.</p>
+
+<p><strong>5. 44 feature flags ocultos</strong></p>
+<p>Se descubrieron 44 interruptores de funciones ocultas y más de 20 features que aún no se han lanzado al público. Esto sugiere que la versión de Claude Code que usamos hoy es solo una fracción de lo que ya está construido.</p>
+
+<p><strong>🔍 ¿Quieres explorarlo tú mismo?</strong> El sitio <a href="https://ccunpacked.dev" target="_blank" rel="noopener noreferrer">ccunpacked.dev</a> te permite navegar el código filtrado de forma interactiva: ver el agent loop paso a paso, explorar las 52 herramientas disponibles, los comandos slash, y las features ocultas que aún no se han lanzado.</p>
+
+<p><strong>¿Qué dijo Anthropic?</strong></p>
+<p>La empresa confirmó el error: <em>"Fue un error de empaque humano, no un breach de seguridad. No se expusieron datos de clientes."</em> Básicamente: alguien se equivocó al empaquetar el software, pero ningún dato personal de los usuarios fue comprometido.</p>
+
+<p><strong>El dato que más sorprendió:</strong> Claude Code genera aproximadamente <strong>$2.5 mil millones de dólares anualizados</strong> en ingresos para Anthropic. Eso pone en perspectiva lo importante que es esta herramienta para la empresa.</p>
+
+<p>Este tipo de filtraciones accidentales no son nuevas en el mundo tech — le ha pasado a Microsoft, Google y muchas otras. Pero es la primera vez que vemos el interior completo de un agente de IA de este calibre, y lo que se encontró adentro es fascinante.</p>`,
+    practicalTakeaway: "Si usas Claude Code, ahora sabes que tiene sistemas de memoria avanzados que aprenden de ti con el tiempo — úsalo a tu favor siendo consistente en cómo describes tus proyectos. Y si te interesa entender cómo funcionan los agentes de IA por dentro, explora el código filtrado en ccunpacked.dev antes de que lo bajen.",
+    category: "herramientas",
+    categoryLabel: "Herramientas",
+    date: "2026-04-01",
+    readingTime: 5,
+    relatedTools: ["claude"],
+    source: "VentureBeat",
+    sourceUrl: "https://venturebeat.com/technology/claude-codes-source-code-appears-to-have-leaked-heres-what-we-know",
+    titleEn: "Claude Code's source code leaked accidentally: here's what it reveals",
+    summaryEn: "Anthropic accidentally published a 59.8 MB file containing Claude Code's entire source code inside its npm package. An intern discovered it, it went viral in hours, and now we know how one of the world's most popular AI tools works under the hood.",
+    contentEn: `<p>Imagine a car company accidentally publishing the complete blueprints for its best-selling model. That's essentially what happened to Anthropic with <strong>Claude Code</strong>, their AI coding tool that generates billions of dollars in annual revenue.</p>
+
+<p>On March 31, 2026, someone at Anthropic uploaded an update to the Claude Code npm package (the "app store" for developers) and accidentally included a <strong>source map</strong> file weighing 59.8 MB. That file is like a treasure map: it contains the entire original source code — about 512,000 lines of TypeScript. Essentially, the complete instructions for how Claude Code works internally.</p>
+
+<p>Who found it? An intern at a company called Solayer Labs, known as <strong>@Fried_rice on X</strong>. He posted about it and within hours it went viral. Thousands of developers started combing through the code like it was the premiere of a highly anticipated movie.</p>
+
+<p><strong>What was found inside?</strong></p>
+
+<p><strong>1. A 3-layer memory system</strong></p>
+<p>Claude Code doesn't just answer questions — it remembers you. It has a memory system with three levels: a lightweight index file (MEMORY.md) that works like a quick notebook, topic-specific files where it stores project knowledge, and conversation transcripts that are never fully loaded but searched through when needed. It's like having an assistant who keeps organized notes of everything you've discussed.</p>
+
+<p><strong>2. "Undercover Mode" for open-source repos</strong></p>
+<p>This was the most controversial finding. The code shows that Claude Code has a mode called "Undercover Mode" where it can make contributions to open-source projects without anyone knowing it was an AI. The system prompt literally says: <em>"You are operating UNDERCOVER in a PUBLIC/OPEN-SOURCE repository. Do not blow your cover."</em> This sparked a massive debate about the ethics of AI contributions in the open-source world.</p>
+
+<p><strong>3. The "AutoDream" system</strong></p>
+<p>Claude Code can literally "dream" between sessions. AutoDream is a system that allows the AI to continue processing and developing ideas in the background while you're not using it. It's like your assistant keeps thinking about your problem after you've left the office.</p>
+
+<p><strong>4. The KAIROS flag</strong></p>
+<p>KAIROS is a persistent memory system that allows Claude Code to maintain a detailed profile of each user across sessions. Its stated goal: to have "a complete picture of who the user is, how they like to collaborate, what behaviors to avoid or repeat." Basically, the more you use it, the better it knows you.</p>
+
+<p><strong>5. 44 hidden feature flags</strong></p>
+<p>44 hidden feature switches and over 20 unreleased features were discovered. This suggests that the version of Claude Code we use today is only a fraction of what's already been built.</p>
+
+<p><strong>🔍 Want to explore it yourself?</strong> The site <a href="https://ccunpacked.dev" target="_blank" rel="noopener noreferrer">ccunpacked.dev</a> lets you browse the leaked code interactively: see the agent loop step by step, explore the 52 available tools, slash commands, and hidden features that haven't been released yet.</p>
+
+<p><strong>What did Anthropic say?</strong></p>
+<p>The company confirmed the error: <em>"It was a human packaging mistake, not a security breach. No customer data was exposed."</em> Basically: someone made a mistake when packaging the software, but no personal user data was compromised.</p>
+
+<p><strong>The most surprising data point:</strong> Claude Code generates approximately <strong>$2.5 billion annualized</strong> in revenue for Anthropic. That puts into perspective how important this tool is for the company.</p>
+
+<p>Accidental leaks like this aren't new in the tech world — it's happened to Microsoft, Google, and many others. But this is the first time we've seen the complete internals of an AI agent of this caliber, and what was found inside is fascinating.</p>`,
+    practicalTakeawayEn: "If you use Claude Code, now you know it has advanced memory systems that learn from you over time — use this to your advantage by being consistent in how you describe your projects. And if you're interested in understanding how AI agents work under the hood, explore the leaked code at ccunpacked.dev before it gets taken down.",
+    categoryLabelEn: "Tools",
+  },
+  {
     id: "google-aistudio-vibe-coding",
     slug: "google-ai-studio-lanza-experiencia-full-stack-para-crear-apps-sin-codigo",
     title: "Google lanzó una forma de crear apps completas con solo describir lo que quieres",
