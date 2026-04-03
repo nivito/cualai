@@ -2,7 +2,7 @@
 // cual.ai — Noticias Seed Data
 // ============================================================
 
-export type NewsCategory = "modelos-ia" | "herramientas" | "empresas" | "sociedad" | "legislacion" | "agentes-ia"
+export type NewsCategory = "modelos-ia" | "herramientas" | "empresas" | "sociedad" | "legislacion" | "agentes-ia" | "casos-de-uso"
 
 export interface NewsItem {
   id: string
@@ -32,108 +32,113 @@ export const newsCategories: { slug: NewsCategory; label: string; labelEn: strin
   { slug: "sociedad", label: "Sociedad", labelEn: "Society" },
   { slug: "legislacion", label: "Legislación", labelEn: "Regulation" },
   { slug: "agentes-ia", label: "Agentes de IA", labelEn: "AI Agents" },
+  { slug: "casos-de-uso", label: "Casos de Uso", labelEn: "Use Cases" },
 ]
 
 export const news: NewsItem[] = [
   {
-    id: "medvi-solo-founder-billion",
-    slug: "como-un-fundador-solitario-construyo-una-empresa-de-1800-millones-con-ia-y-20-mil-dolares",
-    title: "Cómo un fundador solitario construyó una empresa de $1,800 millones con IA y $20 mil dólares",
-    summary: "Matthew Gallagher creó Medvi desde su casa en Los Angeles con $20K y herramientas de IA. Sin oficinas, sin call center, sin equipo de marketing — solo él, su hermano y un stack de IA. Primer año: $401 millones. Proyección 2026: $1.8 billones. Es el primer caso real de la predicción de Sam Altman sobre la compañía de mil millones con un solo fundador.",
-    content: `<p>En 2024, Sam Altman predijo que la IA haría posible algo que sonaba a ciencia ficción: <strong>una compañía de mil millones de dólares manejada por una sola persona</strong>. Muchos se rieron. Dos años después, Matthew Gallagher lo hizo realidad — y la ironía es que no construyó un producto de IA revolucionario. Vende medicamentos para bajar de peso desde su sala.</p>
+    id: "medvi-ai-billion-dollar-company",
+    slug: "medvi-como-la-ia-ayudo-a-un-hombre-a-construir-una-empresa-de-1800-millones",
+    title: "Medvi: cómo la IA ayudó a un hombre a construir una empresa de $1,800 millones desde su sala",
+    summary: "Matthew Gallagher invirtió $20,000 y usó ChatGPT, Claude, Midjourney y ElevenLabs para crear Medvi, una empresa de telehealth que vende medicamentos GLP-1 online. Sin oficinas, sin equipo grande — solo él y su hermano. Primer año: $401 millones. Proyección 2026: $1.8 billones. Es la primera prueba real de que la IA puede crear una empresa unicornio prácticamente sin equipo.",
+    content: `<p>En 2024, Sam Altman hizo una predicción que sonaba ridícula: la IA iba a hacer posible que <strong>una sola persona creara una empresa de mil millones de dólares</strong>. La gente se rió. Dos años después, un tipo de 41 años en Los Angeles lo demostró — y lo más loco es que no creó ningún producto de IA. Vende pastillas para bajar de peso desde su casa.</p>
 
 <p><strong>¿Qué es Medvi?</strong></p>
-<p>Medvi es una plataforma de telehealth que vende medicamentos GLP-1 (semaglutida y tirzepatida) para pérdida de peso de forma online. Gallagher, de 41 años, la armó desde su casa en Los Angeles con una inversión inicial de <strong>$20,000 dólares y dos meses de desarrollo</strong>. No tiene oficinas, no tiene call center, no tiene departamento de marketing tradicional.</p>
+<p>Medvi es una plataforma de telehealth que vende medicamentos GLP-1 online — los mismos compuestos que están detrás de Ozempic y Wegovy, los fármacos para pérdida de peso que están arrasando en el mercado. Matthew Gallagher la construyó con <strong>$20,000 dólares de inversión inicial y dos meses de trabajo</strong>. Sin oficina, sin call center, sin departamento de nada.</p>
 
-<p><strong>Los números que rompen la lógica</strong></p>
+<p><strong>Los números que no tienen sentido</strong></p>
 <ul>
-<li><strong>Inversión inicial:</strong> $20,000</li>
-<li><strong>Empleados full-time:</strong> 2 (Gallagher y su hermano)</li>
-<li><strong>Ingresos 2025 (primer año completo):</strong> $401 millones</li>
-<li><strong>Proyección 2026:</strong> $1.8 billones (billion en inglés)</li>
+<li><strong>Inversión inicial:</strong> $20,000 USD</li>
+<li><strong>Equipo full-time:</strong> 2 personas (Gallagher y su hermano)</li>
+<li><strong>Clientes:</strong> 250,000</li>
+<li><strong>Ingresos 2025 (primer año):</strong> $401 millones</li>
+<li><strong>Proyección 2026:</strong> $1.8 billones en ventas anuales</li>
+<li><strong>Margen neto:</strong> 16.2%</li>
 </ul>
-<p>Leíste bien. Dos personas generando casi $2 billones al año. Es como si un puesto de tacos facturara más que una cadena de restaurantes con 10,000 empleados.</p>
+<p>Dos personas. $1.8 billones. Eso es como si un puesto de tacos facturara más que toda una cadena de restaurantes con miles de empleados. El New York Times verificó los financieros directamente.</p>
 
-<p><strong>¿Cómo funciona sin empleados?</strong></p>
-<p>La clave es que Medvi no hace nada internamente. Todo es outsourcing:</p>
+<p><strong>¿Cómo funciona sin equipo?</strong></p>
+<p>El truco de Medvi es que no hace casi nada internamente. Todo está tercerizado:</p>
 <ul>
-<li><strong>Doctores y prescripciones:</strong> a través de CareValidate y OpenLoop</li>
-<li><strong>Envíos:</strong> tercerizado completamente</li>
+<li><strong>Médicos y prescripciones:</strong> subcontratados a través de CareValidate y OpenLoop</li>
+<li><strong>Envíos:</strong> 100% tercerizado</li>
 <li><strong>Atención al cliente:</strong> agentes de IA custom + voces generadas con ElevenLabs</li>
-<li><strong>Marketing:</strong> creativos generados con Midjourney y videos con Runway</li>
+<li><strong>Marketing:</strong> imágenes con Midjourney, videos con Runway — cero equipo de producción</li>
 <li><strong>Código, copy y estrategia:</strong> ChatGPT, Claude y Grok</li>
 </ul>
-<p>Gallagher no es programador de carrera. Es un builder que usó IA para reemplazar lo que antes requería decenas de contrataciones. Tiene algunos contratistas part-time (ingenieros, account managers), pero el núcleo operativo son dos personas y un stack de herramientas de IA.</p>
+<p>Gallagher no es programador. Es un emprendedor que descubrió que la IA le permite hacer el trabajo de docenas de empleados. Tiene algunos contratistas part-time para ingeniería y gestión de cuentas, pero el núcleo operativo son literalmente dos personas.</p>
 
-<p><strong>El stack de IA que mueve todo</strong></p>
+<p><strong>Las herramientas de IA detrás de Medvi</strong></p>
 <ul>
-<li><strong>ChatGPT, Claude y Grok:</strong> para escribir código, generar copy de marketing y definir estrategia de negocio</li>
-<li><strong>Midjourney:</strong> para crear todas las imágenes y creativos de publicidad</li>
-<li><strong>Runway:</strong> para producir videos de ads sin equipo de producción</li>
-<li><strong>ElevenLabs:</strong> voces de IA para el servicio al cliente</li>
-<li><strong>Agentes AI custom:</strong> para automatizar la atención al cliente de punta a punta</li>
+<li><strong>ChatGPT + Claude + Grok:</strong> escriben el código, generan el copy de marketing, definen la estrategia de negocio</li>
+<li><strong>Midjourney:</strong> crea todas las imágenes y creativos para publicidad</li>
+<li><strong>Runway:</strong> produce los videos de ads sin necesidad de cámaras ni editores</li>
+<li><strong>ElevenLabs:</strong> genera las voces de IA para atención al cliente</li>
+<li><strong>Agentes AI custom:</strong> automatizan el servicio al cliente de principio a fin</li>
 </ul>
 
-<p><strong>La gran ironía</strong></p>
-<p>Medvi no es una startup de inteligencia artificial. No creó un modelo nuevo, no inventó un algoritmo, no compite con OpenAI ni con Anthropic. Es una empresa que vende medicamentos desde una sala de estar. La IA no es el producto — es la herramienta operativa que le permite a dos personas hacer el trabajo de cientos.</p>
+<p><strong>Por qué este caso importa más que cualquier demo de IA</strong></p>
+<p>Medvi no es una startup de inteligencia artificial. No inventó un modelo, no compite con OpenAI ni con Anthropic. Es una empresa de salud que vende medicamentos desde una sala de estar. La IA no es el producto — es la infraestructura operativa que permite que dos personas hagan el trabajo de cientos.</p>
 
-<p>Eso es exactamente lo que hace que este caso sea tan importante. No necesitas construir IA para beneficiarte de ella. La revolución no está solo en quienes crean los modelos, sino en quienes los usan para operar negocios enteros con una fracción del equipo tradicional.</p>
+<p>Y eso es exactamente lo que lo hace tan relevante. No necesitas construir IA para transformar tu negocio con ella. La revolución no es solo para los que crean los modelos — es para los que los usan para operar negocios enteros con una fracción del equipo que antes se necesitaba.</p>
 
-<p><strong>¿Qué dice esto sobre el futuro?</strong></p>
-<p>La predicción de Altman ya no es teoría. Si un tipo sin background técnico puede facturar $1.8 billones con dos personas y un puñado de herramientas de IA, ¿qué significa eso para las empresas tradicionales que tienen cientos de empleados haciendo lo que la IA ya puede automatizar? La respuesta incomoda a mucha gente, pero los números de Medvi no mienten.</p>`,
-    practicalTakeaway: "No necesitas ser programador ni tener un equipo grande para construir un negocio millonario con IA. La estrategia de Medvi es replicable: identifica un mercado con demanda real, terceriza todo lo operativo, y usa herramientas de IA (ChatGPT, Claude, Midjourney, ElevenLabs) para reemplazar las contrataciones que antes eran obligatorias. El modelo no es 'crear IA' — es 'usar IA para operar con el mínimo equipo posible'.",
-    category: "agentes-ia",
-    categoryLabel: "Agentes de IA",
+<p><strong>La conexión con Sam Altman</strong></p>
+<p>Altman predijo en 2024 que veríamos la primera "empresa unicornio de una persona" gracias a la IA. Medvi es la primera prueba real de esa predicción. Si un emprendedor sin background técnico puede generar $1.8 billones con $20K de inversión y un stack de herramientas de IA, la pregunta incómoda es obvia: ¿qué pasa con las empresas tradicionales que tienen cientos de empleados haciendo lo que la IA ya puede automatizar?</p>`,
+    practicalTakeaway: "La estrategia de Medvi es más replicable de lo que parece: encuentra un mercado con demanda masiva (en este caso, GLP-1), terceriza toda la operación (médicos, envíos, soporte), y usa IA para reemplazar las contrataciones que antes eran obligatorias — ChatGPT/Claude para código y estrategia, Midjourney/Runway para marketing, ElevenLabs para atención al cliente. No se trata de 'crear IA', sino de usarla para operar con el mínimo equipo posible.",
+    category: "casos-de-uso",
+    categoryLabel: "Casos de Uso",
     date: "2026-04-02",
-    readingTime: 5,
-    relatedTools: ["chatgpt", "claude", "midjourney"],
+    readingTime: 4,
+    relatedTools: [],
     source: "The New York Times",
     sourceUrl: "https://www.nytimes.com/2026/04/02/technology/ai-billion-dollar-company-medvi.html",
-    titleEn: "How a solo founder built a $1.8 billion company with AI and $20K",
-    summaryEn: "Matthew Gallagher created Medvi from his home in Los Angeles with $20K and AI tools. No offices, no call center, no marketing team — just him, his brother, and an AI stack. First year: $401 million. 2026 projection: $1.8 billion. It's the first real-world case of Sam Altman's prediction about the one-person billion-dollar company.",
-    contentEn: `<p>In 2024, Sam Altman predicted that AI would make something possible that sounded like science fiction: <strong>a billion-dollar company run by a single person</strong>. Many laughed. Two years later, Matthew Gallagher made it real — and the irony is he didn't build a revolutionary AI product. He sells weight loss medication from his living room.</p>
+    titleEn: "Medvi: How AI Helped One Man Build a $1.8 Billion Company From His Living Room",
+    summaryEn: "Matthew Gallagher invested $20,000 and used ChatGPT, Claude, Midjourney, and ElevenLabs to create Medvi, a telehealth company selling GLP-1 weight loss medications online. No offices, no big team — just him and his brother. First year: $401 million. 2026 projection: $1.8 billion. It's the first real proof that AI can create a unicorn company with virtually no team.",
+    contentEn: `<p>In 2024, Sam Altman made a prediction that sounded absurd: AI would make it possible for <strong>a single person to build a billion-dollar company</strong>. People laughed. Two years later, a 41-year-old man in Los Angeles proved him right — and the wildest part is he didn't create any AI product. He sells weight loss pills from his house.</p>
 
 <p><strong>What is Medvi?</strong></p>
-<p>Medvi is a telehealth platform that sells GLP-1 medications (semaglutide and tirzepatide) for weight loss online. Gallagher, 41, built it from his home in Los Angeles with an initial investment of <strong>$20,000 and two months of development</strong>. No offices, no call center, no traditional marketing department.</p>
+<p>Medvi is a telehealth platform that sells GLP-1 medications online — the same compounds behind Ozempic and Wegovy, the weight loss drugs that are taking the market by storm. Matthew Gallagher built it with <strong>$20,000 in initial investment and two months of work</strong>. No office, no call center, no department of anything.</p>
 
-<p><strong>The numbers that break logic</strong></p>
+<p><strong>The numbers that don't make sense</strong></p>
 <ul>
-<li><strong>Initial investment:</strong> $20,000</li>
-<li><strong>Full-time employees:</strong> 2 (Gallagher and his brother)</li>
-<li><strong>2025 revenue (first full year):</strong> $401 million</li>
-<li><strong>2026 projection:</strong> $1.8 billion</li>
+<li><strong>Initial investment:</strong> $20,000 USD</li>
+<li><strong>Full-time team:</strong> 2 people (Gallagher and his brother)</li>
+<li><strong>Customers:</strong> 250,000</li>
+<li><strong>2025 revenue (first year):</strong> $401 million</li>
+<li><strong>2026 projection:</strong> $1.8 billion in annual sales</li>
+<li><strong>Net margin:</strong> 16.2%</li>
 </ul>
-<p>You read that right. Two people generating almost $2 billion a year. It's like a taco stand billing more than a restaurant chain with 10,000 employees.</p>
+<p>Two people. $1.8 billion. That's like a taco stand billing more than an entire restaurant chain with thousands of employees. The New York Times verified the financials directly.</p>
 
-<p><strong>How does it work without employees?</strong></p>
-<p>The key is that Medvi does nothing internally. Everything is outsourced:</p>
+<p><strong>How does it work without a team?</strong></p>
+<p>Medvi's trick is that it does almost nothing internally. Everything is outsourced:</p>
 <ul>
-<li><strong>Doctors and prescriptions:</strong> through CareValidate and OpenLoop</li>
-<li><strong>Shipping:</strong> fully outsourced</li>
-<li><strong>Customer service:</strong> custom AI agents + voices generated with ElevenLabs</li>
-<li><strong>Marketing:</strong> creatives generated with Midjourney and videos with Runway</li>
+<li><strong>Doctors and prescriptions:</strong> subcontracted through CareValidate and OpenLoop</li>
+<li><strong>Shipping:</strong> 100% outsourced</li>
+<li><strong>Customer support:</strong> custom AI agents + voices generated with ElevenLabs</li>
+<li><strong>Marketing:</strong> images with Midjourney, videos with Runway — zero production team</li>
 <li><strong>Code, copy, and strategy:</strong> ChatGPT, Claude, and Grok</li>
 </ul>
-<p>Gallagher isn't a career programmer. He's a builder who used AI to replace what previously required dozens of hires. He has some part-time contractors (engineers, account managers), but the operational core is two people and an AI tool stack.</p>
+<p>Gallagher isn't a programmer. He's an entrepreneur who figured out that AI lets him do the work of dozens of employees. He has some part-time contractors for engineering and account management, but the operational core is literally two people.</p>
 
-<p><strong>The AI stack that runs everything</strong></p>
+<p><strong>The AI tools behind Medvi</strong></p>
 <ul>
-<li><strong>ChatGPT, Claude, and Grok:</strong> for writing code, generating marketing copy, and defining business strategy</li>
-<li><strong>Midjourney:</strong> for creating all advertising images and creatives</li>
-<li><strong>Runway:</strong> for producing ad videos without a production team</li>
-<li><strong>ElevenLabs:</strong> AI voices for customer service</li>
-<li><strong>Custom AI agents:</strong> for automating customer service end-to-end</li>
+<li><strong>ChatGPT + Claude + Grok:</strong> write the code, generate marketing copy, define business strategy</li>
+<li><strong>Midjourney:</strong> creates all images and ad creatives</li>
+<li><strong>Runway:</strong> produces ad videos with no cameras or editors needed</li>
+<li><strong>ElevenLabs:</strong> generates AI voices for customer support</li>
+<li><strong>Custom AI agents:</strong> automate customer service end-to-end</li>
 </ul>
 
-<p><strong>The big irony</strong></p>
-<p>Medvi is not an artificial intelligence startup. It didn't create a new model, didn't invent an algorithm, doesn't compete with OpenAI or Anthropic. It's a company that sells medication from a living room. AI isn't the product — it's the operational tool that allows two people to do the work of hundreds.</p>
+<p><strong>Why this case matters more than any AI demo</strong></p>
+<p>Medvi is not an AI startup. It didn't invent a model, doesn't compete with OpenAI or Anthropic. It's a healthcare company selling medication from a living room. AI isn't the product — it's the operational infrastructure that lets two people do the work of hundreds.</p>
 
-<p>That's exactly what makes this case so important. You don't need to build AI to benefit from it. The revolution isn't only about those who create the models, but about those who use them to run entire businesses with a fraction of the traditional team.</p>
+<p>And that's exactly what makes it so relevant. You don't need to build AI to transform your business with it. The revolution isn't just for those who create the models — it's for those who use them to run entire businesses with a fraction of the team that used to be required.</p>
 
-<p><strong>What does this say about the future?</strong></p>
-<p>Altman's prediction is no longer theory. If a guy with no technical background can bill $1.8 billion with two people and a handful of AI tools, what does that mean for traditional companies with hundreds of employees doing what AI can already automate? The answer makes a lot of people uncomfortable, but Medvi's numbers don't lie.</p>`,
-    practicalTakeawayEn: "You don't need to be a programmer or have a large team to build a billion-dollar business with AI. Medvi's strategy is replicable: identify a market with real demand, outsource everything operational, and use AI tools (ChatGPT, Claude, Midjourney, ElevenLabs) to replace the hires that used to be mandatory. The model isn't 'build AI' — it's 'use AI to operate with the smallest team possible'.",
-    categoryLabelEn: "AI Agents",
+<p><strong>The Sam Altman connection</strong></p>
+<p>Altman predicted in 2024 that we'd see the first "one-person unicorn company" thanks to AI. Medvi is the first real proof of that prediction. If an entrepreneur with no technical background can generate $1.8 billion with a $20K investment and a stack of AI tools, the uncomfortable question is obvious: what happens to traditional companies with hundreds of employees doing what AI can already automate?</p>`,
+    practicalTakeawayEn: "Medvi's strategy is more replicable than it seems: find a market with massive demand (in this case, GLP-1), outsource the entire operation (doctors, shipping, support), and use AI to replace the hires that used to be mandatory — ChatGPT/Claude for code and strategy, Midjourney/Runway for marketing, ElevenLabs for customer support. It's not about 'building AI', but about using it to operate with the smallest team possible.",
+    categoryLabelEn: "Use Cases",
   },
   {
     id: "gemma-4-launch",
