@@ -88,6 +88,7 @@ export default function NewsSidebar({
               empresas: "🏢",
               sociedad: "👥",
               legislacion: "⚖️",
+              "agentes-ia": "🤖",
             }
             return (
               <Link
