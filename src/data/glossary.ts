@@ -429,4 +429,15 @@ export const glossaryTerms: GlossaryTerm[] = [
     longEn: "A VPS (Virtual Private Server) is a virtual fraction of a large physical server. You rent a portion of a company's machines (like DigitalOcean, Hetzner, or AWS) and get full control: install whatever you want, configure as you need, access 24/7 via terminal. Ideal for running apps, bots, databases, or websites without paying for your own hardware.",
     exampleEn: "This AI assistant runs on a VPS. Instead of having a physical server at home, we rent space in a datacenter somewhere in the world for ~$5-20/month.",
   },
+  {
+    term: "Vibe Coding",
+    termEn: "Vibe Coding",
+    emoji: "🎵",
+    short: "Programar describiendo lo que quieres en palabras normales — y dejar que la IA escriba el código.",
+    long: "El vibe coding es una forma de desarrollar software donde tú describes la idea (en lenguaje natural) y un agente AI escribe, prueba y corrige el código por ti. No necesitas saber programar — solo necesitas saber qué quieres construir. El término fue acuñado por Andrej Karpathy (ex-Tesla, ex-OpenAI) en 2025 y se popularizó rápidamente. Herramientas como Cursor, Claude Code, Bolt, Lovable y Replit Agent son ejemplos de plataformas de vibe coding. La clave no es el código en sí, sino la intención: el desarrollador describe el 'vibe' (la esencia de lo que quiere) y la IA lo ejecuta. Esto no reemplaza a los buenos ingenieros — los amplifica.",
+    example: "En vez de pasar horas aprendiendo React, le dices a Claude Code: 'crea una app web donde los usuarios puedan registrarse, subir fotos de productos y ver un catálogo'. La IA escribe el código, configura la base de datos y despliega la app.",
+    shortEn: "Coding by describing what you want in plain language — and letting AI write the code.",
+    longEn: "Vibe coding is a way of building software where you describe your idea in natural language and an AI agent writes, tests, and fixes the code for you. You don't need to know how to code — you just need to know what you want to build. The term was coined by Andrej Karpathy (ex-Tesla, ex-OpenAI) in 2025 and quickly became mainstream. Tools like Cursor, Claude Code, Bolt, Lovable, and Replit Agent are examples of vibe coding platforms. The key is not the code itself but the intent: the developer describes the 'vibe' (the essence of what they want) and the AI executes it. This doesn't replace good engineers — it amplifies them.",
+    exampleEn: "Instead of spending hours learning React, you tell Claude Code: 'create a web app where users can sign up, upload product photos, and browse a catalog'. The AI writes the code, sets up the database, and deploys the app.",
+  },
 ];
