@@ -35,6 +35,90 @@ export const newsCategories: { slug: NewsCategory; label: string; labelEn: strin
 
 export const news: NewsItem[] = [
   {
+    id: "gemma-4-launch",
+    slug: "google-lanza-gemma-4-el-modelo-open-source-mas-capaz-que-supera-rivales-20-veces-mas-grandes",
+    title: "Google lanzó Gemma 4: el modelo open source que le pega a rivales 20 veces más grandes",
+    summary: "Google DeepMind presentó Gemma 4, su nueva familia de modelos de IA de código abierto. El modelo de 31B parámetros es el #3 del mundo entre modelos abiertos, superando a competidores que son 20 veces más grandes. Lo mejor: es gratis para uso comercial con licencia Apache 2.0.",
+    content: `<p>Google DeepMind acaba de soltar lo que muchos consideran un antes y un después en el mundo de los modelos open source: <strong>Gemma 4</strong>, construida sobre la misma tecnología que Gemini 3 (la IA más poderosa de Google), pero disponible para que cualquiera la descargue, modifique y use — incluso para hacer dinero.</p>
+
+<p><strong>¿Qué tamaños vienen?</strong></p>
+<p>Gemma 4 llega en 4 versiones pensadas para distintos usos:</p>
+<ul>
+<li><strong>E2B (Effective 2B):</strong> El más chiquito. Corre en tu celular Android o laptop sin GPU dedicada. Ideal para apps que necesitan IA local sin depender de internet.</li>
+<li><strong>E4B (Effective 4B):</strong> Un poco más potente, también pensado para dispositivos. Perfecto para asistentes on-device que necesitan más capacidad de razonamiento.</li>
+<li><strong>26B MoE (Mixture of Experts):</strong> Un modelo inteligente que no usa todos sus parámetros a la vez — solo activa los "expertos" que necesita para cada tarea. Es el #6 del mundo en modelos abiertos.</li>
+<li><strong>31B Dense:</strong> La bestia del grupo. <strong>#3 global en el Arena AI leaderboard</strong> entre modelos open source, superando a modelos que tienen 20 veces más parámetros. Es como un auto compacto que le gana a un camión en una carrera.</li>
+</ul>
+
+<p><strong>¿Qué puede hacer?</strong></p>
+<p>Gemma 4 no es solo para chatear. Estas son sus capacidades principales:</p>
+<ul>
+<li><strong>Razonamiento avanzado:</strong> Puede resolver problemas complejos paso a paso, como un tutor que te explica matemáticas desmenuzando cada parte.</li>
+<li><strong>Agentes autónomos:</strong> Soporta function-calling y JSON output, lo que significa que puede ejecutar acciones reales — buscar información, llamar APIs, completar formularios — no solo generar texto.</li>
+<li><strong>Código:</strong> Genera y entiende código en múltiples lenguajes, ideal para automatizar tareas de desarrollo.</li>
+<li><strong>Visión y audio:</strong> Entiende imágenes, videos, gráficos, OCR (leer texto en fotos) y hasta audio. Podés mostrarle una foto de un recibo y que te lo organice en una tabla.</li>
+</ul>
+
+<p><strong>¿Por qué importa que sea open source?</strong></p>
+<p>Con licencia <strong>Apache 2.0</strong>, Gemma 4 es completamente libre. Esto significa que una startup en Buenos Aires, un investigador en Nigeria o un desarrollador freelance en Vietnam pueden usar el mismo modelo que usa Google internamente — sin pagar licencias, sin pedir permiso, sin límites de uso. Es como si Toyota liberara los planos de su mejor motor para que cualquier taller del mundo lo pueda fabricar.</p>
+
+<p><strong>Casos de uso reales que ya están pasando:</strong></p>
+<ul>
+<li><strong>Yale University</strong> usó Gemma para su proyecto Cell2Sentence-Scale, descubriendo nuevas vías para terapia contra el cáncer. Literalmente, IA open source ayudando a encontrar tratamientos médicos.</li>
+<li><strong>INSAIT</strong> creó BgGPT, el primer modelo de lenguaje búlgaro, usando Gemma como base. Esto demuestra cómo un modelo abierto puede democratizar la IA para idiomas que las big tech ignoran.</li>
+</ul>
+
+<p><strong>Los números de la comunidad Gemma:</strong></p>
+<p>Desde el primer lanzamiento de Gemma, la familia acumula <strong>más de 400 millones de descargas</strong> y más de <strong>100,000 variantes</strong> creadas por la comunidad (lo que Google llama el "Gemmaverse"). Es el ecosistema open source de IA más activo del mundo.</p>
+
+<p>Gemma 4 ya está disponible en <strong>Google AI Studio</strong> y <strong>Hugging Face</strong> para que la pruebes hoy mismo.</p>`,
+    practicalTakeaway: "Si estás desarrollando una app que necesita IA y no quieres depender de APIs de pago, Gemma 4 es tu mejor opción hoy. El modelo 26B MoE te da rendimiento top-tier con menos recursos, y los modelos E2B/E4B son perfectos si necesitas IA corriendo directo en el dispositivo del usuario. Descargalo desde Hugging Face o probalo gratis en Google AI Studio.",
+    category: "modelos-ia",
+    categoryLabel: "Modelos de IA",
+    date: "2026-04-02",
+    readingTime: 4,
+    relatedTools: ["gemini"],
+    source: "Google DeepMind Blog",
+    sourceUrl: "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
+    titleEn: "Google launched Gemma 4: the open source model that beats rivals 20 times its size",
+    summaryEn: "Google DeepMind released Gemma 4, its most capable open source AI model family to date. The 31B model ranks #3 globally among open models, outperforming competitors 20 times larger. Best part: it's completely free for commercial use under Apache 2.0 license.",
+    contentEn: `<p>Google DeepMind just dropped what many consider a watershed moment for open source models: <strong>Gemma 4</strong>, built on the same technology as Gemini 3 (Google's most powerful AI), but available for anyone to download, modify, and use — even commercially.</p>
+
+<p><strong>What sizes are available?</strong></p>
+<p>Gemma 4 comes in 4 versions designed for different use cases:</p>
+<ul>
+<li><strong>E2B (Effective 2B):</strong> The smallest. Runs on your Android phone or laptop without a dedicated GPU. Ideal for apps that need local AI without relying on internet.</li>
+<li><strong>E4B (Effective 4B):</strong> Slightly more powerful, also designed for devices. Perfect for on-device assistants that need more reasoning capability.</li>
+<li><strong>26B MoE (Mixture of Experts):</strong> A smart model that doesn't use all its parameters at once — it only activates the "experts" needed for each task. Ranks #6 globally among open models.</li>
+<li><strong>31B Dense:</strong> The powerhouse. <strong>#3 globally on the Arena AI leaderboard</strong> among open source models, outperforming models with 20 times more parameters. It's like a compact car beating a truck in a race.</li>
+</ul>
+
+<p><strong>What can it do?</strong></p>
+<p>Gemma 4 isn't just for chatting. Here are its main capabilities:</p>
+<ul>
+<li><strong>Advanced reasoning:</strong> Can solve complex problems step by step, like a tutor explaining math by breaking down each part.</li>
+<li><strong>Autonomous agents:</strong> Supports function-calling and JSON output, meaning it can execute real actions — search for information, call APIs, fill out forms — not just generate text.</li>
+<li><strong>Code:</strong> Generates and understands code in multiple languages, ideal for automating development tasks.</li>
+<li><strong>Vision and audio:</strong> Understands images, video, charts, OCR (reading text in photos), and even audio. You can show it a photo of a receipt and have it organize it into a table.</li>
+</ul>
+
+<p><strong>Why does open source matter?</strong></p>
+<p>Under the <strong>Apache 2.0 license</strong>, Gemma 4 is completely free. This means a startup in Buenos Aires, a researcher in Nigeria, or a freelance developer in Vietnam can use the same model Google uses internally — without paying licenses, without asking permission, without usage limits. It's as if Toyota released the blueprints for their best engine so any workshop in the world could build it.</p>
+
+<p><strong>Real use cases already happening:</strong></p>
+<ul>
+<li><strong>Yale University</strong> used Gemma for their Cell2Sentence-Scale project, discovering new pathways for cancer therapy. Literally, open source AI helping find medical treatments.</li>
+<li><strong>INSAIT</strong> created BgGPT, the first Bulgarian language model, using Gemma as a base. This shows how an open model can democratize AI for languages that big tech ignores.</li>
+</ul>
+
+<p><strong>Gemma community numbers:</strong></p>
+<p>Since the first Gemma launch, the family has accumulated <strong>over 400 million downloads</strong> and more than <strong>100,000 community-created variants</strong> (what Google calls the "Gemmaverse"). It's the most active open source AI ecosystem in the world.</p>
+
+<p>Gemma 4 is now available on <strong>Google AI Studio</strong> and <strong>Hugging Face</strong> for you to try today.</p>`,
+    practicalTakeawayEn: "If you're building an app that needs AI and don't want to rely on paid APIs, Gemma 4 is your best option today. The 26B MoE model gives you top-tier performance with fewer resources, and the E2B/E4B models are perfect if you need AI running directly on the user's device. Download it from Hugging Face or try it free on Google AI Studio.",
+    categoryLabelEn: "AI Models",
+  },
+  {
     id: "claude-code-source-leak",
     slug: "el-codigo-de-claude-code-se-filtro-accidentalmente-esto-es-lo-que-revela",
     title: "Se filtró el código fuente de Claude Code por accidente: esto es lo que revela",
