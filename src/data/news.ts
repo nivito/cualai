@@ -37,6 +37,128 @@ export const newsCategories: { slug: NewsCategory; label: string; labelEn: strin
 
 export const news: NewsItem[] = [
   {
+    id: "gpt-54-ia-usa-computador-mejor-humanos",
+    slug: "gpt-54-la-ia-que-ya-usa-tu-computador-mejor-que-tu",
+    title: "GPT-5.4: la IA que ya usa tu computador mejor que tú",
+    summary: "OpenAI lanzó GPT-5.4 en marzo de 2026 y logró algo que parecía ciencia ficción: en pruebas estandarizadas, la IA usa un computador con más precisión que el humano promedio. Puede navegar sitios web, llenar formularios, buscar información y completar tareas en tu pantalla — solo.",
+    content: `<p>El 5 de marzo de 2026, <a href="/glosario#openai">OpenAI</a> lanzó GPT-5.4 y publicó un dato que paró el mundo tech por unos días: en la prueba estándar que mide qué tan bien una IA puede operar un computador, <strong>GPT-5.4 obtuvo 75%. Los humanos expertos obtienen 72.4%.</strong></p>
+
+<p>Por primera vez, una IA supera al humano promedio manejando un computador de escritorio. No hablamos de responder preguntas — hablamos de abrir programas, navegar sitios web, buscar información, llenar formularios y completar tareas reales en la pantalla.</p>
+
+<p><strong>¿Qué puede hacer en concreto?</strong></p>
+<p>Imagina que le dices: <em>"Entra a los 30 sitios web de estos proveedores, busca el precio de este producto en cada uno, y crea una tabla comparativa ordenada de menor a mayor precio."</em> GPT-5.4 lo hace. Navega cada sitio, extrae el dato, construye la tabla. Mientras tú haces otra cosa.</p>
+
+<p>Antes, para automatizar ese tipo de tarea necesitabas contratar un programador que escribiera un script personalizado. Ahora le das la instrucción en español normal.</p>
+
+<p><strong>¿Qué más trae GPT-5.4?</strong></p>
+<ul>
+<li><strong>Ventana de contexto de 1 millón de tokens:</strong> Puede leer y recordar documentos enormes en una sola conversación. Un contrato de 500 páginas, una base de código completa, miles de correos — todo en memoria al mismo tiempo.</li>
+<li><strong>33% menos errores</strong> comparado con la versión anterior. Las respuestas son más precisas y confiables.</li>
+<li><strong>Mejor con hojas de cálculo y presentaciones:</strong> Entiende y trabaja con documentos de Office de forma más fluida.</li>
+</ul>
+
+<p><strong>¿Qué tan grande es el salto?</strong></p>
+<p>Para ponerlo en perspectiva: la versión anterior (GPT-5.2) obtenía 47% en esa misma prueba de uso del computador. En una sola versión, OpenAI pasó de 47% a 75%. Superó a los humanos. Eso no había pasado antes con esta capacidad.</p>
+
+<p>El <a href="/glosario#benchmark">benchmark</a> que usaron se llama OSWorld y fue diseñado específicamente para medir si una IA puede completar tareas reales en un sistema operativo: abrir apps, buscar archivos, interactuar con páginas web, copiar datos entre programas. Es el tipo de trabajo que hace un asistente administrativo.</p>
+
+<p><strong>¿Está disponible para todos?</strong></p>
+<p>Computer Use de GPT-5.4 está disponible principalmente vía <a href="/glosario#api---application-programming-interface">API</a> para desarrolladores. La versión de ChatGPT para usuarios normales está incorporando estas capacidades de forma gradual. Si eres usuario de ChatGPT Plus o Pro, lo irás viendo en los próximos meses.</p>`,
+    practicalTakeaway: "Si tienes tareas repetitivas que implican navegar sitios web, copiar datos entre sistemas o completar formularios, este es el momento de explorar automatización con IA. GPT-5.4 puede hacer ese trabajo — no necesitas saber programar para empezar. Describe la tarea en lenguaje normal y la IA la ejecuta.",
+    category: "modelos-ia",
+    categoryLabel: "Modelos de IA",
+    date: "2026-03-05",
+    readingTime: 4,
+    relatedTools: ["chatgpt"],
+    source: "OpenAI / TechCrunch",
+    sourceUrl: "https://techcrunch.com/2026/03/05/openai-launches-gpt-5-4-with-pro-and-thinking-versions/",
+    titleEn: "GPT-5.4: the AI that now uses your computer better than you",
+    summaryEn: "OpenAI launched GPT-5.4 in March 2026 and achieved something that seemed like science fiction: in standardized tests, the AI operates a computer with more accuracy than the average human. It can browse websites, fill out forms, search for information, and complete tasks on your screen — on its own.",
+    contentEn: `<p>On March 5, 2026, <a href="/en/glossary#openai">OpenAI</a> launched GPT-5.4 and published a number that stopped the tech world for a few days: on the standard test measuring how well an AI can operate a computer, <strong>GPT-5.4 scored 75%. Expert humans score 72.4%.</strong></p>
+
+<p>For the first time, an AI surpasses the average human at operating a desktop computer. We're not talking about answering questions — we're talking about opening programs, navigating websites, searching for information, filling out forms, and completing real tasks on screen.</p>
+
+<p><strong>What can it actually do?</strong></p>
+<p>Imagine telling it: <em>"Go to the 30 websites of these suppliers, find the price for this product on each one, and create a comparison table sorted from lowest to highest price."</em> GPT-5.4 does it. It navigates each site, extracts the data, builds the table. While you do something else.</p>
+
+<p>Before, automating that kind of task required hiring a programmer to write a custom script. Now you give the instruction in plain English.</p>
+
+<p><strong>What else does GPT-5.4 bring?</strong></p>
+<ul>
+<li><strong>1-million-token context window:</strong> It can read and remember huge documents in a single conversation. A 500-page contract, a complete codebase, thousands of emails — all in memory at the same time.</li>
+<li><strong>33% fewer errors</strong> compared to the previous version. Responses are more accurate and reliable.</li>
+<li><strong>Better with spreadsheets and presentations:</strong> Understands and works with Office documents more fluidly.</li>
+</ul>
+
+<p><strong>How big is the leap?</strong></p>
+<p>To put it in perspective: the previous version (GPT-5.2) scored 47% on that same computer-use test. In a single version, OpenAI went from 47% to 75%. It surpassed humans. That had never happened before with this capability.</p>
+
+<p>The <a href="/en/glossary#benchmark">benchmark</a> they used is called OSWorld and was specifically designed to measure whether an AI can complete real tasks on an operating system: opening apps, finding files, interacting with web pages, copying data between programs. It's the kind of work an administrative assistant does.</p>
+
+<p><strong>Is it available for everyone?</strong></p>
+<p>GPT-5.4's Computer Use is available primarily via <a href="/en/glossary#api---application-programming-interface">API</a> for developers. The ChatGPT version for regular users is incorporating these capabilities gradually. If you're a ChatGPT Plus or Pro user, you'll see it in the coming months.</p>`,
+    practicalTakeawayEn: "If you have repetitive tasks involving navigating websites, copying data between systems, or filling out forms, now is the time to explore AI automation. GPT-5.4 can do that work — you don't need to know how to program to start. Describe the task in plain language and the AI executes it.",
+    categoryLabelEn: "AI Models",
+  },
+  {
+    id: "meta-compra-manus-2000-millones",
+    slug: "meta-compra-manus-2000-millones-startup-agentes-ia-8-meses",
+    title: "Meta pagó $2,000 millones por un startup de agentes AI que tenía solo 8 meses de vida",
+    summary: "A finales de diciembre de 2025, Meta cerró la compra de Manus, una empresa de Singapur que construye agentes AI autónomos. El precio: más de $2,000 millones. El startup tenía 8 meses operando y ya facturaba $100 millones al año. Es la señal más clara de que la batalla por los agentes AI ya empezó.",
+    content: `<p>El 30 de diciembre de 2025, Meta —la empresa detrás de Facebook, Instagram y WhatsApp— anunció que compró <strong>Manus AI por más de $2,000 millones de dólares</strong>. Para entender lo que eso significa, hay que saber qué hace Manus y por qué Meta pagó tanto.</p>
+
+<p><strong>¿Qué es Manus?</strong></p>
+<p>Manus es una empresa de Singapur que construye <a href="/glosario#agente-ai">agentes AI</a> de propósito general. Un agente no es un chatbot que responde preguntas — es un sistema que <em>actúa</em>. Le das un objetivo complejo ("investiga los 10 principales competidores de mi empresa, analiza sus precios y dame un informe") y el agente lo divide en pasos, busca información, analiza datos, redacta el resultado y te lo entrega. Todo sin que tú tengas que guiarlo paso a paso.</p>
+
+<p>Manus puede hacer investigaciones, automatizar procesos repetitivos, operar sistemas informáticos y manejar flujos de trabajo complejos con poca supervisión humana. Básicamente, es un asistente ejecutivo que trabaja 24/7 sin descanso.</p>
+
+<p><strong>Los números que justifican el precio</strong></p>
+<p>Manus lanzó su producto al público en abril de 2025. En solo 8 meses alcanzó <strong>$100 millones en ingresos anualizados</strong>. Para una empresa de tecnología, ese ritmo de crecimiento es extraordinario. Pocos startups en la historia llegaron a esa cifra tan rápido.</p>
+
+<p><strong>¿Por qué lo quiere Meta?</strong></p>
+<p>Meta tiene 3,000 millones de personas en sus plataformas. WhatsApp, Instagram, Facebook Messenger. La apuesta es integrar agentes Manus directamente en esas apps. En lugar de solo chatear con amigos, podrías decirle a WhatsApp Business: <em>"gestiona mi agenda, responde consultas de clientes y haz seguimiento a mis pedidos"</em> — y el agente lo haría.</p>
+
+<p>La empresa ya anunció que habrá funciones "powered by Manus" en WhatsApp Business e Instagram Direct en 2026, empezando por servicio al cliente automatizado y programación de citas.</p>
+
+<p><strong>El detalle político que complica todo</strong></p>
+<p>Manus fue fundada por ingenieros chinos, y tiene conexiones con el ecosistema tecnológico de China. Como condición de la adquisición, Meta exigió que no quedara ninguna participación china en la empresa. Eso desencadenó una investigación del gobierno chino por posible violación de las leyes de exportación de tecnología. El asunto aún está en curso.</p>
+
+<p><strong>¿Qué dice esto sobre el futuro?</strong></p>
+<p>Que Meta pagó $2,000 millones por un startup de 8 meses dice una cosa muy clara: la carrera por los <a href="/glosario#agente-ai">agentes AI</a> ya empezó y las grandes empresas no quieren quedarse atrás. Antes se compraban redes sociales. Ahora se compran equipos que saben construir sistemas que actúan de forma autónoma. El dinero sigue a donde va el próximo gran cambio tecnológico.</p>`,
+    practicalTakeaway: "La compra de Manus por Meta significa que los agentes AI van a llegar a WhatsApp e Instagram en 2026. Si tienes un negocio en esas plataformas, empieza a pensar cómo podrías automatizar atención al cliente o seguimiento de ventas con IA — porque pronto esa infraestructura estará disponible para cualquiera, no solo para empresas grandes.",
+    category: "agentes-ia",
+    categoryLabel: "Agentes de IA",
+    date: "2025-12-30",
+    readingTime: 5,
+    relatedTools: [],
+    source: "CNBC / TechRadar",
+    sourceUrl: "https://www.techradar.com/pro/meta-buys-manus-for-usd2-billion-to-power-high-stakes-ai-agent-race",
+    titleEn: "Meta paid $2 billion for an AI agent startup that was only 8 months old",
+    summaryEn: "At the end of December 2025, Meta closed the acquisition of Manus, a Singapore company that builds autonomous AI agents. The price: more than $2 billion. The startup had been operating for 8 months and was already generating $100 million per year. It's the clearest signal yet that the battle for AI agents has begun.",
+    contentEn: `<p>On December 30, 2025, Meta — the company behind Facebook, Instagram, and WhatsApp — announced it acquired <strong>Manus AI for more than $2 billion</strong>. To understand what that means, you need to know what Manus does and why Meta paid so much.</p>
+
+<p><strong>What is Manus?</strong></p>
+<p>Manus is a Singapore company that builds general-purpose <a href="/en/glossary#agente-ai">AI agents</a>. An agent is not a chatbot that answers questions — it's a system that <em>acts</em>. You give it a complex goal ("research the 10 main competitors of my company, analyze their prices, and give me a report") and the agent breaks it into steps, searches for information, analyzes data, drafts the result, and delivers it to you. All without you having to guide it step by step.</p>
+
+<p>Manus can conduct research, automate repetitive processes, operate computer systems, and handle complex workflows with little human oversight. Essentially, it's an executive assistant that works 24/7 without rest.</p>
+
+<p><strong>The numbers that justify the price</strong></p>
+<p>Manus launched its product publicly in April 2025. In just 8 months it reached <strong>$100 million in annualized revenue</strong>. For a tech company, that growth rate is extraordinary. Few startups in history reached that figure so quickly.</p>
+
+<p><strong>Why does Meta want it?</strong></p>
+<p>Meta has 3 billion people on its platforms. WhatsApp, Instagram, Facebook Messenger. The bet is to integrate Manus agents directly into those apps. Instead of just chatting with friends, you could tell WhatsApp Business: <em>"manage my calendar, answer customer inquiries, and follow up on my orders"</em> — and the agent would do it.</p>
+
+<p>The company already announced that "powered by Manus" features will appear in WhatsApp Business and Instagram Direct in 2026, starting with automated customer service and appointment scheduling.</p>
+
+<p><strong>The political detail that complicates everything</strong></p>
+<p>Manus was founded by Chinese engineers and has connections to China's tech ecosystem. As a condition of the acquisition, Meta required that no Chinese ownership remain in the company. That triggered a Chinese government investigation for possible violation of technology export laws. The matter is still ongoing.</p>
+
+<p><strong>What does this say about the future?</strong></p>
+<p>That Meta paid $2 billion for an 8-month-old startup says one very clear thing: the race for <a href="/en/glossary#agente-ai">AI agents</a> has already begun and big companies don't want to fall behind. Before, social networks were acquired. Now, teams that know how to build autonomous systems are being acquired. Money follows where the next major technological shift is going.</p>`,
+    practicalTakeawayEn: "Meta's acquisition of Manus means AI agents are coming to WhatsApp and Instagram in 2026. If you have a business on those platforms, start thinking about how you could automate customer service or sales follow-up with AI — because soon that infrastructure will be available to anyone, not just big companies.",
+    categoryLabelEn: "AI Agents",
+  },
+  {
     id: "anthropic-elimina-recargo-contexto-largo",
     slug: "anthropic-elimina-recargo-contexto-largo-1-millon-tokens-precio-estandar",
     title: "Anthropic elimina el recargo por contexto largo: 1 millón de tokens al precio normal",
