@@ -37,6 +37,166 @@ export const newsCategories: { slug: NewsCategory; label: string; labelEn: strin
 
 export const news: NewsItem[] = [
   {
+    id: "anthropic-elimina-recargo-contexto-largo",
+    slug: "anthropic-elimina-recargo-contexto-largo-1-millon-tokens-precio-estandar",
+    title: "Anthropic elimina el recargo por contexto largo: 1 millón de tokens al precio normal",
+    summary: "Hasta ahora, usar ventanas de contexto de más de 200,000 tokens en Claude podía duplicar el costo. Anthropic acaba de eliminar ese recargo para Opus 4.6 y Sonnet 4.6. Un cambio que abarata radicalmente el procesamiento de documentos largos, bases de código enormes y RAG avanzado.",
+    content: `<p>Anthropic acaba de hacer un movimiento importante en la guerra de precios de la IA: <strong>eliminó el recargo que cobraba por usar ventanas de contexto largas</strong>. A partir del 13 de marzo de 2026, los desarrolladores que usen Claude Opus 4.6 y Sonnet 4.6 pagan exactamente lo mismo por token, sin importar si su prompt tiene 9,000 o 900,000 tokens.</p>
+
+<p><strong>¿Qué era el recargo por contexto largo?</strong></p>
+<p>Hasta esta semana, si enviabas un prompt que superara los 200,000 tokens, Anthropic aplicaba un cargo adicional que podía <strong>doblar el costo por token</strong>. Era básicamente un impuesto por usar la ventana de contexto completa del modelo. Muchos equipos de desarrollo lo evitaban o lo absorbían como un costo operativo inevitable.</p>
+
+<p><strong>¿Qué cambia exactamente?</strong></p>
+<ul>
+<li><strong>Opus 4.6:</strong> $5 por millón de tokens de entrada / $25 por millón de tokens de salida — sin importar el tamaño del prompt</li>
+<li><strong>Sonnet 4.6:</strong> $3 por millón de tokens de entrada / $15 por millón de tokens de salida — precio plano</li>
+<li><strong>Límite de medios:</strong> El límite de imágenes y páginas PDF por solicitud subió 6x, de 100 a 600</li>
+</ul>
+
+<p>Traducción práctica: una solicitud de 900,000 tokens se cobra igual que una de 9,000 tokens (en tasa por token). Antes, esa diferencia podía significar el doble del costo.</p>
+
+<p><strong>¿Por qué importa esto?</strong></p>
+<p>Hay tres casos de uso donde esto cambia las reglas del juego:</p>
+
+<p><strong>1. RAG avanzado y bases de conocimiento.</strong> Los sistemas de Retrieval-Augmented Generation que inyectan muchos documentos en el contexto dejan de tener un penalizador de precio. Puedes pasar más contexto sin preocuparte por el costo extra.</p>
+
+<p><strong>2. Análisis de código completo.</strong> Repositorios grandes que antes requerían estrategias complejas de chunking para evitar el recargo ahora pueden pasarse completos al modelo sin penalización económica.</p>
+
+<p><strong>3. Procesamiento de documentos legales, financieros o técnicos.</strong> Contratos largos, reportes de auditoría, manuales técnicos — todo entra en una sola llamada al mismo precio de siempre.</p>
+
+<p><strong>El contexto competitivo</strong></p>
+<p>Este movimiento llega después de que Google eliminara restricciones similares en Gemini. Anthropic está respondiendo directamente a la presión competitiva. La ventana de contexto de 1 millón de tokens ya existía técnicamente, pero el recargo la hacía cara para uso intensivo. Ahora es accesible a precio estándar.</p>
+
+<p>Para equipos que construyen productos con Claude, esto puede significar una reducción significativa en la factura mensual de API, especialmente en aplicaciones donde el tamaño promedio de prompt es alto.</p>`,
+    practicalTakeaway: "Si estás usando Claude con prompts largos (análisis de documentos, bases de código, RAG con mucho contexto), revisa tu estrategia de costos. El recargo que quizás estabas pagando o evitando ya no existe. Puedes simplificar tu arquitectura y pasar más contexto directamente sin el truco de dividir prompts para ahorrar dinero.",
+    category: "herramientas",
+    categoryLabel: "Herramientas",
+    date: "2026-03-13",
+    readingTime: 4,
+    relatedTools: ["claude"],
+    source: "The Decoder",
+    sourceUrl: "https://the-decoder.com/anthropic-drops-the-surcharge-for-million-token-context-windows-making-opus-4-6-and-sonnet-4-6-far-cheaper/",
+    titleEn: "Anthropic eliminates long-context surcharge: 1 million tokens at standard pricing",
+    summaryEn: "Using context windows larger than 200,000 tokens in Claude used to nearly double costs. Anthropic just eliminated that surcharge for Opus 4.6 and Sonnet 4.6 — a change that dramatically reduces the cost of processing long documents, large codebases, and advanced RAG.",
+    contentEn: `<p>Anthropic just made a significant move in the AI pricing war: <strong>it eliminated the surcharge it charged for using long context windows</strong>. Starting March 13, 2026, developers using Claude Opus 4.6 and Sonnet 4.6 pay exactly the same per token, regardless of whether their prompt has 9,000 or 900,000 tokens.</p>
+
+<p><strong>What was the long-context surcharge?</strong></p>
+<p>Until this week, if you sent a prompt exceeding 200,000 tokens, Anthropic applied an additional charge that could <strong>double the cost per token</strong>. It was essentially a tax for using the model's full context window. Many development teams avoided it or absorbed it as an inevitable operational cost.</p>
+
+<p><strong>What exactly changes?</strong></p>
+<ul>
+<li><strong>Opus 4.6:</strong> $5 per million input tokens / $25 per million output tokens — regardless of prompt size</li>
+<li><strong>Sonnet 4.6:</strong> $3 per million input tokens / $15 per million output tokens — flat rate</li>
+<li><strong>Media limit:</strong> The image and PDF page limit per request increased 6x, from 100 to 600</li>
+</ul>
+
+<p>Practical translation: a 900,000-token request is billed at the same per-token rate as a 9,000-token one. Previously, that difference could mean double the cost.</p>
+
+<p><strong>Why does this matter?</strong></p>
+<p>There are three use cases where this changes the rules:</p>
+
+<p><strong>1. Advanced RAG and knowledge bases.</strong> Retrieval-Augmented Generation systems that inject many documents into context no longer have a price penalizer. You can pass more context without worrying about extra costs.</p>
+
+<p><strong>2. Full codebase analysis.</strong> Large repositories that previously required complex chunking strategies to avoid the surcharge can now be passed to the model entirely without economic penalty.</p>
+
+<p><strong>3. Processing legal, financial, or technical documents.</strong> Long contracts, audit reports, technical manuals — everything fits in a single API call at the usual price.</p>
+
+<p><strong>The competitive context</strong></p>
+<p>This move comes after Google removed similar restrictions on Gemini. Anthropic is responding directly to competitive pressure. The 1-million-token context window already existed technically, but the surcharge made it expensive for intensive use. Now it's accessible at standard pricing.</p>
+
+<p>For teams building products with Claude, this could mean a significant reduction in the monthly API bill, especially in applications where the average prompt size is high.</p>`,
+    practicalTakeawayEn: "If you're using Claude with long prompts (document analysis, codebases, RAG with lots of context), review your cost strategy. The surcharge you may have been paying or avoiding no longer exists. You can simplify your architecture and pass more context directly without the trick of splitting prompts to save money.",
+    categoryLabelEn: "Tools",
+  },
+  {
+    id: "anthropic-limites-semanales-claude-code",
+    slug: "anthropic-impone-limites-semanales-claude-code-usuarios-intensivos",
+    title: "Anthropic impone límites semanales a Claude Code: qué cambia para los usuarios Pro y Max",
+    summary: "Anthropic anunció nuevos límites de uso semanal para Claude Code que afectan a los planes Pro ($20/mes), Max $100 y Max $200. Menos del 5% de los usuarios los sentirán, pero quienes usan Claude Code intensivamente ahora tienen un techo de horas de uso que se reinicia cada 7 días.",
+    content: `<p>Si usas Claude Code de forma intensiva, hay un cambio importante que debes conocer: <strong>Anthropic introdujo límites semanales de uso</strong> que entraron en vigor a finales de julio de 2025. No son los típicos límites por minuto o por hora que tienen casi todas las APIs — son límites que se reinician cada 7 días y aplican a los planes de suscripción.</p>
+
+<p><strong>¿Por qué lo hizo Anthropic?</strong></p>
+<p>La empresa fue directa: el objetivo es prevenir picos de costo y distribuir mejor la carga de infraestructura. Algunos usuarios de Claude Code estaban usando el servicio durante decenas de horas seguidas, lo que generaba un impacto desproporcionado en los servidores y en la economía del plan de suscripción.</p>
+
+<p><strong>¿Cuánto puedo usar cada semana?</strong></p>
+<p>Los límites varían según el plan:</p>
+
+<p><strong>Plan Pro ($20/mes):</strong></p>
+<ul>
+<li>Entre 40 y 80 horas semanales de Claude Sonnet 4 a través de Claude Code</li>
+</ul>
+
+<p><strong>Plan Max $100/mes:</strong></p>
+<ul>
+<li>Entre 140 y 280 horas semanales de Claude Sonnet 4</li>
+<li>Entre 15 y 35 horas semanales de Claude Opus 4</li>
+</ul>
+
+<p><strong>Plan Max $200/mes:</strong></p>
+<ul>
+<li>Entre 240 y 480 horas semanales de Claude Sonnet 4</li>
+<li>Entre 24 y 40 horas semanales de Claude Opus 4</li>
+</ul>
+
+<p>Son rangos, no números exactos, porque el uso real depende de la complejidad de las tareas. Una tarea de análisis de código pesado consume más que generar texto simple.</p>
+
+<p><strong>¿Qué pasa si llego al límite?</strong></p>
+<p>Los suscriptores Max pueden comprar uso adicional una vez alcanzado el límite, a las tarifas estándar de la API. Los usuarios Pro tendrán que esperar que se reinicie su ciclo semanal o actualizar su plan.</p>
+
+<p><strong>¿A cuántos usuarios afecta?</strong></p>
+<p>Anthropic estima que <strong>menos del 5% de los suscriptores</strong> alcanzarán estos límites con su patrón de uso actual. Si usas Claude Code para proyectos ocasionales o desarrollo cotidiano, es muy probable que no lo notes. El límite está diseñado para los casos extremos de uso continuo de muchas horas al día.</p>
+
+<p><strong>La señal de fondo</strong></p>
+<p>Este cambio revela algo importante: Claude Code se está convirtiendo en una herramienta de trabajo a tiempo completo para un segmento de usuarios, no solo en un asistente ocasional. Que Anthropic necesite poner límites semanales (no diarios ni por minuto) habla de sesiones de trabajo de muchas horas que antes simplemente no eran posibles con herramientas de IA.</p>`,
+    practicalTakeaway: "Si eres desarrollador que usa Claude Code varias horas al día, verifica en cuál plan estás. Con el plan Pro ($20), tienes entre 40 y 80 horas semanales — suficiente para uso normal. Si llegas al límite regularmente, el plan Max $100 te da 3-4 veces más capacidad. Y si usas Claude Code como tu herramienta principal de trabajo todo el día, considera que los límites se reinician semanalmente.",
+    category: "herramientas",
+    categoryLabel: "Herramientas",
+    date: "2025-07-28",
+    readingTime: 4,
+    relatedTools: ["claude"],
+    source: "TechCrunch",
+    sourceUrl: "https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/",
+    titleEn: "Anthropic imposes weekly limits on Claude Code: what changes for Pro and Max users",
+    summaryEn: "Anthropic announced new weekly usage limits for Claude Code affecting Pro ($20/month), Max $100, and Max $200 plans. Less than 5% of users will feel them, but those who use Claude Code intensively now have a ceiling of weekly usage hours that resets every 7 days.",
+    contentEn: `<p>If you use Claude Code intensively, there's an important change you need to know about: <strong>Anthropic introduced weekly usage limits</strong> that went into effect in late July 2025. These aren't the typical per-minute or per-hour limits that almost all APIs have — they're limits that reset every 7 days and apply to subscription plans.</p>
+
+<p><strong>Why did Anthropic do this?</strong></p>
+<p>The company was direct: the goal is to prevent cost spikes and better distribute infrastructure load. Some Claude Code users were using the service for tens of hours straight, creating a disproportionate impact on servers and the economics of the subscription plan.</p>
+
+<p><strong>How much can I use each week?</strong></p>
+<p>Limits vary by plan:</p>
+
+<p><strong>Pro Plan ($20/month):</strong></p>
+<ul>
+<li>Between 40 and 80 weekly hours of Claude Sonnet 4 through Claude Code</li>
+</ul>
+
+<p><strong>Max Plan $100/month:</strong></p>
+<ul>
+<li>Between 140 and 280 weekly hours of Claude Sonnet 4</li>
+<li>Between 15 and 35 weekly hours of Claude Opus 4</li>
+</ul>
+
+<p><strong>Max Plan $200/month:</strong></p>
+<ul>
+<li>Between 240 and 480 weekly hours of Claude Sonnet 4</li>
+<li>Between 24 and 40 weekly hours of Claude Opus 4</li>
+</ul>
+
+<p>These are ranges, not exact numbers, because actual usage depends on task complexity. A heavy code analysis task consumes more than generating simple text.</p>
+
+<p><strong>What happens if I hit the limit?</strong></p>
+<p>Max subscribers can purchase additional usage once the limit is reached, at standard API rates. Pro users will need to wait for their weekly cycle to reset or upgrade their plan.</p>
+
+<p><strong>How many users does this affect?</strong></p>
+<p>Anthropic estimates that <strong>less than 5% of subscribers</strong> will hit these limits with their current usage patterns. If you use Claude Code for occasional projects or everyday development, you most likely won't notice it. The limit is designed for extreme cases of continuous use for many hours a day.</p>
+
+<p><strong>The underlying signal</strong></p>
+<p>This change reveals something important: Claude Code is becoming a full-time work tool for a segment of users, not just an occasional assistant. The fact that Anthropic needs to set weekly limits (not daily or per-minute) speaks to work sessions of many hours that simply weren't previously possible with AI tools.</p>`,
+    practicalTakeawayEn: "If you're a developer using Claude Code for several hours a day, check which plan you're on. With the Pro plan ($20), you have between 40 and 80 weekly hours — enough for normal use. If you regularly hit the limit, the Max $100 plan gives you 3-4x more capacity. And if you use Claude Code as your main all-day work tool, keep in mind that limits reset weekly.",
+    categoryLabelEn: "Tools",
+  },
+  {
     id: "medvi-ai-billion-dollar-company",
     slug: "medvi-como-la-ia-ayudo-a-un-hombre-a-construir-una-empresa-de-1800-millones",
     title: "Medvi: cómo la IA ayudó a un hombre a construir una empresa de $1,800 millones desde su sala",
