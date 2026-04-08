@@ -65,6 +65,7 @@ export const companies: AICompany[] = [
   { slug: "zhipu",    name: "Zhipu AI",       emoji: "🟦", country: "China",    description: "Creadores de la serie GLM, modelos chinos de alto rendimiento" },
   { slug: "moonshot", name: "Moonshot AI",    emoji: "🌙", country: "China",    description: "Creadores de Kimi, conocidos por su enorme ventana de contexto" },
   { slug: "alibaba",  name: "Alibaba / Qwen", emoji: "🟧", country: "China",    description: "Equipo Qwen de Alibaba Cloud — serie de modelos open source de alto rendimiento" },
+  { slug: "minimax",  name: "MiniMax",        emoji: "🔶", country: "China",    description: "Startup china creadora de Hailuo Video y la serie M de modelos LLM" },
 ]
 
 // ── Models ────────────────────────────────────────────────────
@@ -1241,6 +1242,36 @@ export const aiModels: AIModel[] = [
     isNew: false,
     releasedAt: "2024-05",
     tags: ["multimodal", "flagship", "openai", "chatgpt", "popular"],
+  },
+  // ── MiniMax ──
+  {
+    id: "minimax-m2-7",
+    slug: "minimax-m2-7",
+    name: "M2.7",
+    version: "M2.7",
+    company: "MiniMax",
+    companySlug: "minimax",
+    companyEmoji: "🔶",
+    description: "Modelo self-evolving de MiniMax — reasoning-only, optimizado para agents y claws (Claude Code, Kilo Code, OpenClaw). Alta eficiencia en costo.",
+    longDescription: "MiniMax M2.7 es el modelo propietario más reciente de MiniMax, lanzado en marzo de 2026. A diferencia de modelos anteriores open-source, M2.7 es propietario y está diseñado para ser el motor de agents AI y herramientas como Claude Code, Kilo Code y OpenClaw. Su característica más distintiva es el self-evolving: el propio modelo ayuda a construir, monitorear y optimizar sus propios harnesses de reinforcement learning. En benchmarks de software engineering y tareas profesionales de oficina supera a M2.5. Es categorizado como reasoning-only (texto puro). Available via API a través de platform.minimax.io.",
+    type: ["texto", "razonamiento"],
+    typeLabels: ["Texto", "Razonamiento"],
+    contextWindow: 1000000,
+    contextWindowLabel: "1M tokens",
+    apiPricing: { input: null, output: null, label: "Por confirmar" },
+    userPricing: { free: false, paidLabel: null, url: "https://platform.minimax.io" },
+    speed: "muy-rapido",
+    speedLabel: "Muy rápido",
+    intelligence: 4,
+    strengths: ["Self-evolving con RL propio", "Optimizado para agents", "1M tokens de contexto", "Alta eficiencia en costo"],
+    weaknesses: ["Propietario (no open source)", "Pricing aún no publicado", "Servidores en China"],
+    bestFor: ["Agents y automatización", "Coding con herramientas", "Tareas de reasoning de largo plazo"],
+    available: ["api"],
+    availableLabels: ["API"],
+    featured: false,
+    isNew: true,
+    releasedAt: "2026-03",
+    tags: ["china", "reasoning", "self-evolving", "agents", "nuevo"],
   },
 ]
 
