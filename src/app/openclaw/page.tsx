@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Header from "@/components/layout/Header";
-import OpenClawSidebar from "@/components/openclaw/OpenClawSidebar";
-import OpenClawFAQ from "@/components/openclaw/OpenClawFAQ";
-import Footer from "@/components/layout/Footer";
-import { openclawComparison, openclawFAQs } from "@/data/openclaw-content";
+import type { Metadata } from "next"
+import Link from "next/link"
+import Header from "@/components/layout/Header"
+import OpenClawSidebar from "@/components/openclaw/OpenClawSidebar"
+import Footer from "@/components/layout/Footer"
+import { openclawHero, openclawSections, openclawComparison, openclawFAQs } from "@/data/openclaw-content"
 
 export const metadata: Metadata = {
   title: "OpenClaw: tu Chief of Staff AI — cual.ai",
@@ -16,13 +15,50 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "OpenClaw: tu Chief of Staff AI — cual.ai",
-    description:
-      "Plataforma open source de gestión operativa con IA. Automatización que nunca duerme.",
+    description: "Plataforma open source de gestión operativa con IA. Automatización que nunca duerme.",
     url: "https://cual.ai/openclaw",
     type: "website",
     siteName: "cual.ai",
   },
-};
+}
+
+function ComparisonTable() {
+  const rows = openclawComparison.rows
+  return (
+    <div className="space-y-2">
+      <div className="grid grid-cols-3 gap-2">
+        <div />
+        <div className="text-xs font-semibold text-accent uppercase tracking-wide px-3 py-2 text-center border border-accent/30 bg-accent/5 rounded">OpenClaw</div>
+        <div className="text-xs font-semibold text-text-muted uppercase tracking-wide px-3 py-2 text-center">Claude Code</div>
+      </div>
+      {rows.map((row) => (
+        <div key={row.feature} className="grid grid-cols-3 gap-2 items-center">
+          <div className="px-3 py-2 text-xs text-text">{row.feature}</div>
+          <div className={`px-3 py-2 text-xs text-center rounded font-medium ${row.openclaw === "✅ Sí" || row.openclaw === "✅ Sí — Open source / gratis" ? "text-green-400" : row.openclaw.startsWith("❌") ? "text-red-400" : "text-text"}`}>
+            {row.openclaw}
+          </div>
+          <div className={`px-3 py-2 text-xs text-center rounded ${row.claudeCode === "✅ Sí" || row.claudeCode === "$20/mes (pro tier)" ? "text-green-400" : row.claudeCode.startsWith("❌") ? "text-red-400" : "text-text-muted"}`}>
+            {row.claudeCode}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  return (
+    <details className="group border border-border rounded-lg overflow-hidden">
+      <summary className="flex items-center gap-3 px-4 py-3 text-xs font-medium text-text cursor-pointer list-none hover:bg-bg-card transition-colors">
+        <span className="text-accent shrink-0 transition-transform group-open:rotate-90">›</span>
+        <span className="flex-1">{q}</span>
+      </summary>
+      <div className="px-4 pb-4 pt-1 text-xs text-text-muted leading-relaxed border-t border-border bg-bg">
+        {a}
+      </div>
+    </details>
+  )
+}
 
 export default function OpenClawPage() {
   return (
@@ -32,122 +68,81 @@ export default function OpenClawPage() {
         <OpenClawSidebar />
         <main className="flex-1 min-w-0">
           <div className="max-w-3xl mx-auto px-4 py-10">
-            {/* Breadcrumb */}
+
+            {/* Breadcrumb + Hero */}
             <div className="mb-10">
-              <div className="flex items-center gap-2 text-text-muted text-xs mb-4">
+              <div className="flex items-center gap-2 text-xs text-text-muted mb-4">
                 <Link href="/" className="hover:text-accent transition-colors">cual.ai</Link>
                 <span>/</span>
-                <span>OpenClaw</span>
+                <span className="text-accent">OpenClaw</span>
               </div>
-
-              <h1 className="text-2xl font-bold text-text mb-4">
-                OpenClaw: tu Chief of Staff AI ⚡
-              </h1>
-
-              <div className="bg-bg-card border border-border rounded-lg p-5 mb-2">
-                <span className="inline-block text-[10px] uppercase tracking-widest text-accent font-semibold border border-accent/30 bg-accent/5 px-2 py-0.5 rounded mb-3">
-                  IA de Gestión Operativa
-                </span>
-                <p className="text-sm text-text leading-relaxed mb-3">
-                  Automatización inteligente que nunca duerme. Así es como una empresa pequeña puede tener el equivalente a un equipo operativo de 10 personas.
-                </p>
-                <p className="text-sm text-text-muted leading-relaxed">
-                  Mientras vos pilotás un avión, OpenClaw revisa si las tiendas de Construmas abrieron.
-                </p>
+              <div className="inline-block text-[10px] uppercase tracking-widest text-accent font-semibold border border-accent/30 bg-accent/5 px-2 py-0.5 rounded mb-3">
+                {openclawHero.badge}
               </div>
-
-              <p className="text-xs text-text-muted">
-                8 secciones · Open source · MIT License
-              </p>
+              <h1 className="text-2xl font-bold text-text mb-3">{openclawHero.title}</h1>
+              <p className="text-sm text-text-muted leading-relaxed">{openclawHero.subtitle}</p>
             </div>
 
-            {/* Nav de secciones sticky */}
-            <div className="bg-bg-card border border-border rounded-lg p-4 mb-8 sticky top-12 z-10">
-              <div className="flex flex-wrap gap-2">
-                {[
-                  { id: "que-es", label: "Qué es" },
-                  { id: "como-funciona", label: "Cómo funciona" },
-                  { id: "para-que-sirve", label: "Para qué sirve" },
-                  { id: "vs-claude-code", label: "vs Claude Code" },
-                  { id: "instalacion", label: "Instalación" },
-                  { id: "quien-lo-creo", label: "Creadores" },
-                  { id: "por-que-potente", label: "Por qué potente" },
-                  { id: "caso-real", label: "Caso real" },
-                  { id: "faq", label: "FAQ" },
-                ].map((s) => (
-                  <a
-                    key={s.id}
-                    href={`#${s.id}`}
-                    className="text-xs font-mono text-accent hover:bg-accent hover:text-bg px-2 py-0.5 rounded transition-colors"
-                  >
-                    {s.label}
-                  </a>
-                ))}
+            {/* Section 1: ¿Qué es OpenClaw? */}
+            <div id="que-es" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">1</span>
+                <h2 className="text-base font-bold text-text">¿Qué es OpenClaw?</h2>
+              </div>
+              <div className="border border-border rounded-lg p-5 bg-bg-card space-y-3">
+                <p className="text-sm text-text leading-relaxed">
+                  OpenClaw es una plataforma open source que corre en un servidor (tu VPS, tu Raspberry Pi, tu Mac) y funciona como un <strong className="text-accent">Chief of Staff AI</strong>: un asistente operativo que gestiona tu empresa en segundo plano mientras vos duermes, trabajas o pilotas un avión.
+                </p>
+                <p className="text-sm text-text leading-relaxed">
+                  A diferencia de un chatbot que solo responde preguntas, OpenClaw <strong className="text-text">actúa</strong>: ejecuta crons, envía mensajes, lee correos, manda alertas, coordina agentes, y mantiene memoria persistente de todo lo que pasa.
+                </p>
+                <p className="text-sm text-text leading-relaxed">
+                  No es solo una herramienta — es un <strong className="text-accent">sistema operativo para empresas operadas por IA</strong>.
+                </p>
+                <div className="bg-bg rounded p-3 border border-border mt-3">
+                  <p className="text-xs text-text-muted">
+                    <span className="text-accent font-medium">Ejemplo real:</span> mientras Nicolas pilotaba un planeador, OpenClaw ya le había enviado el checklist de la mañana a las tres tiendas de Construmas, había verificado que no hubiera feedbacks urgentes en cual.ai, y le había alertado por WhatsApp de un correo importante.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Sección 1 — Qué es */}
-            <div className="space-y-6">
-              <div>
-                <div id="que-es" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">⚡</span>
-                  <span className="text-sm font-bold text-text">¿Qué es OpenClaw?</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="border border-border rounded-lg p-5 bg-bg-card">
-                  <p className="text-xs text-text leading-relaxed mb-3">
-                    OpenClaw es una plataforma open source que corre en un servidor (tu VPS, tu Raspberry Pi, tu Mac) y funciona como un <span className="text-accent font-medium">Chief of Staff AI</span>: un asistente operativo que gestiona tu empresa en segundo plano mientras tú duermes, trabajas o pilotas un avión.
-                  </p>
-                  <p className="text-xs text-text leading-relaxed mb-3">
-                    A diferencia de un chatbot que solo responde preguntas, OpenClaw <span className="text-accent font-medium">actúa</span>: ejecuta crons, envía mensajes, lee correos, manda alertas, coordina agentes, y mantiene memoria persistente de todo lo que pasa.
-                  </p>
-                  <p className="text-xs text-text leading-relaxed mb-3">
-                    No es solo una herramienta — es un sistema operativo para empresas operadas por IA.
-                  </p>
-                  <div className="bg-bg rounded p-3 border border-border">
-                    <p className="text-xs text-text-muted leading-relaxed">
-                      <span className="text-text-muted font-medium">Ejemplo:</span>{" "}
-                      Mientras vos pilotás un avión, OpenClaw revisa si las tiendas de Construmas abrieron, te avisa por WhatsApp si algo quedó pendiente, y manda el reporte diario al grupo.
-                    </p>
-                  </div>
-                </div>
+            {/* Section 2: ¿Cómo funciona? */}
+            <div id="como-funciona" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">2</span>
+                <h2 className="text-base font-bold text-text">¿Cómo funciona?</h2>
               </div>
-
-              {/* Sección 2 — Cómo funciona */}
-              <div>
-                <div id="como-funciona" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">🔧</span>
-                  <span className="text-sm font-bold text-text">¿Cómo funciona?</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
+              <div className="border border-border rounded-lg p-5 bg-bg-card space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
-                    { emoji: "🧠", title: "Gateway", desc: "El cerebro central que corre 24/7 en un servidor y conecta todos los canales (WhatsApp, Telegram, Discord, Gmail, Google Chat...)" },
-                    { emoji: "🛠️", title: "Skills", desc: "Módulos especializados que le dan habilidades específicas: enviar emails, gestionar crons, leer spreadsheets, ejecutar código." },
+                    { emoji: "🌐", title: "Gateway", desc: "El cerebro central que corre 24/7 en un servidor y conecta todos los canales: WhatsApp, Telegram, Discord, Gmail, Google Chat..." },
+                    { emoji: "🧩", title: "Skills", desc: "Módulos especializados que le dan habilidades específicas: enviar emails, gestionar crons, leer spreadsheets, ejecutar código." },
                     { emoji: "🤖", title: "Agents", desc: "Agentes autónomos que hacen tareas de fondo — cada uno tiene su área: emails, reportes, agenda, monitoreo." },
-                    { emoji: "💾", title: "Memory", desc: "Sistema de archivos de memoria (Markdown) que le da continuidad entre sesiones — no empieza de cero cada vez." },
+                    { emoji: "🧠", title: "Memory", desc: "Sistema de archivos de memoria (Markdown) que le da continuidad entre sesiones. No empieza de cero cada vez." },
                     { emoji: "💓", title: "Heartbeats", desc: "Trabajos periódicos que revisan cosas automáticamente: emails, eventos de calendario, estado de tiendas." },
-                    { emoji: "📡", title: "Canales", desc: "Conecta con WhatsApp, Telegram, Discord, Gmail, Google Chat y más." },
+                    { emoji: "📱", title: "Canales", desc: "Conecta con WhatsApp, Telegram, Discord, Gmail, Google Chat y más — todo integrado en un solo lugar." },
                   ].map((item) => (
-                    <div key={item.title} className="border border-border rounded-lg p-4 bg-bg-card">
-                      <div className="flex items-start gap-2 mb-2">
-                        <span className="text-lg shrink-0">{item.emoji}</span>
-                        <h3 className="text-xs font-bold text-text">{item.title}</h3>
+                    <div key={item.title} className="flex items-start gap-3 p-3 border border-border rounded bg-bg">
+                      <span className="text-base shrink-0 mt-0.5">{item.emoji}</span>
+                      <div>
+                        <p className="text-xs font-bold text-text mb-0.5">{item.title}</p>
+                        <p className="text-xs text-text-muted leading-relaxed">{item.desc}</p>
                       </div>
-                      <p className="text-xs text-text-muted leading-relaxed">{item.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
 
-              {/* Sección 3 — Para qué sirve */}
-              <div>
-                <div id="para-que-sirve" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">🎯</span>
-                  <span className="text-sm font-bold text-text">¿Para qué sirve?</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="border border-border rounded-lg p-5 bg-bg-card">
+            {/* Section 3: ¿Para qué sirve? */}
+            <div id="para-que-sirve" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">3</span>
+                <h2 className="text-base font-bold text-text">¿Para qué sirve?</h2>
+              </div>
+              <div className="border border-border rounded-lg p-5 bg-bg-card">
+                <div className="space-y-0">
                   {[
                     "Reemplazar asistentes virtuales operativos (no estratégicos)",
                     "Automatizar reportes diarios de tiendas, restaurantes, equipos",
@@ -155,240 +150,142 @@ export default function OpenClawPage() {
                     "Gestionar comunicación masiva (grupos de WhatsApp, canales de Telegram)",
                     "Revisar emails y alertar sobre lo urgente",
                     "Coordinar recordatorios y agendas",
-                    "Chief of Staff para entrepreneurs que manejan múltiples empresas",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-2 py-1.5">
-                      <span className="text-accent text-xs mt-0.5">✓</span>
+                    "Acting as a Chief of Staff para entrepreneurs que manejan múltiples empresas",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 py-2.5 border-b border-border last:border-0">
+                      <span className="text-accent mt-0.5 shrink-0">✓</span>
                       <p className="text-xs text-text leading-relaxed">{item}</p>
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
 
-              {/* Sección 4 — Comparativa */}
-              <div>
-                <div id="vs-claude-code" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">⚔️</span>
-                  <span className="text-sm font-bold text-text">OpenClaw vs Claude Code</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="border border-border rounded-lg p-5 bg-bg-card mb-3">
-                  <p className="text-xs text-text leading-relaxed mb-3">
-                    No son competidores — son <span className="text-accent font-medium">complementarios</span>. OpenClaw es el director; Claude Code es uno de los empleados.
-                  </p>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <div className="border border-accent/30 rounded-lg p-4 bg-accent/5">
-                    <h3 className="text-xs font-bold text-accent mb-2">⚡ OpenClaw</h3>
-                    <p className="text-xs text-text-muted leading-relaxed mb-2">
-                      <span className="text-accent font-medium">Plataforma operativa.</span> Diseñado para gestionar una empresa.
-                    </p>
-                    <div className="space-y-1">
-                      {openclawComparison.rows.map((row) => (
-                        <div key={row.feature} className="flex items-center gap-2">
-                          <span className="text-xs text-text-muted">{row.feature}:</span>
-                          <span className="text-xs font-medium text-text">{row.openclaw}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="border border-border rounded-lg p-4 bg-bg-card">
-                    <h3 className="text-xs font-bold text-text mb-2">🖥️ Claude Code</h3>
-                    <p className="text-xs text-text-muted leading-relaxed mb-2">
-                      <span className="text-text font-medium">Agente de codificación.</span> Diseñado para programadores.
-                    </p>
-                    <div className="space-y-1">
-                      {openclawComparison.rows.map((row) => (
-                        <div key={row.feature} className="flex items-center gap-2">
-                          <span className="text-xs text-text-muted">{row.feature}:</span>
-                          <span className="text-xs font-medium text-text">{row.claudeCode}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+            {/* Section 4: Comparativa */}
+            <div id="vs-claude-code" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">4</span>
+                <h2 className="text-base font-bold text-text">OpenClaw vs Claude Code</h2>
               </div>
+              <div className="border border-border rounded-lg p-5 bg-bg-card mb-4">
+                <p className="text-sm text-text leading-relaxed mb-3">
+                  <strong className="text-text">Claude Code</strong> es un agente de <strong className="text-accent">codificación</strong>. Diseñado para programadores. Excelente escribiendo código, refactoreando y haciendo PR reviews. Pero no tiene memoria persistente, no conecta a WhatsApp y no hace tareas operativas por sí solo.
+                </p>
+                <p className="text-sm text-text leading-relaxed mb-3">
+                  <strong className="text-text">OpenClaw</strong> es una <strong className="text-accent">plataforma operativa</strong>. Diseñado para gestionar una empresa. Usa agentes de IA como motor, pero le suma: memoria persistente, conexiones a todos los canales, crons, scheduling y orchestration de múltiples agentes simultáneos.
+                </p>
+                <p className="text-sm text-text leading-relaxed">
+                  En la práctica: OpenClaw <strong className="text-accent">PUEDE usar Claude Code</strong> como skill para tareas de código. OpenClaw es el director; Claude Code es uno de los empleados.
+                </p>
+              </div>
+              <div className="border border-border rounded-lg overflow-hidden bg-bg-card">
+                <ComparisonTable />
+              </div>
+            </div>
 
-              {/* Sección 5 — Instalación */}
-              <div>
-                <div id="instalacion" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">📦</span>
-                  <span className="text-sm font-bold text-text">¿Cómo se instala?</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="border border-border rounded-lg p-5 bg-bg-card">
-                  <p className="text-xs text-text leading-relaxed mb-3">
-                    OpenClaw funciona donde sea que puedas correr Node.js:
-                  </p>
-                  <pre className="bg-bg border border-border rounded p-4 text-xs font-mono overflow-x-auto mb-3 text-text">
+            {/* Section 5: Instalación */}
+            <div id="instalacion" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">5</span>
+                <h2 className="text-base font-bold text-text">¿Cómo se instala?</h2>
+              </div>
+              <div className="border border-border rounded-lg p-5 bg-bg-card">
+                <p className="text-xs text-text-muted mb-4">
+                  OpenClaw funciona donde sea que puedas correr Node.js. Requisitos mínimos: Ubuntu 20.04+, 1GB RAM (2GB recomendado), Node.js 18+. Para WhatsApp se necesita un número dedicado.
+                </p>
+                <pre className="bg-bg rounded border border-border p-4 text-xs font-mono text-text overflow-x-auto leading-relaxed space-y-1">
 {`# 1. Instalar Node.js 18+
-node --version  # debe ser >= 18
+node --version
 
 # 2. Instalar OpenClaw globalmente
 npm install -g openclaw
 
-# 3. Configurar el gateway (primera vez)
+# 3. Configurar el gateway
 openclaw init
 openclaw gateway start
 
-# 4. Conectar un canal (ejemplo WhatsApp)
+# 4. Conectar un canal (ej. WhatsApp)
 openclaw pairing scan whatsapp
 
-# 5. Verificar que está corriendo
+# 5. Verificar que funciona
 openclaw status`}
-                  </pre>
-                  <p className="text-xs text-text-muted leading-relaxed mb-3">
-                    El gateway queda corriendo en segundo plano (systemd service) y se reconnecta automáticamente si el servidor se reinicia.
-                  </p>
-                  <div className="bg-bg rounded p-3 border border-border">
-                    <p className="text-xs text-text-muted font-medium mb-1">Requisitos mínimos:</p>
-                    <div className="space-y-0.5">
-                      {[
-                        "VPS con Ubuntu 20.04+ (o cualquier Linux)",
-                        "1GB RAM mínimo, 2GB recomendado",
-                        "Node.js 18+",
-                        "Para WhatsApp: un número dedicado",
-                      ].map((req) => (
-                        <div key={req} className="flex items-start gap-2">
-                          <span className="text-accent text-xs mt-0.5">›</span>
-                          <p className="text-xs text-text-muted leading-relaxed">{req}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Sección 6 — Quién lo creó */}
-              <div>
-                <div id="quien-lo-creo" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">👥</span>
-                  <span className="text-sm font-bold text-text">¿Quién lo creó?</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="border border-border rounded-lg p-5 bg-bg-card">
-                  <p className="text-xs text-text leading-relaxed mb-3">
-                    OpenClaw fue creado por un equipo pequeño con experiencia en infraestructura de IA y automatización empresarial. El proyecto es open source (licencia MIT) y se mantiene activamente en GitHub.
-                  </p>
-                  <p className="text-xs text-text-muted leading-relaxed">
-                    A diferencia de empresas como OpenAI o Anthropic, OpenClaw no es una empresa de modelos de IA — es una empresa de <span className="text-accent font-medium">productos de IA operativa</span>. Su enfoque no es hacer modelos más inteligentes, sino hacer que los que ya existen sean útiles en el día a día de una empresa real.
-                  </p>
-                </div>
-              </div>
-
-              {/* Sección 7 — Por qué potente */}
-              <div>
-                <div id="por-que-potente" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">💪</span>
-                  <span className="text-sm font-bold text-text">¿Por qué es tan potente?</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {[
-                    {
-                      num: "1",
-                      title: "Memoria persistente",
-                      desc: "El problema fundamental de todos los chatbots es que empiezan de cero cada conversación. OpenClaw soluciona esto con archivos Markdown que son su memoria de largo plazo.",
-                    },
-                    {
-                      num: "2",
-                      title: "Actúa, no solo responde",
-                      desc: "Ejecuta código, manda mensajes, crea crons, lee APIs, conecta herramientas. No es un asesor pasivo — es un empleado activo.",
-                    },
-                    {
-                      num: "3",
-                      title: "Corre 24/7 en segundo plano",
-                      desc: "No necesita que alguien le hable para hacer algo. Los heartbeats revisan cosas constantemente. Si algo pasa, reacciona solo.",
-                    },
-                  ].map((item) => (
-                    <div key={item.num} className="border border-border rounded-lg p-4 bg-bg-card">
-                      <span className="inline-block text-lg font-bold text-accent mb-2">{item.num}</span>
-                      <h3 className="text-xs font-bold text-text mb-1">{item.title}</h3>
-                      <p className="text-xs text-text-muted leading-relaxed">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Sección 8 — Caso real */}
-              <div>
-                <div id="caso-real" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">🏢</span>
-                  <span className="text-sm font-bold text-text">¿Cómo lo usamos nosotros? (Caso real)</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <div className="border border-border rounded-lg p-5 bg-bg-card">
-                  <p className="text-xs text-text leading-relaxed mb-3">
-                    OpenClaw está corriendo en un VPS y gestiona múltiples empresas:
-                  </p>
-                  {[
-                    { title: "Gestión de tiendas Construmas", desc: "Crons automáticos que envían checklists cada mañana a los grupos de WhatsApp de las tiendas. Reporta si algo queda pendiente." },
-                    { title: "cual.ai", desc: "Monitoreo de feedbacks, actualizaciones semanales de modelos, newsletter automation." },
-                    { title: "Email management", desc: "Revisa Gmail cada heartbeat, alerta si hay algo urgente." },
-                    { title: "Alertas de pipelines", desc: "GitLab CI monitors en tiempo real." },
-                    { title: "Coordinación general", desc: "Como Chief of Staff virtual para toda la operación." },
-                  ].map((item) => (
-                    <div key={item.title} className="mb-2 last:mb-0">
-                      <p className="text-xs text-text leading-relaxed">
-                        <span className="text-accent font-medium">{item.title}:</span>{" "}
-                        <span className="text-text-muted">{item.desc}</span>
-                      </p>
-                    </div>
-                  ))}
-                  <div className="bg-bg rounded p-3 border border-border mt-3">
-                    <p className="text-xs text-text-muted leading-relaxed">
-                      Todo esto sin que Nicolas tenga que abrir una app o darle instrucciones — el sistema revisa y actúa.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ */}
-              <div>
-                <div id="faq" className="scroll-mt-24 flex items-center gap-3 mb-2">
-                  <span className="text-lg font-bold text-accent">❓</span>
-                  <span className="text-sm font-bold text-text">Preguntas frecuentes</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-                <OpenClawFAQ
-                  faqs={openclawFAQs.map((f) => ({
-                    question: f.question,
-                    answer: f.answer,
-                  }))}
-                />
+                </pre>
               </div>
             </div>
 
-            {/* Footer CTA */}
-            <div className="mt-10 border border-border rounded-lg p-5 text-center bg-bg-card">
-              <p className="text-sm text-text mb-2">Probá OpenClaw hoy</p>
-              <p className="text-xs text-text-muted mb-4">
-                Open source, gratis, y listo para correr en tu servidor.
-              </p>
-              <div className="flex gap-3 justify-center">
-                <a
-                  href="https://github.com/openclaw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-xs bg-accent text-bg px-4 py-2 rounded hover:bg-accent-hover transition-colors"
-                >
+            {/* Section 6: ¿Quién lo creó? */}
+            <div id="quien-lo-creo" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">6</span>
+                <h2 className="text-base font-bold text-text">¿Quién lo creó?</h2>
+              </div>
+              <div className="border border-border rounded-lg p-5 bg-bg-card">
+                <p className="text-sm text-text leading-relaxed mb-3">
+                  OpenClaw fue creado por un equipo pequeño con experiencia en infraestructura de IA y automatización empresarial. El proyecto es <strong className="text-accent">open source (licencia MIT)</strong> y se mantiene activamente en GitHub.
+                </p>
+                <p className="text-sm text-text leading-relaxed">
+                  A diferencia de empresas como OpenAI o Anthropic, OpenClaw no es una empresa de modelos de IA — es una empresa de <strong className="text-accent">productos de IA operativa</strong>. Su enfoque no es hacer modelos más inteligentes, sino hacer que los que ya existen sean útiles en el día a día de una empresa real.
+                </p>
+              </div>
+            </div>
+
+            {/* Section 7: ¿Por qué es tan potente? */}
+            <div id="potencia" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">7</span>
+                <h2 className="text-base font-bold text-text">¿Por qué es tan potente?</h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {[
+                  { n: "1", emoji: "🧠", title: "Memoria persistente", desc: "El problema de todos los chatbots es que empiezan de cero cada vez. OpenClaw usa archivos Markdown como memoria de largo plazo. Recuerda decisiones, contexto, preferencias, lecciones aprendidas." },
+                  { n: "2", emoji: "⚡", title: "Actúa, no solo responde", desc: "Ejecuta código, manda mensajes, crea crons, lee APIs, conecta herramientas. No es un asesor pasivo — es un empleado activo que hace cosas." },
+                  { n: "3", emoji: "🌙", title: "Corre 24/7 en segundo plano", desc: "Los heartbeats revisan cosas constantemente sin que nadie les hable. Si algo pasa — un email urgente, un pipeline que falló, una tienda que no abrió — reacciona solo." },
+                ].map((item) => (
+                  <div key={item.n} className="border border-border rounded-lg p-4 bg-bg-card">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-accent font-bold text-sm">{item.n}</span>
+                      <span className="text-base">{item.emoji}</span>
+                    </div>
+                    <h3 className="text-xs font-bold text-text mb-1">{item.title}</h3>
+                    <p className="text-xs text-text-muted leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Section 8: FAQ */}
+            <div id="faq" className="scroll-mt-20 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-lg font-bold text-accent">8</span>
+                <h2 className="text-base font-bold text-text">Preguntas frecuentes</h2>
+              </div>
+              <div className="space-y-2">
+                {openclawFAQs.map((f) => (
+                  <FaqItem key={f.question} q={f.question} a={f.answer} />
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10 border border-accent/30 rounded-lg p-6 text-center bg-accent/5">
+              <p className="text-sm text-text mb-2 font-medium">¿Querés probar OpenClaw?</p>
+              <p className="text-xs text-text-muted mb-5">Open source, gratis, y listo para correr en tu servidor.</p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded bg-accent text-bg text-xs font-semibold hover:bg-accent-hover transition-colors">
                   GitHub →
                 </a>
-                <a
-                  href="https://openclaw.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-xs border border-border text-text-muted px-4 py-2 rounded hover:border-accent hover:text-accent transition-colors"
-                >
-                  openclaw.ai →
+                <a href="https://docs.openclaw.ai" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded border border-border text-text text-xs hover:border-accent hover:text-accent transition-colors">
+                  Docs →
                 </a>
               </div>
             </div>
-          </div>
 
+          </div>
           <Footer />
         </main>
       </div>
     </div>
-  );
+  )
 }
