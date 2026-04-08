@@ -39,6 +39,7 @@ export default function Header({ locale = "es" }: { locale?: Locale }) {
       ["/cursos", "/courses"],
       ["/modelos", "/models"],
       ["/prompts", "/prompts"],
+      ["/openclaw", "/openclaw"],
     ];
 
     function mapRoute(path: string, from: string, to: string): string {
