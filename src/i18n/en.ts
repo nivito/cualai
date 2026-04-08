@@ -92,7 +92,7 @@ export const en: I18n = {
     models: "AI Models",
     glossary: "Glossary",
     prompts: "Prompt Guide",
-    openclaw: "OpenClaw",
+    openclaw: "🦀 OpenClaw",
     feedback: "Feedback",
     categories: "Categories",
   },

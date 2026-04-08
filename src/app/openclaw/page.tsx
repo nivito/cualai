@@ -66,7 +66,7 @@ export default function OpenClawPage() {
       <Header />
       <div className="flex flex-1">
         <OpenClawSidebar />
-        <main className="flex-1 min-w-0">
+        <main className="flex-1 min-w-0 lg:ml-0">
           <div className="max-w-3xl mx-auto px-4 py-10">
 
             {/* Breadcrumb + Hero */}
