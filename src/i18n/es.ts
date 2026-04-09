@@ -89,7 +89,7 @@ export const es = {
     models: "Modelos AI",
     glossary: "Glosario",
     prompts: "Guía de Prompts",
-    openclaw: "🦀 OpenClaw",
+    openclaw: "🦞 OpenClaw",
     feedback: "Feedback",
     categories: "Categorías",
   },

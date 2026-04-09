@@ -205,7 +205,7 @@ export default function Sidebar({ locale = "es" }: { locale?: Locale }) {
                 : "text-text-muted hover:text-text hover:bg-bg-hover border-l-2 border-transparent"
             }`}
           >
-            <span>🦀</span>
+            <span>🦞</span>
             <span className="flex-1 truncate">{t.sidebar.openclaw}</span>
           </Link>
 
