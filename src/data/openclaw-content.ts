@@ -16,8 +16,8 @@ export interface OpenClawFAQ {
 export const openclawHero = {
   badge: "IA de Gestión Operativa",
   badgeEn: "AI Operations Management",
-  title: "OpenClaw: tu Chief of Staff AI",
-  titleEn: "OpenClaw: your AI Chief of Staff",
+  title: "El verdadero agente autónomo de IA",
+  titleEn: "The real autonomous AI agent",
   subtitle:
     "Automatización inteligente que nunca duerme. Así es como una empresa pequeña puede tener el equivalente a un equipo operativo de 10 personas.",
   subtitleEn:

@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer"
 import { openclawHero, openclawComparison, openclawFAQs } from "@/data/openclaw-content"
 
 export const metadata: Metadata = {
-  title: "OpenClaw: your AI Chief of Staff — cual.ai",
+  title: "The real autonomous AI agent — cual.ai",
   description:
     "OpenClaw is an open source AI operations management platform. Smart automation that never sleeps: crons, WhatsApp, Gmail, persistent memory and more.",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     languages: { es: "https://cual.ai/openclaw", en: "https://cual.ai/en/openclaw" },
   },
   openGraph: {
-    title: "OpenClaw: your AI Chief of Staff — cual.ai",
+    title: "The real autonomous AI agent — cual.ai",
     description: "Open source AI operations management platform. Automation that never sleeps.",
     url: "https://cual.ai/en/openclaw",
     type: "website",

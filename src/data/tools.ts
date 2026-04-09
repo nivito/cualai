@@ -2133,6 +2133,28 @@ export const tools: Tool[] = [
       "Prototipado rápido de productos digitales",
     ],
   },
+  // ── Diseño & Presentaciones ──
+  {
+    id: "moda",
+    name: "Moda",
+    slug: "moda",
+    description: "Herramienta de diseño con IA que crea slides, social posts, PDFs y diagramas editables en un canvas real.",
+    longDescription: "Moda es una herramienta de diseño impulsada por IA que genera presentaciones, publicaciones para redes sociales, PDFs y diagramas completamente editables en un canvas interactivo. Cada elemento generado se puede modificar individualmente, lo que la diferencia de generadores de imagen estáticos. Fundada en marzo de 2026 con una ronda de $7.5M, utiliza un sistema multi-agente con Deep Agents construido sobre LangChain. Ideal para equipos de marketing, diseñadores y profesionales que necesitan crear contenido visual de marca rápidamente sin sacrificar el control editorial.",
+    descriptionEn: "AI design tool that creates editable slides, social posts, PDFs and diagrams on a real canvas.",
+    longDescriptionEn: "Moda is an AI-powered design tool that generates fully editable presentations, social media posts, PDFs and diagrams on an interactive canvas. Every generated element can be individually modified, setting it apart from static image generators. Founded in March 2026 with a $7.5M round, it uses a multi-agent system with Deep Agents built on LangChain. Ideal for marketing teams, designers and professionals who need to create branded visual content quickly without sacrificing editorial control.",
+    url: "https://moda.app",
+    categories: ["imagenes-diseno", "presentaciones-decks", "marketing"],
+    pricing: "freemium",
+    priceLabel: "Plan gratuito disponible",
+    featured: false,
+    tags: ["diseño", "presentaciones", "social media", "brand", "canvas", "editable", "AI", "diagramas", "PDF"],
+    useCases: [
+      "Crear presentaciones de marca editables con IA",
+      "Generar posts para redes sociales alineados a tu identidad visual",
+      "Diseñar PDFs y documentos profesionales rápidamente",
+      "Armar diagramas y visualizaciones editables en canvas",
+    ],
+  },
 ]
 
 // ── Helper functions ──────────────────────────────────────────
