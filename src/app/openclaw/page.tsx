@@ -144,13 +144,13 @@ export default function OpenClawPage() {
               <div className="border border-border rounded-lg p-5 bg-bg-card">
                 <div className="space-y-0">
                   {[
-                    "Reemplazar asistentes virtuales operativos (no estratégicos)",
-                    "Automatizar reportes diarios de tiendas, restaurantes, equipos",
-                    "Monitorear pipelines de GitHub/GitLab y alertar cuando algo falla",
-                    "Gestionar comunicación masiva (grupos de WhatsApp, canales de Telegram)",
-                    "Revisar emails y alertar sobre lo urgente",
-                    "Coordinar recordatorios y agendas",
-                    "Acting as a Chief of Staff para entrepreneurs que manejan múltiples empresas",
+                    "Automatizar tareas operativas 24/7 sin intervención humana",
+                    "Monitorear sistemas, servicios y métricas críticas y reaccionar cuando algo falla",
+                    "Gestionar comunicación y coordinación de equipos a cualquier escala",
+                    "Revisar correos, extraer información clave y alertar proactivamente",
+                    "Coordinar agendas, recordatorios y seguimientos automáticamente",
+                    "Ejecutar procesos de fondo mientras dormís — ideal para individuos y equipos",
+                    "Ser el agente autónomo que trabaja mientras vos no estás",
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3 py-2.5 border-b border-border last:border-0">
                       <span className="text-accent mt-0.5 shrink-0">✓</span>
