@@ -6,6 +6,7 @@ import { useState } from "react"
 const SECTIONS_ES = [
   { id: "intro", label: "📝 Introducción", href: "/prompts#intro" },
   { id: "componentes", label: "🧩 Los 4 componentes", href: "/prompts#componentes" },
+  { id: "espiral", label: "🌀 La Espiral Delirante", href: "/prompts#espiral" },
 ]
 
 const LEVELS_ES = [
@@ -19,6 +20,7 @@ const LEVELS_ES = [
 const SECTIONS_EN = [
   { id: "intro", label: "📝 Introduction", href: "/en/prompts#intro" },
   { id: "componentes", label: "🧩 The 4 Components", href: "/en/prompts#componentes" },
+  { id: "espiral", label: "🌀 The Delusional Spiral", href: "/en/prompts#espiral" },
 ]
 
 const LEVELS_EN = [

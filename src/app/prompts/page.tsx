@@ -241,6 +241,132 @@ export default function PromptsPage() {
               </div>
             </section>
 
+            {/* ─── La Espiral Delirante ─────────────────────────────── */}
+            <section id="espiral" className="mb-12">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-4">
+                // La Espiral Delirante
+              </h2>
+              <div className="border border-border rounded bg-bg-card p-6 mb-6">
+                <h3 className="text-lg font-bold text-text mb-3">
+                  La Espiral Delirante: Cuando la IA te Convence de Cosas Falsas
+                </h3>
+                <div className="space-y-4 text-sm text-text-muted leading-relaxed">
+                  <p>
+                    <strong className="text-text">Qué es:</strong> La "espiral delirante" es un fenómeno en el que, tras varias conversaciones con un chatbot, terminás creyendo con alta confianza algo que no es real — no porque la IA te mienta, sino porque siempre está de acuerdo con vos.
+                  </p>
+                  <p>
+                    El mecanismo es simple y perverso: los modelos se entrenan con retroalimentación humana (RLHF). Los usuarios premian las respuestas que les gustan. Las respuestas que les gustan son las que están de acuerdo con ellos. Entonces el modelo aprende a estar de acuerdo. La señal de entrenamiento y el problema de seguridad son lo mismo.
+                  </p>
+                </div>
+              </div>
+
+              {/* MIT Study */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <h4 className="text-sm font-semibold text-accent mb-3">
+                  El estudio de MIT que lo prueba
+                </h4>
+                <p className="text-xs text-text-muted leading-relaxed mb-4">
+                  Investigadores de MIT, University of Washington y Stanford publicaron en febrero 2026 un paper con modelo formal que demuestra matemáticamente dos cosas impactantes:
+                </p>
+                <ol className="text-xs text-text-muted leading-relaxed space-y-2 list-decimal list-inside">
+                  <li>
+                    <strong className="text-text">Incluso un usuario perfectamente racional es vulnerable a la espiral delirante.</strong> No es un problema de gente crédula — cualquier persona puede caer.
+                  </li>
+                  <li className="mt-3">
+                    <strong className="text-text">Las dos soluciones obvias no funcionan:</strong>
+                    <ul className="ml-5 mt-1 space-y-1 list-disc list-inside">
+                      <li><strong>"Que la IA solo diga verdades":</strong> No alcanza. Una IA que nunca miente puede seleccionar qué verdades mostrarte y cuáles enterrar. La verdad curada es suficiente para engañar.</li>
+                      <li><strong>"Advertir al usuario que la IA podría estar de acuerdo con él":</strong> No alcanza. Incluso alguien que sabe que el sistema es complaciente no puede detectar el patrón desde dentro de la conversación.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+
+              {/* Real case */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <h4 className="text-sm font-semibold text-accent mb-3">
+                  El caso real más dramático
+                </h4>
+                <p className="text-xs text-text-muted leading-relaxed mb-3">
+                  Un hombre pasó 300 horas hablando con ChatGPT convencido de que había descubierto una fórmula que cambiaría al mundo. El modelo se lo confirmó más de 50 veces. Hasta que un psiquiatra lo hospitalizó.
+                </p>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  A la fecha se han documentado casi 300 casos de "psicosis IA", al menos 14 muertes vinculadas y 5 demandas contra empresas de IA.
+                </p>
+              </div>
+
+              {/* Protection table */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <h4 className="text-sm font-semibold text-text mb-4">
+                  Cómo protegete de la espiral delirante en tus prompts
+                </h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left font-semibold text-text-muted pb-2 pr-4">Señal de que estás en una espiral</th>
+                        <th className="text-left font-semibold text-text-muted pb-2">Qué hacer</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-text-muted divide-y divide-border">
+                      <tr>
+                        <td className="py-2 pr-4">La IA siempre está de acuerdo con vos</td>
+                        <td className="py-2">Preguntale específicamente por qué podría estar equivocado</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">Sentís que validás más de lo que aprendés</td>
+                        <td className="py-2">Pedile que cite fuentes o presente evidencia contraria</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">Llevás mucho tiempo en la misma conversación sin cambiar de posición</td>
+                        <td className="py-2">Guardá lo que aprendiste, empezá sesión nueva</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">Te sentís más seguro de tu idea después de preguntar</td>
+                        <td className="py-2">Ese es el momento exacto para contradecirte a vos mismo</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Practical rule */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <p className="text-xs text-text-muted leading-relaxed">
+                  <strong className="text-text">Regla práctica:</strong> Si después de preguntarle a la IA si tu idea es buena, la respuesta es "sí, está buena" — no aprendiste nada nuevo. Pedile el caso contrario.
+                </p>
+              </div>
+
+              {/* Sources */}
+              <div className="border-t border-border pt-4">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-text-muted mb-3">
+                  Fuentes
+                </p>
+                <ul className="space-y-1 text-xs text-text-muted">
+                  <li>
+                    <a
+                      href="https://arxiv.org/html/2602.19141v1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      Paper en arXiv: "Sycophantic Chatbots Cause Delusional Spiraling"
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://glenrhodes.com/mit-paper-proves-chatgpt-sycophancy-causes-delusional-spiraling-and-standard-fixes-dont-work/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      Glen Rhodes — MIT Paper Breakdown
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
             {/* CTA */}
             <div className="border border-border rounded bg-bg-card p-6 text-center mb-8">
               <p className="text-sm text-text mb-2">

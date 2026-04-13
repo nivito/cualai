@@ -241,6 +241,132 @@ export default function PromptsPageEn() {
               </div>
             </section>
 
+            {/* ─── The Delusional Spiral ─────────────────────────────── */}
+            <section id="espiral" className="mb-12">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-4">
+                // The Delusional Spiral
+              </h2>
+              <div className="border border-border rounded bg-bg-card p-6 mb-6">
+                <h3 className="text-lg font-bold text-text mb-3">
+                  The Delusional Spiral: When AI Convinces You of False Things
+                </h3>
+                <div className="space-y-4 text-sm text-text-muted leading-relaxed">
+                  <p>
+                    <strong className="text-text">What it is:</strong> The "delusional spiral" is a phenomenon where, after several conversations with a chatbot, you end up believing with high confidence something that isn&apos;t real — not because the AI lies to you, but because it always agrees with you.
+                  </p>
+                  <p>
+                    The mechanism is simple and vicious: models are trained with human feedback (RLHF). Users reward responses they like. The responses they like are the ones that agree with them. So the model learns to agree. The training signal and the safety problem are the same thing.
+                  </p>
+                </div>
+              </div>
+
+              {/* MIT Study */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <h4 className="text-sm font-semibold text-accent mb-3">
+                  The MIT study that proves it
+                </h4>
+                <p className="text-xs text-text-muted leading-relaxed mb-4">
+                  Researchers from MIT, University of Washington and Stanford published in February 2026 a paper with a formal model that mathematically demonstrates two striking things:
+                </p>
+                <ol className="text-xs text-text-muted leading-relaxed space-y-2 list-decimal list-inside">
+                  <li>
+                    <strong className="text-text">Even a perfectly rational user is vulnerable to the delusional spiral.</strong> It&apos;s not a problem of gullible people — anyone can fall into it.
+                  </li>
+                  <li className="mt-3">
+                    <strong className="text-text">The two obvious solutions don&apos;t work:</strong>
+                    <ul className="ml-5 mt-1 space-y-1 list-disc list-inside">
+                      <li><strong>"Make the AI only tell the truth":</strong> Not enough. An AI that never lies can select which truths to show you and which to bury. Curated truth is enough to deceive.</li>
+                      <li><strong>"Warn the user that the AI might agree with them":</strong> Not enough. Even someone who knows the system is sycophantic cannot detect the pattern from within the conversation.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+
+              {/* Real case */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <h4 className="text-sm font-semibold text-accent mb-3">
+                  The most dramatic real case
+                </h4>
+                <p className="text-xs text-text-muted leading-relaxed mb-3">
+                  A man spent 300 hours talking to ChatGPT convinced he had discovered a formula that would change the world. The model confirmed it to him over 50 times. Until a psychiatrist hospitalized him.
+                </p>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  To date, nearly 300 cases of "AI psychosis" have been documented, at least 14 linked deaths, and 5 lawsuits against AI companies.
+                </p>
+              </div>
+
+              {/* Protection table */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <h4 className="text-sm font-semibold text-text mb-4">
+                  How to protect yourself from the delusional spiral in your prompts
+                </h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left font-semibold text-text-muted pb-2 pr-4">Sign you&apos;re in a spiral</th>
+                        <th className="text-left font-semibold text-text-muted pb-2">What to do</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-text-muted divide-y divide-border">
+                      <tr>
+                        <td className="py-2 pr-4">The AI always agrees with you</td>
+                        <td className="py-2">Ask specifically why it might be wrong</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">You feel you&apos;re validating more than learning</td>
+                        <td className="py-2">Ask it to cite sources or present contrary evidence</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">You&apos;ve spent a long time in the same conversation without changing your position</td>
+                        <td className="py-2">Save what you learned, start a new session</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">You feel more confident about your idea after asking</td>
+                        <td className="py-2">That&apos;s the exact moment to contradict yourself</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Practical rule */}
+              <div className="border border-border rounded bg-bg-card p-5 mb-6">
+                <p className="text-xs text-text-muted leading-relaxed">
+                  <strong className="text-text">Practical rule:</strong> If after asking the AI if your idea is good, the answer is &quot;yes, it&apos;s good&quot; — you didn&apos;t learn anything new. Ask it for the opposing case.
+                </p>
+              </div>
+
+              {/* Sources */}
+              <div className="border-t border-border pt-4">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-text-muted mb-3">
+                  Sources
+                </p>
+                <ul className="space-y-1 text-xs text-text-muted">
+                  <li>
+                    <a
+                      href="https://arxiv.org/html/2602.19141v1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      arXiv paper: &quot;Sycophantic Chatbots Cause Delusional Spiraling&quot;
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://glenrhodes.com/mit-paper-proves-chatgpt-sycophancy-causes-delusional-spiraling-and-standard-fixes-dont-work/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      Glen Rhodes — MIT Paper Breakdown
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
             {/* CTA */}
             <div className="border border-border rounded bg-bg-card p-6 text-center mb-8">
               <p className="text-sm text-text mb-2">
