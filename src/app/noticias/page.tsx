@@ -46,7 +46,7 @@ async function getNews(category?: NewsCategory): Promise<NewsItem[]> {
           practicalTakeaway: row.raw_data?.practical_takeaway || "",
           category: (row.raw_data?.category || "herramientas") as NewsCategory,
           categoryLabel: row.raw_data?.category_label || "Herramientas",
-          date: row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
+          date: row.raw_data?.published_at || row.raw_data?.date || row.published_at?.split("T")[0] || new Date().toISOString().split("T")[0],
           readingTime: row.raw_data?.reading_time || 3,
           source: row.source_name,
         }));
