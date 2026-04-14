@@ -621,3 +621,17 @@ export async function runNewsAgent(): Promise<{
   console.log(`[news-agent] Done. Inserted: ${inserted}, Skipped: ${skipped}, Errors: ${errors.length}`);
   return { inserted, skipped, errors };
 }
+
+// ── Direct execution ────────────────────────────────────────
+if (require.main === module) {
+  console.log("[news-agent] Starting news ingestion...");
+  runNewsAgent()
+    .then((result) => {
+      console.log(`[news-agent] Completed: ${result.inserted} inserted, ${result.skipped} skipped`);
+      process.exit(0);
+    })
+    .catch((err) => {
+      console.error("[news-agent] Fatal error:", err);
+      process.exit(1);
+    });
+}
