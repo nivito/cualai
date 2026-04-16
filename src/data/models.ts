@@ -218,6 +218,11 @@ export const aiModels: AIModel[] = [
     availableLabels: ["API", "Web", "Mobile"],
     featured: true,
     isNew: false,
+    releasedAt: "2026-01",
+    tags: ["flagship", "razonamiento", "escritura", "anthropic", "top-1"],
+  },
+  {
+    id: "claude-opus-4-7",
     slug: "claude-opus-4-7",
     name: "Claude Opus 4.7",
     version: "Opus 4.7",
