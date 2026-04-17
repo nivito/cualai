@@ -404,11 +404,11 @@ async function isDuplicate(slug: string, title: string): Promise<boolean> {
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
     const dateStr = sevenDaysAgo.toISOString();
 
-    const data = await supabaseFetch("news_items", {
+    const data = (await supabaseFetch("news_items", {
       select: "id, slug, title",
       published_at: `gte.${dateStr}`,
       limit: "20",
-    }) as Array<{ id: string; slug: string; title: string }>;
+    }) as Array<{ id: string; slug: string; title: string }> | null) ?? [];
 
     for (const item of data) {
       if (item.slug === slug) return true;
