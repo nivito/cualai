@@ -40,8 +40,9 @@ async function getNews(category?: NewsCategory): Promise<NewsItem[]> {
         supabaseItems = data.map((row) => ({
           id: row.raw_data?.id || row.id,
           slug: row.raw_data?.slug || row.id,
-          title: row.title,
-          summary: row.summary || "",
+          title: row.raw_data?.title_es || row.title,
+          summary: row.raw_data?.summary_es || row.summary || "",
+          titleEn: row.title,
           content: row.raw_data?.content || `<p>${row.summary}</p>`,
           practicalTakeaway: row.raw_data?.practical_takeaway || "",
           category: (row.raw_data?.category || "herramientas") as NewsCategory,
