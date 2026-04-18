@@ -578,6 +578,15 @@ export async function runNewsAgent(): Promise<{
       // Build full article
       const article = await buildArticle(result);
 
+      // Quality gate: skip articles with fewer than 100 words of actual content
+      const plainText = article.content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      const wordCount = plainText.split(/\s+/).filter(Boolean).length;
+      if (wordCount < 100) {
+        console.log(`[news-agent] Skipping low-quality article (${wordCount} words): ${result.title.slice(0, 60)}`);
+        skipped++;
+        continue;
+      }
+
       // Insert into Supabase
       await insertNewsItem({
         title: article.title,
