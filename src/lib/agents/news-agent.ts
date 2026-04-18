@@ -339,8 +339,8 @@ async function buildArticle(result: SearchResult): Promise<Article> {
   const readingTime = estimateReadingTime(contentText);
 
   return {
-    title: title.slice(0, 80),
-    title_en: translateSummaryToEn(title).slice(0, 80),
+    title,
+    title_en: translateSummaryToEn(title),
     summary: summaryEs,
     summary_en: summaryEn,
     content: contentEs,
@@ -578,10 +578,10 @@ export async function runNewsAgent(): Promise<{
       // Build full article
       const article = await buildArticle(result);
 
-      // Quality gate: skip articles with fewer than 100 words of actual content
-      const plainText = article.content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-      const wordCount = plainText.split(/\s+/).filter(Boolean).length;
-      if (wordCount < 100) {
+      // Quality gate: skip articles with fewer than 500 words (title + summary, HTML stripped)
+      const gateText = (article.title + " " + article.summary).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      const wordCount = gateText.split(/\s+/).filter(Boolean).length;
+      if (wordCount < 500) {
         console.log(`[news-agent] Skipping low-quality article (${wordCount} words): ${result.title.slice(0, 60)}`);
         skipped++;
         continue;
