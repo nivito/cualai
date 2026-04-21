@@ -37,6 +37,42 @@ export const newsCategories: { slug: NewsCategory; label: string; labelEn: strin
 
 export const news: NewsItem[] = [
   {
+    id: "amazon-25-billion-anthropic-2026",
+    slug: "amazon-invierte-25-mil-millones-adicionales-en-anthropic",
+    title: "Amazon invertirá hasta $25 mil millones más en Anthropic: la mayor apuesta de IA de la historia",
+    summary: "Amazon committedió $5 mil millones ahora y hasta $20 mil millones adicionales atados a hitos comerciales, alcanzando una valoración de Anthropic de $380 mil millones. Anthropic se comprometió a gastar más de $100 mil millones en AWS en los próximos 10 años, incluyendo chips Trainium personalizados.",
+    content: `<p>Amazon anunció el 20 de abril de 2026 una ampliación de su acuerdo con <a href="/glosario#anthropic">Anthropic</a>: invertirá <strong>$5 mil millones de inmediato</strong> y hasta <strong>$20 mil millones adicionales</strong> atados a hitos comerciales específicos. La valoración de Anthropic quedó en $380 mil millones — casi el doble de lo que valía hace un año.</p>
+
+<p><strong>El compromiso de Anthropic:</strong> más de $100 mil millones en tecnología de <a href="/glosario#aws">AWS</a> en los próximos 10 años, incluyendo las generaciones actuales y futuras de sus chips Trainium. Anthropic también dijo que secured hasta <strong>5 gigavatios</strong> de capacidad para entrenar y desplegar sus modelos Claude.</p>
+
+<p>Andy Jassy, CEO de Amazon, dijo en un comunicado: <em>"El compromiso de Anthropic de ejecutar sus modelos de lenguaje en AWS Trainium durante la próxima década refleja el progreso que hemos hecho juntos en silicio personalizado."</em></p>
+
+<p>Para contexto: en febrero de 2026, Amazon dijo que esperaba gastar <strong>$200 mil millones</strong> este año en capital expenditures, la mayoría en infraestructura de IA. Esta inversión en Anthropic es parte de esa estrategia.</p>
+
+<p>Los grandes hyperscalers (Amazon, Microsoft, Google) están en una carrera por acumular capacidad de IA lo más rápido posible. La inversión de Amazon en Anthropic es la más grande hecha por una empresa en una startup de IA hasta la fecha.</p>`,
+    practicalTakeaway: "La pelea por la IA está entre los grandes — Amazon, Microsoft y Google. Pero el efecto secundario es que las empresas más pequeñas se benefician del silicio personalizado y la infraestructura que estas inversiones construyen. AWS Trainium se está convirtiendo en una alternativa real a los chips de NVIDIA para entrenar modelos.",
+    category: "empresas",
+    categoryLabel: "Empresas",
+    date: "2026-04-20",
+    readingTime: 3,
+    relatedTools: ["claude", "chatgpt"],
+    source: "CNBC",
+    sourceUrl: "https://www.cnbc.com/2026/04/20/amazon-invest-up-to-25-billion-in-anthropic-part-of-ai-infrastructure.html",
+    titleEn: "Amazon to invest up to another $25 billion in Anthropic",
+    summaryEn: "Amazon will invest $5B now and up to $20B more tied to commercial milestones, valuing Anthropic at $380B. Anthropic commits to spending over $100B on AWS over 10 years, including Trainium chips.",
+    contentEn: `<p>Amazon announced on April 20, 2026 an expansion of its deal with <a href="/en/glossary#anthropic">Anthropic</a>: it will invest <strong>$5 billion immediately</strong> and up to <strong>$20 billion more</strong> tied to specific commercial milestones. Anthropic's valuation is now $380 billion — nearly double what it was a year ago.</p>
+
+<p><strong>Anthropic's commitment:</strong> over $100 billion in <a href="/en/glossary#aws">AWS</a> technology over the next 10 years, including current and future generations of its Trainium chips. Anthropic also said it secured up to <strong>5 gigawatts</strong> of capacity for training and deploying its Claude models.</p>
+
+<p>Andy Jassy, Amazon's CEO, said in a statement: <em>"Anthropic's commitment to run its large language models on AWS Trainium for the next decade reflects the progress we've made together on custom silicon."</em></p>
+
+<p>For context: in February 2026, Amazon said it expected to spend <strong>$200 billion</strong> this year in capital expenditures, most of it on AI infrastructure. This investment in Anthropic is part of that strategy.</p>
+
+<p>The big hyperscalers (Amazon, Microsoft, Google) are in a race to accumulate AI capacity as fast as possible. Amazon's investment in Anthropic is the largest ever made by a company in an AI startup to date.</p>`,
+    practicalTakeawayEn: "The AI fight is among the giants — Amazon, Microsoft, and Google. But the side effect is that smaller companies benefit from the custom silicon and infrastructure these investments build. AWS Trainium is becoming a real alternative to NVIDIA chips for training models.",
+    categoryLabelEn: "Companies",
+  },
+  {
     id: "gpt-54-ia-usa-computador-mejor-humanos",
     slug: "gpt-54-la-ia-que-ya-usa-tu-computador-mejor-que-tu",
     title: "GPT-5.4: la IA que ya usa tu computador mejor que tú",
