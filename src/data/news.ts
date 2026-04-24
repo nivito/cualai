@@ -1181,7 +1181,45 @@ export const news: NewsItem[] = [
     practicalTakeawayEn: "AI scams are more convincing than ever. Establish a code word with your family today to verify identity over the phone. Never act out of urgency — always verify through another channel before sending money or sharing personal data.",
     categoryLabelEn: "Society",
   },
-]
+  {
+    id: "gpt-55",
+    slug: "openai-gpt-55",
+    title: "OpenAI lanza GPT-5.5: más autonomía, mejor codificación y mayor investigación",
+    summary: "OpenAI anunció GPT-5.5, su modelo de IA más reciente, que destaca en codificación, uso de computadoras y búsqueda de información avanzada. El lanzamiento ocurre menos de dos meses después de GPT-5.4, evidenciando el ritmo acelerado del sector.",
+    content: `<p>OpenAI anunció GPT-5.5, su modelo de inteligencia artificial más reciente, que según la empresa es significativamente mejor en codificación, uso de computadoras y búsqueda de información profunda.</p>
+
+<p>El lanzamiento ocurre menos de dos meses después de que OpenAI liberara GPT-5.4, очередной signo del ritmo vertiginoso de desarrollo que impulsa el sector de la IA.</p>
+
+<p>"Lo que realmente es especial de este modelo es cuánto más puede hacer con menos orientación", dijo Greg Brockman, presidente de OpenAI, durante una sesión informativa con periodistas. "Puede observar un problema no claro y determinar exactamente qué necesita happening. Para mí, realmente se siente como si estuviera sentando las bases para cómo vamos a usar las computadoras, cómo vamos a hacer trabajo computacional en el futuro."</p>
+
+<p>OpenAI compite con rivales como Google y Anthropic, cuyo modelo más reciente, Claude Mythos Preview, ha captivated a Wall Street.</p>
+
+<p>GPT-5.5 sobresale en analizar datos, escribir y depurar código, operar software, investigar en línea y crear documentos y hojas de cálculo. La empresa añadió que el modelo no cruza el umbral de riesgo cibernético "Crítico", que podría abrir "caminos sin precedentes hacia daños severos", pero sí cumple los criterios para su clasificación de riesgo "Alto", que podría "amplificar las vías existentes hacia daños severos".</p>
+
+<p>GPT-5.5 se está desplegando para suscriptores de pago de OpenAI, incluyendo usuarios Plus, Pro, Business y Enterprise, en ChatGPT y su asistente de codificación Codex. La empresa dijo que el modelo llegará a su API "muy pronto", aunque esos despliegues requieren "salvaguardas diferentes".</p>`,
+    practicalTakeaway: "GPT-5.5 marca un paso significativo hacia modelos de IA más autônomos. Si trabajas con código, análisis de datos o investigación, este modelo puede reducir considerablemente el tiempo de trabajo al pedir menos instrucciones específicas para completar tareas complejas.",
+    category: "modelos-ia",
+    categoryLabel: "Modelos de IA",
+    date: "2026-04-23",
+    readingTime: 4,
+    source: "CNBC",
+    sourceUrl: "https://www.cnbc.com/2026/04/23/openai-announces-latest-artificial-intelligence-model.html",
+    titleEn: "OpenAI launches GPT-5.5: more autonomy, better coding and deeper research",
+    summaryEn: "OpenAI announced GPT-5.5, its latest AI model excelling in coding, computer use, and deep research, rolling out to paid subscribers on ChatGPT and Codex.",
+    contentEn: `<p>OpenAI on Thursday announced GPT-5.5, its latest artificial intelligence model, which the company says is significantly better at coding, using computers and pursuing deeper research capabilities.</p>
+
+<p>The launch comes less than two months after OpenAI released GPT 5.4, the latest sign of the breakneck pace of development driving the AI sector.</p>
+
+<p>"What is really special about this model is how much more it can do with less guidance," OpenAI President Greg Brockman said during a briefing with reporters. "It can look at an unclear problem and figure out just what needs to happen next. It really, to me, feels like it's setting the foundation for how we're going to use computers, how we're going to do computer work going forward."</p>
+
+<p>OpenAI is racing to keep up with rivals including Google and Anthropic, whose latest model, Claude Mythos Preview, has captivated Wall Street.</p>
+
+<p>GPT-5.5 excels at analyzing data, writing and debugging code, operating software, researching online and creating documents and spreadsheets. The company added that the model does not cross its "Critical" cybersecurity risk threshold, which could bring "unprecedented new pathways to severe harm," but it does meet the criteria for its "High" risk classification.</p>
+
+<p>GPT-5.5 is rolling out to OpenAI's paid subscribers — Plus, Pro, Business, and Enterprise users — in ChatGPT and its coding assistant Codex. The model will come to its API "very soon," though those deployments require "different safeguards."</p>`,
+    practicalTakeawayEn: "GPT-5.5 marks a significant step toward more autonomous AI models. If you work with code, data analysis, or research, this model can significantly reduce the time spent on complex tasks by requiring fewer specific instructions.",
+    categoryLabelEn: "AI Models",
+  },
 
 // ── Helper functions ──────────────────────────────────────────
 
